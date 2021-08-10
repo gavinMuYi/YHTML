@@ -265,7 +265,6 @@ export default {
                 } else {
                     this.$set(this.treeSelect, 0, clone(selected));
                     this.$emit('change', this.formateData());
-                    console.log('i am selected', this.formateData(), this.level);
                 }
             }
             else {
@@ -345,7 +344,6 @@ export default {
                         this.treeSelect.push(item);
                     }
                     this.$emit('change', this.formateData());
-                    console.log('i am selected', this.formateData());
                 }
             }
         },
