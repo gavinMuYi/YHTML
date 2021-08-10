@@ -16,7 +16,7 @@
             <span v-else class="no-switch"></span>
             <span class="label-item">
                 <span v-if="multiple" @click.stop="multipleSelect">{{ tracked }}</span>
-                <span :highlight-text="highlight">{{ self[maps.label] }}</span>
+                <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
             </span>
         </div>
         <y-tree
@@ -49,10 +49,14 @@
 </template>
 
 <script>
+import YCell from '@/components/cell';
 import clone from 'clone';
 
 export default {
     name: 'YTree',
+    components: {
+        YCell
+    },
     props: {
         value: {
             type: Array,
