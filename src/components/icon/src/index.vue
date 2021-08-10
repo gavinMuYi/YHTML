@@ -1,5 +1,9 @@
 <template>
-    <div class="y-icon"></div>
+    <div class="y-icon">
+        <svg aria-hidden="true">
+            <use xlink:href="#icon-v-check" />
+        </svg>
+    </div>
 </template>
 
 <script>
