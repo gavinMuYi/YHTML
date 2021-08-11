@@ -406,13 +406,13 @@ export default {
             }
             .arrow {
                 fill: #66686c;
-                width: 12px;
-                height: 12px;
-                margin-top: 1px;
+                width: 10px;
+                height: 10px;
+                margin-top: 3px;
                 margin-right: 5px;
             }
             &:hover {
-                background: #F1F4FB;
+                background: #e2fffd;
                 cursor: pointer;
             }
         }
@@ -435,9 +435,9 @@ export default {
             text-align: center;
         }
         .is-selected {
-            background: #E0E7F6;
+            background: #c0f5f1;
             &:hover {
-                background: #E0E7F6;
+                background: #c0f5f1;
                 cursor: pointer;
             }
         }
