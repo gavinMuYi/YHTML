@@ -9,7 +9,9 @@
         <div class="box-out">
             <div>同步单选无轨迹</div>
             <div class="box">
-                <YTree :options="options" :track="false" />
+                <YTree :options="options" :track="false">
+                    <div slot="item" slot-scope="props">{{ props.level }}{{ props.data.label }}</div>
+                </YTree>
             </div>
         </div>
         <div class="box-out">

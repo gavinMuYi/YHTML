@@ -12,7 +12,9 @@
             <span v-else class="no-arrow"></span>
             <span class="label-item">
                 <span v-if="multiple" @click.stop="multipleSelect"><YCheckbox :status="tracked" /></span>
-                <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
+                <slot name="item" :data="self" :level="level">
+                    <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
+                </slot>
             </span>
         </div>
         <y-tree
@@ -29,7 +31,13 @@
             :fatherStatus="tracked"
             :tracklessData="trackLessSelect.concat(tracklessData)"
             :selected="checkTrack(child[maps.key])"
-            @childSelect="handleChildSelect" />
+            @childSelect="handleChildSelect">
+            <template slot="item" slot-scope="props">
+                <slot name="item" :data="props.data" :level="props.level">
+                    <y-cell :highlight="highlight" :label="props.data[maps.label]"></y-cell>
+                </slot>
+            </template>
+        </y-tree>
         <div
             v-show="extendStatus"
             v-if="loadMore && dataList.length"
