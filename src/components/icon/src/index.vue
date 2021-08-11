@@ -21,8 +21,8 @@ export default {
 </script>
 
 <style lang="less">
-   .y-icon {
-       width: 14px;
-       height: 14px;
-   }
+    .y-icon {
+        width: 14px;
+        height: 14px;
+    }
 </style>

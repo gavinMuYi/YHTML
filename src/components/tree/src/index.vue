@@ -8,12 +8,8 @@
                 {'is-selected': isSelected}
             ]"
             :style="`padding-left: ${15 * (level - 1) + 8}px`">
-            <span
-                :class="`arrow is-${extendStatus ? 'open' : 'close'}`"
-                v-if="isFolder">
-                {{ `is-${extendStatus ? 'open' : 'close'}` }}
-            </span>
-            <span v-else class="no-switch"></span>
+            <y-icon :name="`arrow-${extendStatus ? 'up' : 'down'}`" class="arrow" v-if="isFolder"/>
+            <span v-else class="no-arrow"></span>
             <span class="label-item">
                 <span v-if="multiple" @click.stop="multipleSelect">{{ tracked }}</span>
                 <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
@@ -50,12 +46,14 @@
 
 <script>
 import YCell from '@/components/cell';
+import YIcon from '@/components/icon';
 import clone from 'clone';
 
 export default {
     name: 'YTree',
     components: {
-        YCell
+        YCell,
+        YIcon
     },
     props: {
         value: {
@@ -395,9 +393,9 @@ export default {
             line-height: 16px;
             display: flex;
             padding-right: 15px;
-            .no-switch {
+            .no-arrow {
                 display: inline-block;
-                width: 18px;
+                width: 14px;
             }
             .folder-icon {
                 width: 12px;
@@ -405,14 +403,18 @@ export default {
                 margin-right: 5px;
             }
             .arrow {
-                margin-top: -2px;
+                fill: #66686c;
+                width: 12px;
+                height: 12px;
+                margin-top: 1px;
+                margin-right: 5px;
             }
             &:hover {
                 background: #F1F4FB;
                 cursor: pointer;
             }
         }
-        .level1>.no-switch {
+        .level1>.no-arrow {
             width: 10px;
         }
         .load-more {
