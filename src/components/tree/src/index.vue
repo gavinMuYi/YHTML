@@ -11,7 +11,7 @@
             <y-icon :name="`arrow-${extendStatus ? 'up' : 'down'}`" class="arrow" v-if="isFolder"/>
             <span v-else class="no-arrow"></span>
             <span class="label-item">
-                <span v-if="multiple" @click.stop="multipleSelect">{{ tracked }}</span>
+                <span v-if="multiple" @click.stop="multipleSelect"><YCheckbox :status="tracked" /></span>
                 <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
             </span>
         </div>
@@ -47,13 +47,15 @@
 <script>
 import YCell from '@/components/cell';
 import YIcon from '@/components/icon';
+import YCheckbox from '@/components/checkbox';
 import clone from 'clone';
 
 export default {
     name: 'YTree',
     components: {
         YCell,
-        YIcon
+        YIcon,
+        YCheckbox
     },
     props: {
         value: {
@@ -419,7 +421,7 @@ export default {
         }
         .load-more {
             cursor: pointer;
-            color: #4078c0;
+            color: #18b9ac;
             font-size: 14px;
             line-height: 32px;
             &:hover {
