@@ -1,8 +1,8 @@
 <template>
     <div class="y-icon_example">
-        <YCheckbox status />
-        <YCheckbox status="all" />
-        <YCheckbox status="half" />
+        <YCheckbox status label="111" />
+        <YCheckbox status="all" label="萨芬" />
+        <YCheckbox status="half" label="阿斯ss顿发" />
     </div>
 </template>
 

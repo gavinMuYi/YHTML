@@ -1,8 +1,8 @@
 <template>
     <span class="y-checkbox" @click="handleClick">
-        <div :class="['check-icon', {'all': status === 'all'}]">
-            <YIcon name="check" v-if="status === 'all'" />
-            <div class="half" v-if="status === 'half'"></div>
+        <div :class="['check-icon', {'all': currentStatus === 'all'}]">
+            <YIcon name="check" v-if="currentStatus === 'all'" />
+            <div class="half" v-if="currentStatus === 'half'"></div>
         </div>
         <div v-if="label" class="label">{{ label }}</div>
     </span>
@@ -26,9 +26,24 @@ export default {
             default: 'empty' // empty, half, all
         }
     },
+    data() {
+        return {
+            currentStatus: this.status
+        };
+    },
+    watch: {
+        status(nval) {
+            this.currentStatus = nval;
+        }
+    },
     methods: {
         handleClick() {
-            this.$emit('change');
+            if (this.currentStatus === 'all' || this.currentStatus === 'half') {
+                this.currentStatus = 'empty';
+            } else {
+                this.currentStatus = 'all';
+            }
+            this.$emit('change', this.currentStatus);
         }
     }
 };
@@ -36,6 +51,7 @@ export default {
 
 <style lang="less">
     .y-checkbox {
+        cursor: pointer;
         .check-icon {
             width: 14px;
             height: 14px;
@@ -67,6 +83,9 @@ export default {
         .label {
             display: inline-block;
             margin-left: 5px;
+            font-size: 14px;
+            position: relative;
+            top: -3px;
         }
     }
 </style>
