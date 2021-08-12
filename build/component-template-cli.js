@@ -42,13 +42,43 @@ export default {
 `        
 )
 }
+function createVueExampleDefaultContent(name, className) {
+return(
+`<template>
+    <div class="${className}_example"></div>
+</template>
+
+<script>
+import ${name} from './index';
+export default {
+    name: '${name}Example',
+    components: {
+        ${name}
+    },
+    data() {
+        return {
+        };
+    },
+    methods: {
+    }
+};
+</script>
+
+<style lang="less">
+    .${className}_example {
+
+    }
+</style>
+`        
+)
+}
 
 // 默认选项
 const defaulePromptList = [
     {
         type: 'input',
         message: '设置组件名称(例如：y-viewer):',
-        name: 'folerName',
+        name: 'floderName',
         validate(val){
            if(val === '') {
                return '请输入组件名称'
@@ -92,7 +122,7 @@ const warnPromptList = [
     {
         type: 'input',
         message: '设置新的组件名称',
-        name: 'folerName',
+        name: 'floderName',
         suffix: '(例如：y-viewer)'
     },
 ]
@@ -139,6 +169,15 @@ function createFolder(folderPath, subFiles = []) {
              }
            })
            return fileArr
+       } else {
+            const fileArr = subFiles.map(sub => {
+                if(sub.type === 'folder') {
+                    return createFolder(`${folderPath}/${sub.name}`)[0]
+                } else {
+                    return createFile(`${folderPath}/${sub.name}`, sub.content || '')
+                }
+                })
+            return fileArr
        }
    } catch (err) {
        return [Promise.reject(err)]
@@ -178,9 +217,9 @@ const createComponentTemplate = function (options) {
    const spinner = ora('创建文件')
    spinner.start();
     // 生成目标文件夹路径
-    const targetFolerPath = path.resolve(__dirname, '../src/components', options.folerName.replace('y-', ''))
+    const targetFolderPath = path.resolve(__dirname, '../src/components', options.floderName.replace('y-', ''))
     // 检查目标文件夹是否已存在
-    fs.access(targetFolerPath, fs.constants.F_OK, (isExist) => {
+    fs.access(targetFolderPath, fs.constants.F_OK, (isExist) => {
         if(!isExist) {
             // 目标文件夹已经存在，重新设置组件名称
             spinner.stop();
@@ -188,40 +227,45 @@ const createComponentTemplate = function (options) {
             setComponentTemplate(warnPromptList, options)
         } else {
             // 创建文件夹
-            fs.mkdir(targetFolerPath, (err) => {
+            fs.mkdir(targetFolderPath, (err) => {
                 if(err) {
                     spinner.stop();
                     console.log(logSymbols.error, chalk.red('创建失败，失败原因：'+ '\n'+err))
                 } else {
                    // package.json文件内容
                    const packageContext = {
-                       name: options.folerName,
+                       name: options.floderName,
                        version: options.version,
                        main: options.main,
                        description: options.description
                    }
                    // 把kebab case的文件名变成大驼峰规范
-                   let pascalCaseFolerName = getPascalCase(options.folerName)
-                   const mainContent = `import ${pascalCaseFolerName} from \'./src/${options.folerName}.vue\';\nexport default ${pascalCaseFolerName};`
+                   let pascalCaseFloderName = getPascalCase(options.floderName)
+                   const mainContent = `import ${pascalCaseFloderName} from \'./src/${options.floderName}.vue\';\nexport default ${pascalCaseFloderName};`
                    // 生成src目录配置
-                   const srcFlolerPath = targetFolerPath+'/src'
+                   const srcFloderPath = targetFolderPath+'/src'
                    const srcSubFiles = [
                        {
                            name: `index.vue`,
                            type: 'file',
-                           content: createVueDefaultContent(pascalCaseFolerName, options.folerName)
+                           content: createVueDefaultContent(pascalCaseFloderName, options.floderName)
                        }
                    ]
+                   const exampleFiles = [{
+                        name: `example.vue`,
+                        type: 'file',
+                        content: createVueExampleDefaultContent(pascalCaseFloderName, options.floderName)
+                   }]
                    // 一级目录文件
                    const wstreamArr = [
-                       createFile(targetFolerPath+`/${options.main}`, mainContent),
-                       createFile(targetFolerPath+`/package.json`, JSON.stringify(packageContext, '', "\t")),
+                       createFile(targetFolderPath+`/${options.main}`, mainContent),
+                       createFile(targetFolderPath+`/package.json`, JSON.stringify(packageContext, '', "\t")),
                    ]
                    if(options.isCreateReadme) {
-                       wstreamArr.push(createFile(targetFolerPath+`/readme.md`),)
+                       wstreamArr.push(createFile(targetFolderPath+`/readme.md`),)
                    }
                    // 全部文件任务
-                   let allFileTasks = [...wstreamArr, ...createFolder(srcFlolerPath, srcSubFiles)]
+                   let allFileTasks = [...wstreamArr, ...createFolder(srcFloderPath, srcSubFiles), ...createFolder(targetFolderPath, exampleFiles)]
                    // 创建文件
                    try {
                        Promise.all(allFileTasks).then(res => {
