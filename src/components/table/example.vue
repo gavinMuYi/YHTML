@@ -63,7 +63,9 @@ export default {
         lazyLoad(index, count, highlight, self) {
             console.log(index, count, highlight, self);
             return new Promise((resolve, reject) => {
-                resolve();
+                setTimeout(() => {
+                    resolve();
+                }, 1000);
             }).then(() => {
                 return [{
                     label: 'sqwerd' + Math.floor(Math.random() * 1000),

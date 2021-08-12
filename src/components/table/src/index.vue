@@ -11,6 +11,7 @@
                 <div v-else class="y-tr" @click="props.extend">
                     <div v-for="(column, index) in columnConfig" :key="column.key + index" class="y-td"
                          :style="columnStyle(column)">
+                        <y-icon v-if="props.loading && !index" name="loading" class="loading" />
                         <y-cell :highlight="highlight" :label="props.data && props.data[column.key]"
                                 :style="firstColumnStyle(props.level, index)">
                         </y-cell>
@@ -24,12 +25,14 @@
 <script>
 import YTree from '@/components/tree';
 import YCell from '@/components/cell';
+import YIcon from '@/components/icon';
 
 export default {
     name: 'YTable',
     components: {
         YTree,
-        YCell
+        YCell,
+        YIcon
     },
     props: {
         options: {
@@ -95,11 +98,20 @@ export default {
             .y-td {
                 flex: 1;
                 overflow: hidden;
+                position: relative;
                 .y-cell {
                     max-width: 100%;
                     overflow: hidden;
                     box-sizing: border-box;
-                    padding-left: 10px;
+                    padding-left: 20px;
+                }
+                .loading {
+                    position: absolute;
+                    top: 5px;
+                    left: 4px;
+                    width: 16px;
+                    height: 16px;
+                    fill: #18b9ac;
                 }
             }
         }
