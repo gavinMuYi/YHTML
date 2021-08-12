@@ -49,7 +49,7 @@ return(
 </template>
 
 <script>
-import ${name} from './index';
+import ${name} from './src/index';
 export default {
     name: '${name}Example',
     components: {

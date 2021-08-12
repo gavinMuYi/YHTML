@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import YLayout from './index';
+import YLayout from './src/index';
 export default {
     name: 'YLayoutExample',
     components: {

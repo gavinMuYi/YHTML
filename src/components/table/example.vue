@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import YTable from './index';
+import YTable from './src/index';
 export default {
     name: 'YTableExample',
     components: {
