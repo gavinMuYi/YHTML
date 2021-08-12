@@ -1,13 +1,3 @@
-<template>
-    <div class="y-cell">
-        <span v-for="(label, index) in labelGroup" :key="index + '-' + label"
-              :style="{color : label.highlight ? highlightColor : '#1d1d1d'}"
-              class="y-cell-label">
-            {{ label.label }}
-        </span>
-    </div>
-</template>
-
 <script>
 export default {
     name: 'YCell',
@@ -79,17 +69,40 @@ export default {
             });
             return groups;
         }
+    },
+    render(h) {
+        // 为了在不能float的情况下消除span间空格使用render
+        let labels = this.labelGroup.map(label => {
+            return (
+                <span
+                    style={
+                        {
+                            color: label.highlight ? this.highlightColor : '#1d1d1d'
+                        }
+                    }
+                    class="y-cell-label">
+                    { label.label }
+                </span>
+            );
+        });
+        return (
+            <div class="y-cell">
+                { labels }
+            </div>
+        );
     }
 };
 </script>
 
 <style lang="less">
    .y-cell {
-       font-size: 0;
-       display: inline-block;
-       .y-cell-label {
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        overflow:hidden;
+        width: 100%;
+        .y-cell-label {
             font-size: 14px;
-            float: left;
-       }
+        }
    }
 </style>

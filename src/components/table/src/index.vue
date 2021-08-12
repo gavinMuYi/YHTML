@@ -11,7 +11,9 @@
                 <div v-else class="y-tr" @click="props.extend">
                     <div v-for="(column, index) in columnConfig" :key="column.key + index" class="y-td"
                          :style="columnStyle(column)">
-                        <y-cell :highlight="highlight" :label="props.data && props.data[column.key]"></y-cell>
+                        <y-cell :highlight="highlight" :label="props.data && props.data[column.key]"
+                                :style="firstColumnStyle(props.level, index)">
+                        </y-cell>
                     </div>
                 </div>
             </div>
@@ -69,6 +71,12 @@ export default {
             } else {
                 return {};
             }
+        },
+        firstColumnStyle(level, index) {
+            let indentation = level > 1 && !index ? {
+                'padding-left': (level * 20) + 'px'
+            } : {};
+            return indentation;
         }
     }
 };
@@ -82,11 +90,26 @@ export default {
             align-items: center;
             .y-td {
                 flex: 1;
+                overflow: hidden;
+                .y-cell {
+                    max-width: 100%;
+                    overflow: hidden;
+                    box-sizing: border-box;
+                    padding-left: 10px;
+                }
             }
         }
         .y-th {
             background: #c4efec;
             height: 60px;
+            .y-td {
+                max-width: 100%;
+                overflow: hidden;
+                box-sizing: border-box;
+                padding-left: 10px;
+                text-overflow: ellipsis;
+                white-space:nowrap;
+            }
         }
         .y-tr {
             border-bottom: 1px solid #c4efec;
