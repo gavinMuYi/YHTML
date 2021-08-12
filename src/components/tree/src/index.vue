@@ -1,22 +1,28 @@
 <template>
     <div class="y-tree">
-        <div
-            v-if="self" @click="extend"
-            :class="[
-                'list-item',
-                `level${level}`,
-                {'is-selected': isSelected}
-            ]"
-            :style="`padding-left: ${15 * (level - 1) + 8}px`">
-            <y-icon :name="`arrow-${extendStatus ? 'up' : 'down'}`" class="arrow" v-if="isFolder"/>
-            <span v-else class="no-arrow"></span>
-            <span class="label-item">
-                <span v-if="multiple" @click.stop="multipleSelect"><YCheckbox :status="tracked" /></span>
-                <slot name="item" :data="self" :level="level">
-                    <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
-                </slot>
-            </span>
-        </div>
+        <slot name="line"
+              :data="self" :level="level"
+              :isSelected="isSelected" :isFolder="isFolder"
+              :extendStatus="extendStatus" :tracked="tracked"
+              :extend="extend" :multipleSelect="multipleSelect">
+            <div
+                v-if="self" @click="extend"
+                :class="[
+                    'list-item',
+                    `level${level}`,
+                    {'is-selected': isSelected}
+                ]"
+                :style="`padding-left: ${15 * (level - 1) + 8}px`">
+                <y-icon :name="`arrow-${extendStatus ? 'up' : 'down'}`" class="arrow" v-if="isFolder"/>
+                <span v-else class="no-arrow"></span>
+                <span class="label-item">
+                    <span v-if="multiple" @click.stop="multipleSelect"><YCheckbox :status="tracked" /></span>
+                    <slot name="item" :data="self" :level="level">
+                        <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
+                    </slot>
+                </span>
+            </div>
+        </slot>
         <y-tree
             v-show="extendStatus"
             v-for="child in dataList" :key="child[maps.key]"
@@ -32,9 +38,17 @@
             :tracklessData="trackLessSelect.concat(tracklessData)"
             :selected="checkTrack(child[maps.key])"
             @childSelect="handleChildSelect">
-            <template slot="item" slot-scope="props">
-                <slot name="item" :data="props.data" :level="props.level">
-                    <y-cell :highlight="highlight" :label="props.data[maps.label]"></y-cell>
+            <template slot="line" slot-scope="props">
+                <slot name="line"
+                      :data="props.data" :level="props.level"
+                      :isSelected="props.isSelected" :isFolder="props.isFolder"
+                      :extendStatus="props.extendStatus" :tracked="props.tracked"
+                      :extend="props.extend" :multipleSelect="props.multipleSelect">
+                    <template slot="item" slot-scope="props">
+                        <slot name="item" :data="props.data" :level="props.level">
+                            <y-cell :highlight="highlight" :label="props.data[maps.label]"></y-cell>
+                        </slot>
+                    </template>
                 </slot>
             </template>
         </y-tree>
@@ -155,6 +169,7 @@ export default {
     },
     computed: {
         isFolder() {
+            if (!this.self) return true;
             return (this.self[this.maps.children]
                 && this.self[this.maps.children].length)
                 || this.self[this.maps.hasChildren];

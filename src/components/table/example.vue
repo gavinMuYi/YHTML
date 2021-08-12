@@ -1,5 +1,7 @@
 <template>
-    <div class="y-table_example"></div>
+    <div class="y-table_example">
+        <YTable :options="options" :columnConfig="columnConfig" />
+    </div>
 </template>
 
 <script>
@@ -11,6 +13,49 @@ export default {
     },
     data() {
         return {
+            columnConfig: [{
+                key: 'label',
+                label: 'column1'
+            }, {
+                key: 'key',
+                label: 'column2',
+                width: '80%'
+            }, {
+                key: 'label',
+                label: 'column3'
+            }],
+            options: [{
+                label: 'sqwerd',
+                key: 'asqewqwrd'
+            }, {
+                label: 'sd',
+                key: 'asd',
+                children: [{
+                    key: 'we',
+                    label: 'sdaf',
+                    children: [{
+                        key: 'wasdffe',
+                        label: 'sgdafgfddaf'
+                    }, {
+                        key: 'was3333dffe',
+                        label: 'sg4444dafgfddaf'
+                    }]
+                }, {
+                    key: 'wesad3123f',
+                    label: 'sda212f',
+                    children: [{
+                        key: 'wasd312ffe',
+                        label: 'sgdaf3123gfddaf'
+                    }]
+                }]
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+                children: [{
+                    key: 'wde',
+                    label: 'sdwaf'
+                }]
+            }]
         };
     },
     methods: {
