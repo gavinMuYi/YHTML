@@ -72,6 +72,7 @@ export default {
             }, {
                 label: 'sd',
                 key: 'asd',
+                extend: true,
                 children: [{
                     key: 'we',
                     label: 'sdaf',
@@ -101,9 +102,12 @@ export default {
         };
     },
     methods: {
-        lazyLoad() {
+        lazyLoad(index, count, highlight, self) {
+            console.log(index, count, highlight, self);
             return new Promise((resolve, reject) => {
-                resolve();
+                setTimeout(() => {
+                    resolve();
+                }, 1000);
             }).then(() => {
                 return [{
                     label: 'sqwerd' + Math.floor(Math.random() * 1000),

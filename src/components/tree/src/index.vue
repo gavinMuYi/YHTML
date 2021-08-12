@@ -1,7 +1,7 @@
 <template>
     <div class="y-tree">
         <slot name="line"
-              :data="self" :level="level"
+              :data="self" :level="level" :loading="loading"
               :isSelected="isSelected" :isFolder="isFolder"
               :extendStatus="extendStatus" :tracked="tracked"
               :extend="extend" :multipleSelect="multipleSelect">
@@ -13,7 +13,8 @@
                     {'is-selected': isSelected}
                 ]"
                 :style="`padding-left: ${15 * (level - 1) + 8}px`">
-                <y-icon :name="`arrow-${extendStatus ? 'up' : 'down'}`" class="arrow" v-if="isFolder"/>
+                <y-icon :name="loading ? 'loading' : `arrow-${extendStatus ? 'up' : 'down'}`"
+                        :class="['arrow', {'loading': loading}]" v-if="isFolder"/>
                 <span v-else class="no-arrow"></span>
                 <span class="label-item">
                     <span v-if="multiple" @click.stop="multipleSelect"><YCheckbox :status="tracked" /></span>
@@ -40,7 +41,7 @@
             @childSelect="handleChildSelect">
             <template slot="line" slot-scope="props">
                 <slot name="line"
-                      :data="props.data" :level="props.level"
+                      :data="props.data" :level="props.level" :loading="props.loading"
                       :isSelected="props.isSelected" :isFolder="props.isFolder"
                       :extendStatus="props.extendStatus" :tracked="props.tracked"
                       :extend="props.extend" :multipleSelect="props.multipleSelect">
@@ -56,9 +57,10 @@
             v-show="extendStatus"
             v-if="loadMore && dataList.length"
             class="load-more"
-            :style="`padding-left: ${15 * level + 40}px`"
+            :style="`padding-left: ${15 * level + 25}px`"
             @click="loadMoreFetch">
-            加载更多...
+            <span v-if="loading" class="loading"><y-icon name="loading" />加载中...</span>
+            <span v-else>加载更多...</span>
         </div>
         <div v-if="!level && !dataList.length && !loading" class="no-data">
             <div>暂无数据</div>
@@ -122,7 +124,8 @@ export default {
                     label: 'label',
                     children: 'children',
                     hasChildren: 'hasChildren',
-                    disable: 'disable'
+                    disable: 'disable',
+                    extend: 'extend'
                 };
             }
         },
@@ -208,6 +211,9 @@ export default {
         }
     },
     mounted() {
+        if (this.self && this.self.extend) {
+            this.extend();
+        }
         !this.level && this.loadFunction();
         if (this.options && this.level) {
             // 同步加载
@@ -434,6 +440,13 @@ export default {
                 margin-top: 3px;
                 margin-right: 5px;
             }
+            .loading {
+                fill: #18b9ac;
+                width: 14px;
+                height: 14px;
+                margin-top: 3px;
+                margin-right: 5px;
+            }
             &:hover {
                 background: #e2fffd;
                 cursor: pointer;
@@ -444,11 +457,21 @@ export default {
         }
         .load-more {
             cursor: pointer;
-            color: #18b9ac;
+            color: #a8abb3;
             font-size: 14px;
             line-height: 32px;
             &:hover {
-                color: #222222;
+                color: #18b9ac;
+            }
+            .loading {
+                color: #18b9ac;
+                .y-icon {
+                    fill: #18b9ac;
+                    width: 14px;
+                    height: 14px;
+                    position: relative;
+                    top: 2px;
+                }
             }
         }
         .no-data {

@@ -100,7 +100,6 @@ export default {
         text-overflow: ellipsis;
         white-space:nowrap;
         overflow:hidden;
-        width: 100%;
         .y-cell-label {
             font-size: 14px;
         }

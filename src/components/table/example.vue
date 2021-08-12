@@ -1,6 +1,7 @@
 <template>
     <div class="y-table_example">
         <y-table :options="options" :columnConfig="columnConfig" />
+        <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" />
     </div>
 </template>
 
@@ -59,6 +60,18 @@ export default {
         };
     },
     methods: {
+        lazyLoad(index, count, highlight, self) {
+            console.log(index, count, highlight, self);
+            return new Promise((resolve, reject) => {
+                resolve();
+            }).then(() => {
+                return [{
+                    label: 'sqwerd' + Math.floor(Math.random() * 1000),
+                    key: 'asqewqwrd' + Math.floor(Math.random() * 1000),
+                    hasChildren: true
+                }];
+            });
+        },
     }
 };
 </script>
