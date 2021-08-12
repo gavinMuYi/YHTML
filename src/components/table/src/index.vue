@@ -1,6 +1,6 @@
 <template>
     <div class="y-table">
-        <YTree :options="options" :lazyLoad="lazyLoad" :track="false">
+        <YTree :options="options" :lazyLoad="lazyLoad" :multiple="multiple" :track="false">
             <div slot="line" slot-scope="props">
                 <div v-if="!props.level" class="y-th">
                     <div v-for="(column, index) in columnConfig" :key="column.key + '-thtd' + index" class="y-td"
@@ -45,6 +45,10 @@ export default {
                     return [];
                 });
             }
+        },
+        multiple: {
+            type: Boolean,
+            default: false
         },
         columnConfig: {
             type: Array,
