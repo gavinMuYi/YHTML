@@ -1,11 +1,11 @@
 <template>
     <div class="y-table">
-        <YTree :options="options" :lazyLoad="lazyLoad" :multiple="multiple" :track="false">
+        <y-tree :options="options" :lazyLoad="lazyLoad" :multiple="multiple" :track="false">
             <div slot="line" slot-scope="props">
                 <div v-if="!props.level" class="y-th">
                     <div v-for="(column, index) in columnConfig" :key="column.key + '-thtd' + index" class="y-td"
                          :style="columnStyle(column)">
-                        {{ column.label }}
+                        <y-cell :label="column.label"></y-cell>
                     </div>
                 </div>
                 <div v-else class="y-tr" @click="props.extend">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-        </YTree>
+        </y-tree>
     </div>
 </template>
 
@@ -106,14 +106,6 @@ export default {
         .y-th {
             background: #c4efec;
             height: 60px;
-            .y-td {
-                max-width: 100%;
-                overflow: hidden;
-                box-sizing: border-box;
-                padding-left: 10px;
-                text-overflow: ellipsis;
-                white-space:nowrap;
-            }
         }
         .y-tr {
             border-bottom: 1px solid #c4efec;

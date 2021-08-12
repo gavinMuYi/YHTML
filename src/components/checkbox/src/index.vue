@@ -1,7 +1,7 @@
 <template>
     <span class="y-checkbox" @click="handleClick">
         <div :class="['check-icon', {'all': currentStatus === 'all'}]">
-            <YIcon name="check" v-if="currentStatus === 'all'" />
+            <y-icon name="check" v-if="currentStatus === 'all'" />
             <div class="half" v-if="currentStatus === 'half'"></div>
         </div>
         <div v-if="label" class="label">{{ label }}</div>

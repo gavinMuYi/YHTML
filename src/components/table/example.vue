@@ -1,6 +1,6 @@
 <template>
     <div class="y-table_example">
-        <YTable :options="options" :columnConfig="columnConfig" />
+        <y-table :options="options" :columnConfig="columnConfig" />
     </div>
 </template>
 

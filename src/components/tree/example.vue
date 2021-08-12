@@ -3,52 +3,52 @@
         <div class="box-out">
             <div>同步单选<button @click="reshow">回显测试</button></div>
             <div class="box">
-                <YTree :options="options" :key="singleKey" @change="val => {singleValue = val}" :value="singleValue" />
+                <y-tree :options="options" :key="singleKey" @change="val => {singleValue = val}" :value="singleValue" />
             </div>
         </div>
         <div class="box-out">
             <div>同步单选无轨迹</div>
             <div class="box">
-                <YTree :options="options" :track="false">
+                <y-tree :options="options" :track="false">
                     <div slot="item" slot-scope="props">{{ props.level }}{{ props.data.label }}</div>
-                </YTree>
+                </y-tree>
             </div>
         </div>
         <div class="box-out">
             <div>异步单选</div>
             <div class="box">
-                <YTree :lazyLoad="lazyLoad" :count="1" />
+                <y-tree :lazyLoad="lazyLoad" :count="1" />
             </div>
         </div>
         <div class="box-out">
             <div>无数据</div>
             <div class="box">
-                <YTree />
+                <y-tree />
             </div>
         </div>
         <div class="box-out">
             <div>同步多选</div>
             <div class="box">
-                <YTree :options="options" :multiple="true" />
+                <y-tree :options="options" :multiple="true" />
             </div>
         </div>
         <div class="box-out">
             <div>同步多选无轨迹</div>
             <div class="box">
-                <YTree :options="options" :multiple="true"
-                       :value="[{key: 'wasdffe', label: 'sgdafgfddaf'}]" :track="false" />
+                <y-tree :options="options" :multiple="true"
+                        :value="[{key: 'wasdffe', label: 'sgdafgfddaf'}]" :track="false" />
             </div>
         </div>
         <div class="box-out">
             <div>异步多选</div>
             <div class="box">
-                <YTree :lazyLoad="lazyLoad" :count="1" :multiple="true" />
+                <y-tree :lazyLoad="lazyLoad" :count="1" :multiple="true" />
             </div>
         </div>
         <div class="box-out">
             <div>异步多选无轨迹</div>
             <div class="box">
-                <YTree :lazyLoad="lazyLoad" :count="1" :multiple="true" :track="false" />
+                <y-tree :lazyLoad="lazyLoad" :count="1" :multiple="true" :track="false" />
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
     <div class="y-icon_example">
-        <YIcon name="arrow-up" @click.native="handleClick" />
-        <YIcon name="arrow-down" @click.native="handleClick" />
+        <y-icon name="arrow-up" @click.native="handleClick" />
+        <y-icon name="arrow-down" @click.native="handleClick" />
     </div>
 </template>
 
