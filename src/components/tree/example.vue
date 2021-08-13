@@ -1,13 +1,15 @@
 <template>
     <div class="y-tree_example">
         <div class="box-out">
-            <div>同步单选<button @click="reshow">回显测试</button></div>
+            <div class="title">同步单选
+                <!-- <button @click="reshow">回显测试</button> -->
+            </div>
             <div class="box">
                 <y-tree :options="options" :key="singleKey" @change="val => {singleValue = val}" :value="singleValue" />
             </div>
         </div>
         <div class="box-out">
-            <div>同步单选无轨迹</div>
+            <div class="title">同步单选无轨迹</div>
             <div class="box">
                 <y-tree :options="options" :track="false">
                     <div slot="item" slot-scope="props">{{ props.level }}{{ props.data.label }}</div>
@@ -15,13 +17,13 @@
             </div>
         </div>
         <div class="box-out">
-            <div>异步单选</div>
+            <div class="title">异步单选</div>
             <div class="box">
                 <y-tree :lazyLoad="lazyLoad" :count="1" />
             </div>
         </div>
         <div class="box-out">
-            <div>无数据</div>
+            <div class="title">无数据</div>
             <div class="box">
                 <y-tree>
                     <div slot="nodata">
@@ -31,26 +33,26 @@
             </div>
         </div>
         <div class="box-out">
-            <div>同步多选</div>
+            <div class="title">同步多选</div>
             <div class="box">
                 <y-tree :options="options" :multiple="true" />
             </div>
         </div>
         <div class="box-out">
-            <div>同步多选无轨迹</div>
+            <div class="title">同步多选无轨迹</div>
             <div class="box">
                 <y-tree :options="options" :multiple="true"
                         :value="[{key: 'wasdffe', label: 'sgdafgfddaf'}]" :track="false" />
             </div>
         </div>
         <div class="box-out">
-            <div>异步多选</div>
+            <div class="title">异步多选</div>
             <div class="box">
                 <y-tree :lazyLoad="lazyLoad" :count="1" :multiple="true" />
             </div>
         </div>
         <div class="box-out">
-            <div>异步多选无轨迹</div>
+            <div class="title">异步多选无轨迹</div>
             <div class="box">
                 <y-tree :lazyLoad="lazyLoad" :count="1" :multiple="true" :track="false" />
             </div>
@@ -130,15 +132,17 @@ export default {
 <style lang="less">
 .y-tree_example {
     .box-out {
-        display: inline-block;
-        margin: 20px;
+        margin-bottom: 100px;
+        .title {
+            color: #39a9a1;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
     }
     .box {
-        width: 350px;
         height: 450px;
         overflow: auto;
-        display: inline-block;
-        border: 1px solid #000000;
+        border: 1px solid #e3f0ef;
     }
 }
 </style>

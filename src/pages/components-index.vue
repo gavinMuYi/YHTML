@@ -41,7 +41,7 @@ export default {
             align-items: center;
             padding-left: 20px;
             color: #39a9a1;
-            border-bottom: 1px solid #efefef;
+            border-bottom: 1px solid #e3f0ef;
             font-size: 20px;
             box-sizing: border-box;
         }
@@ -50,7 +50,7 @@ export default {
             min-height: ~'calc(100% - 80px)';
             .components-page-menu {
                 width: 200px;
-                border-right: 1px solid #efefef;
+                border-right: 1px solid #e3f0ef;
                 box-sizing: border-box;
                 padding-top: 30px;
                 a {
@@ -75,7 +75,7 @@ export default {
             .components-page-content {
                 flex: 1;
                 box-sizing: border-box;
-                padding:  100px 80px;
+                padding:  100px 120px;
             }
         }
     }

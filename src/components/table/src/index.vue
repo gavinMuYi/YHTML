@@ -161,7 +161,7 @@ export default {
             height: 60px;
         }
         .y-tr {
-            border-bottom: 1px solid #efefef;
+            border-bottom: 1px solid #e3f0ef;
             height: 50px;
         }
     }
