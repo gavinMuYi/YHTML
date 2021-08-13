@@ -1,6 +1,6 @@
 <template>
     <div class="y-table">
-        <y-tree :options="options" :lazyLoad="lazyLoad" :multiple="multiple" :track="false" :count="count"
+        <y-tree :lazyLoad="fetchFunc" :multiple="multiple" :track="false" :count="count"
                 :highlight="highlight">
             <div slot="line" slot-scope="props">
                 <div v-if="!props.level" class="y-th">
@@ -30,7 +30,7 @@
                     <span v-else>加载更多...</span>
                 </div>
                 <div v-else v-show="!scrollTable && !props.level"
-                     @click="props.loadFunction(false, {count: props.count, index: 20, highlight: highlight})">
+                     @click="props.loadFunction(false, {count: props.count, index: 2, highlight: highlight})">
                     {{ props.total }}{{ index }}{{ props.count }}
                 </div>
             </div>
@@ -90,10 +90,26 @@ export default {
     },
     data() {
         return {
-            index: 1
+            index: 1,
+            fetchFunc: this.initLoad()
         };
     },
     methods: {
+        initLoad() {
+            return this.options
+                ? (index, count) => {
+                    return new Promise((resolve, reject) => {
+                        resolve();
+                    }).then(() => {
+                        return {
+                            options: this.count > -1
+                                ? this.options.slice(index - 1, index * count)
+                                : this.options,
+                            total: this.options.length
+                        };
+                    });
+                } : this.lazyLoad;
+        },
         columnStyle(column) {
             if (column.width) {
                 return {
@@ -133,7 +149,7 @@ export default {
                 .loading {
                     position: absolute;
                     top: 5px;
-                    left: 4px;
+                    left: 2px;
                     width: 16px;
                     height: 16px;
                     fill: #18b9ac;
