@@ -1,2 +1,2 @@
-import YTable from './src/y-table.vue';
+import YTable from './src/index.vue';
 export default YTable;

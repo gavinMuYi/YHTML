@@ -484,7 +484,7 @@ export default {
                 margin-right: 5px;
             }
             .arrow {
-                fill: #66686c;
+                fill: #496866;
                 width: 10px;
                 height: 10px;
                 margin-top: 3px;
@@ -531,9 +531,9 @@ export default {
             text-align: center;
         }
         .is-selected {
-            background: #c0f5f1;
+            background: #b8f5f1;
             &:hover {
-                background: #c0f5f1;
+                background: #b8f5f1;
                 cursor: pointer;
             }
         }

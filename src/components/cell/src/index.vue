@@ -73,13 +73,12 @@ export default {
     render(h) {
         // 为了在不能float的情况下消除span间空格使用render
         let labels = this.labelGroup.map(label => {
+            let color = label.highlight ? {
+                color: this.highlightColor
+            } : {};
             return (
                 <span
-                    style={
-                        {
-                            color: label.highlight ? this.highlightColor : '#1d1d1d'
-                        }
-                    }
+                    style={ color }
                     class="y-cell-label">
                     { label.label }
                 </span>

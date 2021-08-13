@@ -241,7 +241,7 @@ const createComponentTemplate = function (options) {
                    }
                    // 把kebab case的文件名变成大驼峰规范
                    let pascalCaseFloderName = getPascalCase(options.floderName)
-                   const mainContent = `import ${pascalCaseFloderName} from \'./src/${options.floderName}.vue\';\nexport default ${pascalCaseFloderName};`
+                   const mainContent = `import ${pascalCaseFloderName} from \'./src/index.vue\';\nexport default ${pascalCaseFloderName};`
                    // 生成src目录配置
                    const srcFloderPath = targetFolderPath+'/src'
                    const srcSubFiles = [

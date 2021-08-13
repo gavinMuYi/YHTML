@@ -77,7 +77,7 @@ export default {
                 position: absolute;
                 top: 2px;
                 left: 2px;
-                fill: #dadada;
+                fill: #e6fffe;
             }
         }
         .label {

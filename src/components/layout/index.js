@@ -1,2 +1,2 @@
-import YLayout from './src/y-layout.vue';
+import YLayout from './src/index.vue';
 export default YLayout;

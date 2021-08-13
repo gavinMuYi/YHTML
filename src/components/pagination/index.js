@@ -1,2 +1,2 @@
-import YPagination from './src/y-pagination.vue';
+import YPagination from './src/index.vue';
 export default YPagination;

@@ -1,2 +1,2 @@
-import YPopper from './src/y-popper.vue';
+import YPopper from './src/index.vue';
 export default YPopper;

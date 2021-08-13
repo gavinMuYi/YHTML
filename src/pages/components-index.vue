@@ -2,18 +2,32 @@
     <div class="components-index">
         <div class="components-page-title">YUI - 网站快速成型组件库</div>
         <div class="components-page-body">
-            <div class="components-page-menu"></div>
+            <div class="components-page-menu">
+                <router-link v-for="name in routes" :key="name" :to="'/components/' + name"
+                             :class="{'selected': name === pageName}">
+                    {{ name }}
+                </router-link>
+            </div>
             <div class="components-page-content"><router-view></router-view></div>
         </div>
     </div>
 </template>
 
 <script>
+const req = require.context('../components', true, /index.js$/);
 export default {
     name: 'ComponentsIndex',
     data() {
         return {
+            routes: req.keys().map(item => {
+                return item.replace('./', '').replace('/index.js', '');
+            })
         };
+    },
+    computed: {
+        pageName() {
+            return this.$route.path.replace('/components/', '');
+        }
     }
 };
 </script>
@@ -22,7 +36,6 @@ export default {
     .components-index {
         height: 100%;
         .components-page-title {
-            // background: #a8f2ed;
             height: 80px;
             display: flex;
             align-items: center;
@@ -39,6 +52,25 @@ export default {
                 width: 200px;
                 border-right: 1px solid #efefef;
                 box-sizing: border-box;
+                padding-top: 30px;
+                a {
+                    display: flex;
+                    height: 40px;
+                    color: #5e6d82;
+                    align-items: center;
+                    padding-left: 30px;
+                    &:hover {
+                        background: #e2fffd;
+                        cursor: pointer;
+                    }
+                }
+                .selected {
+                    background: #b8f5f1;
+                    &:hover {
+                        background: #b8f5f1;
+                        cursor: pointer;
+                    }
+                }
             }
             .components-page-content {
                 flex: 1;
