@@ -88,8 +88,8 @@
                 <span v-else>加载更多...</span>
             </div>
         </slot>
-        <div v-if="!level && !dataList.length && !loading" class="no-data">
-            <slot name="nodata"><div>暂无数据</div></slot>
+        <div v-if="!level && !dataList.length && !loading">
+            <slot name="nodata"><div class="no-data">暂无数据</div></slot>
         </div>
     </div>
 </template>
@@ -507,11 +507,13 @@ export default {
         }
         .load-more {
             cursor: pointer;
-            color: #a8abb3;
             font-size: 14px;
             line-height: 32px;
             &:hover {
                 color: #18b9ac;
+            }
+            span {
+                color: #a8abb3;
             }
             .loading {
                 color: #18b9ac;

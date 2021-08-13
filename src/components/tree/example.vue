@@ -26,7 +26,7 @@
             <div class="title">无数据</div>
             <div class="box">
                 <y-tree>
-                    <div slot="nodata">
+                    <div slot="nodata" class="no-data">
                         暂无数据slot
                     </div>
                 </y-tree>
