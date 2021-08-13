@@ -1,5 +1,7 @@
 <template>
-    <div class="y-pagination_example"></div>
+    <div class="y-pagination_example">
+        <y-pagination :total="120" :count="16" :index="3" />
+    </div>
 </template>
 
 <script>
