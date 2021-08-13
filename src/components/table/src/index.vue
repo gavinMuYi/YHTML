@@ -29,9 +29,9 @@
                     <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
                     <span v-else>加载更多...</span>
                 </div>
-                <div v-else v-show="!scrollTable"
+                <div v-else v-show="!scrollTable && !props.level"
                      @click="props.loadFunction(false, {count: props.count, index: 20, highlight: highlight})">
-                    {{ props.total }}{{ props.index }}{{ props.count }}
+                    {{ props.total }}{{ index }}{{ props.count }}
                 </div>
             </div>
         </y-tree>
@@ -90,6 +90,7 @@ export default {
     },
     data() {
         return {
+            index: 1
         };
     },
     methods: {
