@@ -1,7 +1,8 @@
 <template>
     <div class="y-table_example">
         <y-table :options="options" :columnConfig="columnConfig" />
-        <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" />
+        <button @click="count++">count++</button>
+        <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="count" />
     </div>
 </template>
 
@@ -14,6 +15,7 @@ export default {
     },
     data() {
         return {
+            count: 1,
             columnConfig: [{
                 key: 'label',
                 label: 'column1'
@@ -67,11 +69,18 @@ export default {
                     resolve();
                 }, 1000);
             }).then(() => {
-                return [{
-                    label: 'sqwerd' + Math.floor(Math.random() * 1000),
-                    key: 'asqewqwrd' + Math.floor(Math.random() * 1000),
-                    hasChildren: true
-                }];
+                let res = [];
+                for (let i = 0; i < count; i++) {
+                    res.push({
+                        label: 'sqwerd' + Math.floor(Math.random() * 1000),
+                        key: 'asqewqwrd' + Math.floor(Math.random() * 1000),
+                        hasChildren: true
+                    });
+                }
+                return {
+                    options: res,
+                    total: 100
+                };
             });
         },
     }

@@ -1,6 +1,7 @@
 <template>
     <div class="y-table">
-        <y-tree :options="options" :lazyLoad="lazyLoad" :multiple="multiple" :track="false">
+        <y-tree :options="options" :lazyLoad="lazyLoad" :multiple="multiple" :track="false" :count="count"
+                :highlight="highlight">
             <div slot="line" slot-scope="props">
                 <div v-if="!props.level" class="y-th">
                     <div v-for="(column, index) in columnConfig" :key="column.key + '-thtd' + index" class="y-td"
@@ -16,6 +17,21 @@
                                 :style="firstColumnStyle(props.level, index)">
                         </y-cell>
                     </div>
+                </div>
+            </div>
+            <div
+                slot="loadmore"
+                slot-scope="props"
+                v-show="props.extendStatus">
+                <div v-if="(props.level || scrollTable) && props.loadMore && props.dataList.length"
+                     @click="props.loadMoreFetch" class="load-more"
+                     :style="`padding-left: ${20 * (props.level + 1)}px`">
+                    <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
+                    <span v-else>加载更多...</span>
+                </div>
+                <div v-else v-show="!scrollTable"
+                     @click="props.loadFunction(false, {count: props.count, index: 20, highlight: highlight})">
+                    {{ props.total }}{{ props.index }}{{ props.count }}
                 </div>
             </div>
         </y-tree>
@@ -49,6 +65,10 @@ export default {
                 });
             }
         },
+        count: {
+            type: Number,
+            default: -1
+        },
         multiple: {
             type: Boolean,
             default: false
@@ -62,6 +82,10 @@ export default {
         highlight: {
             type: String,
             default: ''
+        },
+        scrollTable: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -116,11 +140,11 @@ export default {
             }
         }
         .y-th {
-            background: #c4efec;
+            background: #e3f0ef;
             height: 60px;
         }
         .y-tr {
-            border-bottom: 1px solid #c4efec;
+            border-bottom: 1px solid #efefef;
             height: 50px;
         }
     }

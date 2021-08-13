@@ -23,7 +23,11 @@
         <div class="box-out">
             <div>无数据</div>
             <div class="box">
-                <y-tree />
+                <y-tree>
+                    <div slot="nodata">
+                        暂无数据slot
+                    </div>
+                </y-tree>
             </div>
         </div>
         <div class="box-out">

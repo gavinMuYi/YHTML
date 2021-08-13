@@ -52,18 +52,44 @@
                     </template>
                 </slot>
             </template>
+            <template slot="nodata">
+                <slot name="nodata"><div>暂无数据</div></slot>
+            </template>
+            <template slot="loadmore" slot-scope="props">
+                <slot name="loadmore"
+                      :index="props.index" :count="props.count"
+                      :extendStatus="props.extendStatus" :loading="props.loading" :total="props.total"
+                      :loadMore="props.loadMore" :dataList="props.dataList" :level="props.level"
+                      :loadMoreFetch="props.loadMoreFetch">
+                    <div
+                        v-show="props.extendStatus"
+                        v-if="props.loadMore && props.dataList.length"
+                        class="load-more"
+                        :style="`padding-left: ${15 * props.level + 25}px`"
+                        @click="props.loadMoreFetch">
+                        <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
+                        <span v-else>加载更多...</span>
+                    </div>
+                </slot>
+            </template>
         </y-tree>
-        <div
-            v-show="extendStatus"
-            v-if="loadMore && dataList.length"
-            class="load-more"
-            :style="`padding-left: ${15 * level + 25}px`"
-            @click="loadMoreFetch">
-            <span v-if="loading" class="loading"><y-icon name="loading" />加载中...</span>
-            <span v-else>加载更多...</span>
-        </div>
+        <slot name="loadmore"
+              :index="index" :count="count"
+              :extendStatus="extendStatus" :loading="loading" :total="total"
+              :loadMore="loadMore" :dataList="dataList" :level="level"
+              :loadMoreFetch="loadMoreFetch" :loadFunction="loadFunction">
+            <div
+                v-show="extendStatus"
+                v-if="loadMore && dataList.length"
+                class="load-more"
+                :style="`padding-left: ${15 * level + 25}px`"
+                @click="loadMoreFetch">
+                <span v-if="loading" class="loading"><y-icon name="loading" />加载中...</span>
+                <span v-else>加载更多...</span>
+            </div>
+        </slot>
         <div v-if="!level && !dataList.length && !loading" class="no-data">
-            <div>暂无数据</div>
+            <slot name="nodata"><div>暂无数据</div></slot>
         </div>
     </div>
 </template>
@@ -167,7 +193,8 @@ export default {
             extendStatus: !this.level,
             currentHover: null,
             loadMore: true,
-            loading: false
+            loading: false,
+            total: null
         };
     },
     computed: {
@@ -200,7 +227,7 @@ export default {
     },
     watch: {
         extendStatus(val) {
-            !this.dataList.length && val && this.loadFunction();
+            !this.dataList.length && val && this.loadFunction(false);
         },
         value: {
             handler: function(nval) {
@@ -208,54 +235,77 @@ export default {
                 this.$set(this, 'trackLessSelect', this.track ? [] : clone(nval));
             },
             deep: true
+        },
+        count() {
+            this.init();
         }
     },
     mounted() {
-        if (this.self && this.self.extend) {
-            this.extend();
-        }
-        !this.level && this.loadFunction();
-        if (this.options && this.level) {
-            // 同步加载
-            !this.dataList.length && this.loadFunction();
-        }
-        if (this.tracklessData.length && this.self) {
-            let reshow = this.tracklessData.filter(item => {
-                return item[this.maps.key] === this.self[this.maps.key];
-            })[0];
-            if (reshow && this.multiple) {
-                if (!this.isFolder) {
-                    this.$emit('childSelect', this.self, true);
-                } else {
-                    let selected = clone(this.self);
-                    delete selected[this.maps.children];
-                    delete selected[this.maps.hasChildren];
-                    this.$emit('childSelect', selected, true);
-                }
-            }
-        }
+        this.init();
     },
     methods: {
+        init() {
+            this.index = 1;
+            if (this.self && this.self.extend) {
+                this.extend();
+            }
+            !this.level && this.loadFunction(false);
+            if (this.options && this.level) {
+                // 同步加载
+                !this.dataList.length && this.loadFunction(false);
+            }
+            if (this.tracklessData.length && this.self) {
+                let reshow = this.tracklessData.filter(item => {
+                    return item[this.maps.key] === this.self[this.maps.key];
+                })[0];
+                if (reshow && this.multiple) {
+                    if (!this.isFolder) {
+                        this.$emit('childSelect', this.self, true);
+                    } else {
+                        let selected = clone(this.self);
+                        delete selected[this.maps.children];
+                        delete selected[this.maps.hasChildren];
+                        this.$emit('childSelect', selected, true);
+                    }
+                }
+            }
+        },
         initLoad() {
             return this.options
                 ? () => {
                     return new Promise((resolve, reject) => {
                         resolve();
                     }).then(() => {
-                        return this.options;
+                        return {
+                            options: this.options,
+                            total: this.options.length
+                        };
                     });
                 } : this.lazyLoad;
         },
-        loadFunction(concat) {
+        loadFunction(concat, params) {
             this.loading = true;
-            this.fetchFunc(this.index, this.count, this.highlight, this.self)
+            let { index, count, highlight, self } = params || {
+                index: this.index,
+                count: this.count,
+                highlight: this.highlight,
+                self: this.self
+            };
+            this.fetchFunc(index, count, highlight, self)
                 .then(data => {
-                    if (concat) {
-                        this.$set(this, 'dataList', this.dataList.concat(data));
-                    } else {
-                        this.$set(this, 'dataList', clone(data));
+                    if (data.total === undefined) {
+                        let options = clone(data);
+                        data = {};
+                        data.options = options;
+                        data.total = null;
                     }
-                    if (data.length < this.count || this.count === -1 || this.options) {
+                    if (concat) {
+                        this.$set(this, 'dataList', this.dataList.concat(data.options));
+                    } else {
+                        this.total = data.total;
+                        this.$set(this, 'dataList', clone(data.options));
+                    }
+                    if (data.options.length < this.count || this.count === -1 || this.options) {
                         this.loadMore = false;
                     } else {
                         this.loadMore = true;
