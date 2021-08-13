@@ -2,7 +2,16 @@
     <div class="y-pagination">
         <div class="total-count">共 {{ total }} 项，每页显示 {{ count }}</div>
         <div class="page-nums">
-            <div v-for="num in limit" :key="num" class="nums">{{ num }}</div>
+            <div v-for="num in limit > max ? max - 1: limit" :key="num"
+                 :class="['nums', {'selected': num === currentIndex}]">
+                {{ num }}
+            </div>
+            <div v-if="limit > max" class="nums">
+                ...
+            </div>
+            <div v-if="limit > max" :class="['nums', {'selected': max === currentIndex}]">
+                {{ max }}
+            </div>
         </div>
     </div>
 </template>
@@ -22,6 +31,10 @@ export default {
         count: {
             type: Number,
             default: 15
+        },
+        max: {
+            type: Number,
+            default: 5
         }
     },
     data() {
@@ -59,6 +72,16 @@ export default {
                 align-items: center;
                 justify-content: center;
                 font-size: 12px;
+                color: #a8abb3;
+                &:hover {
+                    background: #e2fffd;
+                    color: #496866;
+                    cursor: pointer;
+                }
+            }
+            .selected {
+                background: #18b9ac;
+                color: #e6fffe;
             }
         }
     }
