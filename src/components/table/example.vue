@@ -2,17 +2,34 @@
     <div class="y-table_example">
         <y-table :options="options" :columnConfig="columnConfig" :count="2">
             <div slot="table-row-2" slot-scope="props" @click="props.extend">{{ props }}</div>
+            <y-table-column label="keyLabel" columnKey="key" headerBorder />
+            <y-table-column label="一级" headerBorder >
+                <y-table-column label="二级" columnKey="label" width="200px" headerBorder >
+                </y-table-column>
+                <y-table-column label="二级" headerBorder>
+                    <y-table-column headerBorder label="三级" columnKey="label" width="200px">
+                    </y-table-column>
+                    <y-table-column headerBorder label="三级" columnKey="label" width="200px">
+                    </y-table-column>
+                    <y-table-column headerBorder label="三级" columnKey="label" width="200px">
+                    </y-table-column>
+                </y-table-column>
+                <y-table-column headerBorder label="Labelin1" columnKey="label" width="200px" />
+                <y-table-column headerBorder label="Labelin2" columnKey="label" width="200px" />
+            </y-table-column>
         </y-table>
         <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="2" />
     </div>
 </template>
 
 <script>
+import YTableColumn from './src/components/table-column';
 import YTable from './src/index';
 export default {
     name: 'YTableExample',
     components: {
-        YTable
+        YTable,
+        YTableColumn
     },
     data() {
         return {

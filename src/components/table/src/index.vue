@@ -7,6 +7,7 @@
                     <slot>
                         <y-table-column v-for="(column, index) in columnConfig"
                                         :key="column.key + '-thtd' + index"
+                                        :columnKey="column.key"
                                         :width="column.width" :label="column.label">
                         </y-table-column>
                     </slot>
@@ -142,11 +143,11 @@ export default {
         }
         .y-th {
             background: #e3f0ef;
-            height: 60px;
+            min-height: 60px;
         }
         .y-tr {
             border-bottom: 1px solid #e3f0ef;
-            height: 50px;
+            min-height: 50px;
         }
         .y-pagination {
             margin-top: 20px;

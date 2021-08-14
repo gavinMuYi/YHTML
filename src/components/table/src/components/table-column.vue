@@ -1,14 +1,28 @@
 <template>
-    <div class="y-table-column y-td" :style="columnStyle">
-        <y-cell :label="label" v-if="position === 'YTableHeader'"></y-cell>
-        <div v-else-if="position === 'YTableRow'" @click="context.extend"
-             :style="firstColumnStyle(context.level, index)">
-            <y-icon v-if="context.loading && !index && index !== null" name="loading" class="loading" />
-            <y-cell :highlight="highlight" :label="context.data && context.data[columnKey]">
-            </y-cell>
-        </div>
-        <div v-else>
-            <div>YTableColumn only can be used in YTable</div>
+    <div :class="['y-table-column y-td', {'header-y-td-border': position === 'YTableHeader' && headerBorder}]"
+         :style="columnStyle">
+        <template v-if="position === 'YTableHeader'">
+            <slot name="header" :data="context">
+                <y-cell :label="label">
+                </y-cell>
+            </slot>
+        </template>
+        <template v-else-if="position === 'YTableRow'">
+            <slot :data="context">
+                <div @click="context.extend"
+                     v-if="columnKey"
+                     :style="firstColumnStyle(context.level, index)">
+                    <y-icon v-if="context.loading && !index && index !== null" name="loading" class="loading" />
+                    <y-cell :highlight="highlight" :label="context.data && context.data[columnKey]">
+                    </y-cell>
+                </div>
+            </slot>
+        </template>
+        <div v-if="position === 'YTableHeader' && !columnKey"
+             :class="['level-header', {'level-header-border': headerBorder}]">
+            <slot :data="context">
+                <y-cell :label="label"></y-cell>
+            </slot>
         </div>
     </div>
 </template>
@@ -24,6 +38,10 @@ export default {
         YIcon
     },
     props: {
+        headerBorder: {
+            type: Boolean,
+            default: false
+        },
         label: {
             type: String,
             default: ''
@@ -61,6 +79,16 @@ export default {
             return parent && parent.YComponentName;
         },
         columnStyle() {
+            if (!this.columnKey) {
+                let res = {
+                    flex: 'none'
+                };
+                this.width && (res.width = this.width);
+                if (this.position !== 'YTableHeader') {
+                    res.display = 'flex';
+                }
+                return res;
+            }
             if (this.width) {
                 return {
                     width: this.width,
@@ -70,9 +98,6 @@ export default {
                 return {};
             }
         }
-    },
-    mounted() {
-        console.log(this.$parent.YComponentName);
     },
     methods: {
         firstColumnStyle(level, index) {
@@ -102,6 +127,22 @@ export default {
         width: 16px;
         height: 16px;
         fill: #18b9ac;
+    }
+    .level-header {
+        display: flex;
+    }
+    .level-header-border {
+        border-top: 1px solid #f0fffd;
+    }
+}
+.header-y-td-border {
+    position: relative;
+    &:before {
+        position: absolute;
+        content: '';
+        height: 100%;
+        border-left: 1px solid #f0fffd;
+
     }
 }
 </style>

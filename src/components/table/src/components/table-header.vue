@@ -27,5 +27,15 @@ export default {
 .y-table-header {
     width: 100%;
     display: flex;
+    .header-y-td-border:first-child {
+        &:before {
+            display: none;
+        }
+    }
+    .y-cell {
+        height: 50px;
+        align-items: center;
+        display: flex;
+    }
 }
 </style>
