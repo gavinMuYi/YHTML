@@ -29,9 +29,15 @@
                     <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
                     <span v-else>加载更多...</span>
                 </div>
-                <div v-else v-show="!scrollTable && !props.level"
-                     @click="props.loadFunction(false, {count: props.count, index: 2, highlight: highlight})">
-                    {{ props.total }}{{ index }}{{ props.count }}
+                <div v-else v-show="!scrollTable && !props.level">
+                    <y-pagination
+                        v-if="props.count > 0"
+                        :total="props.total" :index="index" :count="props.count"
+                        @change="val => {
+                            props.loadFunction && props.loadFunction(false, {
+                                count: val.count, index: val.index, highlight: highlight
+                            });
+                    }"/>
                 </div>
             </div>
         </y-tree>
@@ -42,13 +48,15 @@
 import YTree from '@/components/tree';
 import YCell from '@/components/cell';
 import YIcon from '@/components/icon';
+import YPagination from '@/components/pagination';
 
 export default {
     name: 'YTable',
     components: {
         YTree,
         YCell,
-        YIcon
+        YIcon,
+        YPagination
     },
     props: {
         options: {
@@ -103,7 +111,7 @@ export default {
                     }).then(() => {
                         return {
                             options: this.count > -1
-                                ? this.options.slice(index - 1, index * count)
+                                ? this.options.slice((index - 1) * count, index * count)
                                 : this.options,
                             total: this.options.length
                         };
@@ -144,7 +152,9 @@ export default {
                     max-width: 100%;
                     overflow: hidden;
                     box-sizing: border-box;
-                    padding-left: 20px;
+                    padding: 0 20px;
+                    width: 100%;
+                    text-align: left;
                 }
                 .loading {
                     position: absolute;
@@ -163,6 +173,9 @@ export default {
         .y-tr {
             border-bottom: 1px solid #e3f0ef;
             height: 50px;
+        }
+        .y-pagination {
+            margin-top: 20px;
         }
     }
 </style>

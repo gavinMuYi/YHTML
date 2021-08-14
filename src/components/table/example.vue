@@ -1,8 +1,7 @@
 <template>
     <div class="y-table_example">
-        <y-table :options="options" :columnConfig="columnConfig" />
-        <button @click="count++">count++</button>
-        <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="count" />
+        <y-table :options="options" :columnConfig="columnConfig" :count="2"/>
+        <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="2" />
     </div>
 </template>
 
@@ -15,7 +14,6 @@ export default {
     },
     data() {
         return {
-            count: 1,
             columnConfig: [{
                 key: 'label',
                 label: 'column1'

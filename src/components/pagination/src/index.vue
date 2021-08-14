@@ -1,24 +1,63 @@
 <template>
     <div class="y-pagination">
-        <div class="total-count">共 {{ total }} 项，每页显示 {{ count }}</div>
+        <div class="total-count" @click="currentCount++">共 {{ total }} 项，每页显示 {{ currentCount }}</div>
         <div class="page-nums">
-            <div v-for="num in limit > max ? max - 1: limit" :key="num"
-                 :class="['nums', {'selected': num === currentIndex}]">
-                {{ num }}
+            <div :class="['arrow', {'disable': currentIndex === 1}]"
+                 @click="currentIndex = 1"><y-icon name="goto-start" /></div>
+            <div :class="['arrow', {'disable': currentIndex === 1}]"
+                 @click="currentIndex--"><y-icon name="arrow-left" /></div>
+            <div v-if="limit > max && currentIndex > limit - max + 2"
+                 :class="['nums', {'selected': currentIndex === 1}]"
+                 @click="currentIndex = 1">
+                1
             </div>
-            <div v-if="limit > max" class="nums">
+            <div v-else style="display: flex">
+                <div v-for="num in limit > max ? max - 1: limit" :key="'left' + num"
+                     :class="['nums', {
+                         'selected': currentIndex === (limit > max
+                             ? (currentIndex >= max - 1 ? currentIndex + num - 2 : num)
+                             : num)
+                     }]"
+                     @click="currentIndex = (limit > max
+                         ? (currentIndex >= max - 1 ? currentIndex + num - 2 : num)
+                         : num)
+                     ">
+                    {{ limit > max ? (currentIndex >= max - 1 ? currentIndex + num - 2 : num) : num }}
+                </div>
+            </div>
+            <div v-if="limit > max" class="ellipsis">
                 ...
             </div>
-            <div v-if="limit > max" :class="['nums', {'selected': max === currentIndex}]">
-                {{ max }}
+            <div v-if="limit > max && currentIndex > limit - max + 2" style="display: flex">
+                <div v-for="num in max - 1" :key="'right' + num"
+                     :class="['nums', {
+                         'selected': limit - max + num + 1 === currentIndex
+                     }]"
+                     @click="currentIndex = limit - max + num + 1">
+                    {{ limit - max + num + 1 }}
+                </div>
             </div>
+            <div v-else-if="limit > max && currentIndex <= limit - max + 2"
+                 :class="['nums', {'selected': limit === currentIndex}]"
+                 @click="currentIndex = limit">
+                {{ limit }}
+            </div>
+            <div :class="['arrow', {'disable': currentIndex === limit}]"
+                 @click="currentIndex++"><y-icon name="arrow-right" /></div>
+            <div :class="['arrow', {'disable': currentIndex === limit}]"
+                 @click="currentIndex = limit"><y-icon name="goto-end" /></div>
         </div>
     </div>
 </template>
 
 <script>
+import YIcon from '@/components/icon';
+
 export default {
     name: 'YPagination',
+    components: {
+        YIcon
+    },
     props: {
         total: {
             type: Number,
@@ -40,11 +79,33 @@ export default {
     data() {
         return {
             currentIndex: this.index,
+            currentCount: this.count
         };
     },
     computed: {
         limit() {
-            return Math.ceil(this.total / this.count);
+            return Math.ceil(this.total / this.currentCount);
+        }
+    },
+    watch: {
+        index(nval) {
+            this.currentIndex = nval;
+        },
+        count(nval) {
+            this.currentCount = nval;
+        },
+        currentIndex() {
+            this.$emit('change', {
+                count: this.currentCount,
+                index: this.currentIndex
+            });
+        },
+        currentCount() {
+            this.currentIndex = 1;
+            this.$emit('change', {
+                count: this.currentCount,
+                index: this.currentIndex
+            });
         }
     },
     methods: {
@@ -64,6 +125,8 @@ export default {
             display: flex;
             flex: 1;
             justify-content: flex-end;
+            user-select: none;
+            .ellipsis,
             .nums {
                 display: flex;
                 margin: 0 5px;
@@ -73,15 +136,46 @@ export default {
                 justify-content: center;
                 font-size: 12px;
                 color: #a8abb3;
-                &:hover {
-                    background: #e2fffd;
-                    color: #496866;
-                    cursor: pointer;
-                }
+            }
+            .nums:hover {
+                background: #e2fffd;
+                color: #496866;
+                cursor: pointer;
             }
             .selected {
                 background: #18b9ac;
                 color: #e6fffe;
+                &:hover {
+                    background: #18b9ac;
+                    color: #e6fffe;
+                    cursor: pointer;
+                }
+            }
+            .arrow {
+                display: flex;
+                margin: 0 5px;
+                width: 20px;
+                height: 30px;
+                align-items: center;
+                justify-content: center;
+                .y-icon {
+                    fill: #a8abb3;
+                    width: 12px;
+                    height: 12px;
+                }
+                &:hover {
+                    background: #e2fffd;
+                    cursor: pointer;
+                    .y-icon {
+                        fill: #496866;
+                    }
+                }
+            }
+            .disable {
+                pointer-events: none;
+                .y-icon {
+                    fill: #e3f0ef;
+                }
             }
         }
     }

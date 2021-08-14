@@ -26,7 +26,7 @@
         </slot>
         <y-tree
             v-show="extendStatus"
-            v-for="child in dataList" :key="child[maps.key]"
+            v-for="(child, cIndex) in dataList" :key="child[maps.key] + cIndex + '-' + level"
             :options="child[maps.children]"
             :lazyLoad="lazyLoad"
             :level="level + 1"

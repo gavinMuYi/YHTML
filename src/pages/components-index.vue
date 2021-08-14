@@ -40,7 +40,8 @@ export default {
             display: flex;
             align-items: center;
             padding-left: 20px;
-            color: #39a9a1;
+            background: #39a9a1;
+            color: #ffffff;
             border-bottom: 1px solid #e3f0ef;
             font-size: 20px;
             box-sizing: border-box;
