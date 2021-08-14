@@ -1,6 +1,8 @@
 <template>
     <div class="y-table_example">
-        <y-table :options="options" :columnConfig="columnConfig" :count="2"/>
+        <y-table :options="options" :columnConfig="columnConfig" :count="2">
+            <div slot="table-row-2" slot-scope="props" @click="props.extend">{{ props }}</div>
+        </y-table>
         <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="2" />
     </div>
 </template>

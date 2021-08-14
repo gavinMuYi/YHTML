@@ -4,19 +4,25 @@
                 :highlight="highlight">
             <div slot="line" slot-scope="props">
                 <div v-if="!props.level" class="y-th">
-                    <div v-for="(column, index) in columnConfig" :key="column.key + '-thtd' + index" class="y-td"
-                         :style="columnStyle(column)">
-                        <y-cell :label="column.label"></y-cell>
-                    </div>
+                    <y-table-header :context="props">
+                        <slot>
+                            <y-table-column v-for="(column, index) in columnConfig"
+                                            :key="column.key + '-thtd' + index"
+                                            :width="column.width" :label="column.label">
+                            </y-table-column>
+                        </slot>
+                    </y-table-header>
                 </div>
-                <div v-else class="y-tr" @click="props.extend">
-                    <div v-for="(column, index) in columnConfig" :key="column.key + index" class="y-td"
-                         :style="columnStyle(column)">
-                        <y-icon v-if="props.loading && !index" name="loading" class="loading" />
-                        <y-cell :highlight="highlight" :label="props.data && props.data[column.key]"
-                                :style="firstColumnStyle(props.level, index)">
-                        </y-cell>
-                    </div>
+                <div v-else class="y-tr">
+                    <slot :name="`table-row-${props.level}`" :data="props.data" :extend="props.extend">
+                        <y-table-row :context="props">
+                            <slot>
+                                <y-table-column v-for="(column, index) in columnConfig" :key="column.key + index"
+                                                :index="index" :highlight="highlight" :columnKey="column.key"
+                                                :width="column.width" />
+                            </slot>
+                        </y-table-row>
+                    </slot>
                 </div>
             </div>
             <div
@@ -46,17 +52,21 @@
 
 <script>
 import YTree from '@/components/tree';
-import YCell from '@/components/cell';
 import YIcon from '@/components/icon';
 import YPagination from '@/components/pagination';
+import YTableColumn from './components/table-column';
+import YTableHeader from './components/table-header';
+import YTableRow from './components/table-row';
 
 export default {
     name: 'YTable',
     components: {
         YTree,
-        YCell,
         YIcon,
-        YPagination
+        YPagination,
+        YTableHeader,
+        YTableRow,
+        YTableColumn
     },
     props: {
         options: {
@@ -117,22 +127,6 @@ export default {
                         };
                     });
                 } : this.lazyLoad;
-        },
-        columnStyle(column) {
-            if (column.width) {
-                return {
-                    width: column.width,
-                    flex: 'none'
-                };
-            } else {
-                return {};
-            }
-        },
-        firstColumnStyle(level, index) {
-            let indentation = level > 1 && !index ? {
-                'padding-left': (level * 20) + 'px'
-            } : {};
-            return indentation;
         }
     }
 };
@@ -148,22 +142,6 @@ export default {
                 flex: 1;
                 overflow: hidden;
                 position: relative;
-                .y-cell {
-                    max-width: 100%;
-                    overflow: hidden;
-                    box-sizing: border-box;
-                    padding: 0 20px;
-                    width: 100%;
-                    text-align: left;
-                }
-                .loading {
-                    position: absolute;
-                    top: 5px;
-                    left: 2px;
-                    width: 16px;
-                    height: 16px;
-                    fill: #18b9ac;
-                }
             }
         }
         .y-th {
