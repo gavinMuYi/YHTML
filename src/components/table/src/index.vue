@@ -3,27 +3,23 @@
         <y-tree :lazyLoad="fetchFunc" :multiple="multiple" :track="false" :count="count"
                 :highlight="highlight">
             <div slot="line" slot-scope="props">
-                <div v-if="!props.level" class="y-th">
-                    <y-table-header :context="props">
-                        <slot>
-                            <y-table-column v-for="(column, index) in columnConfig"
-                                            :key="column.key + '-thtd' + index"
-                                            :width="column.width" :label="column.label">
-                            </y-table-column>
-                        </slot>
-                    </y-table-header>
-                </div>
-                <div v-else class="y-tr">
-                    <slot :name="`table-row-${props.level}`" :data="props.data" :extend="props.extend">
-                        <y-table-row :context="props">
-                            <slot>
-                                <y-table-column v-for="(column, index) in columnConfig" :key="column.key + index"
-                                                :index="index" :highlight="highlight" :columnKey="column.key"
-                                                :width="column.width" />
-                            </slot>
-                        </y-table-row>
+                <y-table-header :context="props" v-if="!props.level">
+                    <slot>
+                        <y-table-column v-for="(column, index) in columnConfig"
+                                        :key="column.key + '-thtd' + index"
+                                        :width="column.width" :label="column.label">
+                        </y-table-column>
                     </slot>
-                </div>
+                </y-table-header>
+                <y-table-row :context="props" v-else>
+                    <slot :name="`table-row-${props.level}`" :data="props" :extend="props.extend">
+                        <slot>
+                            <y-table-column v-for="(column, index) in columnConfig" :key="column.key + index"
+                                            :index="index" :highlight="highlight" :columnKey="column.key"
+                                            :width="column.width" />
+                        </slot>
+                    </slot>
+                </y-table-row>
             </div>
             <div
                 slot="loadmore"

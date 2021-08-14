@@ -1,5 +1,5 @@
 <template>
-    <div class="y-table-header">
+    <div class="y-table-header y-th">
         <slot></slot>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 .y-table-header {
     width: 100%;
     display: flex;

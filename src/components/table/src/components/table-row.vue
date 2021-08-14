@@ -1,5 +1,5 @@
 <template>
-    <div class="y-table-row">
+    <div :class="['y-table-row', 'y-tr', {'y-table-row-isFolder': context.isFolder}]">
         <slot></slot>
     </div>
 </template>
@@ -23,9 +23,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 .y-table-row {
     width: 100%;
     display: flex;
+}
+.y-table-row-isFolder {
+    &:hover {
+        background: #e2fffd;
+        cursor: pointer;
+    }
 }
 </style>
