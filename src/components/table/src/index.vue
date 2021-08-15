@@ -138,7 +138,6 @@ export default {
     .y-table {
         .y-table-content {
             overflow: auto;
-            font-size: 0;
             >.y-tree {
                 float: left;
                 min-width: ~'calc(100% - 1px)';

@@ -1,7 +1,7 @@
 <template>
     <div class="y-table_example">
         <y-table :options="options" :columnConfig="columnConfig" :count="2">
-            <div slot="table-row-2" slot-scope="props" @click="props.extend">{{ props }}</div>
+            <div slot="table-row-2" slot-scope="props" @click="props.extend">{{ props }}111</div>
             <y-table-column label="keyLabel" columnKey="key" headerBorder />
             <y-table-column label="一级" headerBorder >
                 <y-table-column label="二级" columnKey="label" width="200px" headerBorder >
