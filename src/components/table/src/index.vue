@@ -1,49 +1,45 @@
 <template>
     <div class="y-table">
-        <y-tree :lazyLoad="fetchFunc" :multiple="multiple" :track="false" :count="count"
-                :highlight="highlight">
-            <div slot="line" slot-scope="props">
-                <y-table-header :context="props" v-if="!props.level">
-                    <slot>
-                        <y-table-column v-for="(column, index) in columnConfig"
-                                        :key="column.key + '-thtd' + index"
-                                        :columnKey="column.key"
-                                        :width="column.width" :label="column.label">
-                        </y-table-column>
-                    </slot>
-                </y-table-header>
-                <y-table-row :context="props" v-else>
-                    <slot :name="`table-row-${props.level}`" :data="props" :extend="props.extend">
+        <div class="y-table-content">
+            <y-tree :lazyLoad="fetchFunc" :multiple="multiple" :track="false" :count="count"
+                    :highlight="highlight" @loaded="loaded" ref="tableTree">
+                <div slot="line" slot-scope="props">
+                    <y-table-header :context="props" v-if="!props.level">
                         <slot>
-                            <y-table-column v-for="(column, index) in columnConfig" :key="column.key + index"
-                                            :index="index" :highlight="highlight" :columnKey="column.key"
-                                            :width="column.width" />
+                            <y-table-column v-for="(column, index) in columnConfig"
+                                            :key="column.key + '-thtd' + index"
+                                            :columnKey="column.key"
+                                            :width="column.width" :label="column.label">
+                            </y-table-column>
                         </slot>
-                    </slot>
-                </y-table-row>
-            </div>
-            <div
-                slot="loadmore"
-                slot-scope="props"
-                v-show="props.extendStatus">
-                <div v-if="(props.level || scrollTable) && props.loadMore && props.dataList.length"
-                     @click="props.loadMoreFetch" class="load-more"
-                     :style="`padding-left: ${20 * (props.level + 1)}px`">
-                    <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
-                    <span v-else>加载更多...</span>
+                    </y-table-header>
+                    <y-table-row :context="props" v-else>
+                        <slot :name="`table-row-${props.level}`" :data="props" :extend="props.extend">
+                            <slot>
+                                <y-table-column v-for="(column, index) in columnConfig" :key="column.key + index"
+                                                :index="index" :highlight="highlight" :columnKey="column.key"
+                                                :width="column.width" />
+                            </slot>
+                        </slot>
+                    </y-table-row>
                 </div>
-                <div v-else v-show="!scrollTable && !props.level">
-                    <y-pagination
-                        v-if="props.count > 0"
-                        :total="props.total" :index="index" :count="props.count"
-                        @change="val => {
-                            props.loadFunction && props.loadFunction(false, {
-                                count: val.count, index: val.index, highlight: highlight
-                            });
-                    }"/>
+                <div
+                    slot="loadmore"
+                    slot-scope="props"
+                    v-show="props.extendStatus">
+                    <div v-if="(props.level || scrollTable) && props.loadMore && props.dataList.length"
+                         @click="props.loadMoreFetch" class="load-more"
+                         :style="`padding-left: ${20 * (props.level + 1)}px`">
+                        <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
+                        <span v-else>加载更多...</span>
+                    </div>
                 </div>
-            </div>
-        </y-tree>
+            </y-tree>
+        </div>
+        <y-pagination
+            v-if="!scrollTable && count > 0"
+            :total="total" :index="index" :count="count"
+            @change="hanlePagination"/>
     </div>
 </template>
 
@@ -106,7 +102,8 @@ export default {
     data() {
         return {
             index: 1,
-            fetchFunc: this.initLoad()
+            fetchFunc: this.initLoad(),
+            total: 0
         };
     },
     methods: {
@@ -124,6 +121,14 @@ export default {
                         };
                     });
                 } : this.lazyLoad;
+        },
+        loaded(total, level) {
+            this.total = total;
+        },
+        hanlePagination(val) {
+            this.$refs.tableTree.loadFunction && this.$refs.tableTree.loadFunction(false, {
+                count: val.count, index: val.index, highlight: this.highlight
+            });
         }
     }
 };
@@ -131,23 +136,34 @@ export default {
 
 <style lang="less">
     .y-table {
-        .y-th,
-        .y-tr {
-            display: flex;
-            align-items: center;
-            .y-td {
-                flex: 1;
-                overflow: hidden;
-                position: relative;
+        .y-table-content {
+            overflow: auto;
+            font-size: 0;
+            >.y-tree {
+                float: left;
+                min-width: ~'calc(100% - 1px)';
             }
-        }
-        .y-th {
-            background: #e3f0ef;
-            min-height: 60px;
-        }
-        .y-tr {
-            border-bottom: 1px solid #e3f0ef;
-            min-height: 50px;
+            .y-th,
+            .y-tr {
+                display: flex;
+                align-items: center;
+                .y-td {
+                    flex: 1;
+                    overflow: hidden;
+                    position: relative;
+                }
+            }
+            .y-th {
+                background: #e3f0ef;
+                min-height: 60px;
+            }
+            .y-tr {
+                border-bottom: 1px solid #e3f0ef;
+                min-height: 50px;
+            }
+            .table-load {
+                position: absolute;
+            }
         }
         .y-pagination {
             margin-top: 20px;

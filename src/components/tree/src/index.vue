@@ -310,6 +310,7 @@ export default {
                     } else {
                         this.loadMore = true;
                     }
+                    this.$emit('loaded', this.total, this.level);
                     this.loading = false;
                 });
         },
