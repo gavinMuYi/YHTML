@@ -165,7 +165,7 @@ export default {
             .y-th,
             .y-tr {
                 display: flex;
-                align-items: center;
+                align-items: stretch;
                 .y-td {
                     flex: 1;
                     overflow: hidden;

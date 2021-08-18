@@ -141,10 +141,12 @@ export default {
             let indentation = level > 1 && !index ? {
                 'padding-left': (level * 20) + 'px',
                 display: 'flex',
-                height: '100%'
+                height: '100%',
+                'align-items': 'center'
             } : {
                 display: 'flex',
-                height: '100%'
+                height: '100%',
+                'align-items': 'center'
             };
             return indentation;
         }
