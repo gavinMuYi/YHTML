@@ -8,14 +8,15 @@
             </slot>
         </template>
         <template v-else-if="position === 'YTableRow'">
-            <slot :data="context">
+            <slot :data="context" :columnIndex="index.columnIndex">
                 <div @click="context.extend"
                      v-if="columnKey"
                      :style="firstColumnStyle(context.level, index.columnIndex)">
                     <y-icon v-if="context.loading && !index.columnIndex" name="loading" class="loading" />
-                    <span v-if="multiple && !index.columnIndex" @click.stop="context.multipleSelect">
+                    <div v-if="multiple && !index.columnIndex"
+                         @click.stop="context.multipleSelect" class="multiple-checkbox">
                         <y-checkbox :status="context.tracked" />
-                    </span>
+                    </div>
                     <y-cell :highlight="highlight" :label="context.data && context.data[columnKey]">
                     </y-cell>
                 </div>
@@ -138,8 +139,11 @@ export default {
     methods: {
         firstColumnStyle(level, index) {
             let indentation = level > 1 && !index ? {
-                'padding-left': (level * 20) + 'px'
-            } : {};
+                'padding-left': (level * 20) + 'px',
+                display: 'flex'
+            } : {
+                display: 'flex'
+            };
             return indentation;
         }
     }
@@ -148,6 +152,12 @@ export default {
 
 <style lang="less">
 .y-table-column {
+    .multiple-checkbox {
+        position: relative;
+        top: 3px;
+        left: 10px;
+        margin-left: 10px;
+    }
     .y-cell {
         max-width: 100%;
         overflow: hidden;

@@ -2,7 +2,7 @@
     <div class="y-table">
         <div class="y-table-content">
             <y-tree :lazyLoad="fetchFunc" :multiple="multiple" :track="false" :count="count"
-                    :highlight="highlight" @loaded="loaded" ref="tableTree">
+                    :highlight="highlight" @loaded="loaded" ref="tableTree" @change="multipleSelect">
                 <div slot="line" slot-scope="props">
                     <y-table-header :context="props" v-if="!props.level">
                         <slot>
@@ -132,6 +132,11 @@ export default {
         },
         rowClick(val) {
             this.$emit('rowClick', val);
+        },
+        multipleSelect(val) {
+            if (this.multiple) {
+                this.$emit('multipleSelect', val);
+            }
         }
     }
 };

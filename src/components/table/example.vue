@@ -18,7 +18,7 @@
                 <y-table-column headerBorder label="Labelin2" columnKey="label" width="200px" />
             </y-table-column>
         </y-table>
-        <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="2" />
+        <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="2" :multiple="true" />
     </div>
 </template>
 
@@ -80,7 +80,6 @@ export default {
     },
     methods: {
         lazyLoad(index, count, highlight, self) {
-            console.log(index, count, highlight, self);
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve();

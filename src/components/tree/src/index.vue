@@ -26,57 +26,58 @@
                 </span>
             </div>
         </slot>
-        <y-tree
-            v-show="extendStatus"
-            v-for="(child, cIndex) in dataList" :key="child[maps.key] + cIndex + '-' + level"
-            :options="child[maps.children]"
-            :lazyLoad="lazyLoad"
-            :level="level + 1"
-            :self="child"
-            :maps="maps"
-            :track="track"
-            :count="count"
-            :multiple="multiple"
-            :fatherStatus="tracked"
-            :tracklessData="trackLessSelect.concat(tracklessData)"
-            :selected="checkTrack(child[maps.key])"
-            @childSelect="handleChildSelect">
-            <template slot="line" slot-scope="props">
-                <slot name="line"
-                      :data="props.data" :level="props.level" :loading="props.loading"
-                      :isSelected="props.isSelected" :isFolder="props.isFolder"
-                      :extendStatus="props.extendStatus" :tracked="props.tracked"
-                      :extend="props.extend" :extendSelect="props.extendSelect"
-                      :handleSelect="props.handleSelect"
-                      :multipleSelect="props.multipleSelect">
-                    <template slot="item" slot-scope="props">
-                        <slot name="item" :data="props.data" :level="props.level">
-                            <y-cell :highlight="highlight" :label="props.data[maps.label]"></y-cell>
-                        </slot>
-                    </template>
-                </slot>
-            </template>
-            <template slot="nodata">
-                <slot name="nodata"><div>暂无数据</div></slot>
-            </template>
-            <template slot="loadmore" slot-scope="props">
-                <slot name="loadmore"
-                      :index="props.index" :count="props.count"
-                      :extendStatus="props.extendStatus" :loading="props.loading" :total="props.total"
-                      :loadMore="props.loadMore" :dataList="props.dataList" :level="props.level"
-                      :loadMoreFetch="props.loadMoreFetch">
-                    <div
-                        v-show="props.extendStatus"
-                        v-if="props.loadMore && props.dataList.length"
-                        class="load-more"
-                        :style="`padding-left: ${15 * props.level + 25}px`"
-                        @click="props.loadMoreFetch">
-                        <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
-                        <span v-else>加载更多...</span>
-                    </div>
-                </slot>
-            </template>
-        </y-tree>
+        <div class="y-tree-children_group" v-show="extendStatus">
+            <y-tree
+                v-for="(child, cIndex) in dataList" :key="child[maps.key] + cIndex + '-' + level"
+                :options="child[maps.children]"
+                :lazyLoad="lazyLoad"
+                :level="level + 1"
+                :self="child"
+                :maps="maps"
+                :track="track"
+                :count="count"
+                :multiple="multiple"
+                :fatherStatus="tracked"
+                :tracklessData="trackLessSelect.concat(tracklessData)"
+                :selected="checkTrack(child[maps.key])"
+                @childSelect="handleChildSelect">
+                <template slot="line" slot-scope="props">
+                    <slot name="line"
+                          :data="props.data" :level="props.level" :loading="props.loading"
+                          :isSelected="props.isSelected" :isFolder="props.isFolder"
+                          :extendStatus="props.extendStatus" :tracked="props.tracked"
+                          :extend="props.extend" :extendSelect="props.extendSelect"
+                          :handleSelect="props.handleSelect"
+                          :multipleSelect="props.multipleSelect">
+                        <template slot="item" slot-scope="props">
+                            <slot name="item" :data="props.data" :level="props.level">
+                                <y-cell :highlight="highlight" :label="props.data[maps.label]"></y-cell>
+                            </slot>
+                        </template>
+                    </slot>
+                </template>
+                <template slot="nodata">
+                    <slot name="nodata"><div>暂无数据</div></slot>
+                </template>
+                <template slot="loadmore" slot-scope="props">
+                    <slot name="loadmore"
+                          :index="props.index" :count="props.count"
+                          :extendStatus="props.extendStatus" :loading="props.loading" :total="props.total"
+                          :loadMore="props.loadMore" :dataList="props.dataList" :level="props.level"
+                          :loadMoreFetch="props.loadMoreFetch">
+                        <div
+                            v-show="props.extendStatus"
+                            v-if="props.loadMore && props.dataList.length"
+                            class="load-more"
+                            :style="`padding-left: ${15 * props.level + 25}px`"
+                            @click="props.loadMoreFetch">
+                            <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
+                            <span v-else>加载更多...</span>
+                        </div>
+                    </slot>
+                </template>
+            </y-tree>
+        </div>
         <slot name="loadmore"
               :index="index" :count="count"
               :extendStatus="extendStatus" :loading="loading" :total="total"
