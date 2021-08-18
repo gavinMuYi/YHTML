@@ -2,20 +2,20 @@
     <div class="y-table_example">
         <y-table :options="options" :columnConfig="columnConfig" :count="2" :multiple="true" :contentMaxHeight="250">
             <div slot="table-row-2" slot-scope="props" @click="props.extend">{{ props }}111</div>
-            <y-table-column label="keyLabel" columnKey="key" headerBorder />
-            <y-table-column label="一级" headerBorder >
-                <y-table-column label="二级" columnKey="label" width="200px" headerBorder >
+            <y-table-column label="keyLabel" columnKey="key" />
+            <y-table-column label="一级">
+                <y-table-column label="二级" columnKey="label" width="200px">
                 </y-table-column>
-                <y-table-column label="二级" headerBorder>
-                    <y-table-column headerBorder label="三级" columnKey="label" width="200px">
+                <y-table-column label="二级">
+                    <y-table-column label="三级" columnKey="label" width="200px">
                     </y-table-column>
-                    <y-table-column headerBorder label="三级" columnKey="label" width="200px">
+                    <y-table-column label="三级" columnKey="label" width="200px">
                     </y-table-column>
-                    <y-table-column headerBorder label="三级" columnKey="label" width="200px">
+                    <y-table-column label="三级" columnKey="label" width="200px">
                     </y-table-column>
                 </y-table-column>
-                <y-table-column headerBorder label="Labelin1" columnKey="label" width="200px" />
-                <y-table-column headerBorder label="Labelin2" columnKey="label" width="200px" />
+                <y-table-column label="Labelin1" columnKey="label" width="200px" />
+                <y-table-column label="Labelin2" columnKey="label" width="200px" />
             </y-table-column>
         </y-table>
         <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="2" :multiple="true" />

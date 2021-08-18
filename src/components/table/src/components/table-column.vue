@@ -1,12 +1,17 @@
 <template>
-    <div :class="['y-table-column y-td', {'header-y-td-border': position === 'YTableHeader' && headerBorder}]"
+    <div :class="[
+             'y-table-column y-td',
+             {'header-y-td-border': position === 'YTableHeader' && headerBorder},
+             {'header-y-td': position === 'YTableHeader'},
+             {'with-level-header': position === 'YTableHeader' && !columnKey}
+         ]"
          :style="columnStyle">
-        <template v-if="position === 'YTableHeader'">
+        <div v-if="position === 'YTableHeader'" class="header-cell">
             <slot name="header" :data="context">
                 <y-cell :label="label">
                 </y-cell>
             </slot>
-        </template>
+        </div>
         <template v-else-if="position === 'YTableRow'">
             <slot :data="context" :columnIndex="index.columnIndex">
                 <div @click="context.extend"
@@ -44,10 +49,6 @@ export default {
         YCheckbox
     },
     props: {
-        headerBorder: {
-            type: Boolean,
-            default: false
-        },
         label: {
             type: String,
             default: ''
@@ -115,6 +116,10 @@ export default {
             parent && this.$set(this, 'multiple', parent.multiple);
             return parent && parent.YComponentName;
         },
+        headerBorder() {
+            return (this.position === 'YTableHeader' && this.$slots.default && this.$slots.default.length)
+                || (this.$parent.getHeaderBorder && this.$parent.getHeaderBorder());
+        },
         columnStyle() {
             if (!this.columnKey) {
                 let res = {
@@ -149,12 +154,28 @@ export default {
                 'align-items': 'center'
             };
             return indentation;
+        },
+        getHeaderBorder() {
+            return this.headerBorder;
         }
     }
 };
 </script>
 
 <style lang="less">
+.header-y-td {
+    .header-cell {
+        position:relative;
+        top:50%;
+        -webkit-transform:translateY(-50%);
+    }
+}
+.with-level-header {
+    & > .header-cell {
+        position: static;
+        -webkit-transform:translateY(0%);
+    }
+}
 .y-table-column {
     .multiple-checkbox {
         position: relative;
