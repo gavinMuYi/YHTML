@@ -140,9 +140,11 @@ export default {
         firstColumnStyle(level, index) {
             let indentation = level > 1 && !index ? {
                 'padding-left': (level * 20) + 'px',
-                display: 'flex'
+                display: 'flex',
+                height: '100%'
             } : {
-                display: 'flex'
+                display: 'flex',
+                height: '100%'
             };
             return indentation;
         }
