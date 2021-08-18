@@ -1,5 +1,5 @@
 <template>
-    <div :class="['y-table-row', 'y-tr', {'y-table-row-isFolder': context.isFolder}]">
+    <div :class="['y-table-row', 'y-tr', {'y-table-row-isFolder': context.isFolder}]" @click="rowClick">
         <slot></slot>
     </div>
 </template>
@@ -13,13 +13,22 @@ export default {
             default: () => {
                 return {};
             }
+        },
+        multiple: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
         return {
             YComponentName: 'YTableRow'
         };
-    }
+    },
+    methods: {
+        rowClick() {
+            this.$emit('rowClick', this.context.data);
+        }
+    },
 };
 </script>
 
@@ -30,7 +39,7 @@ export default {
 }
 .y-table-row-isFolder {
     &:hover {
-        background: #e2fffd;
+        background: #cbf9f1;
         cursor: pointer;
     }
 }

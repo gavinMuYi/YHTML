@@ -138,7 +138,7 @@ export default {
                 color: #a8abb3;
             }
             .nums:hover {
-                background: #e2fffd;
+                background: #cbf9f1;
                 color: #496866;
                 cursor: pointer;
             }
@@ -164,7 +164,7 @@ export default {
                     height: 12px;
                 }
                 &:hover {
-                    background: #e2fffd;
+                    background: #cbf9f1;
                     cursor: pointer;
                     .y-icon {
                         fill: #496866;

@@ -61,20 +61,21 @@ export default {
                     align-items: center;
                     padding-left: 30px;
                     &:hover {
-                        background: #e2fffd;
+                        background: #cbf9f1;
                         cursor: pointer;
                     }
                 }
                 .selected {
-                    background: #b8f5f1;
+                    background: #a4ede0;
                     &:hover {
-                        background: #b8f5f1;
+                        background: #a4ede0;
                         cursor: pointer;
                     }
                 }
             }
             .components-page-content {
                 flex: 1;
+                overflow: hidden;
                 box-sizing: border-box;
                 padding:  100px 120px;
             }

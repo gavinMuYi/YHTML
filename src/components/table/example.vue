@@ -1,6 +1,6 @@
 <template>
     <div class="y-table_example">
-        <y-table :options="options" :columnConfig="columnConfig" :count="2">
+        <y-table :options="options" :columnConfig="columnConfig" :count="2" :multiple="true">
             <div slot="table-row-2" slot-scope="props" @click="props.extend">{{ props }}111</div>
             <y-table-column label="keyLabel" columnKey="key" headerBorder />
             <y-table-column label="一级" headerBorder >

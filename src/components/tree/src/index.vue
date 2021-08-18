@@ -4,9 +4,11 @@
               :data="self" :level="level" :loading="loading"
               :isSelected="isSelected" :isFolder="isFolder"
               :extendStatus="extendStatus" :tracked="tracked"
-              :extend="extend" :multipleSelect="multipleSelect">
+              :extend="extend" :extendSelect="extendSelect"
+              :handleSelect="handleSelect"
+              :multipleSelect="multipleSelect">
             <div
-                v-if="self" @click="extend"
+                v-if="self" @click="extendSelect"
                 :class="[
                     'list-item',
                     `level${level}`,
@@ -17,7 +19,7 @@
                         :class="['arrow', {'loading': loading}]" v-if="isFolder"/>
                 <span v-else class="no-arrow"></span>
                 <span class="label-item">
-                    <span v-if="multiple" @click.stop="multipleSelect"><YCheckbox :status="tracked" /></span>
+                    <span v-if="multiple" @click.stop="multipleSelect"><y-checkbox :status="tracked" /></span>
                     <slot name="item" :data="self" :level="level">
                         <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
                     </slot>
@@ -44,7 +46,9 @@
                       :data="props.data" :level="props.level" :loading="props.loading"
                       :isSelected="props.isSelected" :isFolder="props.isFolder"
                       :extendStatus="props.extendStatus" :tracked="props.tracked"
-                      :extend="props.extend" :multipleSelect="props.multipleSelect">
+                      :extend="props.extend" :extendSelect="props.extendSelect"
+                      :handleSelect="props.handleSelect"
+                      :multipleSelect="props.multipleSelect">
                     <template slot="item" slot-scope="props">
                         <slot name="item" :data="props.data" :level="props.level">
                             <y-cell :highlight="highlight" :label="props.data[maps.label]"></y-cell>
@@ -247,7 +251,7 @@ export default {
         init() {
             this.index = 1;
             if (this.self && this.self.extend) {
-                this.extend();
+                this.extendSelect();
             }
             !this.level && this.loadFunction(false);
             if (this.options && this.level) {
@@ -316,12 +320,18 @@ export default {
         },
         extend() {
             this.isFolder && (this.extendStatus = !this.extendStatus);
+        },
+        handleSelect() {
             if (!this.multiple && !this.isFolder) {
                 this.$emit('childSelect', this.self);
             }
             if (this.multiple && !this.isFolder) {
                 this.$emit('childSelect', this.self, true);
             }
+        },
+        extendSelect() {
+            this.extend();
+            this.handleSelect();
         },
         multipleSelect() {
             let selected = clone(this.self);
@@ -499,7 +509,7 @@ export default {
                 margin-right: 5px;
             }
             &:hover {
-                background: #e2fffd;
+                background: #cbf9f1;
                 cursor: pointer;
             }
         }
@@ -534,9 +544,9 @@ export default {
             text-align: center;
         }
         .is-selected {
-            background: #b8f5f1;
+            background: #a4ede0;
             &:hover {
-                background: #b8f5f1;
+                background: #a4ede0;
                 cursor: pointer;
             }
         }

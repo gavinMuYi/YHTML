@@ -11,8 +11,11 @@
             <slot :data="context">
                 <div @click="context.extend"
                      v-if="columnKey"
-                     :style="firstColumnStyle(context.level, index)">
-                    <y-icon v-if="context.loading && !index && index !== null" name="loading" class="loading" />
+                     :style="firstColumnStyle(context.level, index.columnIndex)">
+                    <y-icon v-if="context.loading && !index.columnIndex" name="loading" class="loading" />
+                    <span v-if="multiple && !index.columnIndex" @click.stop="context.multipleSelect">
+                        <y-checkbox :status="context.tracked" />
+                    </span>
                     <y-cell :highlight="highlight" :label="context.data && context.data[columnKey]">
                     </y-cell>
                 </div>
@@ -28,6 +31,7 @@
 </template>
 
 <script>
+import YCheckbox from '@/components/checkbox';
 import YCell from '@/components/cell';
 import YIcon from '@/components/icon';
 
@@ -35,7 +39,8 @@ export default {
     name: 'YTableColumn',
     components: {
         YCell,
-        YIcon
+        YIcon,
+        YCheckbox
     },
     props: {
         headerBorder: {
@@ -54,10 +59,6 @@ export default {
             type: String,
             default: ''
         },
-        index: {
-            type: Number,
-            default: null
-        },
         width: {
             type: String,
             default: null
@@ -65,10 +66,44 @@ export default {
     },
     data() {
         return {
-            context: {}
+            context: {},
+            multiple: false
         };
     },
     computed: {
+        index() {
+            let child = this;
+            let parent = this.$parent;
+            let groupIndex = null;
+            let columnIndex = 0;
+            let columnIndexAdd = (parent, loopable) => {
+                parent.$children.forEach((vnode, index) => {
+                    if (loopable && vnode._uid === child._uid) {
+                        loopable = false;
+                    } else {
+                        columnIndex += parent.$children[index].$children.length;
+                    }
+                });
+                return loopable;
+            };
+            while (parent && !parent.YComponentName
+                && ['YTableHeader', 'YTableRow'].indexOf(parent.YComponentName) === -1) {
+                let loopable = true;
+                loopable = columnIndexAdd(parent, loopable);
+                child = parent;
+                parent = parent.$parent;
+            }
+            parent.$children.forEach((vnode, index) => {
+                if (vnode._uid === child._uid) {
+                    groupIndex = index;
+                    columnIndex += index;
+                }
+            });
+            return {
+                groupIndex,
+                columnIndex
+            };
+        },
         position() {
             let parent = this.$parent;
             while (parent && !parent.YComponentName
@@ -76,6 +111,7 @@ export default {
                 parent = parent.$parent;
             }
             parent && this.$set(this, 'context', parent.context);
+            parent && this.$set(this, 'multiple', parent.multiple);
             return parent && parent.YComponentName;
         },
         columnStyle() {

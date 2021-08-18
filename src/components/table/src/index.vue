@@ -13,11 +13,11 @@
                             </y-table-column>
                         </slot>
                     </y-table-header>
-                    <y-table-row :context="props" v-else>
+                    <y-table-row :context="props" @rowClick="rowClick" :multiple="multiple" v-else>
                         <slot :name="`table-row-${props.level}`" :data="props" :extend="props.extend">
                             <slot>
                                 <y-table-column v-for="(column, index) in columnConfig" :key="column.key + index"
-                                                :index="index" :highlight="highlight" :columnKey="column.key"
+                                                :highlight="highlight" :columnKey="column.key"
                                                 :width="column.width" />
                             </slot>
                         </slot>
@@ -129,6 +129,9 @@ export default {
             this.$refs.tableTree.loadFunction && this.$refs.tableTree.loadFunction(false, {
                 count: val.count, index: val.index, highlight: this.highlight
             });
+        },
+        rowClick(val) {
+            this.$emit('rowClick', val);
         }
     }
 };
@@ -153,7 +156,7 @@ export default {
                 }
             }
             .y-th {
-                background: #e3f0ef;
+                background: #dbf4f0;
                 min-height: 60px;
             }
             .y-tr {
