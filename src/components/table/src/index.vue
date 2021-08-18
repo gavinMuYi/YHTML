@@ -97,6 +97,10 @@ export default {
         scrollTable: {
             type: Boolean,
             default: false
+        },
+        contentMaxHeight: {
+            type: Number,
+            default: null
         }
     },
     data() {
@@ -105,6 +109,9 @@ export default {
             fetchFunc: this.initLoad(),
             total: 0
         };
+    },
+    mounted() {
+        this.contentMaxHeight && this.setMaxHeight();
     },
     methods: {
         initLoad() {
@@ -137,6 +144,11 @@ export default {
             if (this.multiple) {
                 this.$emit('multipleSelect', val);
             }
+        },
+        setMaxHeight() {
+            let childrenContent = this.$refs.tableTree.$refs.childrenContent;
+            childrenContent.style.maxHeight = `${this.contentMaxHeight}px`;
+            childrenContent.style.overflow = 'auto';
         }
     }
 };

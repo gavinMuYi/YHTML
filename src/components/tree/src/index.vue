@@ -26,7 +26,7 @@
                 </span>
             </div>
         </slot>
-        <div class="y-tree-children_group" v-show="extendStatus">
+        <div class="y-tree-children_group" v-show="extendStatus" ref="childrenContent">
             <y-tree
                 v-for="(child, cIndex) in dataList" :key="child[maps.key] + cIndex + '-' + level"
                 :options="child[maps.children]"
