@@ -1,11 +1,11 @@
 <template>
-    <div :class="[
-             'y-table-column y-td',
-             {'header-y-td-border': position === 'YTableHeader' && headerBorder},
-             {'header-y-td': position === 'YTableHeader'},
-             {'with-level-header': position === 'YTableHeader' && !columnKey}
-         ]"
-         :style="columnStyle">
+    <td :class="[
+            'y-table-column y-td',
+            {'header-y-td-border': position === 'YTableHeader' && headerBorder},
+            {'header-y-td': position === 'YTableHeader'},
+            {'with-level-header': position === 'YTableHeader' && !columnKey}
+        ]"
+        :style="columnStyle">
         <div v-if="position === 'YTableHeader'" class="header-cell">
             <slot name="header" :data="context">
                 <y-cell :label="label">
@@ -33,7 +33,7 @@
                 <y-cell :label="label"></y-cell>
             </slot>
         </div>
-    </div>
+    </td>
 </template>
 
 <script>

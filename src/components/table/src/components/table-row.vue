@@ -1,7 +1,7 @@
 <template>
-    <div :class="['y-table-row', 'y-tr', {'y-table-row-isFolder': context.isFolder}]" @click="rowClick">
+    <tr :class="['y-table-row', 'y-tr', {'y-table-row-isFolder': context.isFolder}]" @click="rowClick">
         <slot></slot>
-    </div>
+    </tr>
 </template>
 
 <script>
