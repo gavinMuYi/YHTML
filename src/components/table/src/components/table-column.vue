@@ -78,6 +78,7 @@ export default {
             let parent = this.$parent;
             let groupIndex = null;
             let columnIndex = 0;
+            let rowIndex = 0;
             let columnIndexAdd = (parent, loopable) => {
                 parent.$children.forEach((vnode, index) => {
                     if (loopable && vnode._uid === child._uid) {
@@ -90,6 +91,7 @@ export default {
             };
             while (parent && !parent.YComponentName
                 && ['YTableHeader', 'YTableRow'].indexOf(parent.YComponentName) === -1) {
+                rowIndex++;
                 let loopable = true;
                 loopable = columnIndexAdd(parent, loopable);
                 child = parent;
@@ -102,6 +104,7 @@ export default {
                 }
             });
             return {
+                rowIndex,
                 groupIndex,
                 columnIndex
             };
