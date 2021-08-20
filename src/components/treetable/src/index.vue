@@ -1,27 +1,27 @@
 <template>
-    <div class="y-table">
-        <div class="y-table-content">
+    <div class="y-tree-table">
+        <div class="y-tree-table-content">
             <y-tree :lazyLoad="fetchFunc" :multiple="multiple" :track="false" :count="count"
                     :highlight="highlight" @loaded="loaded" ref="tableTree" @change="multipleSelect">
                 <div slot="line" slot-scope="props">
-                    <y-table-header :context="props" v-if="!props.level">
+                    <y-tree-table-header :context="props" v-if="!props.level">
                         <slot>
-                            <y-table-column v-for="(column, index) in columnConfig"
-                                            :key="column.key + '-thtd' + index"
-                                            :columnKey="column.key"
-                                            :width="column.width" :label="column.label">
-                            </y-table-column>
+                            <y-tree-table-column v-for="(column, index) in columnConfig"
+                                                 :key="column.key + '-thtd' + index"
+                                                 :columnKey="column.key"
+                                                 :width="column.width" :label="column.label">
+                            </y-tree-table-column>
                         </slot>
-                    </y-table-header>
-                    <y-table-row :context="props" @rowClick="rowClick" :multiple="multiple" v-else>
+                    </y-tree-table-header>
+                    <y-tree-table-row :context="props" @rowClick="rowClick" :multiple="multiple" v-else>
                         <slot :name="`table-row-${props.level}`" :data="props" :extend="props.extend">
                             <slot>
-                                <y-table-column v-for="(column, index) in columnConfig" :key="column.key + index"
-                                                :highlight="highlight" :columnKey="column.key"
-                                                :width="column.width" />
+                                <y-tree-table-column v-for="(column, index) in columnConfig" :key="column.key + index"
+                                                     :highlight="highlight" :columnKey="column.key"
+                                                     :width="column.width" />
                             </slot>
                         </slot>
-                    </y-table-row>
+                    </y-tree-table-row>
                 </div>
                 <div
                     slot="loadmore"
@@ -47,9 +47,9 @@
 import YTree from '@/components/tree';
 import YIcon from '@/components/icon';
 import YPagination from '@/components/pagination';
-import YTableColumn from './components/table-column';
-import YTableHeader from './components/table-header';
-import YTableRow from './components/table-row';
+import YTreeTableColumn from './components/table-column';
+import YTreeTableHeader from './components/table-header';
+import YTreeTableRow from './components/table-row';
 
 export default {
     name: 'YTable',
@@ -57,9 +57,9 @@ export default {
         YTree,
         YIcon,
         YPagination,
-        YTableHeader,
-        YTableRow,
-        YTableColumn
+        YTreeTableHeader,
+        YTreeTableRow,
+        YTreeTableColumn
     },
     props: {
         options: {
@@ -155,8 +155,8 @@ export default {
 </script>
 
 <style lang="less">
-    .y-table {
-        .y-table-content {
+    .y-tree-table {
+        .y-tree-table-content {
             overflow: auto;
             >.y-tree {
                 float: left;

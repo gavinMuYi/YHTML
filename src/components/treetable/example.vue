@@ -1,35 +1,36 @@
 <template>
     <div class="y-table_example">
-        <y-table :options="options" :columnConfig="columnConfig" :count="2" :multiple="true" :contentMaxHeight="250">
+        <y-tree-table :options="options" :columnConfig="columnConfig" :count="2" :multiple="true"
+                      :contentMaxHeight="250">
             <div slot="table-row-2" slot-scope="props" @click="props.extend">{{ props }}111</div>
-            <y-table-column label="keyLabel" columnKey="key" />
-            <y-table-column label="一级">
-                <y-table-column label="二级" columnKey="label" width="200px">
-                </y-table-column>
-                <y-table-column label="二级">
-                    <y-table-column label="三级" columnKey="label" width="200px">
-                    </y-table-column>
-                    <y-table-column label="三级" columnKey="label" width="200px">
-                    </y-table-column>
-                    <y-table-column label="三级" columnKey="label" width="200px">
-                    </y-table-column>
-                </y-table-column>
-                <y-table-column label="Labelin1" columnKey="label" width="200px" />
-                <y-table-column label="Labelin2" columnKey="label" width="200px" />
-            </y-table-column>
-        </y-table>
-        <y-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="2" :multiple="true" />
+            <y-tree-table-column label="keyLabel" columnKey="key" />
+            <y-tree-table-column label="一级">
+                <y-tree-table-column label="二级" columnKey="label" width="200px">
+                </y-tree-table-column>
+                <y-tree-table-column label="二级">
+                    <y-tree-table-column label="三级" columnKey="label" width="200px">
+                    </y-tree-table-column>
+                    <y-tree-table-column label="三级" columnKey="label" width="200px">
+                    </y-tree-table-column>
+                    <y-tree-table-column label="三级" columnKey="label" width="200px">
+                    </y-tree-table-column>
+                </y-tree-table-column>
+                <y-tree-table-column label="Labelin1" columnKey="label" width="200px" />
+                <y-tree-table-column label="Labelin2" columnKey="label" width="200px" />
+            </y-tree-table-column>
+        </y-tree-table>
+        <y-tree-table :lazyLoad="lazyLoad" :columnConfig="columnConfig" :count="2" :multiple="true" />
     </div>
 </template>
 
 <script>
-import YTableColumn from './src/components/table-column';
-import YTable from './src/index';
+import YTreeTableColumn from './src/components/table-column';
+import YTreeTable from './src/index';
 export default {
     name: 'YTableExample',
     components: {
-        YTable,
-        YTableColumn
+        YTreeTable,
+        YTreeTableColumn
     },
     data() {
         return {

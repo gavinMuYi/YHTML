@@ -1,12 +1,12 @@
 <template>
-    <div class="y-table-header y-th">
+    <div class="y-tree-table-header y-th">
         <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'YTableHeader',
+    name: 'YTreeTableHeader',
     props: {
         context: {
             type: Object,
@@ -17,14 +17,14 @@ export default {
     },
     data() {
         return {
-            YComponentName: 'YTableHeader'
+            YComponentName: 'YTreeTableHeader'
         };
     }
 };
 </script>
 
 <style lang="less">
-.y-table-header {
+.y-tree-table-header {
     width: 100%;
     display: flex;
     .header-y-td-border:first-child {

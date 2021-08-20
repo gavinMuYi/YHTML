@@ -1,18 +1,18 @@
 <template>
     <td :class="[
-            'y-table-column y-td',
-            {'header-y-td-border': position === 'YTableHeader' && headerBorder},
-            {'header-y-td': position === 'YTableHeader'},
-            {'with-level-header': position === 'YTableHeader' && !columnKey}
+            'y-tree-table-column y-td',
+            {'header-y-td-border': position === 'YTreeTableHeader' && headerBorder},
+            {'header-y-td': position === 'YTreeTableHeader'},
+            {'with-level-header': position === 'YTreeTableHeader' && !columnKey}
         ]"
         :style="columnStyle">
-        <div v-if="position === 'YTableHeader'" class="header-cell">
+        <div v-if="position === 'YTreeTableHeader'" class="header-cell">
             <slot name="header" :data="context">
                 <y-cell :label="label">
                 </y-cell>
             </slot>
         </div>
-        <template v-else-if="position === 'YTableRow'">
+        <template v-else-if="position === 'YTreeTableRow'">
             <slot :data="context" :columnIndex="index.columnIndex">
                 <div @click="context.extend"
                      v-if="columnKey"
@@ -27,7 +27,7 @@
                 </div>
             </slot>
         </template>
-        <div v-if="position === 'YTableHeader' && !columnKey"
+        <div v-if="position === 'YTreeTableHeader' && !columnKey"
              :class="['level-header', {'level-header-border': headerBorder}]">
             <slot :data="context">
                 <y-cell :label="label"></y-cell>
@@ -42,7 +42,7 @@ import YCell from '@/components/cell';
 import YIcon from '@/components/icon';
 
 export default {
-    name: 'YTableColumn',
+    name: 'YTreeTableColumn',
     components: {
         YCell,
         YIcon,
@@ -90,7 +90,7 @@ export default {
                 return loopable;
             };
             while (parent && !parent.YComponentName
-                && ['YTableHeader', 'YTableRow'].indexOf(parent.YComponentName) === -1) {
+                && ['YTreeTableHeader', 'YTreeTableRow'].indexOf(parent.YComponentName) === -1) {
                 rowIndex++;
                 let loopable = true;
                 loopable = columnIndexAdd(parent, loopable);
@@ -112,7 +112,7 @@ export default {
         position() {
             let parent = this.$parent;
             while (parent && !parent.YComponentName
-                && ['YTableHeader', 'YTableRow'].indexOf(parent.YComponentName) === -1) {
+                && ['YTreeTableHeader', 'YTreeTableRow'].indexOf(parent.YComponentName) === -1) {
                 parent = parent.$parent;
             }
             parent && this.$set(this, 'context', parent.context);
@@ -120,7 +120,7 @@ export default {
             return parent && parent.YComponentName;
         },
         headerBorder() {
-            return (this.position === 'YTableHeader' && this.$slots.default && this.$slots.default.length)
+            return (this.position === 'YTreeTableHeader' && this.$slots.default && this.$slots.default.length)
                 || (this.$parent.getHeaderBorder && this.$parent.getHeaderBorder());
         },
         columnStyle() {
@@ -129,7 +129,7 @@ export default {
                     flex: 'none'
                 };
                 this.width && (res.width = this.width);
-                if (this.position !== 'YTableHeader') {
+                if (this.position !== 'YTreeTableHeader') {
                     res.display = 'flex';
                 }
                 return res;
@@ -179,7 +179,7 @@ export default {
         -webkit-transform:translateY(0%);
     }
 }
-.y-table-column {
+.y-tree-table-column {
     .multiple-checkbox {
         position: relative;
         top: 3px;

@@ -1,12 +1,12 @@
 <template>
-    <tr :class="['y-table-row', 'y-tr', {'y-table-row-isFolder': context.isFolder}]" @click="rowClick">
+    <tr :class="['y-tree-table-row', 'y-tr', {'y-tree-table-row-isFolder': context.isFolder}]" @click="rowClick">
         <slot></slot>
     </tr>
 </template>
 
 <script>
 export default {
-    name: 'YTableRow',
+    name: 'YTreeTableRow',
     props: {
         context: {
             type: Object,
@@ -21,7 +21,7 @@ export default {
     },
     data() {
         return {
-            YComponentName: 'YTableRow'
+            YComponentName: 'YTreeTableRow'
         };
     },
     methods: {
@@ -33,11 +33,11 @@ export default {
 </script>
 
 <style lang="less">
-.y-table-row {
+.y-tree-table-row {
     width: 100%;
     display: flex;
 }
-.y-table-row-isFolder {
+.y-tree-table-row-isFolder {
     &:hover {
         background: #cbf9f1;
         cursor: pointer;
