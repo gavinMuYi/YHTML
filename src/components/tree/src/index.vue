@@ -1,5 +1,5 @@
 <template>
-    <div class="y-tree">
+    <div class="y-tree" :style="treeStyle" :id="treeId">
         <slot name="line"
               :data="self" :level="level" :loading="loading"
               :isSelected="isSelected" :isFolder="isFolder"
@@ -8,15 +8,19 @@
               :handleSelect="handleSelect"
               :multipleSelect="multipleSelect">
             <div
+                :ref="(self && self[maps.cascade])
+                    ? (extendStatus ? 'cascadeLeavesShow' : 'cascadeleavesHide')
+                : (extendStatus ? 'leavesShow' : 'leavesHide')"
                 v-if="self" @click="extendSelect"
                 :class="[
                     'list-item',
                     `level${level}`,
-                    {'is-selected': isSelected}
+                    {'is-selected': isSelected},
+                    {'cascade-open': isFolder && self && self[maps.cascade] && extendStatus}
                 ]"
-                :style="`padding-left: ${15 * (level - 1) + 8}px`">
+                :style="`padding-left: ${15 * (level - beforeLevel - 1) + 8}px`">
                 <y-icon :name="loading ? 'loading' : `arrow-${extendStatus ? 'up' : 'down'}`"
-                        :class="['arrow', {'loading': loading}]" v-if="isFolder"/>
+                        :class="['arrow', {'loading': loading}]" v-if="isFolder && !(self && self[maps.cascade])"/>
                 <span v-else class="no-arrow"></span>
                 <span class="label-item">
                     <span v-if="multiple" @click.stop="multipleSelect"><y-checkbox :status="tracked" /></span>
@@ -24,20 +28,30 @@
                         <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
                     </slot>
                 </span>
+                <y-icon :name="loading ? 'loading' : `arrow-${extendStatus ? 'left' : 'right'}`"
+                        :class="['cascade-arrow', 'arrow', {'loading': loading}]"
+                        v-if="isFolder && self && self[maps.cascade]"/>
             </div>
         </slot>
-        <div class="y-tree-children_group" v-show="extendStatus" ref="childrenContent">
+        <div :class="['y-tree-children_group', {'cascade-fixed': self && self[maps.cascade] === 'fixed'}]"
+             v-show="extendStatus" ref="childrenContent" :style="{ ...leafGroupStyle, ...topStyle }">
             <y-tree
                 v-for="(child, cIndex) in dataList" :key="child[maps.key] + cIndex + '-' + level"
+                ref="leaf"
+                :accordion="accordion"
                 :options="child[maps.children]"
                 :lazyLoad="lazyLoad"
                 :level="level + 1"
                 :self="child"
+                :fatherID="fatherID || treeId"
+                :beforeLevel="(self && self[maps.cascade]) ? level : beforeLevel"
                 :maps="maps"
                 :track="track"
                 :count="count"
+                :treeSize="treeSize"
                 :multiple="multiple"
                 :fatherStatus="tracked"
+                :cascade="cascade + ((self && self[maps.cascade]) ? 1 : 0)"
                 :tracklessData="trackLessSelect.concat(tracklessData)"
                 :selected="checkTrack(child[maps.key])"
                 @childSelect="handleChildSelect">
@@ -113,6 +127,26 @@ export default {
         YCheckbox
     },
     props: {
+        accordion: {
+            type: Boolean,
+            default: false
+        },
+        beforeLevel: {
+            type: Number,
+            default: 0
+        },
+        fatherID: {
+            type: String,
+            default: null
+        },
+        treeSize: {
+            type: Array,
+            default: null
+        },
+        cascade: {
+            type: Number,
+            default: 0
+        },
         value: {
             type: Array,
             default: () => {
@@ -156,7 +190,8 @@ export default {
                     children: 'children',
                     hasChildren: 'hasChildren',
                     disable: 'disable',
-                    extend: 'extend'
+                    extend: 'extend',
+                    cascade: 'cascade'
                 };
             }
         },
@@ -199,10 +234,43 @@ export default {
             currentHover: null,
             loadMore: true,
             loading: false,
-            total: null
+            total: null,
+            treeId: 'ytree-' + Math.random(),
+            childrenContent: {
+                scrollTop: 0
+            }
         };
     },
     computed: {
+        treeStyle() {
+            let style = {};
+            if (!this.level && this.treeSize) {
+                style.position = 'relative';
+                style.display = 'inline-block';
+            }
+            return style;
+        },
+        leafGroupStyle() {
+            let style = {};
+            if (this.treeSize) {
+                style.width = this.treeSize[0] + 'px';
+                if (!this.level) {
+                    style.height = this.treeSize[1] + 'px';
+                    style.overflow = 'auto';
+                    style.border = '1px solid #e3f0ef';
+                }
+                if (this.self && this.self[this.maps.cascade] === 'fixed') {
+                    style.position = 'absolute';
+                    style.top = '0px';
+                    style.left = this.treeSize[0]
+                        * (this.cascade + ((this.self && this.self[this.maps.cascade]) ? 1 : 0)) + 'px';
+                    style.height = this.treeSize[1] + 'px';
+                    style.overflow = 'auto';
+                    style.border = '1px solid #e3f0ef';
+                }
+            }
+            return style;
+        },
         isFolder() {
             if (!this.self) return true;
             return (this.self[this.maps.children]
@@ -228,6 +296,18 @@ export default {
             } else {
                 return false;
             }
+        },
+        topStyle() {
+            if (!this.treeSize) {
+                return {};
+            }
+            return {};
+            // let top = this.childrenContent.offsetTop - this.childrenContent.scrollTop;
+            // top > this.treeSize[1] && (top = this.treeSize[1]);
+            // top < 0 && (top = 0);
+            // return {
+            //     top: top + 'px'
+            // };
         }
     },
     watch: {
@@ -247,6 +327,24 @@ export default {
     },
     mounted() {
         this.init();
+        if (this.self && this.self[this.maps.cascade]) {
+            let parent = this.$parent;
+            while (parent && parent.self && !parent.self[this.maps.cascade]) {
+                parent = parent.$parent;
+            }
+            let content = parent.$refs.childrenContent;
+            content && content.addEventListener('scroll', () => {
+                this.childrenContent.scrollTop = content.scrollTop;
+            });
+            document.getElementById(this.fatherID).appendChild(this.$refs.childrenContent);
+            const targetNode = content;
+            const config = { attributes: true, childList: true, subtree: true };
+            const callback = (mutationsList, observer) => {
+                this.childrenContent.offsetTop = this.$el.offsetTop;
+            };
+            const observer = new MutationObserver(callback);
+            observer.observe(targetNode, config);
+        }
     },
     methods: {
         init() {
@@ -331,6 +429,36 @@ export default {
             }
         },
         extendSelect() {
+            let loop = (arr) => {
+                arr.forEach(leaf => {
+                    leaf.$refs.leavesShow && leaf.$refs.leavesShow.click();
+                    leaf.$refs.cascadeLeavesShow && leaf.$refs.cascadeLeavesShow.click();
+                    leaf.$refs.leaf && loop(leaf.$refs.leaf);
+                });
+            };
+            if (this.self && this.self[this.maps.cascade]) {
+                this.$refs.leaf && loop(this.$refs.leaf);
+                let parent = this.$parent;
+                while (parent.$parent && parent.self && !parent.self[this.maps.cascade]) {
+                    parent = parent.$parent;
+                }
+                let cascadeLoop = (arr) => {
+                    arr.forEach(leaf => {
+                        if (leaf._uid !== this._uid) {
+                            leaf.$refs.cascadeLeavesShow && leaf.$refs.cascadeLeavesShow.click();
+                            leaf.$refs.leaf && cascadeLoop(leaf.$refs.leaf);
+                        }
+                    });
+                };
+                parent.$refs.leaf && cascadeLoop(parent.$refs.leaf);
+            }
+            if (this.accordion) {
+                this.$parent.$refs.leaf && this.$parent.$refs.leaf.forEach(leaf => {
+                    if (leaf._uid !== this._uid) {
+                        leaf.$refs.leaf && loop(leaf.$refs.leaf);
+                    }
+                });
+            }
             this.extend();
             this.handleSelect();
         },
@@ -502,6 +630,11 @@ export default {
                 margin-top: 3px;
                 margin-right: 5px;
             }
+            .cascade-arrow {
+                position: absolute;
+                right: 5px;
+                margin-top: 5px;
+            }
             .loading {
                 fill: #18b9ac;
                 width: 14px;
@@ -548,6 +681,13 @@ export default {
             background: #a4ede0;
             &:hover {
                 background: #a4ede0;
+                cursor: pointer;
+            }
+        }
+        .cascade-open{
+            background: #cbf9f1;
+            &:hover {
+                background: #cbf9f1;
                 cursor: pointer;
             }
         }
