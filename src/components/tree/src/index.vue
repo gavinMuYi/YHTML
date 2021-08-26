@@ -332,28 +332,30 @@ export default {
     mounted() {
         this.init();
         if (this.self && this.self[this.maps.cascade]) {
-            let parent = this.$parent;
-            while (parent && parent.self && !parent.self[this.maps.cascade]) {
-                parent = parent.$parent;
-            }
-            let content = parent.$refs.childrenContent;
-            content && content.addEventListener('scroll', () => {
-                this.childrenContent.scrollTop = content.scrollTop;
-            });
             document.getElementById(this.fatherID).appendChild(this.$refs.childrenContent);
-            const targetNode = content;
-            const config = { attributes: true, childList: true, subtree: true };
-            const callback = (mutationsList, observer) => {
-                let contentOffsetTop = 0;
-                if (this.$el.offsetParent) {
-                    contentOffsetTop = this.$el.offsetParent.id === (this.fatherID || this.treeId) ?
-                        0 : this.$el.offsetParent.offsetTop;
+            if (this.self[this.maps.cascade] === 'relative') {
+                let parent = this.$parent;
+                while (parent && parent.self && !parent.self[this.maps.cascade]) {
+                    parent = parent.$parent;
                 }
-                this.childrenContent.contentOffsetTop = contentOffsetTop;
-                this.childrenContent.offsetTop = (this.$el.offsetTop + contentOffsetTop) || 0;
-            };
-            const observer = new MutationObserver(callback);
-            observer.observe(targetNode, config);
+                let content = parent.$refs.childrenContent;
+                content && content.addEventListener('scroll', () => {
+                    this.childrenContent.scrollTop = content.scrollTop;
+                });
+                const targetNode = content;
+                const config = { attributes: true, childList: true, subtree: true };
+                const callback = (mutationsList, observer) => {
+                    let contentOffsetTop = 0;
+                    if (this.$el.offsetParent) {
+                        contentOffsetTop = this.$el.offsetParent.id === (this.fatherID || this.treeId) ?
+                            0 : this.$el.offsetParent.offsetTop;
+                    }
+                    this.childrenContent.contentOffsetTop = contentOffsetTop;
+                    this.childrenContent.offsetTop = (this.$el.offsetTop + contentOffsetTop) || 0;
+                };
+                const observer = new MutationObserver(callback);
+                observer.observe(targetNode, config);
+            }
         }
     },
     methods: {
