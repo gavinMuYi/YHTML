@@ -1,17 +1,16 @@
 <template>
     <div class="y-tree_example">
-        <!-- <div class="box-out">
+        <div class="box-out">
             <div class="title">同步多选级联
             </div>
             <div class="box-no">
                 <y-tree
-                    :treeSize="[300, 400]" :multiple="true"
+                    :treeSize="[300, 400]" :multiple="true" cascadeMode="hover"
                     :options="options1" :key="singleKey" @change="val => {singleValue = val}" :value="singleValue" />
             </div>
-        </div> -->
+        </div>
         <div class="box-out">
             <div class="title">同步单选级联
-                <!-- <button @click="reshow">回显测试</button> -->
             </div>
             <div class="box-no">
                 <y-tree
