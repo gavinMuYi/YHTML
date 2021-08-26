@@ -130,7 +130,7 @@ export default {
     props: {
         cascadeMode: {
             type: String,
-            default: 'click'
+            default: ''
         },
         accordion: {
             type: Boolean,
@@ -420,7 +420,7 @@ export default {
                 this.$emit('childSelect', this.self, true);
             }
         },
-        extendAction() {
+        extendAction(closeChildContent) {
             let loop = (arr) => {
                 arr.forEach(leaf => {
                     leaf.$refs.leavesShow && leaf.$refs.leavesShow.click();
@@ -428,7 +428,7 @@ export default {
                     leaf.$refs.leaf && loop(leaf.$refs.leaf);
                 });
             };
-            if (this.self && this.self[this.maps.cascade]) {
+            if ((this.self && this.self[this.maps.cascade]) || closeChildContent) {
                 this.$refs.leaf && loop(this.$refs.leaf);
                 let parent = this.$parent;
                 while (parent.$parent && parent.self && !parent.self[this.maps.cascade]) {
@@ -461,6 +461,9 @@ export default {
         extendSelect(close) {
             if (!close && this.self && this.self[this.maps.cascade] && this.cascadeMode === 'hover') {
                 return;
+            }
+            if (!this.isFolder && !this.multiple && this.cascadeMode) {
+                this.extendAction(true);
             }
             this.extendAction();
             this.extend();

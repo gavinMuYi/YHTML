@@ -15,7 +15,7 @@
             </div>
             <div class="box-no">
                 <y-tree
-                    :treeSize="[300, 400]"
+                    :treeSize="[300, 400]" cascadeMode="click"
                     :options="options1" :key="singleKey" @change="val => {singleValue = val}" :value="singleValue" />
             </div>
         </div>
