@@ -244,6 +244,32 @@ export default {
         };
     },
     computed: {
+        isFolder() {
+            if (!this.self) return true;
+            return (this.self[this.maps.children]
+                && this.self[this.maps.children].length)
+                || this.self[this.maps.hasChildren];
+        },
+        tracked() {
+            if (this.multiple) {
+                if (this.fatherStatus === 'all') {
+                    return 'all';
+                }
+                if (this.selected && this.selected[this.maps.key]) {
+                    return this.selected.half ? 'half' : 'all';
+                } else {
+                    return 'empty';
+                }
+            }
+            return this.selected && this.selected[this.maps.key] ? 'selected' : '';
+        },
+        isSelected() {
+            if (!this.multiple) {
+                return this.tracked && !this.isFolder;
+            } else {
+                return false;
+            }
+        },
         treeStyle() {
             let style = {};
             if (!this.level && this.treeSize) {
@@ -275,32 +301,6 @@ export default {
             }
             return style;
         },
-        isFolder() {
-            if (!this.self) return true;
-            return (this.self[this.maps.children]
-                && this.self[this.maps.children].length)
-                || this.self[this.maps.hasChildren];
-        },
-        tracked() {
-            if (this.multiple) {
-                if (this.fatherStatus === 'all') {
-                    return 'all';
-                }
-                if (this.selected && this.selected[this.maps.key]) {
-                    return this.selected.half ? 'half' : 'all';
-                } else {
-                    return 'empty';
-                }
-            }
-            return this.selected && this.selected[this.maps.key] ? 'selected' : '';
-        },
-        isSelected() {
-            if (!this.multiple) {
-                return this.tracked && !this.isFolder;
-            } else {
-                return false;
-            }
-        },
         topStyle() {
             if (!this.treeSize) {
                 return {};
@@ -331,32 +331,7 @@ export default {
     },
     mounted() {
         this.init();
-        if (this.self && this.self[this.maps.cascade]) {
-            document.getElementById(this.fatherID).appendChild(this.$refs.childrenContent);
-            if (this.self[this.maps.cascade] === 'relative') {
-                let parent = this.$parent;
-                while (parent && parent.self && !parent.self[this.maps.cascade]) {
-                    parent = parent.$parent;
-                }
-                let content = parent.$refs.childrenContent;
-                content && content.addEventListener('scroll', () => {
-                    this.childrenContent.scrollTop = content.scrollTop;
-                });
-                const targetNode = content;
-                const config = { attributes: true, childList: true, subtree: true };
-                const callback = (mutationsList, observer) => {
-                    let contentOffsetTop = 0;
-                    if (this.$el.offsetParent) {
-                        contentOffsetTop = this.$el.offsetParent.id === (this.fatherID || this.treeId) ?
-                            0 : this.$el.offsetParent.offsetTop;
-                    }
-                    this.childrenContent.contentOffsetTop = contentOffsetTop;
-                    this.childrenContent.offsetTop = (this.$el.offsetTop + contentOffsetTop) || 0;
-                };
-                const observer = new MutationObserver(callback);
-                observer.observe(targetNode, config);
-            }
-        }
+        this.cascadeDomObserver();
     },
     methods: {
         init() {
@@ -609,6 +584,34 @@ export default {
                 };
                 flat(clone(this.treeSelect));
                 return flated;
+            }
+        },
+        cascadeDomObserver() {
+            if (this.self && this.self[this.maps.cascade]) {
+                document.getElementById(this.fatherID).appendChild(this.$refs.childrenContent);
+                if (this.self[this.maps.cascade] === 'relative') {
+                    let parent = this.$parent;
+                    while (parent && parent.self && !parent.self[this.maps.cascade]) {
+                        parent = parent.$parent;
+                    }
+                    let content = parent.$refs.childrenContent;
+                    content && content.addEventListener('scroll', () => {
+                        this.childrenContent.scrollTop = content.scrollTop;
+                    });
+                    const targetNode = content;
+                    const config = { attributes: true, childList: true, subtree: true };
+                    const callback = (mutationsList, observer) => {
+                        let contentOffsetTop = 0;
+                        if (this.$el.offsetParent) {
+                            contentOffsetTop = this.$el.offsetParent.id === (this.fatherID || this.treeId) ?
+                                0 : this.$el.offsetParent.offsetTop;
+                        }
+                        this.childrenContent.contentOffsetTop = contentOffsetTop;
+                        this.childrenContent.offsetTop = (this.$el.offsetTop + contentOffsetTop) || 0;
+                    };
+                    const observer = new MutationObserver(callback);
+                    observer.observe(targetNode, config);
+                }
             }
         }
     }
