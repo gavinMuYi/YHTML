@@ -128,6 +128,10 @@ export default {
         YCheckbox
     },
     props: {
+        cascadeBottom: {
+            type: Number,
+            default: 32
+        },
         cascadeMode: {
             type: String,
             default: ''
@@ -312,7 +316,8 @@ export default {
             }
             let contentOffsetTop = this.childrenContent.contentOffsetTop;
             let top = this.childrenContent.offsetTop - this.childrenContent.scrollTop;
-            top > (this.treeSize[1] + contentOffsetTop - 32) && (top = this.treeSize[1] + contentOffsetTop - 32);
+            top > (this.treeSize[1] + contentOffsetTop - this.cascadeBottom)
+                && (top = this.treeSize[1] + contentOffsetTop - this.cascadeBottom);
             top < contentOffsetTop && (top = contentOffsetTop);
             return {
                 top: top + 'px'
