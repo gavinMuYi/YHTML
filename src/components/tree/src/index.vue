@@ -11,7 +11,7 @@
                 :ref="(self && self[maps.cascade])
                     ? (extendStatus ? 'cascadeLeavesShow' : 'cascadeleavesHide')
                 : (extendStatus ? 'leavesShow' : 'leavesHide')"
-                v-if="self" @click="extendSelect"
+                v-if="self" @click="extendSelect" @mouseenter="extendCascade"
                 :class="[
                     'list-item',
                     `level${level}`,
@@ -49,6 +49,7 @@
                 :treeSize="treeSize"
                 :multiple="multiple"
                 :fatherStatus="tracked"
+                :cascadeMode="cascadeMode"
                 :fatherID="fatherID || treeId"
                 :beforeCascadeLevel="(self && self[maps.cascade]) ? level : beforeCascadeLevel"
                 :cascadeLevel="cascadeLevel + ((self && self[maps.cascade]) ? 1 : 0)"
@@ -419,7 +420,7 @@ export default {
                 this.$emit('childSelect', this.self, true);
             }
         },
-        extendSelect() {
+        extendAction() {
             let loop = (arr) => {
                 arr.forEach(leaf => {
                     leaf.$refs.leavesShow && leaf.$refs.leavesShow.click();
@@ -436,7 +437,7 @@ export default {
                 let cascadeLoop = (arr) => {
                     arr.forEach(leaf => {
                         if (leaf._uid !== this._uid) {
-                            leaf.$refs.cascadeLeavesShow && leaf.$refs.cascadeLeavesShow.click();
+                            leaf.$refs.cascadeLeavesShow && leaf.extendSelect(true);
                             leaf.$refs.leaf && cascadeLoop(leaf.$refs.leaf);
                         }
                     });
@@ -450,6 +451,18 @@ export default {
                     }
                 });
             }
+        },
+        extendCascade(close) {
+            if (this.self && this.self[this.maps.cascade] && this.cascadeMode === 'hover') {
+                this.extendAction();
+                this.isFolder && (this.extendStatus = true);
+            }
+        },
+        extendSelect(close) {
+            if (!close && this.self && this.self[this.maps.cascade] && this.cascadeMode === 'hover') {
+                return;
+            }
+            this.extendAction();
             this.extend();
             this.handleSelect();
         },
