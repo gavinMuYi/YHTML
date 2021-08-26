@@ -237,7 +237,9 @@ export default {
             total: null,
             treeId: 'ytree-' + Math.random(),
             childrenContent: {
-                scrollTop: 0
+                scrollTop: 0,
+                offsetTop: 0,
+                contentOffsetTop: 0
             }
         };
     },
@@ -253,7 +255,9 @@ export default {
         leafGroupStyle() {
             let style = {};
             if (this.treeSize) {
-                style.width = this.treeSize[0] + 'px';
+                if (!this.level || (this.self && this.self[this.maps.cascade])) {
+                    style.width = this.treeSize[0] + 'px';
+                }
                 if (!this.level) {
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
@@ -301,13 +305,13 @@ export default {
             if (!this.treeSize) {
                 return {};
             }
-            return {};
-            // let top = this.childrenContent.offsetTop - this.childrenContent.scrollTop;
-            // top > this.treeSize[1] && (top = this.treeSize[1]);
-            // top < 0 && (top = 0);
-            // return {
-            //     top: top + 'px'
-            // };
+            let contentOffsetTop = this.childrenContent.contentOffsetTop;
+            let top = this.childrenContent.offsetTop - this.childrenContent.scrollTop;
+            top > (this.treeSize[1] + contentOffsetTop - 32) && (top = this.treeSize[1] + contentOffsetTop - 32);
+            top < contentOffsetTop && (top = contentOffsetTop);
+            return {
+                top: top + 'px'
+            };
         }
     },
     watch: {
@@ -340,7 +344,14 @@ export default {
             const targetNode = content;
             const config = { attributes: true, childList: true, subtree: true };
             const callback = (mutationsList, observer) => {
-                this.childrenContent.offsetTop = this.$el.offsetTop;
+                let contentOffsetTop = 0;
+                if (this.$el.offsetParent) {
+                    contentOffsetTop = this.$el.offsetParent.id === (this.fatherID || this.treeId) ?
+                        0 : this.$el.offsetParent.offsetTop;
+                }
+                this.childrenContent.contentOffsetTop = contentOffsetTop;
+                console.log(this, this.$el.offsetTop + contentOffsetTop);
+                this.childrenContent.offsetTop = (this.$el.offsetTop + contentOffsetTop) || 0;
             };
             const observer = new MutationObserver(callback);
             observer.observe(targetNode, config);
