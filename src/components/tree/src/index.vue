@@ -18,7 +18,7 @@
                     {'is-selected': isSelected},
                     {'cascade-open': isFolder && self && self[maps.cascade] && extendStatus}
                 ]"
-                :style="`padding-left: ${15 * (level - beforeLevel - 1) + 8}px`">
+                :style="`padding-left: ${15 * (level - beforeCascadeLevel - 1) + 8}px`">
                 <y-icon :name="loading ? 'loading' : `arrow-${extendStatus ? 'up' : 'down'}`"
                         :class="['arrow', {'loading': loading}]" v-if="isFolder && !(self && self[maps.cascade])"/>
                 <span v-else class="no-arrow"></span>
@@ -43,15 +43,15 @@
                 :lazyLoad="lazyLoad"
                 :level="level + 1"
                 :self="child"
-                :fatherID="fatherID || treeId"
-                :beforeLevel="(self && self[maps.cascade]) ? level : beforeLevel"
                 :maps="maps"
                 :track="track"
                 :count="count"
                 :treeSize="treeSize"
                 :multiple="multiple"
                 :fatherStatus="tracked"
-                :cascade="cascade + ((self && self[maps.cascade]) ? 1 : 0)"
+                :fatherID="fatherID || treeId"
+                :beforeCascadeLevel="(self && self[maps.cascade]) ? level : beforeCascadeLevel"
+                :cascadeLevel="cascadeLevel + ((self && self[maps.cascade]) ? 1 : 0)"
                 :tracklessData="trackLessSelect.concat(tracklessData)"
                 :selected="checkTrack(child[maps.key])"
                 @childSelect="handleChildSelect">
@@ -127,11 +127,15 @@ export default {
         YCheckbox
     },
     props: {
+        cascadeMode: {
+            type: String,
+            default: 'click'
+        },
         accordion: {
             type: Boolean,
             default: false
         },
-        beforeLevel: {
+        beforeCascadeLevel: {
             type: Number,
             default: 0
         },
@@ -143,7 +147,7 @@ export default {
             type: Array,
             default: null
         },
-        cascade: {
+        cascadeLevel: {
             type: Number,
             default: 0
         },
@@ -293,7 +297,7 @@ export default {
                     style.position = 'absolute';
                     style.top = '0px';
                     style.left = this.treeSize[0]
-                        * (this.cascade + ((this.self && this.self[this.maps.cascade]) ? 1 : 0)) + 'px';
+                        * (this.cascadeLevel + ((this.self && this.self[this.maps.cascade]) ? 1 : 0)) + 'px';
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
                     style.border = '1px solid #e3f0ef';
