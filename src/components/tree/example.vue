@@ -370,7 +370,6 @@ export default {
     },
     methods: {
         lazyLoad(index, count, highlight, self) {
-            console.log(index, count, highlight, self);
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve();

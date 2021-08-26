@@ -350,7 +350,6 @@ export default {
                         0 : this.$el.offsetParent.offsetTop;
                 }
                 this.childrenContent.contentOffsetTop = contentOffsetTop;
-                console.log(this, this.$el.offsetTop + contentOffsetTop);
                 this.childrenContent.offsetTop = (this.$el.offsetTop + contentOffsetTop) || 0;
             };
             const observer = new MutationObserver(callback);
