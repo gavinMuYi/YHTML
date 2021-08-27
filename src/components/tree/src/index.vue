@@ -298,7 +298,7 @@ export default {
                     style.overflow = 'auto';
                     style.border = '1px solid #e3f0ef';
                 }
-                if (this.self && this.self[this.maps.cascade] === 'fixed') {
+                if (this.self && this.self[this.maps.cascade]) {
                     style.position = 'absolute';
                     style.top = '0px';
                     style.left = this.treeSize[0]
