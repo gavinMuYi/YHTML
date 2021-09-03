@@ -2,6 +2,7 @@
     <div class="y-table_example">
         <y-table :count="2" :multiple="true" :contentMaxHeight="250">
             <y-table-column label="keyLabelCenter" columnKey="key" />
+            <y-table-column label="keyLabelCenter2" columnKey="key" width="250px" />
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" />
             <y-table-column label="一级" fixed="left">
                 <div slot="header">header-111-一级</div>

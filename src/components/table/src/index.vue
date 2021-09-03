@@ -17,8 +17,8 @@
         </div> -->
         <div class="y-table-center">
             <table>
-                <y-table-header :columns="headerColumn.columns" />
-                <y-table-body :columns="rowColumn.columns" />
+                <y-table-header :columns="headerColumn" />
+                <y-table-body :columns="rowColumn" />
             </table>
         </div>
         <!-- <div class="y-table-right" v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
@@ -94,41 +94,6 @@ export default {
         };
     },
     computed: {
-        // leftTableWidth() {
-        //     let widthPercent = 0;
-        //     let widthPx = 0;
-        //     this.rowColumn.rowColumnLeft.forEach(column => {
-        //         if (column.width) {
-        //             if (column.width.indexOf('%') > -1) {
-        //                 widthPercent += Number(column.width.replace('%', ''));
-        //             } else {
-        //                 widthPx += Number(column.width.replace('px', ''));
-        //             }
-        //         } else {
-        //             // 固定列默认200
-        //             widthPx += 200;
-        //         }
-        //     });
-        //     console.log(`calc(${widthPercent}% + ${widthPx}px)`);
-        //     return `calc(${widthPercent}% + ${widthPx}px)`;
-        // },
-        // rightTableWidth() {
-        //     let widthPercent = 0;
-        //     let widthPx = 0;
-        //     this.rowColumn.rowColumnRight.forEach(column => {
-        //         if (column.width) {
-        //             if (column.width.indexOf('%') > -1) {
-        //                 widthPercent += Number(column.width.replace('%', ''));
-        //             } else {
-        //                 widthPx += Number(column.width.replace('px', ''));
-        //             }
-        //         } else {
-        //             // 固定列默认200
-        //             widthPx += 200;
-        //         }
-        //     });
-        //     return `calc(${widthPercent}% + ${widthPx}px)`;
-        // },
         headerDeep() {
             let deep = 1;
             let recursion = (arr, level) => {
@@ -213,12 +178,7 @@ export default {
                     };
                 }));
             });
-            return {
-                columns: res,
-                hearderColumnLeft,
-                hearderColumn,
-                hearderColumnRight
-            };
+            return res;
         },
         rowColumn() {
             let rowColumn = [];
@@ -257,12 +217,7 @@ export default {
                     fixed: 'right'
                 };
             }));
-            return {
-                columns: res,
-                rowColumnLeft,
-                rowColumn,
-                rowColumnRight
-            };
+            return res;
         }
     },
     methods: {
