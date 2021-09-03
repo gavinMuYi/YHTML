@@ -77,8 +77,8 @@ export default {
                     width: this.width,
                     children: this.column,
                     fixed: this.fixed,
-                    headerRender: this.$slots.header,
-                    render: this.$slots.default
+                    // headerRender: this.$slots.header,
+                    // render: this.$slots.default
                 };
                 this.$parent.column && this.$set(this.$parent.column, this.getIndex(), column);
             }

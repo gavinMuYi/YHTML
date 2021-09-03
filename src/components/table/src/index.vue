@@ -1,14 +1,47 @@
 <template>
     <div class="y-table">
         <div class="y-table-cloumn-hidden">
-            <slot></slot>
+            <slot>
+                <y-table-column
+                    v-for="(column, index) in columnConfig" :key="column.key + index"
+                    :highlight="highlight" :columnKey="column.key"
+                    :width="column.width" :label="column.label"
+                    :fixed="column.fixed" />
+            </slot>
         </div>
+        <!-- <div class="y-table-left" v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
+            <table>
+                <y-table-header :columns="headerColumn.hearderColumnLeft" />
+                <y-table-body :columns="rowColumn.rowColumnLeft" />
+            </table>
+        </div> -->
+        <div class="y-table-center">
+            <table>
+                <y-table-header :columns="headerColumn.columns" />
+                <y-table-body :columns="rowColumn.columns" />
+            </table>
+        </div>
+        <!-- <div class="y-table-right" v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
+            <table>
+                <y-table-header :columns="headerColumn.hearderColumnRight" />
+                <y-table-body :columns="rowColumn.rowColumnRight" />
+            </table>
+        </div> -->
     </div>
 </template>
 
 <script>
+import YTableColumn from './components/table-column';
+import YTableBody from './components/table-body';
+import YTableHeader from './components/table-header';
+
 export default {
     name: 'YTable',
+    components: {
+        YTableColumn,
+        YTableHeader,
+        YTableBody
+    },
     props: {
         options: {
             type: Array,
@@ -61,6 +94,41 @@ export default {
         };
     },
     computed: {
+        // leftTableWidth() {
+        //     let widthPercent = 0;
+        //     let widthPx = 0;
+        //     this.rowColumn.rowColumnLeft.forEach(column => {
+        //         if (column.width) {
+        //             if (column.width.indexOf('%') > -1) {
+        //                 widthPercent += Number(column.width.replace('%', ''));
+        //             } else {
+        //                 widthPx += Number(column.width.replace('px', ''));
+        //             }
+        //         } else {
+        //             // 固定列默认200
+        //             widthPx += 200;
+        //         }
+        //     });
+        //     console.log(`calc(${widthPercent}% + ${widthPx}px)`);
+        //     return `calc(${widthPercent}% + ${widthPx}px)`;
+        // },
+        // rightTableWidth() {
+        //     let widthPercent = 0;
+        //     let widthPx = 0;
+        //     this.rowColumn.rowColumnRight.forEach(column => {
+        //         if (column.width) {
+        //             if (column.width.indexOf('%') > -1) {
+        //                 widthPercent += Number(column.width.replace('%', ''));
+        //             } else {
+        //                 widthPx += Number(column.width.replace('px', ''));
+        //             }
+        //         } else {
+        //             // 固定列默认200
+        //             widthPx += 200;
+        //         }
+        //     });
+        //     return `calc(${widthPercent}% + ${widthPx}px)`;
+        // },
         headerDeep() {
             let deep = 1;
             let recursion = (arr, level) => {
@@ -128,7 +196,25 @@ export default {
                 });
             };
             recursion(this.column, 0);
+            let res = [];
+            hearderColumn.forEach((row, index) => {
+                res.push([]);
+                res[index] = res[index].concat(hearderColumnLeft[index].map(col => {
+                    return {
+                        ...col,
+                        fixed: 'left'
+                    };
+                }));
+                res[index] = res[index].concat(hearderColumn[index]);
+                res[index] = res[index].concat(hearderColumnRight[index].map(col => {
+                    return {
+                        ...col,
+                        fixed: 'right'
+                    };
+                }));
+            });
             return {
+                columns: res,
                 hearderColumnLeft,
                 hearderColumn,
                 hearderColumnRight
@@ -157,16 +243,27 @@ export default {
                 });
             };
             getColumn(this.column);
+            let res = [];
+            res = res.concat(rowColumnLeft.map(col => {
+                return {
+                    ...col,
+                    fixed: 'left'
+                };
+            }));
+            res = res.concat(rowColumn);
+            res = res.concat(rowColumnRight.map(col => {
+                return {
+                    ...col,
+                    fixed: 'right'
+                };
+            }));
             return {
+                columns: res,
                 rowColumnLeft,
                 rowColumn,
                 rowColumnRight
             };
         }
-    },
-    mounted() {
-        console.log(this.headerColumn);
-        console.log(this.rowColumn);
     },
     methods: {
         initLoad() {
@@ -194,6 +291,26 @@ export default {
             width: 0px;
             height: 0px;
             overflow: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        table {
+            border-spacing: 1px;
+            table-layout: fixed;
+            word-break:break-all;
+            .y-table-cell {
+                font-size: 14px;
+                overflow: hidden;
+            }
+        }
+        .y-table-center {
+            min-width: 100%;
+            overflow: auto;
+            table {
+                min-width: 100%;
+            }
         }
     }
 </style>
