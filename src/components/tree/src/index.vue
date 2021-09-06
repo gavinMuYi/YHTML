@@ -1,5 +1,5 @@
 <template>
-    <div class="y-tree" :style="treeStyle" :id="treeId">
+    <div class="y-tree" :style="treeStyle" :id="treeId" ref="treePanel">
         <slot name="line"
               :data="self" :level="level" :loading="loading"
               :isSelected="isSelected" :isFolder="isFolder"
@@ -34,7 +34,8 @@
             </div>
         </slot>
         <div :class="['y-tree-children_group', {'cascade-fixed': self && self[maps.cascade] === 'fixed'}]"
-             v-show="extendStatus" ref="childrenContent" :style="{ ...leafGroupStyle, ...topStyle }">
+             v-show="extendStatus" ref="childrenContent" :style="{ ...leafGroupStyle, ...topStyle }"
+             :extendStatus="extendStatus" :cascadeRelative="self && self[maps.cascade] === 'relative'">
             <y-tree
                 v-for="(child, cIndex) in dataList" :key="child[maps.key] + cIndex + '-' + level"
                 ref="leaf"
@@ -245,6 +246,8 @@ export default {
             loading: false,
             total: null,
             treeId: 'ytree-' + Math.random(),
+            cascadeMaxLevel: 1,
+            cascadeTop: 0,
             childrenContent: {
                 scrollTop: 0,
                 offsetTop: 0,
@@ -284,6 +287,8 @@ export default {
             if (!this.level && this.treeSize) {
                 style.position = 'relative';
                 style.display = 'inline-block';
+                style.width = this.cascadeMaxLevel * this.treeSize[0] + 'px';
+                style.height = this.cascadeTop + this.treeSize[1] + 'px';
             }
             return style;
         },
@@ -297,6 +302,7 @@ export default {
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
                     style.border = '1px solid #e3f0ef';
+                    style.boxSizing = 'border-box';
                 }
                 if (this.self && this.self[this.maps.cascade]) {
                     style.position = 'absolute';
@@ -306,6 +312,7 @@ export default {
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
                     style.border = '1px solid #e3f0ef';
+                    style.boxSizing = 'border-box';
                 }
             }
             return style;
@@ -342,6 +349,7 @@ export default {
     mounted() {
         this.init();
         this.cascadeDomObserver();
+        this.treeObserver();
     },
     methods: {
         init() {
@@ -637,6 +645,30 @@ export default {
                     const observer = new MutationObserver(callback);
                     observer.observe(targetNode, config);
                 }
+            }
+        },
+        treeObserver() {
+            if (!this.level) {
+                let treePanel = this.$refs.treePanel;
+                const targetNode = treePanel;
+                const config = { attributes: true, childList: true, subtree: true };
+                const callback = (mutationsList, observer) => {
+                    let totalcascadelevel = 0;
+                    let top = 0;
+                    for (let i = 0; i < this.$refs.treePanel.children.length; i++) {
+                        let dom = this.$refs.treePanel.children[i];
+                        if (dom.attributes.extendStatus) {
+                            totalcascadelevel++;
+                            if (dom.attributes.cascadeRelative) {
+                                top = dom.offsetTop;
+                            }
+                        }
+                    }
+                    this.cascadeTop = top;
+                    this.cascadeMaxLevel = totalcascadelevel;
+                };
+                const observer = new MutationObserver(callback);
+                observer.observe(targetNode, config);
             }
         }
     }
