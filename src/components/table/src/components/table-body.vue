@@ -60,3 +60,14 @@ export default {
     },
 };
 </script>
+
+<style lang="less">
+    .y-table-body {
+        .y-table-cell {
+            min-height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+</style>

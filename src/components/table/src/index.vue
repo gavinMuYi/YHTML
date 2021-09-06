@@ -257,6 +257,7 @@ export default {
             word-break:break-all;
             .y-table-cell {
                 font-size: 14px;
+                font-weight: 400;
                 overflow: hidden;
             }
         }

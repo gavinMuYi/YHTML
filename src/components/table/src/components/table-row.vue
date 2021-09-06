@@ -31,3 +31,11 @@ export default {
     }
 };
 </script>
+
+<style lang="less">
+    .y-table-row {
+        td {
+            border-bottom: 1px solid #e3f0ef;
+        }
+    }
+</style>
