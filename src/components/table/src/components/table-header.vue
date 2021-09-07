@@ -1,18 +1,3 @@
-<template>
-    <thead class="y-table-header">
-        <tr v-for="(row, rindex) in columns" :key="'row-' + rindex">
-            <th v-for="(th, tindex) in row" :key="rindex + '-th-' + tindex"
-                :colspan="th.colSpan" :rowspan="th.rowSpan"
-                :style="headerCellStyle(th.width)"
-                :class="[th.fixed ? `y-table-cell_fixed-${th.fixed}`: '']">
-                <div class="y-table-cell">
-                    {{ th.label }}
-                </div>
-            </th>
-        </tr>
-    </thead>
-</template>
-
 <script>
 export default {
     name: 'YTableHeader',
@@ -36,6 +21,30 @@ export default {
                 minWidth: width
             };
         }
+    },
+    render(h) {
+        return (
+            <thead class="y-table-header">
+                {this.columns.map((row, rindex) => {
+                    return (
+                        <tr>
+                            {row.map((th, tindex) => {
+                                return (
+                                    <th
+                                        colspan={th.colSpan} rowspan={th.rowSpan}
+                                        style={this.headerCellStyle(th.width)}
+                                        class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
+                                        <div class="y-table-cell">
+                                            { th.headRender.call(this, h, th.label) }
+                                        </div>
+                                    </th>
+                                );
+                            })}
+                        </tr>
+                    );
+                })}
+            </thead>
+        );
     }
 };
 </script>

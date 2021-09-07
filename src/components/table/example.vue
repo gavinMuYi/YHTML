@@ -10,7 +10,8 @@
                 </y-table-column>
                 <y-table-column label="二级">
                     <y-table-column label="三级" columnKey="label" width="20%">
-                        <div>111</div>
+                        <div slot="header">cell slot</div>
+                        <div slot-scope="props" slot="cell">{{ props.label + '-' + props.key }}</div>
                     </y-table-column>
                     <y-table-column label="三级" columnKey="label" width="50px">
                         <div slot="header">header-111-三级</div>

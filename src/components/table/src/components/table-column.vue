@@ -76,9 +76,22 @@ export default {
                     columnKey: this.columnKey,
                     width: this.width,
                     children: this.column,
-                    fixed: this.fixed,
-                    // headerRender: this.$slots.header,
-                    // render: this.$slots.default
+                    fixed: this.fixed
+                };
+                let that = this;
+                column.headRender = function (h, label) {
+                    if (that.$slots.header) {
+                        return that.$slots.header;
+                    } else {
+                        return label;
+                    }
+                };
+                column.render = function (h, label, data) {
+                    if (that.$scopedSlots.cell) {
+                        return that.$scopedSlots.cell(data);
+                    } else {
+                        return label;
+                    }
                 };
                 this.$parent.column && this.$set(this.$parent.column, this.getIndex(), column);
             }
