@@ -93,24 +93,24 @@
                     </slot>
                 </template>
             </y-tree>
-        </div>
-        <slot name="loadmore"
-              :index="index" :count="count"
-              :extendStatus="extendStatus" :loading="loading" :total="total"
-              :loadMore="loadMore" :dataList="dataList" :level="level"
-              :loadMoreFetch="loadMoreFetch" :loadFunction="loadFunction">
-            <div
-                v-show="extendStatus"
-                v-if="loadMore && dataList.length"
-                class="load-more"
-                :style="`padding-left: ${15 * level + 25}px`"
-                @click="loadMoreFetch">
-                <span v-if="loading" class="loading"><y-icon name="loading" />加载中...</span>
-                <span v-else>加载更多...</span>
+            <slot name="loadmore"
+                  :index="index" :count="count"
+                  :extendStatus="extendStatus" :loading="loading" :total="total"
+                  :loadMore="loadMore" :dataList="dataList" :level="level"
+                  :loadMoreFetch="loadMoreFetch" :loadFunction="loadFunction">
+                <div
+                    v-show="extendStatus"
+                    v-if="loadMore && dataList.length"
+                    class="load-more"
+                    :style="`padding-left: ${15 * level + 25}px`"
+                    @click="loadMoreFetch">
+                    <span v-if="loading" class="loading"><y-icon name="loading" />加载中...</span>
+                    <span v-else>加载更多...</span>
+                </div>
+            </slot>
+            <div v-if="!level && !dataList.length && !loading">
+                <slot name="nodata"><div class="no-data">暂无数据</div></slot>
             </div>
-        </slot>
-        <div v-if="!level && !dataList.length && !loading">
-            <slot name="nodata"><div class="no-data">暂无数据</div></slot>
         </div>
     </div>
 </template>

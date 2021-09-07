@@ -29,7 +29,7 @@
                     v-show="props.extendStatus">
                     <div v-if="(props.level || scrollTable) && props.loadMore && props.dataList.length"
                          @click="props.loadMoreFetch" class="load-more"
-                         :style="`padding-left: ${20 * (props.level + 1)}px`">
+                         :style="`padding-left: ${20 * (props.level + 2)}px`">
                         <span v-if="props.loading" class="loading"><y-icon name="loading" />加载中...</span>
                         <span v-else>加载更多...</span>
                     </div>
