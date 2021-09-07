@@ -1,6 +1,7 @@
 <template>
     <tbody class="y-table-body">
         <y-table-row
+            ref="tr"
             v-for="(row, rindex) in tableList" :key="'row-' + rindex"
             :rowData="row" :columns="columns" />
     </tbody>

@@ -23,10 +23,11 @@ export default {
         }
     },
     render(h) {
+        this.$refs.tr = [];
         return (
             <thead class="y-table-header">
                 {this.columns.map((row, rindex) => {
-                    return (
+                    let tr = (
                         <tr>
                             {row.map((th, tindex) => {
                                 return (
@@ -42,6 +43,8 @@ export default {
                             })}
                         </tr>
                     );
+                    this.$refs.tr.push(tr);
+                    return tr;
                 })}
             </thead>
         );

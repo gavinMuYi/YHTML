@@ -1,6 +1,6 @@
 <template>
     <div class="y-table">
-        <div class="y-table-cloumn-hidden">
+        <div class="y-table-hidden">
             <slot>
                 <y-table-column
                     v-for="(column, index) in columnConfig" :key="column.key + index"
@@ -8,6 +8,8 @@
                     :width="column.width" :label="column.label"
                     :fixed="column.fixed" />
             </slot>
+            <y-table-data :lazyLoad="fetchFunc" />
+            {{ rowHeight }}
         </div>
         <!-- <div class="y-table-left" v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
             <table>
@@ -16,9 +18,9 @@
             </table>
         </div> -->
         <div class="y-table-center">
-            <table>
-                <y-table-header :columns="headerColumn" />
-                <y-table-body :columns="rowColumn" />
+            <table ref="center">
+                <y-table-header :columns="headerColumn" ref="centerHeader" />
+                <y-table-body :columns="rowColumn" ref="centerBody" />
             </table>
         </div>
         <!-- <div class="y-table-right" v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
@@ -31,16 +33,19 @@
 </template>
 
 <script>
+import { EleResize } from '@/utils/dom.js';
 import YTableColumn from './components/table-column';
 import YTableBody from './components/table-body';
 import YTableHeader from './components/table-header';
+import YTableData from './components/table-data';
 
 export default {
     name: 'YTable',
     components: {
         YTableColumn,
         YTableHeader,
-        YTableBody
+        YTableBody,
+        YTableData
     },
     props: {
         options: {
@@ -90,7 +95,19 @@ export default {
             index: 1,
             fetchFunc: this.initLoad(),
             total: 0,
-            column: []
+            column: [],
+            leftTable: {
+                header: [],
+                body: []
+            },
+            centerTable: {
+                header: [],
+                body: []
+            },
+            rightTable: {
+                header: [],
+                body: []
+            }
         };
     },
     computed: {
@@ -218,7 +235,31 @@ export default {
                 };
             }));
             return res;
+        },
+        rowHeight() {
+            return {
+                header: this.centerTable.header.map((val, index) => {
+                    return Math.max(
+                        this.leftTable.header[index] || 0,
+                        this.centerTable.header[index],
+                        this.rightTable.header[index] || 0
+                    );
+                }),
+                body: this.centerTable.body.map((val, index) => {
+                    return Math.max(
+                        this.leftTable.body[index] || 0,
+                        this.centerTable.body[index],
+                        this.rightTable.body[index] || 0
+                    );
+                })
+            };
         }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            this.handleResize('center')();
+        });
+        EleResize.on(this.$refs.center, this.handleResize('center'), this);
     },
     methods: {
         initLoad() {
@@ -236,13 +277,27 @@ export default {
                     });
                 } : this.lazyLoad;
         },
+        handleResize(DomKey) {
+            return () => {
+                let headerRow = this.$refs[DomKey + 'Header'].$refs.tr;
+                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr;
+                let headerRowHeight = headerRow.map(row => {
+                    return row.elm.offsetHeight;
+                });
+                let BodyRowHeight = bodyRow.map(row => {
+                    return row.$el.offsetHeight;
+                });
+                this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
+                this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
+            };
+        }
     }
 };
 </script>
 
 <style lang="less">
     .y-table {
-        .y-table-cloumn-hidden {
+        .y-table-hidden {
             width: 0px;
             height: 0px;
             overflow: hidden;
