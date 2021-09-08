@@ -38,6 +38,23 @@ export default {
             name: 'VTableColumn'
         };
     },
+    watch: {
+        label() {
+            this.setParentColumn();
+        },
+        columnKey() {
+            this.setParentColumn();
+        },
+        highlight() {
+            this.setParentColumn();
+        },
+        width() {
+            this.setParentColumn();
+        },
+        fixed() {
+            this.setParentColumn();
+        }
+    },
     created() {
         this.setParentColumn();
     },
