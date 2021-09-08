@@ -27,6 +27,10 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        moreHeight: {
+            type: Number,
+            default: 0
         }
     },
     data() {
@@ -69,7 +73,7 @@ export default {
         rowStyle(index) {
             if (this.rowHeight[index]) {
                 return {
-                    height: this.rowHeight[index] + 'px'
+                    height: this.rowHeight[index] + this.moreHeight + 'px'
                 };
             }
             return {};

@@ -15,7 +15,8 @@
             <table>
                 <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
                                 :rowHeight="rowHeight.header" />
-                <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body" />
+                <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
+                              :moreHeight="1" />
             </table>
         </div>
         <div class="y-table-center">
@@ -30,7 +31,8 @@
             <table>
                 <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
                                 :rowHeight="rowHeight.header" />
-                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body" />
+                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
+                              :moreHeight="1" />
             </table>
         </div>
     </div>
@@ -390,7 +392,7 @@ export default {
                     let heights = [];
                     for (let i = 0; i < row.elm.children.length; i++) {
                         let cell = row.elm.children[i].children[0];
-                        cell && heights.push(cell.offsetHeight + 2 || 2);
+                        cell && heights.push(cell.offsetHeight + 2);
                     }
                     let height = heights.length ? Math.max(...heights) : 0;
                     height ? headerRowHeight.push(height) : headerRowHeightNull.push(height);
@@ -401,7 +403,7 @@ export default {
                     let heights = [];
                     for (let i = 0; i < row.$el.children.length; i++) {
                         let cell = row.$el.children[i].children[0];
-                        cell && heights.push(cell.offsetHeight + 2 || 2);
+                        cell && heights.push(cell.offsetHeight + 2);
                     }
                     let height = heights.length ? Math.max(...heights) : 0;
                     height ? BodyRowHeight.push(height) : BodyRowHeightNull.push(height);
