@@ -452,10 +452,10 @@ export default {
             }
         }
         .y-table-left {
-            box-shadow: 1px -2px 8px #d3d4d6;
+            box-shadow: 1px -2px 8px #a4ede0;
         }
         .y-table-right {
-            box-shadow: -1px -2px 8px #d3d4d6;
+            box-shadow: -1px -2px 8px #a4ede0;
         }
     }
 </style>
