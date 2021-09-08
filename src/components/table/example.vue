@@ -62,7 +62,7 @@ export default {
     methods: {
         heightadd() {
             if (!this.str) {
-                this.str = 'sahdvhavjdskjvknasjkvbajksdbvnjkasdvjasdv';
+                this.str = '-sahdvhavjdskjvknasjkvbajksdbvnjkasdvjasdv';
             } else {
                 this.str = '';
             }
