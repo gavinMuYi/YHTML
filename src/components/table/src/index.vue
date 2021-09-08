@@ -9,7 +9,6 @@
                     :fixed="column.fixed" />
             </slot>
             <y-table-data :lazyLoad="fetchFunc" />
-            {{ rowHeight }}
         </div>
         <div class="y-table-left" ref="left"
              v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
