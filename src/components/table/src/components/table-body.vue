@@ -3,7 +3,7 @@
         <y-table-row
             ref="tr"
             v-for="(row, rindex) in tableList" :key="'row-' + rindex"
-            :rowData="row" :columns="columns" />
+            :rowData="row" :columns="columns" :style="rowStyle(rindex)" />
     </tbody>
 </template>
 
@@ -17,6 +17,12 @@ export default {
     },
     props: {
         columns: {
+            type: Array,
+            default: () => {
+                return [];
+            }
+        },
+        rowHeight: {
             type: Array,
             default: () => {
                 return [];
@@ -59,6 +65,16 @@ export default {
             }]
         };
     },
+    methods: {
+        rowStyle(index) {
+            if (this.rowHeight[index]) {
+                return {
+                    height: this.rowHeight[index] + 'px'
+                };
+            }
+            return {};
+        }
+    }
 };
 </script>
 

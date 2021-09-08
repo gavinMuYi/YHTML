@@ -15,14 +15,14 @@
             <table>
                 <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
                                 :rowHeight="rowHeight.header" />
-                <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" />
+                <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body" />
             </table>
         </div>
         <div class="y-table-center">
             <table ref="center">
                 <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
                                 :rowHeight="rowHeight.header" />
-                <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" />
+                <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body" />
             </table>
         </div>
         <div class="y-table-right" ref="right"
@@ -30,7 +30,7 @@
             <table>
                 <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
                                 :rowHeight="rowHeight.header" />
-                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" />
+                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body" />
             </table>
         </div>
     </div>
@@ -382,21 +382,21 @@ export default {
         },
         handleResize(DomKey) {
             return () => {
+                let headerRow = this.$refs[DomKey + 'Header'].$refs.tr;
+                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr;
+                let headerRowHeight = [];
+                let headerRowHeightNull = [];
+                headerRow.forEach(row => {
+                    let height = row.elm.offsetHeight;
+                    height ? headerRowHeight.push(height) : headerRowHeightNull.push(height);
+                });
+                let BodyRowHeight = [];
+                let BodyRowHeightNull = [];
+                bodyRow.forEach(row => {
+                    let height = row.$el.offsetHeight;
+                    height ? BodyRowHeight.push(height) : BodyRowHeightNull.push(height);
+                });
                 this.$nextTick(() => {
-                    let headerRow = this.$refs[DomKey + 'Header'].$refs.tr;
-                    let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr;
-                    let headerRowHeight = [];
-                    let headerRowHeightNull = [];
-                    headerRow.forEach(row => {
-                        let height = row.elm.offsetHeight;
-                        height ? headerRowHeight.push(height) : headerRowHeightNull.push(height);
-                    });
-                    let BodyRowHeight = [];
-                    let BodyRowHeightNull = [];
-                    bodyRow.forEach(row => {
-                        let height = row.$el.offsetHeight;
-                        height ? BodyRowHeight.push(height) : BodyRowHeightNull.push(height);
-                    });
                     this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
                     this.$set(this[DomKey + 'Table'], 'header', headerRowHeight.concat(headerRowHeightNull));
                     this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight.concat(BodyRowHeightNull));
@@ -410,6 +410,7 @@ export default {
 <style lang="less">
     .y-table {
         display: flex;
+        overflow: hidden;
         .y-table-hidden {
             width: 0px;
             height: 0px;
@@ -439,6 +440,12 @@ export default {
             table {
                 min-width: 100%;
             }
+        }
+        .y-table-left {
+            box-shadow: 1px -2px 8px #d3d4d6;
+        }
+        .y-table-right {
+            box-shadow: -1px -2px 8px #d3d4d6;
         }
     }
 </style>
