@@ -118,53 +118,6 @@ export default {
         };
     },
     computed: {
-        leftTableWidth() {
-            let widthPercent = 0;
-            let widthPx = 0;
-            this.rowColumn.rowColumnLeft.forEach(column => {
-                if (column.width) {
-                    if (column.width.indexOf('%') > -1) {
-                        widthPercent += Number(column.width.replace('%', ''));
-                    } else {
-                        widthPx += Number(column.width.replace('px', ''));
-                    }
-                } else {
-                    // 固定列默认200
-                    widthPx += 200;
-                }
-            });
-            return `calc(${widthPercent}% + ${widthPx}px)`;
-        },
-        rightTableWidth() {
-            let widthPercent = 0;
-            let widthPx = 0;
-            this.rowColumn.rowColumnRight.forEach(column => {
-                if (column.width) {
-                    if (column.width.indexOf('%') > -1) {
-                        widthPercent += Number(column.width.replace('%', ''));
-                    } else {
-                        widthPx += Number(column.width.replace('px', ''));
-                    }
-                } else {
-                    // 固定列默认200
-                    widthPx += 200;
-                }
-            });
-            return `calc(${widthPercent}% + ${widthPx}px)`;
-        },
-        headerDeep() {
-            let deep = 1;
-            let recursion = (arr, level) => {
-                arr.forEach(item => {
-                    if (item.children && item.children.length) {
-                        recursion(item.children, level + 1);
-                        level + 1 > deep && (deep = level + 1);
-                    }
-                });
-            };
-            recursion(this.column, 1);
-            return deep;
-        },
         headerColumn() {
             let headerColumn = [];
             let headerColumnLeft = [];
@@ -303,6 +256,53 @@ export default {
                 rowColumnRight
             };
         },
+        headerDeep() {
+            let deep = 1;
+            let recursion = (arr, level) => {
+                arr.forEach(item => {
+                    if (item.children && item.children.length) {
+                        recursion(item.children, level + 1);
+                        level + 1 > deep && (deep = level + 1);
+                    }
+                });
+            };
+            recursion(this.column, 1);
+            return deep;
+        },
+        leftTableWidth() {
+            let widthPercent = 0;
+            let widthPx = 0;
+            this.rowColumn.rowColumnLeft.forEach(column => {
+                if (column.width) {
+                    if (column.width.indexOf('%') > -1) {
+                        widthPercent += Number(column.width.replace('%', ''));
+                    } else {
+                        widthPx += Number(column.width.replace('px', ''));
+                    }
+                } else {
+                    // 固定列默认200
+                    widthPx += 200;
+                }
+            });
+            return `calc(${widthPercent}% + ${widthPx}px)`;
+        },
+        rightTableWidth() {
+            let widthPercent = 0;
+            let widthPx = 0;
+            this.rowColumn.rowColumnRight.forEach(column => {
+                if (column.width) {
+                    if (column.width.indexOf('%') > -1) {
+                        widthPercent += Number(column.width.replace('%', ''));
+                    } else {
+                        widthPx += Number(column.width.replace('px', ''));
+                    }
+                } else {
+                    // 固定列默认200
+                    widthPx += 200;
+                }
+            });
+            return `calc(${widthPercent}% + ${widthPx}px)`;
+        },
         rowHeight() {
             let headerHeight = [];
             let left = this.leftTable.header;
@@ -387,13 +387,23 @@ export default {
                 let headerRowHeight = [];
                 let headerRowHeightNull = [];
                 headerRow.forEach(row => {
-                    let height = row.elm.offsetHeight;
+                    let heights = [];
+                    for (let i = 0; i < row.elm.children.length; i++) {
+                        let cell = row.elm.children[i].children[0];
+                        cell && heights.push(cell.offsetHeight + 2 || 2);
+                    }
+                    let height = heights.length ? Math.max(...heights) : 0;
                     height ? headerRowHeight.push(height) : headerRowHeightNull.push(height);
                 });
                 let BodyRowHeight = [];
                 let BodyRowHeightNull = [];
                 bodyRow.forEach(row => {
-                    let height = row.$el.offsetHeight;
+                    let heights = [];
+                    for (let i = 0; i < row.$el.children.length; i++) {
+                        let cell = row.$el.children[i].children[0];
+                        cell && heights.push(cell.offsetHeight + 2 || 2);
+                    }
+                    let height = heights.length ? Math.max(...heights) : 0;
                     height ? BodyRowHeight.push(height) : BodyRowHeightNull.push(height);
                 });
                 this.$nextTick(() => {
