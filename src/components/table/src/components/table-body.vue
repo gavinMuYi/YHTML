@@ -28,9 +28,11 @@ export default {
                 return [];
             }
         },
-        moreHeight: {
-            type: Number,
-            default: 0
+        selfRowHeight: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     data() {
@@ -73,7 +75,9 @@ export default {
         rowStyle(index) {
             if (this.rowHeight[index]) {
                 return {
-                    height: this.rowHeight[index] + this.moreHeight + 'px'
+                    height: this.selfRowHeight[index] < this.rowHeight[index]
+                        ? this.rowHeight[index] + 3 + 'px'
+                        : this.rowHeight[index] + 'px'
                 };
             }
             return {};

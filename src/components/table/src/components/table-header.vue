@@ -17,6 +17,12 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        selfRowHeight: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     methods: {
@@ -53,7 +59,13 @@ export default {
                 );
             });
             let rowStyle = {};
-            this.rowHeight[rindex] && (rowStyle.height = this.rowHeight[rindex] + 'px');
+            if (this.rowHeight[rindex]) {
+                rowStyle = {
+                    height: this.selfRowHeight[rindex] < this.rowHeight[rindex]
+                        ? this.rowHeight[rindex] + 3 + 'px'
+                        : this.rowHeight[rindex] + 2 + 'px'
+                };
+            }
             let tr = this.columns[rindex] ? (
                 <tr style={rowStyle}>
                     { ths }

@@ -10,29 +10,30 @@
             </slot>
             <y-table-data :lazyLoad="fetchFunc" />
         </div>
-        <div class="y-table-left" ref="left"
+        <div class="y-table-left"
              v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
-            <table>
+            <table ref="left" style="width: 100%;">
                 <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
-                                :rowHeight="rowHeight.header" />
+                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                 <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
-                              :moreHeight="1" />
+                              :selfRowHeight="leftTable.body" />
             </table>
         </div>
         <div class="y-table-center">
             <table ref="center">
                 <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
-                                :rowHeight="rowHeight.header" />
-                <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body" />
+                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
+                              :selfRowHeight="centerTable.body" />
             </table>
         </div>
-        <div class="y-table-right" ref="right"
+        <div class="y-table-right"
              v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
-            <table>
+            <table ref="right" style="width: 100%;">
                 <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
-                                :rowHeight="rowHeight.header" />
+                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                 <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
-                              :moreHeight="1" />
+                              :selfRowHeight="rightTable.body" />
             </table>
         </div>
     </div>
@@ -392,7 +393,7 @@ export default {
                     let heights = [];
                     for (let i = 0; i < row.elm.children.length; i++) {
                         let cell = row.elm.children[i].children[0];
-                        cell && heights.push(cell.offsetHeight + 2);
+                        cell && heights.push(cell.offsetHeight);
                     }
                     let height = heights.length ? Math.max(...heights) : 0;
                     height ? headerRowHeight.push(height) : headerRowHeightNull.push(height);
@@ -403,7 +404,7 @@ export default {
                     let heights = [];
                     for (let i = 0; i < row.$el.children.length; i++) {
                         let cell = row.$el.children[i].children[0];
-                        cell && heights.push(cell.offsetHeight + 2);
+                        cell && heights.push(cell.offsetHeight);
                     }
                     let height = heights.length ? Math.max(...heights) : 0;
                     height ? BodyRowHeight.push(height) : BodyRowHeightNull.push(height);
