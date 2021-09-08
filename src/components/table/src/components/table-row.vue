@@ -16,18 +16,23 @@ export default {
         }
     },
     render(h) {
+        let tds = [];
+        tds.push(
+            <td class="y-table-standard-cell"></td>
+        );
+        this.columns.forEach((td, tindex) => {
+            tds.push(
+                <td colspan={1} rowspan={1}
+                    class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
+                    <div class="y-table-cell">
+                        { td.render.call(this, h, this.rowData[td.columnKey], this.rowData) }
+                    </div>
+                </td>
+            );
+        });
         return (
             <tr class="y-table-row">
-                {this.columns.map((td, tindex) => {
-                    return (
-                        <td colspan={1} rowspan={1}
-                            class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
-                            <div class="y-table-cell">
-                                { td.render.call(this, h, this.rowData[td.columnKey], this.rowData) }
-                            </div>
-                        </td>
-                    );
-                })}
+                { tds }
             </tr>
         );
     }

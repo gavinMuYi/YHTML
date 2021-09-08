@@ -11,24 +11,29 @@
             <y-table-data :lazyLoad="fetchFunc" />
             {{ rowHeight }}
         </div>
-        <!-- <div class="y-table-left" v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
+        <div class="y-table-left" ref="left"
+             v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
             <table>
-                <y-table-header :columns="headerColumn.hearderColumnLeft" />
-                <y-table-body :columns="rowColumn.rowColumnLeft" />
-            </table>
-        </div> -->
-        <div class="y-table-center">
-            <table ref="center">
-                <y-table-header :columns="headerColumn" ref="centerHeader" />
-                <y-table-body :columns="rowColumn" ref="centerBody" />
+                <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
+                                :rowHeight="rowHeight.header" />
+                <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" />
             </table>
         </div>
-        <!-- <div class="y-table-right" v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
-            <table>
-                <y-table-header :columns="headerColumn.hearderColumnRight" />
-                <y-table-body :columns="rowColumn.rowColumnRight" />
+        <div class="y-table-center">
+            <table ref="center">
+                <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
+                                :rowHeight="rowHeight.header" />
+                <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" />
             </table>
-        </div> -->
+        </div>
+        <div class="y-table-right" ref="right"
+             v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
+            <table>
+                <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
+                                :rowHeight="rowHeight.header" />
+                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" />
+            </table>
+        </div>
     </div>
 </template>
 
@@ -97,20 +102,57 @@ export default {
             total: 0,
             column: [],
             leftTable: {
+                headerMax: 0,
                 header: [],
                 body: []
             },
             centerTable: {
+                headerMax: 0,
                 header: [],
                 body: []
             },
             rightTable: {
+                headerMax: 0,
                 header: [],
                 body: []
             }
         };
     },
     computed: {
+        leftTableWidth() {
+            let widthPercent = 0;
+            let widthPx = 0;
+            this.rowColumn.rowColumnLeft.forEach(column => {
+                if (column.width) {
+                    if (column.width.indexOf('%') > -1) {
+                        widthPercent += Number(column.width.replace('%', ''));
+                    } else {
+                        widthPx += Number(column.width.replace('px', ''));
+                    }
+                } else {
+                    // 固定列默认200
+                    widthPx += 200;
+                }
+            });
+            return `calc(${widthPercent}% + ${widthPx}px)`;
+        },
+        rightTableWidth() {
+            let widthPercent = 0;
+            let widthPx = 0;
+            this.rowColumn.rowColumnRight.forEach(column => {
+                if (column.width) {
+                    if (column.width.indexOf('%') > -1) {
+                        widthPercent += Number(column.width.replace('%', ''));
+                    } else {
+                        widthPx += Number(column.width.replace('px', ''));
+                    }
+                } else {
+                    // 固定列默认200
+                    widthPx += 200;
+                }
+            });
+            return `calc(${widthPercent}% + ${widthPx}px)`;
+        },
         headerDeep() {
             let deep = 1;
             let recursion = (arr, level) => {
@@ -125,9 +167,9 @@ export default {
             return deep;
         },
         headerColumn() {
-            let hearderColumn = [];
-            let hearderColumnLeft = [];
-            let hearderColumnRight = [];
+            let headerColumn = [];
+            let headerColumnLeft = [];
+            let headerColumnRight = [];
             let getColSpan = (column) => {
                 if (column.children && column.children.length) {
                     let colspan = 0;
@@ -147,14 +189,14 @@ export default {
                 }
             };
             let recursion = (arr, level, fixed) => {
-                if (!hearderColumn[level]) {
-                    hearderColumn[level] = [];
+                if (!headerColumn[level]) {
+                    headerColumn[level] = [];
                 }
-                if (!hearderColumnLeft[level]) {
-                    hearderColumnLeft[level] = [];
+                if (!headerColumnLeft[level]) {
+                    headerColumnLeft[level] = [];
                 }
-                if (!hearderColumnRight[level]) {
-                    hearderColumnRight[level] = [];
+                if (!headerColumnRight[level]) {
+                    headerColumnRight[level] = [];
                 }
                 arr.forEach(item => {
                     let { children, ...orgs } = item;
@@ -164,12 +206,12 @@ export default {
                         colSpan: getColSpan(item)
                     };
                     if (!(fixed || item.fixed)) {
-                        hearderColumn[level].push(cell);
+                        headerColumn[level].push(cell);
                     } else {
                         if ((fixed || item.fixed) === 'left') {
-                            hearderColumnLeft[level].push(cell);
+                            headerColumnLeft[level].push(cell);
                         } else {
-                            hearderColumnRight[level].push(cell);
+                            headerColumnRight[level].push(cell);
                         }
                     }
                     if (children && children.length) {
@@ -179,23 +221,28 @@ export default {
             };
             recursion(this.column, 0);
             let res = [];
-            hearderColumn.forEach((row, index) => {
+            headerColumn.forEach((row, index) => {
                 res.push([]);
-                res[index] = res[index].concat(hearderColumnLeft[index].map(col => {
+                res[index] = res[index].concat(headerColumnLeft[index].map(col => {
                     return {
                         ...col,
                         fixed: 'left'
                     };
                 }));
-                res[index] = res[index].concat(hearderColumn[index]);
-                res[index] = res[index].concat(hearderColumnRight[index].map(col => {
+                res[index] = res[index].concat(headerColumn[index]);
+                res[index] = res[index].concat(headerColumnRight[index].map(col => {
                     return {
                         ...col,
                         fixed: 'right'
                     };
                 }));
             });
-            return res;
+            return {
+                allcloumns: res,
+                headerColumn,
+                headerColumnLeft,
+                headerColumnRight
+            };
         },
         rowColumn() {
             let rowColumn = [];
@@ -234,17 +281,80 @@ export default {
                     fixed: 'right'
                 };
             }));
-            return res;
+            this.$nextTick(() => {
+                this.handleResize('center')();
+                EleResize.on(this.$refs.center, this.handleResize('center'), this);
+            });
+            if (rowColumnLeft.length) {
+                this.$nextTick(() => {
+                    this.handleResize('left')();
+                    EleResize.on(this.$refs.left, this.handleResize('left'), this);
+                });
+            }
+            if (rowColumnRight.length) {
+                this.$nextTick(() => {
+                    this.handleResize('right')();
+                    EleResize.on(this.$refs.right, this.handleResize('right'), this);
+                });
+            }
+            return {
+                allcloumns: res,
+                rowColumn,
+                rowColumnLeft,
+                rowColumnRight
+            };
         },
         rowHeight() {
+            let headerHeight = [];
+            let left = this.leftTable.header;
+            let center = this.centerTable.header;
+            let right = this.rightTable.header;
+            let indexs3 = [this.leftTable.headerMax, this.centerTable.headerMax, this.rightTable.headerMax].sort();
+            let lastTwo = {
+                a: [],
+                b: []
+            };
+            let standard = 0;
+            let bSum = 0;
+            for (let i = 0; i < this.headerDeep; i++) {
+                if (left[i] && center[i] && right[i]) {
+                    headerHeight.push(Math.max(left[i], center[i], right[i]));
+                } else {
+                    if (indexs3[0] === indexs3[1]) {
+                        headerHeight.push(Math.max(left[i], center[i], right[i]));
+                    } else {
+                        if (i < indexs3[1]) {
+                            headerHeight.push(Math.max(left[i], center[i], right[i]));
+                        }
+                        else if (i === indexs3[1]) {
+                            if (!left[i]) {
+                                lastTwo.a = !center[i + 1] ? center : right;
+                                lastTwo.b = !center[i + 1] ? right : center;
+                            }
+                            if (!center[i]) {
+                                lastTwo.a = !left[i + 1] ? left : right;
+                                lastTwo.b = !left[i + 1] ? right : left;
+                            }
+                            if (!right[i]) {
+                                lastTwo.a = !center[i + 1] ? center : left;
+                                lastTwo.b = !center[i + 1] ? left : center;
+                            }
+                            standard = lastTwo.a[i];
+                            bSum += lastTwo.b[i];
+                            headerHeight.push(lastTwo.b[i]);
+                        }
+                        else if (i > indexs3[1] && i < this.headerDeep - 1) {
+                            bSum += lastTwo.b[i];
+                            headerHeight.push(lastTwo.b[i]);
+                        }
+                        else {
+                            headerHeight.push(Math.max(standard - bSum, lastTwo.b[i]));
+                        }
+                    }
+                }
+            }
             return {
-                header: this.centerTable.header.map((val, index) => {
-                    return Math.max(
-                        this.leftTable.header[index] || 0,
-                        this.centerTable.header[index],
-                        this.rightTable.header[index] || 0
-                    );
-                }),
+                header: headerHeight,
                 body: this.centerTable.body.map((val, index) => {
                     return Math.max(
                         this.leftTable.body[index] || 0,
@@ -254,12 +364,6 @@ export default {
                 })
             };
         }
-    },
-    mounted() {
-        this.$nextTick(() => {
-            this.handleResize('center')();
-        });
-        EleResize.on(this.$refs.center, this.handleResize('center'), this);
     },
     methods: {
         initLoad() {
@@ -279,16 +383,25 @@ export default {
         },
         handleResize(DomKey) {
             return () => {
-                let headerRow = this.$refs[DomKey + 'Header'].$refs.tr;
-                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr;
-                let headerRowHeight = headerRow.map(row => {
-                    return row.elm.offsetHeight;
+                this.$nextTick(() => {
+                    let headerRow = this.$refs[DomKey + 'Header'].$refs.tr;
+                    let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr;
+                    let headerRowHeight = [];
+                    let headerRowHeightNull = [];
+                    headerRow.forEach(row => {
+                        let height = row.elm.offsetHeight;
+                        height ? headerRowHeight.push(height) : headerRowHeightNull.push(height);
+                    });
+                    let BodyRowHeight = [];
+                    let BodyRowHeightNull = [];
+                    bodyRow.forEach(row => {
+                        let height = row.$el.offsetHeight;
+                        height ? BodyRowHeight.push(height) : BodyRowHeightNull.push(height);
+                    });
+                    this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
+                    this.$set(this[DomKey + 'Table'], 'header', headerRowHeight.concat(headerRowHeightNull));
+                    this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight.concat(BodyRowHeightNull));
                 });
-                let BodyRowHeight = bodyRow.map(row => {
-                    return row.$el.offsetHeight;
-                });
-                this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
-                this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
             };
         }
     }
@@ -297,6 +410,7 @@ export default {
 
 <style lang="less">
     .y-table {
+        display: flex;
         .y-table-hidden {
             width: 0px;
             height: 0px;
@@ -315,9 +429,13 @@ export default {
                 font-weight: 400;
                 overflow: hidden;
             }
+            .y-table-standard-cell {
+                width: 0;
+                padding: 0;
+            }
         }
         .y-table-center {
-            min-width: 100%;
+            flex: 1;
             overflow: auto;
             table {
                 min-width: 100%;

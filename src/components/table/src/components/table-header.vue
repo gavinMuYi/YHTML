@@ -7,6 +7,16 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        level: {
+            type: Number,
+            default: 0
+        },
+        rowHeight: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     methods: {
@@ -24,28 +34,41 @@ export default {
     },
     render(h) {
         this.$refs.tr = [];
+        let trDom = [];
+        for (let rindex = 0; rindex < this.level; rindex++) {
+            let ths = [];
+            ths.push(
+                <th class="y-table-standard-cell"></th>
+            );
+            this.columns[rindex].forEach((th, tindex) => {
+                ths.push(
+                    <th
+                        colspan={th.colSpan} rowspan={th.rowSpan}
+                        style={this.headerCellStyle(th.width)}
+                        class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
+                        <div class="y-table-cell">
+                            { th.headRender.call(this, h, th.label) }
+                        </div>
+                    </th>
+                );
+            });
+            let rowStyle = {};
+            this.rowHeight[rindex] && (rowStyle.height = this.rowHeight[rindex] + 'px');
+            let tr = this.columns[rindex] ? (
+                <tr style={rowStyle}>
+                    { ths }
+                </tr>
+            ) : (
+                <tr style={rowStyle}>
+                    <th class="y-table-standard-cell"></th>
+                </tr>
+            );
+            trDom.push(tr);
+            this.$refs.tr.push(tr);
+        }
         return (
             <thead class="y-table-header">
-                {this.columns.map((row, rindex) => {
-                    let tr = (
-                        <tr>
-                            {row.map((th, tindex) => {
-                                return (
-                                    <th
-                                        colspan={th.colSpan} rowspan={th.rowSpan}
-                                        style={this.headerCellStyle(th.width)}
-                                        class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
-                                        <div class="y-table-cell">
-                                            { th.headRender.call(this, h, th.label) }
-                                        </div>
-                                    </th>
-                                );
-                            })}
-                        </tr>
-                    );
-                    this.$refs.tr.push(tr);
-                    return tr;
-                })}
+                { trDom }
             </thead>
         );
     }

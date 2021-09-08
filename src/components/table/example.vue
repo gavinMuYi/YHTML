@@ -1,7 +1,10 @@
 <template>
     <div class="y-table_example">
         <y-table :count="2" :multiple="true" :contentMaxHeight="250">
-            <y-table-column label="keyLabelCenter" columnKey="key" />
+            <y-table-column label="keyLabelCenter" columnKey="key">
+                <y-table-column label="keyLabelCenter-1-3214120394i12904i129034" columnKey="key">
+                </y-table-column>
+            </y-table-column>
             <y-table-column label="keyLabelCenter2" columnKey="key" width="250px" />
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" />
             <y-table-column label="一级" fixed="left">
