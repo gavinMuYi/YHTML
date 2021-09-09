@@ -1,11 +1,11 @@
 <template>
     <div class="y-table_example">
         <y-table :count="2" :multiple="true" :contentMaxHeight="250">
-            <y-table-column label="keyLabelLeft" columnKey="key" fixed="left">
-                <y-table-column label="header-111-一级" columnKey="key">
-                    <div slot="header">{{ 'headerddd-111-一级' + str }}</div>
+            <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
+                <y-table-column :label="'headerddd-111-一级' + str" columnKey="key">
+                    <!-- <div slot="header">{{ 'headerddd-111-一级' + str }}</div> -->
                     <div slot-scope="props" slot="cell" @click="heightadd">
-                        {{ props.label + '-' + props.key + str }}
+                        {{ props.label + '-' + props.key }}
                     </div>
                 </y-table-column>
             </y-table-column>

@@ -76,8 +76,8 @@ export default {
             if (this.rowHeight[index]) {
                 return {
                     height: this.selfRowHeight[index] < this.rowHeight[index]
-                        ? this.rowHeight[index] + 3 + 'px'
-                        : this.rowHeight[index] + 'px'
+                        ? this.rowHeight[index] + 'px'
+                        : this.rowHeight[index] - 1 + 'px'
                 };
             }
             return {};

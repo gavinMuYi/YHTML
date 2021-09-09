@@ -1,6 +1,19 @@
+<template>
+    <thead class="y-table-header">
+        <y-table-header-row
+            ref="tr"
+            v-for="(row, rindex) in level" :key="'row-' + rindex"
+            :rowData="columns[rindex]" :style="rowStyle(rindex)" />
+    </thead>
+</template>
+
 <script>
+import YTableHeaderRow from './table-header-row';
 export default {
     name: 'YTableHeader',
+    components: {
+        YTableHeaderRow,
+    },
     props: {
         columns: {
             type: Array,
@@ -26,63 +39,16 @@ export default {
         }
     },
     methods: {
-        headerCellStyle(width) {
-            if (!width) {
+        rowStyle(index) {
+            if (this.rowHeight[index]) {
                 return {
-                    minWidth: '50px'
+                    height: this.selfRowHeight[index] < this.rowHeight[index]
+                        ? this.rowHeight[index] + 'px'
+                        : this.rowHeight[index] - 1 + 'px'
                 };
             }
-            return {
-                width: width,
-                minWidth: width
-            };
+            return {};
         }
-    },
-    render(h) {
-        this.$refs.tr = [];
-        let trDom = [];
-        for (let rindex = 0; rindex < this.level; rindex++) {
-            let ths = [];
-            ths.push(
-                <th class="y-table-standard-cell"></th>
-            );
-            this.columns[rindex].forEach((th, tindex) => {
-                ths.push(
-                    <th
-                        colspan={th.colSpan} rowspan={th.rowSpan}
-                        style={this.headerCellStyle(th.width)}
-                        class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
-                        <div class="y-table-cell">
-                            { th.headRender.call(this, h, th.label) }
-                        </div>
-                    </th>
-                );
-            });
-            let rowStyle = {};
-            if (this.rowHeight[rindex]) {
-                rowStyle = {
-                    height: this.selfRowHeight[rindex] < this.rowHeight[rindex]
-                        ? this.rowHeight[rindex] + 3 + 'px'
-                        : this.rowHeight[rindex] + 2 + 'px'
-                };
-            }
-            let tr = this.columns[rindex] ? (
-                <tr style={rowStyle}>
-                    { ths }
-                </tr>
-            ) : (
-                <tr style={rowStyle}>
-                    <th class="y-table-standard-cell"></th>
-                </tr>
-            );
-            trDom.push(tr);
-            this.$refs.tr.push(tr);
-        }
-        return (
-            <thead class="y-table-header">
-                { trDom }
-            </thead>
-        );
     }
 };
 </script>

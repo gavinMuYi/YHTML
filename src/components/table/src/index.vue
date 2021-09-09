@@ -391,11 +391,11 @@ export default {
                 let headerRowHeightNull = [];
                 headerRow.forEach(row => {
                     let heights = [];
-                    for (let i = 0; i < row.elm.children.length; i++) {
-                        let cell = row.elm.children[i].children[0];
+                    for (let i = 0; i < row.$el.children.length; i++) {
+                        let cell = row.$el.children[i].children[0];
                         cell && heights.push(cell.offsetHeight);
                     }
-                    let height = heights.length ? Math.max(...heights) : 0;
+                    let height = heights.length ? (Math.max(...heights) + 2) : 0;
                     height ? headerRowHeight.push(height) : headerRowHeightNull.push(height);
                 });
                 let BodyRowHeight = [];
@@ -406,7 +406,7 @@ export default {
                         let cell = row.$el.children[i].children[0];
                         cell && heights.push(cell.offsetHeight);
                     }
-                    let height = heights.length ? Math.max(...heights) : 0;
+                    let height = heights.length ? (Math.max(...heights) + 3) : 0;
                     height ? BodyRowHeight.push(height) : BodyRowHeightNull.push(height);
                 });
                 this.$nextTick(() => {
