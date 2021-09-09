@@ -22,7 +22,7 @@
         <div class="y-table-center">
             <table ref="center">
                 <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
-                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                                :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                 <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
                               :selfRowHeight="centerTable.body" />
             </table>
@@ -31,7 +31,7 @@
              v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
             <table ref="right" style="width: 100%;">
                 <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
-                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                                :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                 <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
                               :selfRowHeight="rightTable.body" />
             </table>

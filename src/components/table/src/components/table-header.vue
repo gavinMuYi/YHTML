@@ -40,6 +40,31 @@ export default {
     },
     methods: {
         rowStyle(index) {
+            if (this.selfRowHeight[index] === 0) {
+                return {
+                    height: this.rowHeight[index] + 'px'
+                };
+            }
+            if (this.selfRowHeight[index] && this.selfRowHeight[index + 1] === 0) {
+                let start = index;
+                let end = start + 1;
+                while (this.selfRowHeight[end] === 0) {
+                    end++;
+                }
+                let sum = 0;
+                while (start < end) {
+                    sum += this.rowHeight[start];
+                    start++;
+                }
+                if (this.selfRowHeight[index] < sum) {
+                    return {
+                        height: this.rowHeight[index] + 'px'
+                    };
+                }
+                return {
+                    height: this.rowHeight[index] - 1 + 'px'
+                };
+            }
             if (this.rowHeight[index]) {
                 return {
                     height: this.selfRowHeight[index] < this.rowHeight[index]
