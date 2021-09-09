@@ -388,7 +388,6 @@ export default {
                 let headerRow = this.$refs[DomKey + 'Header'].$refs.tr;
                 let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr;
                 let headerRowHeight = [];
-                let headerRowHeightNull = [];
                 headerRow.forEach(row => {
                     let heights = [];
                     for (let i = 0; i < row.$el.children.length; i++) {
@@ -396,10 +395,9 @@ export default {
                         cell && heights.push(cell.offsetHeight);
                     }
                     let height = heights.length ? (Math.max(...heights) + 2) : 0;
-                    height ? headerRowHeight.push(height) : headerRowHeightNull.push(height);
+                    headerRowHeight.push(height);
                 });
                 let BodyRowHeight = [];
-                let BodyRowHeightNull = [];
                 bodyRow.forEach(row => {
                     let heights = [];
                     for (let i = 0; i < row.$el.children.length; i++) {
@@ -407,12 +405,12 @@ export default {
                         cell && heights.push(cell.offsetHeight);
                     }
                     let height = heights.length ? (Math.max(...heights) + 3) : 0;
-                    height ? BodyRowHeight.push(height) : BodyRowHeightNull.push(height);
+                    BodyRowHeight.push(height);
                 });
                 this.$nextTick(() => {
                     this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
-                    this.$set(this[DomKey + 'Table'], 'header', headerRowHeight.concat(headerRowHeightNull));
-                    this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight.concat(BodyRowHeightNull));
+                    this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
+                    this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
                 });
             };
         }
