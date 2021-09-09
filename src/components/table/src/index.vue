@@ -13,7 +13,10 @@
                               @updateTotal="updateTotal" @updateTableList="updateTableList" />
             </div>
             <div class="y-table-left"
-                 v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
+                 v-if="rowColumn.rowColumnLeft.length" :style="{
+                     minWidth: `${leftTableWidth}`,
+                     width: `${leftTableWidth}`
+            }">
                 <table ref="left" style="width: 100%;">
                     <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
                                     :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
@@ -30,7 +33,10 @@
                 </table>
             </div>
             <div class="y-table-right"
-                 v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
+                 v-if="rowColumn.rowColumnRight.length" :style="{
+                     minWidth: `${rightTableWidth}`,
+                     width: `${rightTableWidth}`
+            }">
                 <table ref="right" style="width: 100%;">
                     <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
                                     :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
