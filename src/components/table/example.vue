@@ -1,6 +1,6 @@
 <template>
     <div class="y-table_example">
-        <y-table :count="2" :multiple="true" :contentMaxHeight="250">
+        <y-table :multiple="true" :contentMaxHeight="250" :options="tableList">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级' + str" columnKey="key">
                     <!-- <div slot="header">{{ 'headerddd-111-一级' + str }}</div> -->
@@ -60,7 +60,126 @@ export default {
     data() {
         return {
             left: 0,
-            str: ''
+            str: '',
+            tableList: [{
+                label: 'sqwerd',
+                key: 'asqewqwrd'
+            }, {
+                label: 'sd',
+                key: 'asd',
+                children: [{
+                    key: 'we',
+                    label: 'sdaf',
+                    children: [{
+                        key: 'wasdffe',
+                        label: 'sgdafgfddaf'
+                    }, {
+                        key: 'was3333dffe',
+                        label: 'sg4444dafgfddaf'
+                    }]
+                }, {
+                    key: 'wesad3123f',
+                    label: 'sda212f',
+                    children: [{
+                        key: 'wasd312ffe',
+                        label: 'sgdaf3123gfddaf'
+                    }]
+                }]
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+                children: [{
+                    key: 'wde',
+                    label: 'sdwaf'
+                }]
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+            }]
         };
     },
     methods: {

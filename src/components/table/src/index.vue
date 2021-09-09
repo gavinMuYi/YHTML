@@ -1,46 +1,54 @@
 <template>
     <div class="y-table">
-        <div class="y-table-hidden">
-            <slot>
-                <y-table-column
-                    v-for="(column, index) in columnConfig" :key="column.key + index"
-                    :highlight="highlight" :columnKey="column.key"
-                    :width="column.width" :label="column.label"
-                    :fixed="column.fixed" />
-            </slot>
-            <y-table-data :lazyLoad="fetchFunc" />
+        <div class="y-table-content">
+            <div class="y-table-hidden">
+                <slot>
+                    <y-table-column
+                        v-for="(column, index) in columnConfig" :key="column.key + index"
+                        :highlight="highlight" :columnKey="column.key"
+                        :width="column.width" :label="column.label"
+                        :fixed="column.fixed" />
+                </slot>
+                <y-table-data :lazyLoad="fetchFunc" :index="index" :count="count"
+                              @updateTotal="updateTotal" @updateTableList="updateTableList" />
+            </div>
+            <div class="y-table-left"
+                 v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
+                <table ref="left" style="width: 100%;">
+                    <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
+                                    :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                    <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
+                                  :selfRowHeight="leftTable.body" :tableList="tableList" />
+                </table>
+            </div>
+            <div class="y-table-center">
+                <table ref="center">
+                    <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
+                                    :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
+                    <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
+                                  :selfRowHeight="centerTable.body" :tableList="tableList" />
+                </table>
+            </div>
+            <div class="y-table-right"
+                 v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
+                <table ref="right" style="width: 100%;">
+                    <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
+                                    :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
+                    <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
+                                  :selfRowHeight="rightTable.body" :tableList="tableList" />
+                </table>
+            </div>
         </div>
-        <div class="y-table-left"
-             v-if="rowColumn.rowColumnLeft.length" :style="`width: ${leftTableWidth}`">
-            <table ref="left" style="width: 100%;">
-                <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
-                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
-                <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
-                              :selfRowHeight="leftTable.body" />
-            </table>
-        </div>
-        <div class="y-table-center">
-            <table ref="center">
-                <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
-                                :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
-                <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
-                              :selfRowHeight="centerTable.body" />
-            </table>
-        </div>
-        <div class="y-table-right"
-             v-if="rowColumn.rowColumnRight.length" :style="`width: ${rightTableWidth}`">
-            <table ref="right" style="width: 100%;">
-                <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
-                                :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
-                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
-                              :selfRowHeight="rightTable.body" />
-            </table>
-        </div>
+        <y-pagination
+            v-if="!scrollTable"
+            :total="total" :index="index" :countOptions="countOptions"
+            @change="hanlePagination"/>
     </div>
 </template>
 
 <script>
 import { EleResize } from '@/utils/dom.js';
+import YPagination from '@/components/pagination';
 import YTableColumn from './components/table-column';
 import YTableBody from './components/table-body';
 import YTableHeader from './components/table-header';
@@ -49,6 +57,7 @@ import YTableData from './components/table-data';
 export default {
     name: 'YTable',
     components: {
+        YPagination,
         YTableColumn,
         YTableHeader,
         YTableBody,
@@ -61,17 +70,16 @@ export default {
         },
         lazyLoad: {
             type: Function,
-            default: () => {
+            default: (index, count) => {
                 return new Promise((resolve, reject) => {
                     resolve();
                 }).then(() => {
-                    return [];
+                    return {
+                        options: [],
+                        total: 0
+                    };
                 });
             }
-        },
-        count: {
-            type: Number,
-            default: -1
         },
         multiple: {
             type: Boolean,
@@ -94,14 +102,22 @@ export default {
         contentMaxHeight: {
             type: Number,
             default: null
+        },
+        countOptions: {
+            type: Array,
+            default: () => {
+                return [15, 30, 50, 100];
+            }
         }
     },
     data() {
         return {
             name: 'VTable',
-            index: 1,
             fetchFunc: this.initLoad(),
+            index: 1,
+            count: this.countOptions[0] || 15,
             total: 0,
+            tableList: [],
             column: [],
             leftTable: {
                 headerMax: 0,
@@ -367,6 +383,11 @@ export default {
             };
         }
     },
+    watch: {
+        countOptions(nval) {
+            this.count = nval[0] || 15;
+        }
+    },
     methods: {
         initLoad() {
             return this.options
@@ -375,7 +396,7 @@ export default {
                         resolve();
                     }).then(() => {
                         return {
-                            options: this.count > -1
+                            options: count > -1
                                 ? this.options.slice((index - 1) * count, index * count)
                                 : this.options,
                             total: this.options.length
@@ -383,10 +404,20 @@ export default {
                     });
                 } : this.lazyLoad;
         },
+        hanlePagination(val) {
+            this.index = val.index;
+            this.count = val.count;
+        },
+        updateTotal(val) {
+            this.total = val;
+        },
+        updateTableList(val) {
+            this.$set(this, 'tableList', val);
+        },
         handleResize(DomKey) {
             return () => {
-                let headerRow = this.$refs[DomKey + 'Header'].$refs.tr;
-                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr;
+                let headerRow = this.$refs[DomKey + 'Header'].$refs.tr || [];
+                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
                 let headerRowHeight = [];
                 headerRow.forEach(row => {
                     let heights = [];
@@ -420,43 +451,48 @@ export default {
 
 <style lang="less">
     .y-table {
-        display: flex;
-        overflow: hidden;
-        .y-table-hidden {
-            width: 0px;
-            height: 0px;
+        .y-table-content {
+            display: flex;
             overflow: hidden;
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        table {
-            border-spacing: 1px;
-            table-layout: fixed;
-            word-break:break-all;
-            .y-table-cell {
-                font-size: 14px;
-                font-weight: 400;
+            .y-table-hidden {
+                width: 0px;
+                height: 0px;
                 overflow: hidden;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
             }
-            .y-table-standard-cell {
-                width: 0;
-                padding: 0;
-            }
-        }
-        .y-table-center {
-            flex: 1;
-            overflow: auto;
             table {
-                min-width: 100%;
+                border-spacing: 1px;
+                table-layout: fixed;
+                word-break:break-all;
+                .y-table-cell {
+                    font-size: 14px;
+                    font-weight: 400;
+                    overflow: hidden;
+                }
+                .y-table-standard-cell {
+                    width: 0;
+                    padding: 0;
+                }
+            }
+            .y-table-center {
+                flex: 1;
+                overflow: auto;
+                table {
+                    min-width: 100%;
+                }
+            }
+            .y-table-left {
+                box-shadow: 1px -2px 8px #a4ede0;
+            }
+            .y-table-right {
+                box-shadow: -1px -2px 8px #a4ede0;
             }
         }
-        .y-table-left {
-            box-shadow: 1px -2px 8px #a4ede0;
-        }
-        .y-table-right {
-            box-shadow: -1px -2px 8px #a4ede0;
+        .y-pagination {
+            margin-top: 10px;
         }
     }
 </style>

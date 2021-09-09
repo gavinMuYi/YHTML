@@ -67,9 +67,11 @@ export default {
             type: Number,
             default: 1
         },
-        count: {
-            type: Number,
-            default: 15
+        countOptions: {
+            type: Array,
+            default: () => {
+                return [15, 30, 50, 100];
+            }
         },
         max: {
             type: Number,
@@ -79,7 +81,7 @@ export default {
     data() {
         return {
             currentIndex: this.index,
-            currentCount: this.count
+            currentCount: this.countOptions[0] || 15
         };
     },
     computed: {
@@ -91,8 +93,8 @@ export default {
         index(nval) {
             this.currentIndex = nval;
         },
-        count(nval) {
-            this.currentCount = nval;
+        countOptions(nval) {
+            this.currentCount = nval[0] || 15;
         },
         currentIndex() {
             this.$emit('change', {

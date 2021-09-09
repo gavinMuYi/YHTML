@@ -1,6 +1,6 @@
 <template>
     <div class="y-pagination_example">
-        <y-pagination :total="120" :count="16" :index="1" />
+        <y-pagination :total="120" :countOptions="[16]" :index="1" />
     </div>
 </template>
 
