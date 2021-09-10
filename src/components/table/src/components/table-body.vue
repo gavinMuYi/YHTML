@@ -3,7 +3,8 @@
         <y-table-row
             ref="tr"
             v-for="(row, rindex) in tableList" :key="'row-' + rindex"
-            :rowData="row" :columns="columns" :style="rowStyle(rindex)" />
+            :rowData="row" :columns="columns" :index="rindex"
+            :tableList="tableList" :style="rowStyle(rindex)" />
     </tbody>
 </template>
 

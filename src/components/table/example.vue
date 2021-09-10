@@ -1,11 +1,11 @@
 <template>
     <div class="y-table_example">
-        <y-table :multiple="true" :contentMaxHeight="250" :options="tableList">
+        <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
-                <y-table-column :label="'headerddd-111-一级' + str" columnKey="key">
+                <y-table-column :label="'headerddd-111-一级'" columnKey="c" :rowspan="true">
                     <!-- <div slot="header">{{ 'headerddd-111-一级' + str }}</div> -->
                     <div slot-scope="props" slot="cell" @click="heightadd">
-                        {{ props.label + '-' + props.key + str }}
+                        {{ props.label + '-' + props.key + c + c + c + c + str }}
                     </div>
                 </y-table-column>
             </y-table-column>
@@ -58,9 +58,20 @@ export default {
         YTableColumn
     },
     data() {
+        let c = '7912837419823741283476123846123784637rey734tr6734tr63tregr7d34gr7fg734fg3yugf73g7gf3';
         return {
             left: 0,
             str: '',
+            c: c,
+            tableList2: [{
+                label: 'sd2',
+                key: 'as3d',
+                c: c
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+                c: c
+            }],
             tableList: [{
                 label: 'sqwerd',
                 key: 'asqewqwrd'
@@ -109,7 +120,7 @@ export default {
                 key: 'as3d',
             }, {
                 label: 'sd2',
-                key: 'as3d',
+                key: 'as23413d',
             }, {
                 label: 'sd2',
                 key: 'as3d',
@@ -121,7 +132,7 @@ export default {
                 key: 'as3d',
             }, {
                 label: 'sd2',
-                key: 'as3d',
+                key: 'as12343d',
             }, {
                 label: 'sd2',
                 key: 'as3d',
@@ -184,6 +195,11 @@ export default {
     },
     methods: {
         heightadd() {
+            if (this.c) {
+                this.c = '';
+            } else {
+                this.c = '7912837419823741283476123846123784637rey734tr6734tr63tregr7d34gr7fg734fg3yugf73g7gf3';
+            }
             if (!this.str) {
                 this.str = '-sahdvhavjdskjvknasjkvbajksdbvnjkasdvjaasdmfalksdmfklasmdfkasmdfasdfsdv';
             } else {

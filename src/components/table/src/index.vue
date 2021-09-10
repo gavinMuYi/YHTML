@@ -377,15 +377,16 @@ export default {
                     }
                 }
             }
+            let bodyHeight = this.centerTable.body.map((val, index) => {
+                return Math.max(
+                    this.leftTable.body[index] || 0,
+                    this.centerTable.body[index],
+                    this.rightTable.body[index] || 0
+                );
+            });
             return {
                 header: headerHeight,
-                body: this.centerTable.body.map((val, index) => {
-                    return Math.max(
-                        this.leftTable.body[index] || 0,
-                        this.centerTable.body[index],
-                        this.rightTable.body[index] || 0
-                    );
-                })
+                body: bodyHeight
             };
         }
     },

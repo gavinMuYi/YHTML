@@ -50,13 +50,18 @@ export default {
         }
     },
     mounted() {
-        this.updateData();
+        this.updateData(1);
     },
     methods: {
-        updateData() {
+        updateData(level) {
             this.lazyLoad(this.index, this.count).then(res => {
                 this.total = res.total || 0;
-                this.$set(this, 'tableList', res.options || []);
+                this.$set(this, 'tableList', (res.options || []).map(row => {
+                    return {
+                        ...row,
+                        $y_table_level: level
+                    };
+                }));
             });
         }
     }

@@ -30,6 +30,10 @@ export default {
         fixed: {
             type: String,
             default: ''
+        },
+        rowspan: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -52,6 +56,9 @@ export default {
             this.setParentColumn();
         },
         fixed() {
+            this.setParentColumn();
+        },
+        rowspan() {
             this.setParentColumn();
         }
     },
@@ -93,7 +100,8 @@ export default {
                     columnKey: this.columnKey,
                     width: this.width,
                     children: this.column,
-                    fixed: this.fixed
+                    fixed: this.fixed,
+                    rowspan: this.rowspan
                 };
                 let that = this;
                 column.headRender = function (h, label) {
