@@ -11,6 +11,7 @@
                 </slot>
                 <y-table-data :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList" />
+                <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
             <div class="y-table-left"
                  v-if="rowColumn.rowColumnLeft.length" :style="{
@@ -59,6 +60,7 @@ import YTableColumn from './components/table-column';
 import YTableBody from './components/table-body';
 import YTableHeader from './components/table-header';
 import YTableData from './components/table-data';
+import YTableStandard  from './components/table-standard';
 
 export default {
     name: 'YTable',
@@ -67,7 +69,8 @@ export default {
         YTableColumn,
         YTableHeader,
         YTableBody,
-        YTableData
+        YTableData,
+        YTableStandard
     },
     props: {
         options: {
@@ -137,6 +140,14 @@ export default {
             },
             rightTable: {
                 headerMax: 0,
+                header: [],
+                body: []
+            },
+            standardTable: {
+                header: [],
+                body: []
+            },
+            rowHeight: {
                 header: [],
                 body: []
             }
@@ -327,67 +338,6 @@ export default {
                 }
             });
             return `calc(${widthPercent}% + ${widthPx}px)`;
-        },
-        rowHeight() {
-            let headerHeight = [];
-            let left = this.leftTable.header;
-            let center = this.centerTable.header;
-            let right = this.rightTable.header;
-            let indexs3 = [this.leftTable.headerMax, this.centerTable.headerMax, this.rightTable.headerMax].sort();
-            let lastTwo = {
-                a: [],
-                b: []
-            };
-            let standard = 0;
-            let bSum = 0;
-            for (let i = 0; i < this.headerDeep; i++) {
-                if (left[i] && center[i] && right[i]) {
-                    headerHeight.push(Math.max(left[i], center[i], right[i]));
-                } else {
-                    if (indexs3[0] === indexs3[1]) {
-                        headerHeight.push(Math.max(left[i], center[i], right[i]));
-                    } else {
-                        if (i < indexs3[1]) {
-                            headerHeight.push(Math.max(left[i], center[i], right[i]));
-                        }
-                        else if (i === indexs3[1]) {
-                            if (!left[i]) {
-                                lastTwo.a = !center[i + 1] ? center : right;
-                                lastTwo.b = !center[i + 1] ? right : center;
-                            }
-                            if (!center[i]) {
-                                lastTwo.a = !left[i + 1] ? left : right;
-                                lastTwo.b = !left[i + 1] ? right : left;
-                            }
-                            if (!right[i]) {
-                                lastTwo.a = !center[i + 1] ? center : left;
-                                lastTwo.b = !center[i + 1] ? left : center;
-                            }
-                            standard = lastTwo.a[i];
-                            bSum += lastTwo.b[i];
-                            headerHeight.push(lastTwo.b[i]);
-                        }
-                        else if (i > indexs3[1] && i < this.headerDeep - 1) {
-                            bSum += lastTwo.b[i];
-                            headerHeight.push(lastTwo.b[i]);
-                        }
-                        else {
-                            headerHeight.push(Math.max(standard - bSum, lastTwo.b[i]));
-                        }
-                    }
-                }
-            }
-            let bodyHeight = this.centerTable.body.map((val, index) => {
-                return Math.max(
-                    this.leftTable.body[index] || 0,
-                    this.centerTable.body[index],
-                    this.rightTable.body[index] || 0
-                );
-            });
-            return {
-                header: headerHeight,
-                body: bodyHeight
-            };
         }
     },
     watch: {
@@ -421,34 +371,82 @@ export default {
         updateTableList(val) {
             this.$set(this, 'tableList', val);
         },
+        setStandardTable() {
+            let left = this.leftTable;
+            let center = this.centerTable;
+            let right = this.rightTable;
+            let compateTable = function (col1, col2, col3, part) {
+                let left = col1[part];
+                let center = col2[part];
+                let right = col3[part];
+                let rows = [];
+                let getRowspan = function(arr, index) {
+                    if (!arr[index]) {
+                        return 0;
+                    } else {
+                        let rowspan = 1;
+                        let i = index + 1;
+                        while (arr[i] === 0) {
+                            rowspan++;
+                            i++;
+                        }
+                        return rowspan;
+                    }
+                };
+                center.forEach((row, index) => {
+                    let r = [];
+                    left[index] && r.push({
+                        height: left[index],
+                        rowspan: getRowspan(left, index)
+                    });
+                    center[index] && r.push({
+                        height: center[index],
+                        rowspan: getRowspan(center, index)
+                    });
+                    right[index] && r.push({
+                        height: right[index],
+                        rowspan: getRowspan(right, index)
+                    });
+                    rows.push(r);
+                });
+                return rows;
+            };
+            this.$set(this.standardTable, 'header', compateTable(left, center, right, 'header'));
+            this.$set(this.standardTable, 'body', compateTable(left, center, right, 'body'));
+            console.log(this.standardTable);
+        },
+        rowHeightChange(val) {
+            this.$set(this, 'rowHeight', val);
+        },
         handleResize(DomKey) {
             return () => {
-                let headerRow = this.$refs[DomKey + 'Header'].$refs.tr || [];
-                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
-                let headerRowHeight = [];
-                headerRow.forEach(row => {
-                    let heights = [];
-                    for (let i = 0; i < row.$el.children.length; i++) {
-                        let cell = row.$el.children[i].children[0];
-                        cell && heights.push(cell.offsetHeight);
-                    }
-                    let height = heights.length ? (Math.max(...heights) + 2) : 0;
-                    headerRowHeight.push(height);
-                });
-                let BodyRowHeight = [];
-                bodyRow.forEach(row => {
-                    let heights = [];
-                    for (let i = 0; i < row.$el.children.length; i++) {
-                        let cell = row.$el.children[i].children[0];
-                        cell && heights.push(cell.offsetHeight);
-                    }
-                    let height = heights.length ? (Math.max(...heights) + 3) : 0;
-                    BodyRowHeight.push(height);
-                });
                 this.$nextTick(() => {
+                    let headerRow = this.$refs[DomKey + 'Header'].$refs.tr || [];
+                    let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
+                    let headerRowHeight = [];
+                    headerRow.forEach(row => {
+                        let heights = [];
+                        for (let i = 0; i < row.$el.children.length; i++) {
+                            let cell = row.$el.children[i].children[0];
+                            cell && heights.push(cell.offsetHeight);
+                        }
+                        let height = heights.length ? (Math.max(...heights) + 2) : 0;
+                        headerRowHeight.push(height);
+                    });
+                    let BodyRowHeight = [];
+                    bodyRow.forEach(row => {
+                        let heights = [];
+                        for (let i = 0; i < row.$el.children.length; i++) {
+                            let cell = row.$el.children[i].children[0];
+                            cell && heights.push(cell.offsetHeight);
+                        }
+                        let height = heights.length ? (Math.max(...heights) + 3) : 0;
+                        BodyRowHeight.push(height);
+                    });
                     this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
                     this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
                     this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
+                    this.setStandardTable();
                 });
             };
         }
