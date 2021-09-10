@@ -413,7 +413,6 @@ export default {
             };
             this.$set(this.standardTable, 'header', compateTable(left, center, right, 'header'));
             this.$set(this.standardTable, 'body', compateTable(left, center, right, 'body'));
-            console.log(this.standardTable);
         },
         rowHeightChange(val) {
             this.$set(this, 'rowHeight', val);
