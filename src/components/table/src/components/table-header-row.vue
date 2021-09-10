@@ -34,7 +34,7 @@ export default {
                     style={this.headerCellStyle(th.width)}
                     class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
                     <div class="y-table-cell">
-                        { th.headRender.call(this, h, th.label) }
+                        { th.headRender.call(this, h, th.label, th) }
                     </div>
                 </th>
             );

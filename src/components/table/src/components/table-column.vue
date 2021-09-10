@@ -104,9 +104,9 @@ export default {
                     rowspan: this.rowspan
                 };
                 let that = this;
-                column.headRender = function (h, label) {
-                    if (that.$slots.header) {
-                        return that.$slots.header;
+                column.headRender = function (h, label, data) {
+                    if (that.$scopedSlots.header) {
+                        return that.$scopedSlots.header(data);
                     } else {
                         return label;
                     }
