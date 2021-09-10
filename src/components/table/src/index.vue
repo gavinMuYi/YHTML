@@ -1,5 +1,6 @@
 <template>
     <div class="y-table">
+        <h2 v-if="title">{{ title }}</h2>
         <div class="y-table-content">
             <div class="y-table-hidden">
                 <slot>
@@ -99,6 +100,10 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        title: {
+            type: String,
+            default: ''
         },
         highlight: {
             type: String,
