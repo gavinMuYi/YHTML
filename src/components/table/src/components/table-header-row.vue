@@ -1,6 +1,11 @@
 <script>
+import YCheckbox from '@/components/checkbox';
+
 export default {
     name: 'YTableHeaderRow',
+    components: {
+        YCheckbox
+    },
     props: {
         rowData: {
             type: Array,
@@ -9,6 +14,14 @@ export default {
             }
         },
         residue: {
+            type: Number,
+            default: 0
+        },
+        level: {
+            type: Number,
+            default: 0
+        },
+        rindex: {
             type: Number,
             default: 0
         },
@@ -35,8 +48,12 @@ export default {
         ths.push(
             <th class="y-table-standard-cell"></th>
         );
-        this.actionTable && ths.push(
-            <td class="y-table-action-cell">aa</td>
+        this.actionTable && !this.rindex && ths.push(
+            <th class="y-table-action-cell" rowspan={this.level}>
+                <div class="y-table_checkbox">
+                    <y-checkbox />
+                </div>
+            </th>
         );
         this.rowData.forEach((th, tindex) => {
             ths.push(

@@ -2,8 +2,8 @@
     <thead class="y-table-header">
         <y-table-header-row
             ref="tr"
-            v-for="(row, rindex) in level" :key="'row-' + rindex"
-            :residue="level - rindex" :actionTable="actionTable"
+            v-for="(row, rindex) in level" :key="'row-' + rindex" :rindex="rindex"
+            :residue="level - rindex" :actionTable="actionTable" :level="level"
             :rowData="columns[rindex]" :style="rowStyle(rindex)" />
     </thead>
 </template>

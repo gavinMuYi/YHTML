@@ -14,7 +14,7 @@
                               @updateTotal="updateTotal" @updateTableList="updateTableList" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
-            <div class="y-table-actions">
+            <div class="y-table-actions" v-if="multiple">
                 <table>
                     <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                     :rowHeight="rowHeight.header" :selfRowHeight="[]" />
@@ -516,7 +516,17 @@ export default {
                 box-shadow: -1px -2px 8px #a4ede0;
             }
             .y-table-actions {
-
+                width: 40px;
+                table {
+                    .y-table-action-cell {
+                        .y-table_checkbox {
+                            display: flex;
+                            justify-content: center;
+                            width: 40px;
+                            height: 16px;
+                        }
+                    }
+                }
             }
         }
         .y-pagination {

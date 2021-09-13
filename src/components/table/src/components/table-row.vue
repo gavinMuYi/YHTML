@@ -1,6 +1,11 @@
 <script>
+import YCheckbox from '@/components/checkbox';
+
 export default {
     name: 'YTableRow',
+    components: {
+        YCheckbox
+    },
     props: {
         rowData: {
             type: Object,
@@ -59,7 +64,11 @@ export default {
             <td class="y-table-standard-cell"></td>
         );
         this.actionTable && tds.push(
-            <td class="y-table-action-cell">aa</td>
+            <td class="y-table-action-cell">
+                <div class="y-table_checkbox">
+                    <y-checkbox />
+                </div>
+            </td>
         );
         this.columns.forEach((td, tindex) => {
             let rowspan = this.getRowspan(td);

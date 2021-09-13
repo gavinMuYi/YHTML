@@ -45,14 +45,12 @@ export default {
                     });
                     let BodyRowHeight = [];
                     bodyRow.forEach(row => {
-                        console.log(row);
                         BodyRowHeight.push(row.offsetHeight - 1);
                     });
                     let rowHeights = {
                         header: headerRowHeight,
                         body: BodyRowHeight
                     };
-                    console.log(this.standardTable, rowHeights);
                     this.$emit('rowHeightChange', rowHeights);
                 });
             },
