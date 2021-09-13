@@ -3,7 +3,7 @@
         <y-table-row
             ref="tr"
             v-for="(row, rindex) in tableList" :key="'row-' + rindex"
-            :rowData="row" :columns="columns" :index="rindex"
+            :rowData="row" :columns="columns" :index="rindex" :actionTable="actionTable"
             :tableList="tableList" :style="rowStyle(rindex)" />
     </tbody>
 </template>
@@ -40,6 +40,10 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        actionTable: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -48,7 +52,7 @@ export default {
     },
     methods: {
         rowStyle(index) {
-            if (this.selfRowHeight[index] === 0) {
+            if (this.selfRowHeight[index] === 0 || (!this.selfRowHeight[index] && this.actionTable)) {
                 return {
                     height: this.rowHeight[index] + 'px'
                 };

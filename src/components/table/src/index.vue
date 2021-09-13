@@ -14,37 +14,47 @@
                               @updateTotal="updateTotal" @updateTableList="updateTableList" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
-            <div class="y-table-left"
-                 v-if="rowColumn.rowColumnLeft.length" :style="{
-                     minWidth: `${leftTableWidth}`,
-                     width: `${leftTableWidth}`
-            }">
-                <table ref="left" style="width: 100%;">
-                    <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
-                                    :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
-                    <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
-                                  :selfRowHeight="leftTable.body" :tableList="tableList" />
+            <div class="y-table-actions">
+                <table>
+                    <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
+                                    :rowHeight="rowHeight.header" :selfRowHeight="[]" />
+                    <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
+                                  :selfRowHeight="[]" :tableList="tableList" />
                 </table>
             </div>
-            <div class="y-table-center">
-                <table ref="center">
-                    <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
-                                    :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
-                    <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
-                                  :selfRowHeight="centerTable.body" :tableList="tableList" />
-                </table>
-            </div>
-            <div class="y-table-right"
-                 v-if="rowColumn.rowColumnRight.length" :style="{
-                     minWidth: `${rightTableWidth}`,
-                     width: `${rightTableWidth}`
-            }">
-                <table ref="right" style="width: 100%;">
-                    <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
-                                    :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
-                    <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
-                                  :selfRowHeight="rightTable.body" :tableList="tableList" />
-                </table>
+            <div class="y-table-box">
+                <div class="y-table-left"
+                     v-if="rowColumn.rowColumnLeft.length" :style="{
+                         minWidth: `${leftTableWidth}`,
+                         width: `${leftTableWidth}`
+                }">
+                    <table ref="left" style="width: 100%;">
+                        <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                        <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
+                                      :selfRowHeight="leftTable.body" :tableList="tableList" />
+                    </table>
+                </div>
+                <div class="y-table-center">
+                    <table ref="center">
+                        <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
+                        <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
+                                      :selfRowHeight="centerTable.body" :tableList="tableList" />
+                    </table>
+                </div>
+                <div class="y-table-right"
+                     v-if="rowColumn.rowColumnRight.length" :style="{
+                         minWidth: `${rightTableWidth}`,
+                         width: `${rightTableWidth}`
+                }">
+                    <table ref="right" style="width: 100%;">
+                        <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
+                        <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
+                                      :selfRowHeight="rightTable.body" :tableList="tableList" />
+                    </table>
+                </div>
             </div>
         </div>
         <y-pagination
@@ -465,7 +475,10 @@ export default {
         }
         .y-table-content {
             display: flex;
-            overflow: hidden;
+            .y-table-box {
+                display: flex;
+                overflow: hidden;
+            }
             .y-table-hidden {
                 width: 0px;
                 height: 0px;
@@ -501,6 +514,9 @@ export default {
             }
             .y-table-right {
                 box-shadow: -1px -2px 8px #a4ede0;
+            }
+            .y-table-actions {
+
             }
         }
         .y-pagination {

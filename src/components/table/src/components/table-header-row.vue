@@ -11,6 +11,10 @@ export default {
         residue: {
             type: Number,
             default: 0
+        },
+        actionTable: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -30,6 +34,9 @@ export default {
         let ths = [];
         ths.push(
             <th class="y-table-standard-cell"></th>
+        );
+        this.actionTable && ths.push(
+            <td class="y-table-action-cell">aa</td>
         );
         this.rowData.forEach((th, tindex) => {
             ths.push(

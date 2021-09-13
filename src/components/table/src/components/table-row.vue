@@ -23,6 +23,10 @@ export default {
         index: {
             type: Number,
             default: 0
+        },
+        actionTable: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -53,6 +57,9 @@ export default {
         let tds = [];
         tds.push(
             <td class="y-table-standard-cell"></td>
+        );
+        this.actionTable && tds.push(
+            <td class="y-table-action-cell">aa</td>
         );
         this.columns.forEach((td, tindex) => {
             let rowspan = this.getRowspan(td);

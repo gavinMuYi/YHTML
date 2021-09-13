@@ -3,7 +3,7 @@
         <y-table-header-row
             ref="tr"
             v-for="(row, rindex) in level" :key="'row-' + rindex"
-            :residue="level - rindex"
+            :residue="level - rindex" :actionTable="actionTable"
             :rowData="columns[rindex]" :style="rowStyle(rindex)" />
     </thead>
 </template>
@@ -37,11 +37,15 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        actionTable: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
         rowStyle(index) {
-            if (this.selfRowHeight[index] === 0) {
+            if (this.selfRowHeight[index] === 0 || (!this.selfRowHeight[index] && this.actionTable)) {
                 return {
                     height: this.rowHeight[index] + 'px'
                 };
