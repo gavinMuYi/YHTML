@@ -522,7 +522,7 @@ export default {
                         .y-table_checkbox {
                             display: flex;
                             justify-content: center;
-                            width: 40px;
+                            width: 37px;
                             height: 16px;
                         }
                     }
