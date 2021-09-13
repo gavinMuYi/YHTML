@@ -1,6 +1,6 @@
 <template>
     <div class="y-table">
-        <h2 v-if="title">{{ title }}</h2>
+        <h2 v-if="title" class="y-table-title">{{ title }}</h2>
         <div class="y-table-content">
             <div class="y-table-hidden">
                 <slot>
@@ -460,6 +460,9 @@ export default {
 
 <style lang="less">
     .y-table {
+        .y-table-title {
+            margin-top: 0px;
+        }
         .y-table-content {
             display: flex;
             overflow: hidden;

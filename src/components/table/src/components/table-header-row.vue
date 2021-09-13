@@ -7,6 +7,10 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        residue: {
+            type: Number,
+            default: 0
         }
     },
     methods: {
@@ -35,6 +39,13 @@ export default {
                     class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
                     <div class="y-table-cell">
                         { th.headRender.call(this, h, th.label, th) }
+                        {
+                            this.residue === th.rowSpan && th.dragable
+                                ? (
+                                    <div class="y-table-column_drag-move-line"></div>
+                                )
+                                : ''
+                        }
                     </div>
                 </th>
             );
@@ -47,3 +58,24 @@ export default {
     }
 };
 </script>
+
+<style lang="less">
+    .y-table-header {
+        .y-table-column_drag-move-line {
+            position: absolute;
+            right: 0;
+            display: none;
+            height: 20px;
+            width: 0;
+            border: 1px solid #18b9ac5c;
+        }
+        th:hover {
+            .y-table-column_drag-move-line {
+                display: block;
+                &:hover {
+                    cursor: col-resize;
+                }
+            }
+        }
+    }
+</style>

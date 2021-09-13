@@ -12,7 +12,7 @@
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" />
             <y-table-column label="一级">
                 <div slot="header">header-111-一级</div>
-                <y-table-column label="二级" columnKey="label" width="50px">
+                <y-table-column label="二级" columnKey="label" width="50px" dragable>
                 </y-table-column>
                 <y-table-column label="二级">
                     <y-table-column label="三级" columnKey="label" width="100px">

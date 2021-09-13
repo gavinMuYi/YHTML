@@ -34,6 +34,10 @@ export default {
         rowspan: {
             type: Boolean,
             default: false
+        },
+        dragable: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -59,6 +63,9 @@ export default {
             this.setParentColumn();
         },
         rowspan() {
+            this.setParentColumn();
+        },
+        dragable() {
             this.setParentColumn();
         }
     },
@@ -101,7 +108,8 @@ export default {
                     width: this.width,
                     children: this.column,
                     fixed: this.fixed,
-                    rowspan: this.rowspan
+                    rowspan: this.rowspan,
+                    dragable: this.dragable
                 };
                 let that = this;
                 column.headRender = function (h, label, data) {

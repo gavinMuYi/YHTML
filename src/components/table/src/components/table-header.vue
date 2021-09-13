@@ -3,6 +3,7 @@
         <y-table-header-row
             ref="tr"
             v-for="(row, rindex) in level" :key="'row-' + rindex"
+            :residue="level - rindex"
             :rowData="columns[rindex]" :style="rowStyle(rindex)" />
     </thead>
 </template>
@@ -86,6 +87,7 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
     }
 </style>
