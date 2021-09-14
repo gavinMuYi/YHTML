@@ -1,6 +1,7 @@
 <template>
     <div class="y-table_example">
-        <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1">
+        <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1"
+                 :smooth="true">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级' + str" columnKey="c" :rowspan="true">
                     <!-- <div slot="header">{{ 'headerddd-111-一级' + str }}</div> -->

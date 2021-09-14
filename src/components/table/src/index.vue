@@ -132,6 +132,10 @@ export default {
             default: () => {
                 return [15, 30, 50, 100];
             }
+        },
+        smooth: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -439,23 +443,33 @@ export default {
                     let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
                     let headerRowHeight = [];
                     headerRow.forEach(row => {
-                        let heights = [];
-                        for (let i = 0; i < row.$el.children.length; i++) {
-                            let cell = row.$el.children[i].children[0];
-                            cell && heights.push(cell.offsetHeight);
+                        if (!this.smooth) {
+                            let heights = [];
+                            for (let i = 0; i < row.$el.children.length; i++) {
+                                let cell = row.$el.children[i].children[0];
+                                cell && heights.push(cell.offsetHeight);
+                            }
+                            let height = heights.length ? (Math.max(...heights) + 2) : 0;
+                            headerRowHeight.push(height);
+                        } else {
+                            let height = row.$el.offsetHeight - 2;
+                            headerRowHeight.push(height);
                         }
-                        let height = heights.length ? (Math.max(...heights) + 2) : 0;
-                        headerRowHeight.push(height);
                     });
                     let BodyRowHeight = [];
                     bodyRow.forEach(row => {
-                        let heights = [];
-                        for (let i = 0; i < row.$el.children.length; i++) {
-                            let cell = row.$el.children[i].children[0];
-                            cell && heights.push(cell.offsetHeight);
+                        if (!this.smooth) {
+                            let heights = [];
+                            for (let i = 0; i < row.$el.children.length; i++) {
+                                let cell = row.$el.children[i].children[0];
+                                cell && heights.push(cell.offsetHeight);
+                            }
+                            let height = heights.length ? (Math.max(...heights) + 3) : 0;
+                            BodyRowHeight.push(height);
+                        } else {
+                            let height = row.$el.offsetHeight - 3;
+                            BodyRowHeight.push(height);
                         }
-                        let height = heights.length ? (Math.max(...heights) + 3) : 0;
-                        BodyRowHeight.push(height);
                     });
                     this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
                     this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
