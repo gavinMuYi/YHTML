@@ -2,35 +2,35 @@
     <div class="y-table_example">
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
-                <y-table-column :label="'headerddd-111-一级' + str" columnKey="c" :rowspan="true">
+                <y-table-column :label="'headerddd-111-一级' + str" columnKey="c" :rowspan="true" dragable>
                     <!-- <div slot="header">{{ 'headerddd-111-一级' + str }}</div> -->
                     <div slot-scope="props" slot="cell" @click="heightadd">
                         {{ props.label + '-' + props.key + c + c + c + c + str }}
                     </div>
                 </y-table-column>
             </y-table-column>
-            <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" />
+            <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable/>
             <y-table-column label="一级">
                 <div slot="header">header-111-一级</div>
                 <y-table-column label="二级" columnKey="label" width="50px" dragable>
                 </y-table-column>
                 <y-table-column label="二级">
-                    <y-table-column label="三级" columnKey="label" width="100px">
+                    <y-table-column label="三级" columnKey="label" width="100px" dragable>
                         <div slot="header">cell slot can click</div>
                         <div slot-scope="props" slot="cell">
                             {{ props.label + '-' + props.key }}
                         </div>
                     </y-table-column>
-                    <y-table-column label="三级" columnKey="label" width="50px">
+                    <y-table-column label="三级" columnKey="label" width="50px" dragable>
                         <div slot="header">header-111-三级</div>
                     </y-table-column>
-                    <y-table-column label="三级" columnKey="label" width="50px">
+                    <y-table-column label="三级" columnKey="label" width="50px" dragable>
                     </y-table-column>
                 </y-table-column>
-                <y-table-column label="Labelin1" columnKey="label" width="100px" />
-                <y-table-column label="Labelin2" columnKey="label" width="50px" />
+                <y-table-column label="Labelin1" columnKey="label" width="100px" dragable/>
+                <y-table-column label="Labelin2" columnKey="label" width="50px" dragable/>
             </y-table-column>
-            <y-table-column label="keyLabelCenter" columnKey="key" width="550px" />
+            <y-table-column label="keyLabelCenter" columnKey="key" width="550px" dragable/>
         </y-table>
         <!-- <div class="ex-table-box" ref="box">
             <table class="ex-table">
@@ -57,7 +57,7 @@
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" />
             <y-table-column label="一级">
                 <div slot="header">header-111-一级</div>
-                <y-table-column label="二级" columnKey="label" width="50px">
+                <y-table-column label="二级" columnKey="label" width="50px" dragable>
                 </y-table-column>
                 <y-table-column label="二级">
                     <y-table-column label="三级" columnKey="label" width="100px">

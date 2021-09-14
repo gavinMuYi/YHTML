@@ -30,6 +30,11 @@ export default {
             default: false
         }
     },
+    data() {
+        return {
+            moveStatus: {}
+        };
+    },
     methods: {
         headerCellStyle(width) {
             if (!width) {
@@ -41,6 +46,37 @@ export default {
                 width: width,
                 minWidth: width
             };
+        },
+        handleMouseMove(e, tindex, width) {
+            if (this.moveStatus[tindex]) {
+                let width = this.$refs.th[tindex].elm.offsetWidth - 2;
+                let newWidth = width +
+                    (e.clientX - (this.moveStatus[tindex].lastpostion || this.moveStatus[tindex].start));
+                this.$refs.th[tindex].elm.style.width = newWidth + 'px';
+                this.$refs.th[tindex].elm.style.minWidth = newWidth + 'px';
+                this.$set(this.moveStatus, tindex, {
+                    ...(this.moveStatus[tindex] || {}),
+                    lastpostion: e.clientX
+                });
+            }
+        },
+        handleMouseUp(e, tindex) {
+            if (this.moveStatus[tindex]) {
+                delete this.moveStatus[tindex];
+            }
+        },
+        handleMouseEnter(index) {
+            Object.keys(this.moveStatus).forEach(key => {
+                if (key !== index) {
+                    delete this.moveStatus[key];
+                }
+            });
+        },
+        handleMouseDown(e, tindex) {
+            this.$set(this.moveStatus, tindex, {
+                ...(this.moveStatus[tindex] || {}),
+                innerout: true
+            });
         }
     },
     render(h) {
@@ -55,24 +91,37 @@ export default {
                 </div>
             </th>
         );
+        this.$refs = {
+            th: [],
+            line: []
+        };
         this.rowData.forEach((th, tindex) => {
-            ths.push(
-                <th
-                    colspan={th.colSpan} rowspan={th.rowSpan}
-                    style={this.headerCellStyle(th.width)}
-                    class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
-                    <div class="y-table-cell">
-                        { th.headRender.call(this, h, th.label, th) }
-                        {
-                            this.residue === th.rowSpan && th.dragable
-                                ? (
-                                    <div class="y-table-column_drag-move-line"></div>
-                                )
-                                : ''
-                        }
+            let line = (
+                <div class="y-table-column_drag-move-line-outter"
+                    on-mousemove={ ($event) => this.handleMouseMove($event, tindex, th.width) }
+                    on-mouseup={ ($event) => this.handleMouseUp($event, tindex, th.width) }>
+                    <div class="y-table-column_drag-move-line"
+                        on-mousedown={ ($event) => this.handleMouseDown($event, tindex) }>
                     </div>
-                </th>
+                </div>
             );
+            let thdom = <th
+                colspan={th.colSpan} rowspan={th.rowSpan}
+                style={this.headerCellStyle(th.width)}
+                class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}
+                on-mouseenter={() => this.handleMouseEnter(tindex)}>
+                <div class="y-table-cell">
+                    { th.headRender.call(this, h, th.label, th) }
+                    {
+                        this.residue === th.rowSpan && th.dragable
+                            ? line
+                            : ''
+                    }
+                </div>
+            </th>;
+            this.$refs.th.push(thdom);
+            this.$refs.line.push(line);
+            ths.push(thdom);
         });
         return (
             <tr>
@@ -85,18 +134,21 @@ export default {
 
 <style lang="less">
     .y-table-header {
-        .y-table-column_drag-move-line {
+        .y-table-column_drag-move-line-outter {
             position: absolute;
             right: 0;
+            padding: 3px;
             display: none;
-            height: 20px;
-            width: 0;
-            border: 1px solid #18b9ac5c;
+            .y-table-column_drag-move-line {
+                height: 20px;
+                width: 2px;
+                background: #18b9ac5c;
+            }
         }
         th:hover {
-            .y-table-column_drag-move-line {
+            .y-table-column_drag-move-line-outter {
                 display: block;
-                &:hover {
+                .y-table-column_drag-move-line:hover {
                     cursor: col-resize;
                 }
             }
