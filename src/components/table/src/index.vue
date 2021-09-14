@@ -48,7 +48,7 @@
                          minWidth: `${rightTableWidth}`,
                          width: `${rightTableWidth}`
                 }">
-                    <table ref="right" style="width: 100%;">
+                    <table ref="right" style="width: 100%">
                         <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
@@ -352,7 +352,7 @@ export default {
                     widthPx += 200;
                 }
             });
-            return `calc(${widthPercent}% + ${widthPx}px)`;
+            return `calc(${widthPercent}% + ${widthPx + 5}px)`;
         }
     },
     watch: {

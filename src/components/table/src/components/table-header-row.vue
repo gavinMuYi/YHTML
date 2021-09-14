@@ -54,6 +54,7 @@ export default {
                     (e.clientX - (this.moveStatus[tindex].lastpostion || this.moveStatus[tindex].start));
                 this.$refs.th[tindex].elm.style.width = newWidth + 'px';
                 this.$refs.th[tindex].elm.style.minWidth = newWidth + 'px';
+                console.log('moving', this.moveStatus[tindex], newWidth);
                 this.$set(this.moveStatus, tindex, {
                     ...(this.moveStatus[tindex] || {}),
                     lastpostion: e.clientX
@@ -62,10 +63,12 @@ export default {
         },
         handleMouseUp(e, tindex) {
             if (this.moveStatus[tindex]) {
+                console.log('out');
                 delete this.moveStatus[tindex];
             }
         },
         handleMouseEnter(index) {
+            console.log('out');
             Object.keys(this.moveStatus).forEach(key => {
                 if (key !== index) {
                     delete this.moveStatus[key];
@@ -75,7 +78,7 @@ export default {
         handleMouseDown(e, tindex) {
             this.$set(this.moveStatus, tindex, {
                 ...(this.moveStatus[tindex] || {}),
-                innerout: true
+                start: e.clientX
             });
         }
     },

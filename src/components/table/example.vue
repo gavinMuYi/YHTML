@@ -2,14 +2,15 @@
     <div class="y-table_example">
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
-                <y-table-column :label="'headerddd-111-一级' + str" columnKey="c" :rowspan="true" dragable>
+                <y-table-column :label="'headerddd-111-一级' + str" columnKey="c" :rowspan="true" width="100px">
                     <!-- <div slot="header">{{ 'headerddd-111-一级' + str }}</div> -->
                     <div slot-scope="props" slot="cell" @click="heightadd">
                         {{ props.label + '-' + props.key + c + c + c + c + str }}
                     </div>
                 </y-table-column>
             </y-table-column>
-            <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable/>
+            <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px"/>
+            <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px"/>
             <y-table-column label="一级">
                 <div slot="header">header-111-一级</div>
                 <y-table-column label="二级" columnKey="label" width="50px" dragable>
