@@ -33,6 +33,14 @@ export default {
             }
         }
     },
+    data() {
+        return {
+            lastHeight: {
+                header: [],
+                body: []
+            }
+        };
+    },
     watch: {
         standardTable: {
             handler: function () {
@@ -45,13 +53,18 @@ export default {
                     });
                     let BodyRowHeight = [];
                     bodyRow.forEach(row => {
-                        BodyRowHeight.push(row.offsetHeight - 1);
+                        BodyRowHeight.push(row.offsetHeight - 2);
                     });
                     let rowHeights = {
                         header: headerRowHeight,
                         body: BodyRowHeight
                     };
-                    this.$emit('rowHeightChange', rowHeights);
+                    if (rowHeights.header.toString() !== this.lastHeight.header.toString()
+                    || rowHeights.body.toString() !== this.lastHeight.body.toString()
+                    ) {
+                        this.$set(this, 'lastHeight', rowHeights);
+                        this.$emit('rowHeightChange', rowHeights);
+                    }
                 });
             },
             deep: true

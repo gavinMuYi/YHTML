@@ -2,7 +2,7 @@
     <div class="y-table_example">
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
-                <y-table-column :label="'headerddd-111-一级' + str" columnKey="c" :rowspan="true">
+                <y-table-column :label="'headerddd-111-一级' + c + c + c + c + str" columnKey="c" :rowspan="true">
                     <!-- <div slot="header">{{ 'headerddd-111-一级' + str }}</div> -->
                     <div slot-scope="props" slot="cell" @click="heightadd">
                         {{ props.label + '-' + props.key + c + c + c + c + str }}
@@ -10,7 +10,7 @@
                 </y-table-column>
             </y-table-column>
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px"/>
-            <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px"/>
+            <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px" :rowspan="true"/>
             <y-table-column label="一级">
                 <div slot="header">header-111-一级</div>
                 <y-table-column label="二级" columnKey="label" width="50px" dragable>
@@ -46,7 +46,7 @@
                 </tr>
             </table>
         </div> -->
-        <y-table :multiple="false" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2">
+        <!-- <y-table :multiple="false" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级'" columnKey="key" :rowspan="true">
                     <div slot-scope="props" slot="header">{{ 'headerddd-111-一级' + str }}</div>
@@ -77,7 +77,7 @@
                 <y-table-column label="Labelin2" columnKey="label" width="50px" />
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="550px" />
-        </y-table>
+        </y-table> -->
     </div>
 </template>
 
@@ -99,11 +99,15 @@ export default {
             tableList2: [{
                 label: 'sd2',
                 key: 'as3d',
-                c: c
+                c: '32'
             }, {
                 label: 'sd2',
                 key: 'as3d',
-                c: c
+                c: c + c + c
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+                c: c + c + c
             }],
             tableList: [{
                 label: 'sqwerd',

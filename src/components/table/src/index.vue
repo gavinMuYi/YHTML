@@ -439,27 +439,22 @@ export default {
                     let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
                     let headerRowHeight = [];
                     headerRow.forEach(row => {
-                        let heights = [];
-                        for (let i = 0; i < row.$el.children.length; i++) {
-                            let cell = row.$el.children[i].children[0];
-                            cell && heights.push(cell.offsetHeight);
-                        }
-                        let height = heights.length ? (Math.max(...heights) + 2) : 0;
+                        let height = row.$el.offsetHeight;
                         headerRowHeight.push(height);
                     });
+                    console.log(DomKey, headerRowHeight);
                     let BodyRowHeight = [];
                     bodyRow.forEach(row => {
-                        let heights = [];
-                        for (let i = 0; i < row.$el.children.length; i++) {
-                            let cell = row.$el.children[i].children[0];
-                            cell && heights.push(cell.offsetHeight);
-                        }
-                        let height = heights.length ? (Math.max(...heights) + 3) : 0;
+                        let height = row.$el.offsetHeight;
                         BodyRowHeight.push(height);
                     });
+                    if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
+                        this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
+                    }
+                    if (BodyRowHeight.toString() !== this.rowHeight.body.toString()) {
+                        this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
+                    }
                     this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
-                    this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
-                    this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
                     this.setStandardTable();
                 });
             };
@@ -499,6 +494,7 @@ export default {
                 }
                 .y-table-standard-cell {
                     width: 0;
+                    height: 1px;
                     padding: 0;
                 }
             }
