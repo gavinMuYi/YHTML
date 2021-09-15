@@ -358,6 +358,21 @@ export default {
     watch: {
         countOptions(nval) {
             this.count = nval[0] || 15;
+        },
+        tableList(nval) {
+            this.$nextTick(() => {
+                this.handleResize('center')();
+            });
+            if (this.rowColumn.rowColumnLeft.length) {
+                this.$nextTick(() => {
+                    this.handleResize('left')();
+                });
+            }
+            if (this.rowColumn.rowColumnRight.length) {
+                this.$nextTick(() => {
+                    this.handleResize('right')();
+                });
+            }
         }
     },
     methods: {
@@ -433,29 +448,30 @@ export default {
             this.$set(this, 'rowHeight', val);
         },
         handleResize(DomKey) {
-            return () => {
-                setTimeout(() => {
-                    let headerRow = this.$refs[DomKey + 'Header'].$refs.tr || [];
-                    let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
-                    let headerRowHeight = [];
-                    headerRow.forEach(row => {
-                        let height = row.$el.offsetHeight;
-                        headerRowHeight.push(height);
-                    });
-                    let BodyRowHeight = [];
-                    bodyRow.forEach(row => {
-                        let height = row.$el.offsetHeight;
-                        BodyRowHeight.push(height);
-                    });
-                    if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
-                        this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
-                    }
-                    if (BodyRowHeight.toString() !== this.rowHeight.body.toString()) {
-                        this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
-                    }
-                    this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
-                    this.setStandardTable();
+            let resizeFn = () => {
+                let headerRow = this.$refs[DomKey + 'Header'].$refs.tr || [];
+                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
+                let headerRowHeight = [];
+                headerRow.forEach(row => {
+                    let height = row.$el.offsetHeight;
+                    headerRowHeight.push(height);
                 });
+                let BodyRowHeight = [];
+                bodyRow.forEach(row => {
+                    let height = row.$el.offsetHeight;
+                    BodyRowHeight.push(height);
+                });
+                if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
+                    this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
+                }
+                if (BodyRowHeight.toString() !== this.rowHeight.body.toString()) {
+                    this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
+                }
+                this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
+                this.setStandardTable();
+            };
+            return () => {
+                this.$nextTick(resizeFn);
             };
         }
     }
