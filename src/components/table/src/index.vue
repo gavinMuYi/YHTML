@@ -458,7 +458,7 @@ export default {
                 });
                 let BodyRowHeight = [];
                 bodyRow.forEach(row => {
-                    let height = row.$el.offsetHeight;
+                    let height = row.elm.offsetHeight;
                     BodyRowHeight.push(height);
                 });
                 if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
