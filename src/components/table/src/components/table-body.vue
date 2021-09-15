@@ -53,7 +53,7 @@ export default {
                         ...row,
                         $y_table_level: level
                     });
-                    if (row.children && row.children.length) {
+                    if (row.children && row.children.length && row.extend) {
                         flat(row.children, level + 1, pre + '-' + rindex);
                     }
                 });
@@ -90,7 +90,7 @@ export default {
                     tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])} />;
                 this.$refs.tr.push(trDom);
                 trs.push(trDom);
-                if (row.children && row.children.length) {
+                if (row.children && row.children.length && row.extend) {
                     flat(row.children, pre + '-' + rindex);
                 }
             });

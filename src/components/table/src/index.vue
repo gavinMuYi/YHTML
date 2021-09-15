@@ -399,7 +399,33 @@ export default {
             this.total = val;
         },
         updateTableList(val) {
+            this.resetTableStyle();
             this.$set(this, 'tableList', val);
+        },
+        resetTableStyle() {
+            this.$set(this, 'leftTable', {
+                headerMax: 0,
+                header: [],
+                body: []
+            });
+            this.$set(this, 'centerTable', {
+                headerMax: 0,
+                header: [],
+                body: []
+            });
+            this.$set(this, 'rightTable', {
+                headerMax: 0,
+                header: [],
+                body: []
+            });
+            this.$set(this, 'standardTable', {
+                header: [],
+                body: []
+            });
+            this.$set(this, 'rowHeight', {
+                header: [],
+                body: []
+            });
         },
         setStandardTable() {
             let left = this.leftTable;
