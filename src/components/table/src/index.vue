@@ -442,7 +442,6 @@ export default {
                         let height = row.$el.offsetHeight;
                         headerRowHeight.push(height);
                     });
-                    console.log(DomKey, headerRowHeight);
                     let BodyRowHeight = [];
                     bodyRow.forEach(row => {
                         let height = row.$el.offsetHeight;

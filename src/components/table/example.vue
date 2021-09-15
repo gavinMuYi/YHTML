@@ -5,7 +5,7 @@
                 <y-table-column :label="'headerddd-111-一级' + c + c + c + c + str" columnKey="c" :rowspan="true">
                     <!-- <div slot="header">{{ 'headerddd-111-一级' + str }}</div> -->
                     <div slot-scope="props" slot="cell" @click="heightadd">
-                        {{ props.label + '-' + props.key + c + c + c + c + str }}
+                        {{ props.label + '-' + props.key }}
                     </div>
                 </y-table-column>
             </y-table-column>

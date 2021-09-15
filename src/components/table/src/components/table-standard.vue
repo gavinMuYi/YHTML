@@ -49,7 +49,7 @@ export default {
                     let bodyRow = this.$refs.tdr || [];
                     let headerRowHeight = [];
                     headerRow.forEach(row => {
-                        headerRowHeight.push(row.offsetHeight - 1);
+                        headerRowHeight.push(row.offsetHeight - 2);
                     });
                     let BodyRowHeight = [];
                     bodyRow.forEach(row => {
