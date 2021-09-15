@@ -434,7 +434,7 @@ export default {
         },
         handleResize(DomKey) {
             return () => {
-                this.$nextTick(() => {
+                setTimeout(() => {
                     let headerRow = this.$refs[DomKey + 'Header'].$refs.tr || [];
                     let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
                     let headerRowHeight = [];

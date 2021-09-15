@@ -103,7 +103,18 @@ export default {
             }, {
                 label: 'sd2',
                 key: 'as3d',
-                c: c + c + c
+                c: c + c + c,
+                children: [{
+                    key: 'we22222',
+                    label: 'sdaf22222',
+                    children: [{
+                        key: 'wasdffe33333',
+                        label: 'sgdafgfddaf33333'
+                    }, {
+                        key: 'was3333dffe33333',
+                        label: 'sg4444dafgfddaf33333'
+                    }]
+                }]
             }, {
                 label: 'sd2',
                 key: 'as3d',
