@@ -2,9 +2,9 @@
     <tbody class="y-table-body">
         <y-table-row
             ref="tr"
-            v-for="(row, rindex) in tableList" :key="'row-' + rindex"
+            v-for="(row, rindex) in rows" :key="'row-' + rindex"
             :rowData="row" :columns="columns" :index="rindex" :actionTable="actionTable"
-            :tableList="tableList" :style="rowStyle(rindex)" />
+            :tableList="rows" :style="rowStyle(rindex)" />
     </tbody>
 </template>
 
@@ -46,9 +46,23 @@ export default {
             default: false
         }
     },
-    data() {
-        return {
-        };
+    computed: {
+        rows() {
+            let rows = [];
+            let flat = (arr, level) => {
+                arr.forEach(row => {
+                    rows.push({
+                        ...row,
+                        $y_table_level: level
+                    });
+                    if (row.children && row.children.length) {
+                        flat(row.children, level + 1);
+                    }
+                });
+            };
+            flat(this.tableList, 1);
+            return rows;
+        }
     },
     methods: {
         rowStyle(index) {

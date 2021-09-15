@@ -65,6 +65,7 @@ export default {
         );
         this.actionTable && tds.push(
             <td class="y-table-action-cell">
+                { this.rowData.$y_table_level }
                 <div class="y-table_checkbox">
                     <y-checkbox />
                 </div>
