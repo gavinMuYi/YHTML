@@ -46,7 +46,7 @@
                 </tr>
             </table>
         </div> -->
-        <!-- <y-table :multiple="false" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2">
+        <y-table :multiple="false" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级'" columnKey="key" :rowspan="true">
                     <div slot-scope="props" slot="header">{{ 'headerddd-111-一级' + str }}</div>
@@ -77,7 +77,7 @@
                 <y-table-column label="Labelin2" columnKey="label" width="50px" />
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="550px" />
-        </y-table> -->
+        </y-table>
     </div>
 </template>
 
