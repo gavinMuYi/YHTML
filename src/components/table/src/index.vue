@@ -14,7 +14,7 @@
                               @updateTotal="updateTotal" @updateTableList="updateTableList" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
-            <div class="y-table-actions" :style="{ width: 20 * (maxExtendLevel - 1) + 35 + 'px' }"
+            <div class="y-table-actions" :style="{ width: 20 * (maxExtendLevel - 1) + 40 + 'px' }"
                  v-if="multiple">
                 <table>
                     <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
