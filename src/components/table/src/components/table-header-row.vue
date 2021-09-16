@@ -49,7 +49,7 @@ export default {
         },
         handleMouseMove(e, tindex, width) {
             if (this.moveStatus[tindex]) {
-                let width = this.$refs.th[tindex].elm.offsetWidth - 2;
+                let width = this.$refs.th[tindex].elm.offsetWidth - 3;
                 let newWidth = width +
                     (e.clientX - (this.moveStatus[tindex].lastpostion || this.moveStatus[tindex].start));
                 this.$refs.th[tindex].elm.style.width = newWidth + 'px';
