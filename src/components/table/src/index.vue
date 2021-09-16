@@ -10,11 +10,11 @@
                         :width="column.width" :label="column.label"
                         :fixed="column.fixed" />
                 </slot>
-                <y-table-data :lazyLoad="fetchFunc" :index="index" :count="count"
+                <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
-            <div class="y-table-actions" :style="{ width: 20 * (maxExtendLevel - 1) + 40 + 'px' }"
+            <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                  v-if="multiple">
                 <table>
                     <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
@@ -22,7 +22,7 @@
                     <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                   :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
                                   @hover="handleHover" @hoverout="handleHoverout"
-                                  :currentHoverRow="currentHoverRow" />
+                                  :currentHoverRow="currentHoverRow" @rowClick="handleClick" />
                 </table>
             </div>
             <div class="y-table-box">
@@ -36,7 +36,7 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="leftTable.body" :tableList="tableList" :rows="rows"
-                                      :currentHoverRow="currentHoverRow"
+                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                       :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
@@ -46,7 +46,7 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                         <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="centerTable.body" :tableList="tableList"
-                                      :currentHoverRow="currentHoverRow"
+                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                       :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
@@ -60,7 +60,7 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="rightTable.body" :tableList="tableList"
-                                      :currentHoverRow="currentHoverRow"
+                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                       :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
@@ -370,7 +370,7 @@ export default {
             this.maps = {};
             let rows = [];
             let index = -1;
-            this.maxExtendLevel = 1;
+            this.maxExtendLevel = 0;
             let flat = (arr, level, pre) => {
                 arr.forEach((row, rindex) => {
                     this.maps[pre + '-' + rindex] = ++index;
@@ -429,6 +429,12 @@ export default {
         hanlePagination(val) {
             this.index = val.index;
             this.count = val.count;
+        },
+        handleClick(rowData) {
+            this.$emit('rowClick', rowData);
+            if (rowData.children && rowData.children.length) {
+                this.$refs.dataTable.extendChange(rowData.$y_table_position);
+            }
         },
         updateTotal(val) {
             this.total = val;
@@ -538,7 +544,7 @@ export default {
                 this.setStandardTable();
             };
             return () => {
-                this.$nextTick(resizeFn);
+                setTimeout(resizeFn);
             };
         }
     }

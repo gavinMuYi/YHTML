@@ -74,6 +74,9 @@ export default {
         },
         handleHoverOut(index) {
             this.$emit('hoverout', index);
+        },
+        handleClick(rowData) {
+            this.$emit('rowClick', rowData);
         }
     },
     render(h) {
@@ -89,7 +92,8 @@ export default {
                     index={this.maps[pre + '-' + rindex]} actionTable={this.actionTable}
                     tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])}
                     on-hover={($event) => { this.handleHover($event) }}
-                    on-hoverout={($event) => { this.handleHoverOut($event) }} />;
+                    on-hoverout={($event) => { this.handleHoverOut($event) }}
+                    on-rowClick={($event) => { this.handleClick($event) }} />;
                 this.$refs.tr.push(trDom);
                 trs.push(trDom);
                 if (row.children && row.children.length && row.extend) {

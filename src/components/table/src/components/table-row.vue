@@ -74,6 +74,12 @@ export default {
         },
         handleHoverOut(index) {
             this.$emit('hoverout', index);
+        },
+        handleClick() {
+            this.$emit('rowClick', {
+                ...this.rowData,
+                $y_table_position: this.position
+            });
         }
     },
     render(h) {
@@ -91,7 +97,9 @@ export default {
                         }}>
                     </div>
                     <div class="y-table_checkbox">
-                        <y-checkbox />
+                        <span on-click={($event) => { $event.stopPropagation() }}>
+                            <y-checkbox />
+                        </span>
                     </div>
                 </div>
             </td>
@@ -111,7 +119,8 @@ export default {
             <tr class="y-table-row"
                 style={this.currentHoverRow === this.index ? { background: '#cbf9f15c' } : {}}
                 on-mouseenter={() => { this.handleHover(this.index) }}
-                on-mouseleave={() => { this.handleHoverOut(this.index) }}>
+                on-mouseleave={() => { this.handleHoverOut(this.index) }}
+                on-click={() => { this.handleClick() }}>
                 { tds }
             </tr>
         );

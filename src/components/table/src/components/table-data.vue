@@ -63,6 +63,14 @@ export default {
                     };
                 }));
             });
+        },
+        extendChange(position) {
+            let item = null;
+            position.forEach((index, i) => {
+                item && (item = item.children[index]);
+                !item && (item = this.tableList[index]);
+            });
+            this.$set(item, 'extend', !item.extend);
         }
     }
 };
