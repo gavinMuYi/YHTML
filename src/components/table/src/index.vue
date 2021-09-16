@@ -20,7 +20,9 @@
                     <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                     :rowHeight="rowHeight.header" :selfRowHeight="[]" />
                     <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
-                                  :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps" />
+                                  :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
+                                  @hover="handleHover" @hoverout="handleHoverout"
+                                  :currentHoverRow="currentHoverRow" />
                 </table>
             </div>
             <div class="y-table-box">
@@ -34,7 +36,8 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="leftTable.body" :tableList="tableList" :rows="rows"
-                                      :maps="maps" />
+                                      :currentHoverRow="currentHoverRow"
+                                      :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
                 <div class="y-table-center">
@@ -43,7 +46,8 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                         <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="centerTable.body" :tableList="tableList"
-                                      :rows="rows" :maps="maps" />
+                                      :currentHoverRow="currentHoverRow"
+                                      :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
                 <div class="y-table-right"
@@ -56,7 +60,8 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="rightTable.body" :tableList="tableList"
-                                      :rows="rows" :maps="maps" />
+                                      :currentHoverRow="currentHoverRow"
+                                      :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
             </div>
@@ -149,6 +154,7 @@ export default {
             column: [],
             maps: {},
             maxExtendLevel: 1,
+            currentHoverRow: null,
             leftTable: {
                 headerMax: 0,
                 header: [],
@@ -431,6 +437,12 @@ export default {
             this.resetTableStyle();
             this.$set(this, 'tableList', val);
         },
+        handleHover(index) {
+            this.currentHoverRow = index;
+        },
+        handleHoverout(index) {
+            this.currentHoverRow = null;
+        },
         resetTableStyle() {
             this.$set(this, 'leftTable', {
                 headerMax: 0,
@@ -554,7 +566,7 @@ export default {
                 left: 0;
             }
             table {
-                border-spacing: 1px;
+                border-spacing: 0px;
                 table-layout: fixed;
                 word-break:break-all;
                 .y-table-cell {

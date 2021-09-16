@@ -47,11 +47,11 @@ export default {
             default: () => {
                 return {};
             }
+        },
+        currentHoverRow: {
+            type: Number,
+            default: null
         }
-    },
-    data() {
-        return {
-        };
     },
     methods: {
         rowStyle(index) {
@@ -68,6 +68,12 @@ export default {
                 };
             }
             return {};
+        },
+        handleHover(index) {
+            this.$emit('hover', index);
+        },
+        handleHoverOut(index) {
+            this.$emit('hoverout', index);
         }
     },
     render(h) {
@@ -78,10 +84,12 @@ export default {
                 let rowPosition = clone(position);
                 rowPosition.push(rindex);
                 let trDom = <y-table-row
-                    position={rowPosition}
+                    position={rowPosition} currentHoverRow={this.currentHoverRow}
                     rowData={this.rows[this.maps[pre + '-' + rindex]]} columns={this.columns}
                     index={this.maps[pre + '-' + rindex]} actionTable={this.actionTable}
-                    tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])} />;
+                    tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])}
+                    on-hover={($event) => { this.handleHover($event) }}
+                    on-hoverout={($event) => { this.handleHoverOut($event) }} />;
                 this.$refs.tr.push(trDom);
                 trs.push(trDom);
                 if (row.children && row.children.length && row.extend) {

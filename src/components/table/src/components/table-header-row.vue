@@ -145,6 +145,13 @@ export default {
                 background: #18b9ac5c;
             }
         }
+        th {
+            border-bottom: 1px solid #ffffff;
+            border-left: 1px solid #ffffff;
+            &:nth-child(1) {
+                border-left: none;
+            }
+        }
         th:hover {
             .y-table-column_drag-move-line-outter {
                 display: block;

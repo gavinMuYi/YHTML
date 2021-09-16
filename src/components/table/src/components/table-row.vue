@@ -38,6 +38,10 @@ export default {
         actionTable: {
             type: Boolean,
             default: false
+        },
+        currentHoverRow: {
+            type: Number,
+            default: null
         }
     },
     methods: {
@@ -65,6 +69,12 @@ export default {
             }
             return rowspan;
         },
+        handleHover(index) {
+            this.$emit('hover', index);
+        },
+        handleHoverOut(index) {
+            this.$emit('hoverout', index);
+        }
     },
     render(h) {
         let tds = [];
@@ -98,7 +108,10 @@ export default {
             );
         });
         return (
-            <tr class="y-table-row">
+            <tr class="y-table-row"
+                style={this.currentHoverRow === this.index ? { background: '#cbf9f15c' } : {}}
+                on-mouseenter={() => { this.handleHover(this.index) }}
+                on-mouseleave={() => { this.handleHoverOut(this.index) }}>
                 { tds }
             </tr>
         );
