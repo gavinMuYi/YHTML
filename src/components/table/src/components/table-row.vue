@@ -25,6 +25,12 @@ export default {
                 return [];
             }
         },
+        position: {
+            type: Array,
+            default: () => {
+                return [];
+            }
+        },
         index: {
             type: Number,
             default: 0
@@ -42,14 +48,16 @@ export default {
             if (column.rowspan) {
                 let key = column.columnKey;
                 if (data[index - 1] && data[index][key] === data[index - 1][key]
-                    && data[index]['$y_table_level'] === data[index - 1]['$y_table_level']) {
+                    && (!data[index].children || !data[index].children.length)
+                    && (!data[index - 1].children || !data[index - 1].children.length)) {
                     rowspan = 0;
                 }
                 else {
                     let i = index + 1;
                     rowspan = 1;
                     while (data[i] && data[i][key] === data[i - 1][key]
-                        && data[i]['$y_table_level'] === data[i - 1]['$y_table_level']) {
+                        && (!data[i].children || !data[i].children.length)
+                        && (!data[i - 1].children || !data[i - 1].children.length)) {
                         rowspan++;
                         i++;
                     }
@@ -65,9 +73,16 @@ export default {
         );
         this.actionTable && tds.push(
             <td class="y-table-action-cell">
-                { this.rowData.$y_table_level }
-                <div class="y-table_checkbox">
-                    <y-checkbox />
+                <div style={'display: flex;'}>
+                    <div
+                        style={{
+                            width: '0px',
+                            marginLeft: 20 * (this.rowData.$y_table_level - 1) + 'px'
+                        }}>
+                    </div>
+                    <div class="y-table_checkbox">
+                        <y-checkbox />
+                    </div>
                 </div>
             </td>
         );

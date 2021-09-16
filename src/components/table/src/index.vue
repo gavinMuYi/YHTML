@@ -14,12 +14,13 @@
                               @updateTotal="updateTotal" @updateTableList="updateTableList" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
-            <div class="y-table-actions" v-if="multiple">
+            <div class="y-table-actions" :style="{ width: 20 * (maxExtendLevel - 1) + 35 + 'px' }"
+                 v-if="multiple">
                 <table>
                     <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                     :rowHeight="rowHeight.header" :selfRowHeight="[]" />
                     <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
-                                  :selfRowHeight="[]" :tableList="tableList" />
+                                  :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps" />
                 </table>
             </div>
             <div class="y-table-box">
@@ -32,7 +33,8 @@
                         <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="leftTable.body" :tableList="tableList" />
+                                      :selfRowHeight="leftTable.body" :tableList="tableList" :rows="rows"
+                                      :maps="maps" />
                     </table>
                 </div>
                 <div class="y-table-center">
@@ -40,7 +42,8 @@
                         <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                         <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="centerTable.body" :tableList="tableList" />
+                                      :selfRowHeight="centerTable.body" :tableList="tableList"
+                                      :rows="rows" :maps="maps" />
                     </table>
                 </div>
                 <div class="y-table-right"
@@ -52,7 +55,8 @@
                         <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="rightTable.body" :tableList="tableList" />
+                                      :selfRowHeight="rightTable.body" :tableList="tableList"
+                                      :rows="rows" :maps="maps" />
                     </table>
                 </div>
             </div>
@@ -143,6 +147,8 @@ export default {
             total: 0,
             tableList: [],
             column: [],
+            maps: {},
+            maxExtendLevel: 1,
             leftTable: {
                 headerMax: 0,
                 header: [],
@@ -353,6 +359,29 @@ export default {
                 }
             });
             return `calc(${widthPercent}% + ${widthPx + 5}px)`;
+        },
+        rows() {
+            this.maps = {};
+            let rows = [];
+            let index = -1;
+            this.maxExtendLevel = 1;
+            let flat = (arr, level, pre) => {
+                arr.forEach((row, rindex) => {
+                    this.maps[pre + '-' + rindex] = ++index;
+                    rows.push({
+                        ...row,
+                        $y_table_level: level
+                    });
+                    if (row.extend) {
+                        this.maxExtendLevel = Math.max(level, this.maxExtendLevel);
+                    }
+                    if (row.children && row.children.length && row.extend) {
+                        flat(row.children, level + 1, pre + '-' + rindex);
+                    }
+                });
+            };
+            flat(this.tableList, 1, '0');
+            return rows;
         }
     },
     watch: {
@@ -553,7 +582,6 @@ export default {
                 box-shadow: -1px -2px 8px #a4ede0;
             }
             .y-table-actions {
-                width: 40px;
                 table {
                     .y-table-action-cell {
                         .y-table_checkbox {

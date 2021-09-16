@@ -1,4 +1,5 @@
 <script>
+import clone from 'clone';
 import YTableRow from './table-row';
 
 export default {
@@ -31,36 +32,26 @@ export default {
                 return [];
             }
         },
+        rows: {
+            type: Array,
+            default: () => {
+                return [];
+            }
+        },
         actionTable: {
             type: Boolean,
             default: false
+        },
+        maps: {
+            type: Object,
+            default: () => {
+                return {};
+            }
         }
     },
     data() {
         return {
-            maps: {}
         };
-    },
-    computed: {
-        rows() {
-            this.maps = {};
-            let rows = [];
-            let index = -1;
-            let flat = (arr, level, pre) => {
-                arr.forEach((row, rindex) => {
-                    this.maps[pre + '-' + rindex] = ++index;
-                    rows.push({
-                        ...row,
-                        $y_table_level: level
-                    });
-                    if (row.children && row.children.length && row.extend) {
-                        flat(row.children, level + 1, pre + '-' + rindex);
-                    }
-                });
-            };
-            flat(this.tableList, 1, '0');
-            return rows;
-        }
     },
     methods: {
         rowStyle(index) {
@@ -82,20 +73,23 @@ export default {
     render(h) {
         this.$refs.tr = [];
         let trs = [];
-        let flat = (arr, pre) => {
+        let flat = (arr, pre, position) => {
             arr.forEach((row, rindex) => {
+                let rowPosition = clone(position);
+                rowPosition.push(rindex);
                 let trDom = <y-table-row
+                    position={rowPosition}
                     rowData={this.rows[this.maps[pre + '-' + rindex]]} columns={this.columns}
                     index={this.maps[pre + '-' + rindex]} actionTable={this.actionTable}
                     tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])} />;
                 this.$refs.tr.push(trDom);
                 trs.push(trDom);
                 if (row.children && row.children.length && row.extend) {
-                    flat(row.children, pre + '-' + rindex);
+                    flat(row.children, pre + '-' + rindex, rowPosition);
                 }
             });
         };
-        flat(this.tableList, '0');
+        flat(this.tableList, '0', []);
         return <tbody class="y-table-body">
             { trs }
         </tbody>;
