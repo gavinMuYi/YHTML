@@ -47,9 +47,9 @@ export default {
                 minWidth: width
             };
         },
-        handleMouseMove(e, tindex, width) {
+        handleMouseMove(e, tindex) {
             if (this.moveStatus[tindex]) {
-                let width = this.$refs.th[tindex].elm.offsetWidth - 3;
+                let width = this.$refs.th[tindex].elm.offsetWidth;
                 let newWidth = width +
                     (e.clientX - (this.moveStatus[tindex].lastpostion || this.moveStatus[tindex].start));
                 this.$refs.th[tindex].elm.style.width = newWidth + 'px';
@@ -98,8 +98,8 @@ export default {
         this.rowData.forEach((th, tindex) => {
             let line = (
                 <div class="y-table-column_drag-move-line-outter"
-                    on-mousemove={ ($event) => this.handleMouseMove($event, tindex, th.width) }
-                    on-mouseup={ ($event) => this.handleMouseUp($event, tindex, th.width) }>
+                    on-mousemove={ ($event) => this.handleMouseMove($event, tindex) }
+                    on-mouseup={ ($event) => this.handleMouseUp($event, tindex) }>
                     <div class="y-table-column_drag-move-line"
                         on-mousedown={ ($event) => this.handleMouseDown($event, tindex) }>
                     </div>

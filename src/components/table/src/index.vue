@@ -409,19 +409,15 @@ export default {
             this.count = nval[0] || 15;
         },
         tableList(nval) {
-            this.$nextTick(() => {
+            setTimeout(() => {
                 this.handleResize('center')();
-            });
-            if (this.rowColumn.rowColumnLeft.length) {
-                this.$nextTick(() => {
+                if (this.rowColumn.rowColumnLeft.length) {
                     this.handleResize('left')();
-                });
-            }
-            if (this.rowColumn.rowColumnRight.length) {
-                this.$nextTick(() => {
+                }
+                if (this.rowColumn.rowColumnRight.length) {
                     this.handleResize('right')();
-                });
-            }
+                }
+            });
         }
     },
     methods: {
