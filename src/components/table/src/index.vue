@@ -623,9 +623,11 @@ export default {
                 }
             }
             .y-table-left {
+                z-index: 10;
                 box-shadow: 1px -2px 8px #a4ede0;
             }
             .y-table-right {
+                z-index: 10;
                 box-shadow: -1px -2px 8px #a4ede0;
             }
             .y-table-actions {
