@@ -51,6 +51,10 @@ export default {
         currentHoverRow: {
             type: Number,
             default: null
+        },
+        name: {
+            type: String,
+            default: ''
         }
     },
     methods: {
@@ -91,7 +95,7 @@ export default {
                     rowData={this.rows[this.maps[pre + '-' + rindex]]} columns={this.columns}
                     index={this.maps[pre + '-' + rindex]} actionTable={this.actionTable}
                     tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])}
-                    on-hover={($event) => { this.handleHover($event) }}
+                    on-hover={($event) => { this.handleHover($event) }} name={this.name}
                     on-hoverout={($event) => { this.handleHoverOut($event) }}
                     on-rowClick={($event) => { this.handleClick($event) }} />;
                 this.$refs.tr.push(trDom);

@@ -42,6 +42,10 @@ export default {
         currentHoverRow: {
             type: Number,
             default: null
+        },
+        name: {
+            type: String,
+            default: ''
         }
     },
     methods: {

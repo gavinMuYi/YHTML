@@ -36,9 +36,9 @@
                         <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="leftTable.body" :tableList="tableList" :rows="rows"
+                                      :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
                                       :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                      :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
+                                      :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
                 <div class="y-table-center">
@@ -62,7 +62,7 @@
                         <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="rightTable.body" :tableList="tableList"
+                                      :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
                                       :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                       :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
