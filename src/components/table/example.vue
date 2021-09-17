@@ -33,6 +33,9 @@
                 <y-table-column label="Labelin2" columnKey="label" width="50px" dragable/>
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="250px" dragable/>
+            <div slot-scope="props" slot="row2">
+                111
+            </div>
         </y-table>
         <!-- <div class="ex-table-box" ref="box">
             <table class="ex-table">

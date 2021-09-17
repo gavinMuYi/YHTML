@@ -87,6 +87,7 @@ export default {
         tds.push(
             <td class="y-table-standard-cell"></td>
         );
+        let rowSlot = this.$parent.$parent.$scopedSlots['row' + this.rowData.$y_table_level];
         this.actionTable && tds.push(
             <td class="y-table-action-cell">
                 <div style={'display: flex;'}>
@@ -104,17 +105,23 @@ export default {
                 </div>
             </td>
         );
-        this.columns.forEach((td, tindex) => {
-            let rowspan = this.getRowspan(td);
-            rowspan && tds.push(
-                <td colspan={1} rowspan={rowspan}
-                    class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
-                    <div class="y-table-cell">
-                        { td.render.call(this, h, this.rowData[td.columnKey], this.rowData) }
-                    </div>
-                </td>
-            );
-        });
+        if (!this.actionTable) {
+            if (rowSlot) {
+                tds.push(<td colspan={this.columns.length}>{ rowSlot() }</td>);
+            } else {
+                this.columns.forEach((td, tindex) => {
+                    let rowspan = this.getRowspan(td);
+                    rowspan && tds.push(
+                        <td colspan={1} rowspan={rowspan}
+                            class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
+                            <div class="y-table-cell">
+                                { td.render.call(this, h, this.rowData[td.columnKey], this.rowData) }
+                            </div>
+                        </td>
+                    );
+                });
+            }
+        }
         return (
             <tr class="y-table-row"
                 style={this.currentHoverRow === this.index ? { background: '#cbf9f15c' } : {}}
