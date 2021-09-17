@@ -132,6 +132,7 @@ export default {
     .y-table-row {
         td {
             border-bottom: 1px solid #e3f0ef;
+            box-sizing: border-box;
         }
     }
 </style>

@@ -148,6 +148,7 @@ export default {
         th {
             border-bottom: 1px solid #ffffff;
             border-left: 1px solid #ffffff;
+            box-sizing: border-box;
             &:nth-child(1) {
                 border-left: none;
             }

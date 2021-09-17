@@ -391,6 +391,20 @@ export default {
         }
     },
     watch: {
+        rowHeight(nval) {
+            if ((nval.header.length && !this.leftTable.header.length)
+                || (nval.body.length && !this.leftTable.body.length)) {
+                this.$nextTick(() => {
+                    this.handleResize('left')();
+                });
+            }
+            if ((nval.header.length && !this.rightTable.header.length)
+                || (nval.body.length && !this.rightTable.body.length)) {
+                this.$nextTick(() => {
+                    this.handleResize('right')();
+                });
+            }
+        },
         countOptions(nval) {
             this.count = nval[0] || 15;
         },
@@ -544,7 +558,7 @@ export default {
                 this.setStandardTable();
             };
             return () => {
-                setTimeout(resizeFn);
+                this.$nextTick(resizeFn);
             };
         }
     }
