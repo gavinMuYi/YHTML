@@ -111,7 +111,14 @@ export default {
         );
         if (!this.actionTable) {
             if (rowSlot) {
-                tds.push(<td colspan={this.columns.length}>{ rowSlot() }</td>);
+                tds.push(<td colspan={this.columns.length}>
+                    <div class="y-table-cell">
+                        { rowSlot({
+                            name: this.name
+                        }) }
+                    </div>
+                </td>
+                );
             } else {
                 this.columns.forEach((td, tindex) => {
                     let rowspan = this.getRowspan(td);

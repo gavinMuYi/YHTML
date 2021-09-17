@@ -47,7 +47,7 @@
                         <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                         <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="centerTable.body" :tableList="tableList"
+                                      :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
                                       :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                       :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
