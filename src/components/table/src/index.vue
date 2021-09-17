@@ -588,6 +588,7 @@ export default {
         .y-table-content {
             display: flex;
             .y-table-box {
+                flex: 1;
                 display: flex;
                 overflow: hidden;
             }
