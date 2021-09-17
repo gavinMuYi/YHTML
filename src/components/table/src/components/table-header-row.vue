@@ -36,24 +36,16 @@ export default {
         };
     },
     methods: {
-        headerCellStyle(width) {
-            if (!width) {
-                return {
-                    minWidth: '50px'
-                };
-            }
-            return {
-                width: width,
-                minWidth: width
-            };
-        },
-        handleMouseMove(e, tindex) {
+        handleMouseMove(e, tindex, th) {
             if (this.moveStatus[tindex]) {
                 let width = this.$refs.th[tindex].elm.offsetWidth;
                 let newWidth = width +
                     (e.clientX - (this.moveStatus[tindex].lastpostion || this.moveStatus[tindex].start));
                 this.$refs.th[tindex].elm.style.width = newWidth + 'px';
                 this.$refs.th[tindex].elm.style.minWidth = newWidth + 'px';
+                if (this.$parent && this.$parent.$parent) {
+                    this.$parent.$parent.setWidth(th, newWidth + 'px');
+                }
                 this.$set(this.moveStatus, tindex, {
                     ...(this.moveStatus[tindex] || {}),
                     lastpostion: e.clientX
@@ -98,7 +90,7 @@ export default {
         this.rowData.forEach((th, tindex) => {
             let line = (
                 <div class="y-table-column_drag-move-line-outter"
-                    on-mousemove={ ($event) => this.handleMouseMove($event, tindex) }
+                    on-mousemove={ ($event) => this.handleMouseMove($event, tindex, th) }
                     on-mouseup={ ($event) => this.handleMouseUp($event, tindex) }>
                     <div class="y-table-column_drag-move-line"
                         on-mousedown={ ($event) => this.handleMouseDown($event, tindex) }>
@@ -107,7 +99,6 @@ export default {
             );
             let thdom = <th
                 colspan={th.colSpan} rowspan={th.rowSpan}
-                style={this.headerCellStyle(th.width)}
                 class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}
                 on-mouseenter={() => this.handleMouseEnter(tindex)}>
                 <div class="y-table-cell">

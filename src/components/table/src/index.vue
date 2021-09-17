@@ -32,6 +32,7 @@
                          width: `${leftTableWidth}`
                 }">
                     <table ref="left" style="width: 100%;">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
                         <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
@@ -42,6 +43,7 @@
                 </div>
                 <div class="y-table-center">
                     <table ref="center">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
                         <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                         <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
@@ -56,6 +58,7 @@
                          width: `${rightTableWidth}`
                 }">
                     <table ref="right" style="width: 100%">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
                         <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
@@ -80,6 +83,7 @@ import YTableColumn from './components/table-column';
 import YTableBody from './components/table-body';
 import YTableHeader from './components/table-header';
 import YTableData from './components/table-data';
+import YTableColgroup from './components/table-colgroup';
 import YTableStandard  from './components/table-standard';
 
 export default {
@@ -87,6 +91,7 @@ export default {
     components: {
         YPagination,
         YTableColumn,
+        YTableColgroup,
         YTableHeader,
         YTableBody,
         YTableData,
@@ -458,6 +463,20 @@ export default {
         },
         handleHoverout(index) {
             this.currentHoverRow = null;
+        },
+        setWidth(currentcol, val) {
+            let setColumn = (arr) => {
+                arr.forEach(column => {
+                    let children = column.children;
+                    if (children && children.length) {
+                        setColumn(children);
+                    }
+                    if (column.uuid === currentcol.uuid) {
+                        this.$set(column, 'width', val);
+                    }
+                });
+            };
+            setColumn(this.column);
         },
         resetTableStyle() {
             this.$set(this, 'leftTable', {

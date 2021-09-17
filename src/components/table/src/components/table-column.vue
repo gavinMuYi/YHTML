@@ -42,6 +42,7 @@ export default {
     },
     data() {
         return {
+            uuid: Math.random(),
             column: [],
             name: 'VTableColumn'
         };
@@ -103,6 +104,7 @@ export default {
         setParentColumn() {
             if (this.$parent && (this.$parent.name === 'VTableColumn' || this.$parent.name === 'VTable')) {
                 let column = {
+                    uuid: this.uuid,
                     label: this.label,
                     columnKey: this.columnKey,
                     width: this.width,
