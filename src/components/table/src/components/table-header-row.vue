@@ -85,7 +85,7 @@ export default {
         );
         this.actionTable && !this.rindex && ths.push(
             <th class="y-table-action-cell" rowspan={this.level}>
-                <div class="y-table_checkbox">
+                <div class="y-table_checkbox" style="width: 100%">
                     <y-checkbox />
                 </div>
             </th>
