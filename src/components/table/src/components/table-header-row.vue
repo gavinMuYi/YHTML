@@ -1,5 +1,6 @@
 <script>
 import YCheckbox from '@/components/checkbox';
+import { throttle } from '@/utils/tools.js';
 
 export default {
     name: 'YTableHeaderRow',
@@ -36,39 +37,45 @@ export default {
         };
     },
     methods: {
-        handleMouseMove(e, tindex, th) {
-            if (this.moveStatus[tindex]) {
-                let width = this.$refs.th[tindex].elm.offsetWidth;
-                let newWidth = width +
-                    (e.clientX - (this.moveStatus[tindex].lastpostion || this.moveStatus[tindex].start));
-                this.$refs.th[tindex].elm.style.width = newWidth + 'px';
-                this.$refs.th[tindex].elm.style.minWidth = newWidth + 'px';
-                if (this.$parent && this.$parent.$parent) {
-                    this.$parent.$parent.setWidth(th, newWidth + 'px');
+        handleMouseMove(e, tindex, th, width) {
+            return (e) => {
+                if (this.moveStatus[tindex]) {
+                    let newWidth = width +
+                        (e.clientX - this.moveStatus[tindex].start);
+                    this.$refs.th[tindex].elm.style.width = newWidth + 'px';
+                    this.$refs.th[tindex].elm.style.minWidth = newWidth + 'px';
+                    if (this.$parent && this.$parent.$parent) {
+                        this.$parent.$parent.setWidth(th, newWidth + 'px');
+                    }
+                    this.$set(this.moveStatus, tindex, {
+                        ...(this.moveStatus[tindex] || {})
+                    });
                 }
-                this.$set(this.moveStatus, tindex, {
-                    ...(this.moveStatus[tindex] || {}),
-                    lastpostion: e.clientX
-                });
-            }
+            };
         },
         handleMouseUp(e, tindex) {
             if (this.moveStatus[tindex]) {
                 delete this.moveStatus[tindex];
             }
         },
-        handleMouseEnter(index) {
-            Object.keys(this.moveStatus).forEach(key => {
-                if (key !== index) {
-                    delete this.moveStatus[key];
-                }
-            });
-        },
-        handleMouseDown(e, tindex) {
+        handleMouseDown(e, tindex, th) {
             this.$set(this.moveStatus, tindex, {
                 ...(this.moveStatus[tindex] || {}),
                 start: e.clientX
             });
+            let width = this.$refs.th[tindex].elm.offsetWidth;
+            let moveEvent = throttle(this.handleMouseMove(e, tindex, th, width), 16);
+            document.onselectstart = function () { return false };
+            document.ondragstart = function () { return false };
+            const handleMouseUp = () => {
+                this.handleMouseUp(e, tindex);
+                document.removeEventListener('mousemove', moveEvent);
+                document.removeEventListener('mouseup', handleMouseUp);
+                document.onselectstart = null;
+                document.ondragstart = null;
+            };
+            document.addEventListener('mousemove', moveEvent);
+            document.addEventListener('mouseup', handleMouseUp);
         }
     },
     render(h) {
@@ -89,18 +96,15 @@ export default {
         };
         this.rowData.forEach((th, tindex) => {
             let line = (
-                <div class="y-table-column_drag-move-line-outter"
-                    on-mousemove={ ($event) => this.handleMouseMove($event, tindex, th) }
-                    on-mouseup={ ($event) => this.handleMouseUp($event, tindex) }>
+                <div class="y-table-column_drag-move-line-outter">
                     <div class="y-table-column_drag-move-line"
-                        on-mousedown={ ($event) => this.handleMouseDown($event, tindex) }>
+                        on-mousedown={ ($event) => this.handleMouseDown($event, tindex, th) }>
                     </div>
                 </div>
             );
             let thdom = <th
                 colspan={th.colSpan} rowspan={th.rowSpan}
-                class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}
-                on-mouseenter={() => this.handleMouseEnter(tindex)}>
+                class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
                 <div class="y-table-cell">
                     { th.headRender.call(this, h, th.label, th) }
                     {
