@@ -456,7 +456,7 @@ export default {
             this.total = val;
         },
         updateTableList(val) {
-            this.resetTableStyle();
+            // this.resetTableStyle();
             this.$set(this, 'tableList', val);
         },
         handleHover(index) {
@@ -479,31 +479,31 @@ export default {
             };
             setColumn(this.column);
         },
-        resetTableStyle() {
-            this.$set(this, 'leftTable', {
-                headerMax: 0,
-                header: [],
-                body: []
-            });
-            this.$set(this, 'centerTable', {
-                headerMax: 0,
-                header: [],
-                body: []
-            });
-            this.$set(this, 'rightTable', {
-                headerMax: 0,
-                header: [],
-                body: []
-            });
-            this.$set(this, 'standardTable', {
-                header: [],
-                body: []
-            });
-            this.$set(this, 'rowHeight', {
-                header: [],
-                body: []
-            });
-        },
+        // resetTableStyle() {
+        //     this.$set(this, 'leftTable', {
+        //         headerMax: 0,
+        //         header: [],
+        //         body: []
+        //     });
+        //     this.$set(this, 'centerTable', {
+        //         headerMax: 0,
+        //         header: [],
+        //         body: []
+        //     });
+        //     this.$set(this, 'rightTable', {
+        //         headerMax: 0,
+        //         header: [],
+        //         body: []
+        //     });
+        //     this.$set(this, 'standardTable', {
+        //         header: [],
+        //         body: []
+        //     });
+        //     this.$set(this, 'rowHeight', {
+        //         header: [],
+        //         body: []
+        //     });
+        // },
         setStandardTable() {
             let left = this.leftTable;
             let center = this.centerTable;
