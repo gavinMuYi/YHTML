@@ -34,7 +34,8 @@
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="250px" dragable/>
             <div slot-scope="props" slot="row2">
-                111{{ props}}
+                <div v-if="props.name === 'left'">111{{ props}}</div>
+                <div v-else style="height: 200px;">111{{ props}}</div>
             </div>
         </y-table>
         <!-- <div class="ex-table-box" ref="box">

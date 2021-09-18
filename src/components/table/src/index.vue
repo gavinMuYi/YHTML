@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import clone from 'clone';
 import { EleResize } from '@/utils/dom.js';
 import YPagination from '@/components/pagination';
 import YTableColumn from './components/table-column';
@@ -414,7 +415,7 @@ export default {
             this.count = nval[0] || 15;
         },
         tableList(nval) {
-            setTimeout(() => {
+            this.$nextTick(() => {
                 this.handleResize('center')();
                 if (this.rowColumn.rowColumnLeft.length) {
                     this.handleResize('left')();
@@ -563,11 +564,29 @@ export default {
                     let height = row.elm.offsetHeight;
                     BodyRowHeight.push(height);
                 });
-                if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
+                let lastHeaderArr = clone(this[DomKey + 'Table'].header);
+                if (headerRowHeight.length !== this.rowHeight.header.length
+                || lastHeaderArr.length !== this.rowHeight.header.length) {
                     this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
+                } else {
+                    lastHeaderArr.forEach((row, rindex) => {
+                        if (headerRowHeight[rindex] !== this.rowHeight.header[rindex]) {
+                            lastHeaderArr[rindex] = headerRowHeight[rindex];
+                        }
+                    });
+                    this.$set(this[DomKey + 'Table'], 'header', lastHeaderArr);
                 }
-                if (BodyRowHeight.toString() !== this.rowHeight.body.toString()) {
+                let lastBodyArr = clone(this[DomKey + 'Table'].body);
+                if (BodyRowHeight.length !== this.rowHeight.body.length
+                || lastBodyArr.length !== this.rowHeight.body.length) {
                     this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
+                } else {
+                    lastBodyArr.forEach((row, rindex) => {
+                        if (BodyRowHeight[rindex] !== this.rowHeight.body[rindex]) {
+                            lastBodyArr[rindex] = BodyRowHeight[rindex];
+                        }
+                    });
+                    this.$set(this[DomKey + 'Table'], 'body', lastBodyArr);
                 }
                 this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
                 this.setStandardTable();
