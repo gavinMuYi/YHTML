@@ -29,6 +29,38 @@
                                   :currentHoverRow="currentHoverRow" @rowClick="handleClick" />
                 </table>
             </div>
+            <div class="y-table-box-headerFixed" v-if="headerFix"
+                 :style="{ width: `calc(100% - ${multiple ? 20 * maxExtendLevel + 40 + 'px' : 0}` }">
+                <div class="y-table-left"
+                     v-if="rowColumn.rowColumnLeft.length" :style="{
+                         minWidth: `${leftTableWidth}`,
+                         width: `${leftTableWidth}`
+                }">
+                    <table class="header-fix" ref="leftFixHeader" style="width: 100%">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" />
+                        <y-table-header :columns="headerColumn.headerColumnLeft" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                    </table>
+                </div>
+                <div class="y-table-center">
+                    <table class="header-fix" ref="centerFixHeader">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumn" />
+                        <y-table-header :columns="headerColumn.headerColumn" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
+                    </table>
+                </div>
+                <div class="y-table-right"
+                     v-if="rowColumn.rowColumnRight.length" :style="{
+                         minWidth: `${rightTableWidth}`,
+                         width: `${rightTableWidth}`
+                }">
+                    <table class="header-fix" ref="rightFixHeader" style="width: 100%">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumnRight" />
+                        <y-table-header :columns="headerColumn.headerColumnRight" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
+                    </table>
+                </div>
+            </div>
             <div class="y-table-box"
                  :style="{ width: `calc(100% - ${multiple ? 20 * maxExtendLevel + 40 + 'px' : 0}` }">
                 <div class="y-table-left"
@@ -36,11 +68,6 @@
                          minWidth: `${leftTableWidth}`,
                          width: `${leftTableWidth}`
                 }">
-                    <table class="header-fix" v-if="headerFix" ref="leftFixHeader" style="width: 100%">
-                        <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" />
-                        <y-table-header :columns="headerColumn.headerColumnLeft" :level="headerDeep"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
-                    </table>
                     <table ref="left" style="width: 100%;">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
                         <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
@@ -52,11 +79,6 @@
                     </table>
                 </div>
                 <div class="y-table-center">
-                    <table class="header-fix" v-if="headerFix" ref="centerFixHeader">
-                        <y-table-colgroup :colgroup="rowColumn.rowColumn" />
-                        <y-table-header :columns="headerColumn.headerColumn" :level="headerDeep"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
-                    </table>
                     <table ref="center">
                         <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
                         <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
@@ -73,11 +95,6 @@
                          minWidth: `${rightTableWidth}`,
                          width: `${rightTableWidth}`
                 }">
-                    <table class="header-fix" v-if="headerFix" ref="rightFixHeader" style="width: 100%">
-                        <y-table-colgroup :colgroup="rowColumn.rowColumnRight" />
-                        <y-table-header :columns="headerColumn.headerColumnRight" :level="headerDeep"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
-                    </table>
                     <table ref="right" style="width: 100%">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
                         <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
@@ -487,13 +504,13 @@ export default {
             this.currentHoverRow = null;
         },
         scorllYHandler() {
-            let content = this.$refs.tableContent;
-            content && content.addEventListener('scroll', () => {
-                ['action', 'left', 'center', 'right'].forEach(key => {
-                    let el = this.$refs[key + 'FixHeader'];
-                    el && (el.style.marginTop = (content.scrollTop || 0) + 'px');
-                });
-            });
+            // let content = this.$refs.tableContent;
+            // content && content.addEventListener('scroll', () => {
+            //     ['action', 'left', 'center', 'right'].forEach(key => {
+            //         let el = this.$refs[key + 'FixHeader'];
+            //         el && (el.style.marginTop = (content.scrollTop || 0) + 'px');
+            //     });
+            // });
         },
         setWidth(currentcol, val) {
             let setColumn = (arr) => {
@@ -639,10 +656,21 @@ export default {
         }
         .y-table-content {
             overflow-y: auto;
+            position: relative;
             .y-table-box {
-                display: inline-block;
                 display: flex;
                 overflow: hidden;
+            }
+            .y-table-box-headerFixed {
+                position: absolute;
+                top: 0;
+                z-index: 1000;
+                display: flex;
+                overflow: hidden;
+                width: 100%;
+                .y-table-center {
+                    overflow-x: hidden;
+                }
             }
             .y-table-hidden {
                 width: 0px;
@@ -658,10 +686,6 @@ export default {
                 position: relative;
                 left: 1px;
                 float: left;
-            }
-            .header-fix {
-                position: absolute;
-                z-index: 10;
             }
             table {
                 border-spacing: 0px;
