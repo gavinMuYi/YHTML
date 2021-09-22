@@ -1,7 +1,7 @@
 <template>
     <div class="y-table">
         <h2 v-if="title" class="y-table-title">{{ title }}</h2>
-        <div class="y-table-content">
+        <div class="y-table-content" ref="tableContent" :style="{ height: tableHeight }">
             <div class="y-table-hidden">
                 <slot>
                     <y-table-column
@@ -16,7 +16,7 @@
             </div>
             <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                  v-if="multiple">
-                <table class="header-fix" v-if="headerFix">
+                <table class="header-fix" v-if="headerFix" ref="actionFixHeader">
                     <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                     :rowHeight="rowHeight.header" :selfRowHeight="[]" />
                 </table>
@@ -29,13 +29,14 @@
                                   :currentHoverRow="currentHoverRow" @rowClick="handleClick" />
                 </table>
             </div>
-            <div class="y-table-box">
+            <div class="y-table-box"
+                 :style="{ width: `calc(100% - ${multiple ? 20 * maxExtendLevel + 40 + 'px' : 0}` }">
                 <div class="y-table-left"
                      v-if="rowColumn.rowColumnLeft.length" :style="{
                          minWidth: `${leftTableWidth}`,
                          width: `${leftTableWidth}`
                 }">
-                    <table class="header-fix" v-if="headerFix">
+                    <table class="header-fix" v-if="headerFix" ref="leftFixHeader" style="width: 100%">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" />
                         <y-table-header :columns="headerColumn.headerColumnLeft" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
@@ -51,7 +52,7 @@
                     </table>
                 </div>
                 <div class="y-table-center">
-                    <table class="header-fix" v-if="headerFix">
+                    <table class="header-fix" v-if="headerFix" ref="centerFixHeader">
                         <y-table-colgroup :colgroup="rowColumn.rowColumn" />
                         <y-table-header :columns="headerColumn.headerColumn" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
@@ -72,7 +73,7 @@
                          minWidth: `${rightTableWidth}`,
                          width: `${rightTableWidth}`
                 }">
-                    <table class="header-fix" v-if="headerFix">
+                    <table class="header-fix" v-if="headerFix" ref="rightFixHeader" style="width: 100%">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnRight" />
                         <y-table-header :columns="headerColumn.headerColumnRight" :level="headerDeep"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
@@ -170,6 +171,9 @@ export default {
         headerFix: {
             type: Boolean,
             default: false
+        },
+        tableHeight: {
+            type: String
         }
     },
     data() {
@@ -187,6 +191,7 @@ export default {
             maps: {},
             maxExtendLevel: 1,
             currentHoverRow: null,
+            scrollTop: 0,
             leftTable: {
                 headerMax: 0,
                 header: [],
@@ -440,6 +445,9 @@ export default {
             });
         }
     },
+    mounted() {
+        this.scorllYHandler();
+    },
     methods: {
         initLoad() {
             return this.options
@@ -477,6 +485,15 @@ export default {
         },
         handleHoverout(index) {
             this.currentHoverRow = null;
+        },
+        scorllYHandler() {
+            let content = this.$refs.tableContent;
+            content && content.addEventListener('scroll', () => {
+                ['action', 'left', 'center', 'right'].forEach(key => {
+                    let el = this.$refs[key + 'FixHeader'];
+                    el && (el.style.marginTop = (content.scrollTop || 0) + 'px');
+                });
+            });
         },
         setWidth(currentcol, val) {
             let setColumn = (arr) => {
@@ -621,9 +638,9 @@ export default {
             margin-top: 0px;
         }
         .y-table-content {
-            display: flex;
+            overflow-y: auto;
             .y-table-box {
-                flex: 1;
+                display: inline-block;
                 display: flex;
                 overflow: hidden;
             }
@@ -637,8 +654,10 @@ export default {
                 left: 0;
             }
             .y-table-actions {
+                display: inline-block;
                 position: relative;
                 left: 1px;
+                float: left;
             }
             .header-fix {
                 position: absolute;

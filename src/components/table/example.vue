@@ -1,6 +1,6 @@
 <template>
     <div class="y-table_example">
-        <y-table title="TABLE EXAMPLE 0" :lazyLoad="lazyLoad">
+        <y-table title="TABLE EXAMPLE 0" :lazyLoad="lazyLoad" :headerFix="true" tableHeight="150px">
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable />
             <y-table-column label="二级" columnKey="label" width="500px" dragable>
             </y-table-column>
@@ -59,7 +59,7 @@
             </table>
         </div> -->
         <y-table :multiple="false" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2"
-                 :headerFix="true">
+                 :headerFix="true" tableHeight="500px">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级'" columnKey="key" :rowspan="true">
                     <div slot-scope="props" slot="header">{{ 'headerddd-111-一级' + str }}</div>
