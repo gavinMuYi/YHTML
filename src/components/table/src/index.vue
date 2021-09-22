@@ -16,6 +16,10 @@
             </div>
             <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                  v-if="multiple">
+                <table class="header-fix" v-if="headerFix">
+                    <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
+                                    :rowHeight="rowHeight.header" :selfRowHeight="[]" />
+                </table>
                 <table>
                     <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                     :rowHeight="rowHeight.header" :selfRowHeight="[]" />
@@ -31,6 +35,11 @@
                          minWidth: `${leftTableWidth}`,
                          width: `${leftTableWidth}`
                 }">
+                    <table class="header-fix" v-if="headerFix">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" />
+                        <y-table-header :columns="headerColumn.headerColumnLeft" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                    </table>
                     <table ref="left" style="width: 100%;">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
                         <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
@@ -42,6 +51,11 @@
                     </table>
                 </div>
                 <div class="y-table-center">
+                    <table class="header-fix" v-if="headerFix">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumn" />
+                        <y-table-header :columns="headerColumn.headerColumn" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
+                    </table>
                     <table ref="center">
                         <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
                         <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
@@ -58,6 +72,11 @@
                          minWidth: `${rightTableWidth}`,
                          width: `${rightTableWidth}`
                 }">
+                    <table class="header-fix" v-if="headerFix">
+                        <y-table-colgroup :colgroup="rowColumn.rowColumnRight" />
+                        <y-table-header :columns="headerColumn.headerColumnRight" :level="headerDeep"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
+                    </table>
                     <table ref="right" style="width: 100%">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
                         <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
@@ -147,6 +166,10 @@ export default {
             default: () => {
                 return [15, 30, 50, 100];
             }
+        },
+        headerFix: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -617,6 +640,10 @@ export default {
                 position: relative;
                 left: 1px;
             }
+            .header-fix {
+                position: absolute;
+                z-index: 10;
+            }
             table {
                 border-spacing: 0px;
                 table-layout: fixed;
@@ -647,18 +674,23 @@ export default {
             }
             .y-table-center {
                 flex: 1;
-                overflow: auto;
+                overflow-x: auto;
                 table {
                     min-width: 100%;
                 }
             }
             .y-table-left {
                 z-index: 10;
+                position: relative;
                 box-shadow: 1px -2px 8px #a4ede0;
             }
             .y-table-right {
                 z-index: 10;
+                position: relative;
                 box-shadow: -1px -2px 8px #a4ede0;
+            }
+            .y-table-center {
+                position: relative;
             }
             .y-table-actions {
                 table {
