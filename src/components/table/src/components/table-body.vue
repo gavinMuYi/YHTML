@@ -55,6 +55,14 @@ export default {
         name: {
             type: String,
             default: ''
+        },
+        multiple: {
+            type: Boolean,
+            default: false
+        },
+        widthLeft: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -91,6 +99,7 @@ export default {
                 let rowPosition = clone(position);
                 rowPosition.push(rindex);
                 let trDom = <y-table-row
+                    multiple={this.multiple} widthLeft={this.widthLeft}
                     position={rowPosition} currentHoverRow={this.currentHoverRow}
                     rowData={this.rows[this.maps[pre + '-' + rindex]]} columns={this.columns}
                     index={this.maps[pre + '-' + rindex]} actionTable={this.actionTable}
@@ -117,9 +126,6 @@ export default {
     .y-table-body {
         .y-table-cell {
             min-height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
     }
 </style>

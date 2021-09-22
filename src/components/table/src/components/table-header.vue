@@ -68,9 +68,6 @@ export default {
         background: #dbf4f0;
         .y-table-cell {
             min-height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: relative;
         }
     }

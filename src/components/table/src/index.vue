@@ -37,7 +37,7 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
-                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick" :multiple="multiple"
                                       :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
@@ -48,8 +48,9 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                         <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
-                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                      :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
+                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick" :multiple="multiple"
+                                      :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
+                                      :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
                     </table>
                 </div>
                 <div class="y-table-right"
@@ -63,7 +64,7 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                         <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
                                       :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
-                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick" :multiple="multiple"
                                       :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                     </table>
                 </div>
@@ -612,6 +613,10 @@ export default {
                 top: 0;
                 left: 0;
             }
+            .y-table-actions {
+                position: relative;
+                left: 1px;
+            }
             table {
                 border-spacing: 0px;
                 table-layout: fixed;
@@ -620,6 +625,19 @@ export default {
                     font-size: 14px;
                     font-weight: 400;
                     overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    padding: 5px;
+                    box-sizing: border-box;
+                    .y-table-row_icon {
+                        margin-right: 5px;
+                        fill: #496866;
+                        width: 10px;
+                        height: 10px;
+                    }
+                    .y-table-cell_content {
+                        flex: 1;
+                    }
                 }
                 .y-table-standard-cell {
                     width: 0;

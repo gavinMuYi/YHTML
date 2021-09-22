@@ -285,15 +285,13 @@ export default {
                         resolve();
                     }, 1000);
                 }).then(() => {
-                    return {
-                        options: [{
-                            label: 'sd2111',
-                            key: 'as3d111',
-                        }, {
-                            label: 'sd2111',
-                            key: 'as3d111',
-                        }]
-                    };
+                    return [{
+                        label: 'sd2111',
+                        key: 'as3d111',
+                    }, {
+                        label: 'sd2111',
+                        key: 'as3d111',
+                    }];
                 });
             } else {
                 return new Promise((resolve, reject) => {

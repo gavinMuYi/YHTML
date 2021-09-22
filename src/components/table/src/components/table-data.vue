@@ -57,9 +57,13 @@ export default {
     methods: {
         updateData(leaf) {
             if (leaf) {
+                this.$set(leaf, 'loading', true);
                 this.lazyLoad(leaf).then(res => {
-                    this.$set(leaf, 'children', clone(res.options || []));
+                    this.$set(leaf, 'children', clone(res || []));
+                    delete leaf.loading;
                     delete leaf.hasChildren;
+                }).catch(e => {
+                    delete leaf.loading;
                 });
             } else {
                 this.lazyLoad(null, this.index, this.count).then(res => {

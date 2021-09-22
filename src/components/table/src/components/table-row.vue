@@ -1,10 +1,12 @@
 <script>
 import YCheckbox from '@/components/checkbox';
+import YIcon from '@/components/icon';
 
 export default {
     name: 'YTableRow',
     components: {
-        YCheckbox
+        YCheckbox,
+        YIcon
     },
     props: {
         rowData: {
@@ -46,6 +48,14 @@ export default {
         name: {
             type: String,
             default: ''
+        },
+        multiple: {
+            type: Boolean,
+            default: false
+        },
+        widthLeft: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -124,11 +134,29 @@ export default {
             } else {
                 this.columns.forEach((td, tindex) => {
                     let rowspan = this.getRowspan(td);
+                    let icon = !tindex && (this.name === 'left'
+                        || (this.name === 'center' && !this.widthLeft))
+                        && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
+                        ? <y-icon name={this.rowData.loading
+                            ? 'loading'
+                            : `arrow-${this.rowData.extend ? 'up' : 'down'}`}
+                        class="y-table-row_icon" />
+                        : '';
                     rowspan && tds.push(
                         <td colspan={1} rowspan={rowspan}
                             class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
-                            <div class="y-table-cell">
-                                { td.render.call(this, h, this.rowData[td.columnKey], this.rowData) }
+                            <div class="y-table-cell" style={
+                                {
+                                    marginLeft: !this.multiple && !tindex && (this.name === 'left'
+                                    || (this.name === 'center' && !this.widthLeft))
+                                        ? 20 * (this.rowData.$y_table_level - 1) + 'px'
+                                        : 0
+                                }
+                            }>
+                                { icon }
+                                <span class="y-table-cell_content">
+                                    { td.render.call(this, h, this.rowData[td.columnKey], this.rowData) }
+                                </span>
                             </div>
                         </td>
                     );
