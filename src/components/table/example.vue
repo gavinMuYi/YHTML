@@ -34,7 +34,9 @@
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="250px" dragable/>
             <div slot-scope="props" slot="row2">
-                111{{ props}}
+                <div v-if="props.name === 'left'" @click="lefth"
+                     :style="{height: leftheight + 'px'}">d111{{ props }}</div>
+                <div v-else @click="righth" :style="{height: rightheight + 'px'}">d222{{ props}}</div>
             </div>
         </y-table>
         <!-- <div class="ex-table-box" ref="box">
@@ -97,6 +99,8 @@ export default {
     data() {
         let c = '7912837419823741283476123846123784637rey734tr6734tr63tregr7d34gr7fg734fg3yugf73g7gf3';
         return {
+            leftheight: 100,
+            rightheight: 200,
             left: 0,
             str: '',
             c: c,
@@ -246,6 +250,14 @@ export default {
         };
     },
     methods: {
+        lefth() {
+            this.leftheight = 100;
+            this.rightheight = 100;
+        },
+        righth() {
+            this.leftheight = 200;
+            this.rightheight = 100;
+        },
         heightadd() {
             if (this.c) {
                 this.c = '';

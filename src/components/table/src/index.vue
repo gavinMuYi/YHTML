@@ -302,19 +302,17 @@ export default {
                 };
             }));
             this.$nextTick(() => {
-                this.handleResize('center')();
-                EleResize.on(this.$refs.center, this.handleResize('center'), this);
+                this.handleResize()();
+                EleResize.on(this.$refs.center, this.handleResize(), this);
             });
             if (rowColumnLeft.length) {
                 this.$nextTick(() => {
-                    this.handleResize('left')();
-                    EleResize.on(this.$refs.left, this.handleResize('left'), this);
+                    EleResize.on(this.$refs.left, this.handleResize(), this);
                 });
             }
             if (rowColumnRight.length) {
                 this.$nextTick(() => {
-                    this.handleResize('right')();
-                    EleResize.on(this.$refs.right, this.handleResize('right'), this);
+                    EleResize.on(this.$refs.right, this.handleResize(), this);
                 });
             }
             return {
@@ -398,15 +396,11 @@ export default {
     watch: {
         rowHeight(nval) {
             if ((nval.header.length && !this.leftTable.header.length)
-                || (nval.body.length && !this.leftTable.body.length)) {
-                this.$nextTick(() => {
-                    this.handleResize('left')();
-                });
-            }
-            if ((nval.header.length && !this.rightTable.header.length)
+                || (nval.body.length && !this.leftTable.body.length)
+                || (nval.header.length && !this.rightTable.header.length)
                 || (nval.body.length && !this.rightTable.body.length)) {
                 this.$nextTick(() => {
-                    this.handleResize('right')();
+                    this.handleResize()();
                 });
             }
         },
@@ -415,13 +409,7 @@ export default {
         },
         tableList(nval) {
             setTimeout(() => {
-                this.handleResize('center')();
-                if (this.rowColumn.rowColumnLeft.length) {
-                    this.handleResize('left')();
-                }
-                if (this.rowColumn.rowColumnRight.length) {
-                    this.handleResize('right')();
-                }
+                this.handleResize()();
             });
         }
     },
@@ -455,7 +443,6 @@ export default {
             this.total = val;
         },
         updateTableList(val) {
-            this.resetTableStyle();
             this.$set(this, 'tableList', val);
         },
         handleHover(index) {
@@ -549,10 +536,14 @@ export default {
         rowHeightChange(val) {
             this.$set(this, 'rowHeight', val);
         },
-        handleResize(DomKey) {
-            let resizeFn = () => {
-                let headerRow = this.$refs[DomKey + 'Header'].$refs.tr || [];
-                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr || [];
+        handleResize() {
+            let resizeFn = (DomKey) => {
+                let headerRow = this.$refs[DomKey + 'Header']
+                    ? (this.$refs[DomKey + 'Header'].$refs.tr || [])
+                    : [];
+                let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr
+                    ? this.$refs[DomKey + 'Body'].$refs.tr || []
+                    : [];
                 let headerRowHeight = [];
                 headerRow.forEach(row => {
                     let height = row.$el.offsetHeight;
@@ -570,10 +561,15 @@ export default {
                     this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
                 }
                 this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
-                this.setStandardTable();
             };
             return () => {
-                this.$nextTick(resizeFn);
+                this.resetTableStyle();
+                this.$nextTick(() => {
+                    ['left', 'center', 'right'].forEach(DomKey => {
+                        resizeFn(DomKey);
+                    });
+                    this.setStandardTable();
+                });
             };
         }
     }
