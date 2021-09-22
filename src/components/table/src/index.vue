@@ -150,6 +150,9 @@ export default {
     },
     data() {
         return {
+            leftHeight: 0,
+            centerHeight: 0,
+            rightHeight: 0,
             name: 'VTable',
             fetchFunc: this.initLoad(),
             index: 1,
@@ -416,7 +419,7 @@ export default {
     methods: {
         initLoad() {
             return this.options
-                ? (index, count) => {
+                ? (leaf, index, count) => {
                     return new Promise((resolve, reject) => {
                         resolve();
                     }).then(() => {
@@ -435,7 +438,7 @@ export default {
         },
         handleClick(rowData) {
             this.$emit('rowClick', rowData);
-            if (rowData.children && rowData.children.length) {
+            if (rowData.hasChildren || (rowData.children && rowData.children.length)) {
                 this.$refs.dataTable.extendChange(rowData.$y_table_position);
             }
         },
@@ -537,6 +540,12 @@ export default {
             this.$set(this, 'rowHeight', val);
         },
         handleResize() {
+            let getHeight = (DomKey) => {
+                let newHeight = this.$refs[DomKey] ? this.$refs[DomKey].offsetHeight : 0;
+                let oldHeight = this[DomKey + 'Height'];
+                this[DomKey + 'Height'] = newHeight;
+                return newHeight === oldHeight;
+            };
             let resizeFn = (DomKey) => {
                 let headerRow = this.$refs[DomKey + 'Header']
                     ? (this.$refs[DomKey + 'Header'].$refs.tr || [])
@@ -563,13 +572,19 @@ export default {
                 this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
             };
             return () => {
-                this.resetTableStyle();
-                this.$nextTick(() => {
-                    ['left', 'center', 'right'].forEach(DomKey => {
-                        resizeFn(DomKey);
-                    });
-                    this.setStandardTable();
+                let reset = false;
+                ['left', 'center', 'right'].forEach(DomKey => {
+                    reset = reset || !getHeight(DomKey);
                 });
+                if (reset) {
+                    this.resetTableStyle();
+                    this.$nextTick(() => {
+                        ['left', 'center', 'right'].forEach(DomKey => {
+                            resizeFn(DomKey);
+                        });
+                        this.setStandardTable();
+                    });
+                }
             };
         }
     }

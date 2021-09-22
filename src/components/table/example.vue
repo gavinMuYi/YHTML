@@ -1,5 +1,11 @@
 <template>
     <div class="y-table_example">
+        <y-table title="TABLE EXAMPLE 0" :lazyLoad="lazyLoad">
+            <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable />
+            <y-table-column label="二级" columnKey="label" width="500px" dragable>
+            </y-table-column>
+            <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px" :rowspan="true" dragable />
+        </y-table>
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级' + c + c + c + c + str" columnKey="c" :rowspan="true"
@@ -104,6 +110,20 @@ export default {
             left: 0,
             str: '',
             c: c,
+            tableList3: [{
+                label: 'sd2',
+                key: 'as3d',
+                c: '32'
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+                c: '32'
+            }, {
+                label: 'sd2',
+                key: 'as3d',
+                c: '32',
+                hasChildren: true
+            }],
             tableList2: [{
                 label: 'sd2',
                 key: 'as3d',
@@ -257,6 +277,34 @@ export default {
         righth() {
             this.leftheight = 200;
             this.rightheight = 100;
+        },
+        lazyLoad(leaf) {
+            if (leaf) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve();
+                    }, 1000);
+                }).then(() => {
+                    return {
+                        options: [{
+                            label: 'sd2111',
+                            key: 'as3d111',
+                        }, {
+                            label: 'sd2111',
+                            key: 'as3d111',
+                        }]
+                    };
+                });
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve();
+                }).then(() => {
+                    return {
+                        options: this.tableList3,
+                        total: 3
+                    };
+                });
+            }
         },
         heightadd() {
             if (this.c) {

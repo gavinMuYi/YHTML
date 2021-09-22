@@ -4,6 +4,8 @@
 </template>
 
 <script>
+import clone from 'clone';
+
 export default {
     name: 'YTableData',
     props: {
@@ -50,19 +52,21 @@ export default {
         }
     },
     mounted() {
-        this.updateData(1);
+        this.updateData();
     },
     methods: {
-        updateData(level) {
-            this.lazyLoad(this.index, this.count).then(res => {
-                this.total = res.total || 0;
-                this.$set(this, 'tableList', (res.options || []).map(row => {
-                    return {
-                        ...row,
-                        $y_table_level: level
-                    };
-                }));
-            });
+        updateData(leaf) {
+            if (leaf) {
+                this.lazyLoad(leaf).then(res => {
+                    this.$set(leaf, 'children', clone(res.options || []));
+                    delete leaf.hasChildren;
+                });
+            } else {
+                this.lazyLoad(null, this.index, this.count).then(res => {
+                    this.total = res.total || 0;
+                    this.$set(this, 'tableList', clone(res.options || []));
+                });
+            }
         },
         extendChange(position) {
             let item = null;
@@ -70,6 +74,9 @@ export default {
                 item && (item = item.children[index]);
                 !item && (item = this.tableList[index]);
             });
+            if (item.hasChildren) {
+                this.updateData(item);
+            }
             this.$set(item, 'extend', !item.extend);
         }
     }
