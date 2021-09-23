@@ -15,7 +15,7 @@
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
-                 :style="{ width: '100%' }">
+                 :style="{ width: '100%' }" ref="headerFixedBox">
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                      v-if="multiple">
                     <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
@@ -57,7 +57,8 @@
                     </table>
                 </div>
             </div>
-            <div class="y-table-main" :style="{ height: tableHeight }">
+            <div :style="{ height: fixedBodyTop + 'px'}"></div>
+            <div class="y-table-main" :style="{ maxHeight: tableHeight }">
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                      v-if="multiple">
                     <table>
@@ -210,6 +211,7 @@ export default {
     },
     data() {
         return {
+            fixedBodyTop: 0,
             leftFixHeaderHeight: 0,
             centerFixHeaderHeight: 0,
             rightFixHeaderHeight: 0,
@@ -696,6 +698,7 @@ export default {
                             resizeFn(DomKey);
                         });
                         this.setStandardTable();
+                        this.fixedBodyTop = this.$refs.headerFixedBox.offsetHeight;
                     });
                 }
             };
