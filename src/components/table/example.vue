@@ -58,7 +58,7 @@
                 </tr>
             </table>
         </div> -->
-        <y-table :multiple="false" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2"
+        <y-table :multiple="true" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2"
                  :headerFix="true" tableHeight="500px">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级'" columnKey="key" :rowspan="true">
@@ -74,13 +74,13 @@
                 <y-table-column label="二级" columnKey="label" width="50px" dragable>
                 </y-table-column>
                 <y-table-column label="二级">
-                    <y-table-column label="三级" columnKey="label" width="100px">
+                    <y-table-column label="三级" columnKey="label" width="100px" dragable>
                         <div slot="header">cell slot can click</div>
                         <div slot-scope="props" slot="cell">
                             {{ props.label + '-' + props.key }}
                         </div>
                     </y-table-column>
-                    <y-table-column label="三级" columnKey="label" width="50px">
+                    <y-table-column label="三级" columnKey="label" width="50px" dragable>
                         <div slot="header">header-111-三级</div>
                     </y-table-column>
                     <y-table-column label="三级" columnKey="label" width="50px">

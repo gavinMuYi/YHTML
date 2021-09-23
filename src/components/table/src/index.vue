@@ -1,7 +1,7 @@
 <template>
     <div class="y-table">
         <h2 v-if="title" class="y-table-title">{{ title }}</h2>
-        <div class="y-table-content" ref="tableContent" :style="{ height: tableHeight }">
+        <div class="y-table-content" ref="tableContent">
             <div class="y-table-hidden">
                 <slot>
                     <y-table-column
@@ -14,23 +14,15 @@
                               @updateTotal="updateTotal" @updateTableList="updateTableList" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
-            <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
-                 v-if="multiple">
-                <table class="header-fix" v-if="headerFix" ref="actionFixHeader">
-                    <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
-                                    :rowHeight="rowHeight.header" :selfRowHeight="[]" />
-                </table>
-                <table>
-                    <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
-                                    :rowHeight="rowHeight.header" :selfRowHeight="[]" />
-                    <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
-                                  :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
-                                  @hover="handleHover" @hoverout="handleHoverout"
-                                  :currentHoverRow="currentHoverRow" @rowClick="handleClick" />
-                </table>
-            </div>
-            <div class="y-table-box-headerFixed" v-if="headerFix"
-                 :style="{ width: `calc(100% - ${multiple ? 20 * maxExtendLevel + 40 + 'px' : 0}` }">
+            <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
+                 :style="{ width: '100%' }">
+                <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
+                     v-if="multiple">
+                    <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
+                        <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="[]" />
+                    </table>
+                </div>
                 <div class="y-table-left"
                      v-if="rowColumn.rowColumnLeft.length" :style="{
                          minWidth: `${leftTableWidth}`,
@@ -39,13 +31,16 @@
                     <table class="header-fix" ref="leftFixHeader" style="width: 100%">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" />
                         <y-table-header :columns="headerColumn.headerColumnLeft" :level="headerDeep"
+                                        ref="leftFixedHeader"
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                     </table>
                 </div>
                 <div class="y-table-center">
-                    <table class="header-fix" ref="centerFixHeader">
+                    <table class="header-fix" ref="centerFixHeader"
+                           :style="{position: 'absolute',left: -scrollLeft + 'px'}">
                         <y-table-colgroup :colgroup="rowColumn.rowColumn" />
                         <y-table-header :columns="headerColumn.headerColumn" :level="headerDeep"
+                                        ref="centerFixedHeader"
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                     </table>
                 </div>
@@ -57,53 +52,73 @@
                     <table class="header-fix" ref="rightFixHeader" style="width: 100%">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnRight" />
                         <y-table-header :columns="headerColumn.headerColumnRight" :level="headerDeep"
+                                        ref="rightFixedHeader"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                     </table>
                 </div>
             </div>
-            <div class="y-table-box"
-                 :style="{ width: `calc(100% - ${multiple ? 20 * maxExtendLevel + 40 + 'px' : 0}` }">
-                <div class="y-table-left"
-                     v-if="rowColumn.rowColumnLeft.length" :style="{
-                         minWidth: `${leftTableWidth}`,
-                         width: `${leftTableWidth}`
-                }">
-                    <table ref="left" style="width: 100%;">
-                        <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
-                        <y-table-header :columns="headerColumn.headerColumnLeft" ref="leftHeader" :level="headerDeep"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
-                        <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
-                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick" :multiple="multiple"
-                                      :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
+            <div class="y-table-main" :style="{ height: tableHeight }">
+                <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
+                     v-if="multiple">
+                    <table>
+                        <y-table-header v-show="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
+                                        :rowHeight="rowHeight.header" :selfRowHeight="[]" />
+                        <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
+                                      :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
+                                      @hover="handleHover" @hoverout="handleHoverout"
+                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick" />
                     </table>
                 </div>
-                <div class="y-table-center">
-                    <table ref="center">
-                        <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
-                        <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader" :level="headerDeep"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
-                        <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
-                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick" :multiple="multiple"
-                                      :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
-                                      :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
-                    </table>
-                </div>
-                <div class="y-table-right"
-                     v-if="rowColumn.rowColumnRight.length" :style="{
-                         minWidth: `${rightTableWidth}`,
-                         width: `${rightTableWidth}`
-                }">
-                    <table ref="right" style="width: 100%">
-                        <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
-                        <y-table-header :columns="headerColumn.headerColumnRight" ref="rightHeader" :level="headerDeep"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
-                        <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :rowHeight="rowHeight.body"
-                                      :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
-                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick" :multiple="multiple"
-                                      :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
-                    </table>
+                <div class="y-table-box"
+                     :style="{ width: `calc(100% - ${multiple ? 20 * maxExtendLevel + 40 + 'px' : 0}` }">
+                    <div class="y-table-left"
+                         v-if="rowColumn.rowColumnLeft.length" :style="{
+                             minWidth: `${leftTableWidth}`,
+                             width: `${leftTableWidth}`
+                    }">
+                        <table ref="left" style="width: 100%;">
+                            <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
+                            <y-table-header v-show="!headerFix" :columns="headerColumn.headerColumnLeft"
+                                            ref="leftHeader" :level="headerDeep"
+                                            :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                            <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
+                                          :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
+                                          :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                          :multiple="multiple"
+                                          :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
+                        </table>
+                    </div>
+                    <div class="y-table-center" ref="centerTableContent" key="center">
+                        <table ref="center">
+                            <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
+                            <y-table-header v-show="!headerFix" :columns="headerColumn.headerColumn" ref="centerHeader"
+                                            :level="headerDeep"
+                                            :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
+                            <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
+                                          :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
+                                          :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                          :multiple="multiple"
+                                          :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
+                                          :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
+                        </table>
+                    </div>
+                    <div class="y-table-right"
+                         v-if="rowColumn.rowColumnRight.length" :style="{
+                             minWidth: `${rightTableWidth}`,
+                             width: `${rightTableWidth}`
+                    }">
+                        <table ref="right" style="width: 100%">
+                            <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
+                            <y-table-header v-show="!headerFix" :columns="headerColumn.headerColumnRight"
+                                            ref="rightHeader" :level="headerDeep"
+                                            :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
+                            <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
+                                          :rowHeight="rowHeight.body" :multiple="multiple"
+                                          :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
+                                          :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                          :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -195,6 +210,9 @@ export default {
     },
     data() {
         return {
+            leftFixHeaderHeight: 0,
+            centerFixHeaderHeight: 0,
+            rightFixHeaderHeight: 0,
             leftHeight: 0,
             centerHeight: 0,
             rightHeight: 0,
@@ -208,7 +226,7 @@ export default {
             maps: {},
             maxExtendLevel: 1,
             currentHoverRow: null,
-            scrollTop: 0,
+            scrollLeft: 0,
             leftTable: {
                 headerMax: 0,
                 header: [],
@@ -352,15 +370,25 @@ export default {
             }));
             this.$nextTick(() => {
                 this.handleResize()();
+                if (this.headerFix) {
+                    this.handleFixedResize()();
+                    EleResize.on(this.$refs.centerFixHeader, this.handleFixedResize(), this);
+                }
                 EleResize.on(this.$refs.center, this.handleResize(), this);
             });
             if (rowColumnLeft.length) {
                 this.$nextTick(() => {
+                    if (this.headerFix) {
+                        EleResize.on(this.$refs.leftFixHeader, this.handleFixedResize(), this);
+                    }
                     EleResize.on(this.$refs.left, this.handleResize(), this);
                 });
             }
             if (rowColumnRight.length) {
                 this.$nextTick(() => {
+                    if (this.headerFix) {
+                        EleResize.on(this.$refs.rightFixHeader, this.handleFixedResize(), this);
+                    }
                     EleResize.on(this.$refs.right, this.handleResize(), this);
                 });
             }
@@ -450,6 +478,9 @@ export default {
                 || (nval.body.length && !this.rightTable.body.length)) {
                 this.$nextTick(() => {
                     this.handleResize()();
+                    if (this.headerFix) {
+                        this.handleFixedResize()();
+                    }
                 });
             }
         },
@@ -459,11 +490,14 @@ export default {
         tableList(nval) {
             setTimeout(() => {
                 this.handleResize()();
+                if (this.headerFix) {
+                    this.handleFixedResize()();
+                }
             });
         }
     },
     mounted() {
-        this.scorllYHandler();
+        this.scorllXHandler();
     },
     methods: {
         initLoad() {
@@ -503,14 +537,16 @@ export default {
         handleHoverout(index) {
             this.currentHoverRow = null;
         },
-        scorllYHandler() {
-            // let content = this.$refs.tableContent;
-            // content && content.addEventListener('scroll', () => {
-            //     ['action', 'left', 'center', 'right'].forEach(key => {
-            //         let el = this.$refs[key + 'FixHeader'];
-            //         el && (el.style.marginTop = (content.scrollTop || 0) + 'px');
-            //     });
-            // });
+        scorllXHandler() {
+            let content = this.$refs.centerTableContent;
+            content && content.addEventListener('scroll', () => {
+                // ['action', 'left', 'center', 'right'].forEach(key => {
+                //     let el = this.$refs[key + 'FixHeader'];
+                //     el && (el.style.marginTop = (content.scrollTop || 0) + 'px');
+                // });
+                this.scrollLeft = content.scrollLeft;
+                // console.log('---',);
+            });
         },
         setWidth(currentcol, val) {
             let setColumn = (arr) => {
@@ -526,30 +562,58 @@ export default {
             };
             setColumn(this.column);
         },
+        resetTableHeader() {
+            this.$set(this.leftTable, 'header', []);
+            this.$set(this.centerTable, 'header', []);
+            this.$set(this.rightTable, 'header', []);
+            this.$set(this.standardTable, 'header', []);
+            this.$set(this.rowHeight, 'header', []);
+            this.$set(this.leftTable, 'headerMax', 0);
+            this.$set(this.centerTable, 'headerMax', 0);
+            this.$set(this.rightTable, 'headerMax', 0);
+        },
         resetTableStyle() {
-            this.$set(this, 'leftTable', {
+            let empty = {
                 headerMax: 0,
                 header: [],
                 body: []
+            };
+            if (this.headerFix) {
+                empty = {
+                    body: []
+                };
+            }
+            this.$set(this, 'leftTable', {
+                ...this.leftTable,
+                ...empty
             });
             this.$set(this, 'centerTable', {
-                headerMax: 0,
-                header: [],
-                body: []
+                ...this.centerTable,
+                ...empty
             });
             this.$set(this, 'rightTable', {
-                headerMax: 0,
-                header: [],
-                body: []
+                ...this.rightTable,
+                ...empty
             });
-            this.$set(this, 'standardTable', {
-                header: [],
-                body: []
-            });
-            this.$set(this, 'rowHeight', {
-                header: [],
-                body: []
-            });
+            if (this.headerFix) {
+                this.$set(this, 'standardTable', {
+                    ...this.standardTable,
+                    body: []
+                });
+                this.$set(this, 'rowHeight', {
+                    ...this.rowHeight,
+                    body: []
+                });
+            } else {
+                this.$set(this, 'standardTable', {
+                    header: [],
+                    body: []
+                });
+                this.$set(this, 'rowHeight', {
+                    header: [],
+                    body: []
+                });
+            }
         },
         setStandardTable() {
             let left = this.leftTable;
@@ -596,6 +660,45 @@ export default {
         },
         rowHeightChange(val) {
             this.$set(this, 'rowHeight', val);
+        },
+        handleFixedResize() {
+            let getHeight = (DomKey) => {
+                DomKey = DomKey + 'FixHeader';
+                let newHeight = this.$refs[DomKey] ? this.$refs[DomKey].offsetHeight : 0;
+                let oldHeight = this[DomKey + 'Height'];
+                this[DomKey + 'Height'] = newHeight;
+                return newHeight === oldHeight;
+            };
+            let resizeFn = (DomKey) => {
+                let headerRow = this.$refs[DomKey + 'FixedHeader']
+                    ? (this.$refs[DomKey + 'FixedHeader'].$refs.tr || [])
+                    : [];
+                let headerRowHeight = [];
+                headerRow.forEach(row => {
+                    let height = row.$el.offsetHeight;
+                    headerRowHeight.push(height);
+                });
+                if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
+                    this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
+                }
+                this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
+            };
+            return () => {
+                let reset = false;
+                ['left', 'center', 'right'].forEach(DomKey => {
+                    let answer = !getHeight(DomKey);
+                    reset = reset || answer;
+                });
+                if (reset) {
+                    this.resetTableHeader();
+                    this.$nextTick(() => {
+                        ['left', 'center', 'right'].forEach(DomKey => {
+                            resizeFn(DomKey);
+                        });
+                        this.setStandardTable();
+                    });
+                }
+            };
         },
         handleResize() {
             let getHeight = (DomKey) => {
@@ -655,16 +758,15 @@ export default {
             margin-top: 0px;
         }
         .y-table-content {
-            overflow-y: auto;
-            position: relative;
+            .y-table-main {
+                overflow-y: auto;
+                position: relative;
+            }
             .y-table-box {
                 display: flex;
                 overflow: hidden;
             }
             .y-table-box-headerFixed {
-                position: absolute;
-                top: 0;
-                z-index: 1000;
                 display: flex;
                 overflow: hidden;
                 width: 100%;
