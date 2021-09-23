@@ -15,7 +15,7 @@
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
-                 :style="{ width: '100%' }" ref="headerFixedBox">
+                 :style="{ width: scorlling ? 'calc(100% - 5px)' : '100%' }" ref="headerFixedBox">
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                      v-if="multiple">
                     <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div :style="{ height: fixedBodyTop + 'px'}"></div>
-            <div class="y-table-main" :style="{ maxHeight: tableHeight }">
+            <div class="y-table-main" :style="{ maxHeight: tableHeight }" ref="tableMainBox">
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                      v-if="multiple">
                     <table>
@@ -70,7 +70,7 @@
                                       :currentHoverRow="currentHoverRow" @rowClick="handleClick" />
                     </table>
                 </div>
-                <div class="y-table-box"
+                <div class="y-table-box" ref="tableMain"
                      :style="{ width: `calc(100% - ${multiple ? 20 * maxExtendLevel + 40 + 'px' : 0}` }">
                     <div class="y-table-left"
                          v-if="rowColumn.rowColumnLeft.length" :style="{
@@ -211,6 +211,8 @@ export default {
     },
     data() {
         return {
+            tableMainBoxHeight: 0,
+            tableMainHeight: 0,
             fixedBodyTop: 0,
             leftFixHeaderHeight: 0,
             centerFixHeaderHeight: 0,
@@ -255,6 +257,12 @@ export default {
         };
     },
     computed: {
+        scorlling() {
+            if (!this.headerFix) {
+                return false;
+            }
+            return this.tableMainBoxHeight < this.tableMainHeight;
+        },
         headerColumn() {
             let headerColumn = [];
             let headerColumnLeft = [];
@@ -374,7 +382,9 @@ export default {
                 this.handleResize()();
                 if (this.headerFix) {
                     this.handleFixedResize()();
+                    this.getTableMainBoxHeight();
                     EleResize.on(this.$refs.centerFixHeader, this.handleFixedResize(), this);
+                    EleResize.on(this.$refs.tableMainBox, this.getTableMainBoxHeight, this);
                 }
                 EleResize.on(this.$refs.center, this.handleResize(), this);
             });
@@ -663,6 +673,9 @@ export default {
         rowHeightChange(val) {
             this.$set(this, 'rowHeight', val);
         },
+        getTableMainBoxHeight() {
+            this.tableMainBoxHeight = this.$refs.tableMainBox.offsetHeight;
+        },
         handleFixedResize() {
             let getHeight = (DomKey) => {
                 DomKey = DomKey + 'FixHeader';
@@ -749,6 +762,7 @@ export default {
                             resizeFn(DomKey);
                         });
                         this.setStandardTable();
+                        this.tableMainHeight = this.$refs.tableMain.offsetHeight;
                     });
                 }
             };
