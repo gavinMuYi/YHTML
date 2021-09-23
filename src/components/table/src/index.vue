@@ -61,7 +61,7 @@
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                      v-if="multiple">
                     <table>
-                        <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
+                        <y-table-header v-if="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
                                         :rowHeight="rowHeight.header" :selfRowHeight="[]" />
                         <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                       :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
@@ -78,7 +78,7 @@
                     }">
                         <table ref="left" style="width: 100%;">
                             <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
-                            <y-table-header :columns="headerColumn.headerColumnLeft"
+                            <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnLeft"
                                             ref="leftHeader" :level="headerDeep"
                                             :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                             <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
@@ -91,7 +91,7 @@
                     <div class="y-table-center" ref="centerTableContent" key="center">
                         <table ref="center">
                             <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
-                            <y-table-header :columns="headerColumn.headerColumn" ref="centerHeader"
+                            <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumn" ref="centerHeader"
                                             :level="headerDeep"
                                             :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                             <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
@@ -109,7 +109,7 @@
                     }">
                         <table ref="right" style="width: 100%">
                             <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
-                            <y-table-header :columns="headerColumn.headerColumnRight"
+                            <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnRight"
                                             ref="rightHeader" :level="headerDeep"
                                             :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                             <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
@@ -210,6 +210,9 @@ export default {
     },
     data() {
         return {
+            leftFixHeaderHeight: 0,
+            centerFixHeaderHeight: 0,
+            rightFixHeaderHeight: 0,
             leftHeight: 0,
             centerHeight: 0,
             rightHeight: 0,
@@ -367,15 +370,25 @@ export default {
             }));
             this.$nextTick(() => {
                 this.handleResize()();
+                if (this.headerFix) {
+                    this.handleFixedResize()();
+                    EleResize.on(this.$refs.centerFixHeader, this.handleFixedResize(), this);
+                }
                 EleResize.on(this.$refs.center, this.handleResize(), this);
             });
             if (rowColumnLeft.length) {
                 this.$nextTick(() => {
+                    if (this.headerFix) {
+                        EleResize.on(this.$refs.leftFixHeader, this.handleFixedResize(), this);
+                    }
                     EleResize.on(this.$refs.left, this.handleResize(), this);
                 });
             }
             if (rowColumnRight.length) {
                 this.$nextTick(() => {
+                    if (this.headerFix) {
+                        EleResize.on(this.$refs.rightFixHeader, this.handleFixedResize(), this);
+                    }
                     EleResize.on(this.$refs.right, this.handleResize(), this);
                 });
             }
@@ -465,6 +478,9 @@ export default {
                 || (nval.body.length && !this.rightTable.body.length)) {
                 this.$nextTick(() => {
                     this.handleResize()();
+                    if (this.headerFix) {
+                        this.handleFixedResize()();
+                    }
                 });
             }
         },
@@ -474,6 +490,9 @@ export default {
         tableList(nval) {
             setTimeout(() => {
                 this.handleResize()();
+                if (this.headerFix) {
+                    this.handleFixedResize()();
+                }
             });
         }
     },
@@ -543,12 +562,27 @@ export default {
             };
             setColumn(this.column);
         },
+        resetTableHeader() {
+            this.$set(this.leftTable, 'header', []);
+            this.$set(this.centerTable, 'header', []);
+            this.$set(this.rightTable, 'header', []);
+            this.$set(this.standardTable, 'header', []);
+            this.$set(this.rowHeight, 'header', []);
+            this.$set(this.leftTable, 'headerMax', 0);
+            this.$set(this.centerTable, 'headerMax', 0);
+            this.$set(this.rightTable, 'headerMax', 0);
+        },
         resetTableStyle() {
             let empty = {
                 headerMax: 0,
                 header: [],
                 body: []
             };
+            if (this.headerFix) {
+                empty = {
+                    body: []
+                };
+            }
             this.$set(this, 'leftTable', {
                 ...this.leftTable,
                 ...empty
@@ -561,14 +595,25 @@ export default {
                 ...this.rightTable,
                 ...empty
             });
-            this.$set(this, 'standardTable', {
-                header: [],
-                body: []
-            });
-            this.$set(this, 'rowHeight', {
-                header: [],
-                body: []
-            });
+            if (this.headerFix) {
+                this.$set(this, 'standardTable', {
+                    ...this.standardTable,
+                    body: []
+                });
+                this.$set(this, 'rowHeight', {
+                    ...this.rowHeight,
+                    body: []
+                });
+            } else {
+                this.$set(this, 'standardTable', {
+                    header: [],
+                    body: []
+                });
+                this.$set(this, 'rowHeight', {
+                    header: [],
+                    body: []
+                });
+            }
         },
         setStandardTable() {
             let left = this.leftTable;
@@ -616,6 +661,45 @@ export default {
         rowHeightChange(val) {
             this.$set(this, 'rowHeight', val);
         },
+        handleFixedResize() {
+            let getHeight = (DomKey) => {
+                DomKey = DomKey + 'FixHeader';
+                let newHeight = this.$refs[DomKey] ? this.$refs[DomKey].offsetHeight : 0;
+                let oldHeight = this[DomKey + 'Height'];
+                this[DomKey + 'Height'] = newHeight;
+                return newHeight === oldHeight;
+            };
+            let resizeFn = (DomKey) => {
+                let headerRow = this.$refs[DomKey + 'FixedHeader']
+                    ? (this.$refs[DomKey + 'FixedHeader'].$refs.tr || [])
+                    : [];
+                let headerRowHeight = [];
+                headerRow.forEach(row => {
+                    let height = row.$el.offsetHeight;
+                    headerRowHeight.push(height);
+                });
+                if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
+                    this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
+                }
+                this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
+            };
+            return () => {
+                let reset = false;
+                ['left', 'center', 'right'].forEach(DomKey => {
+                    let answer = !getHeight(DomKey);
+                    reset = reset || answer;
+                });
+                if (reset) {
+                    this.resetTableHeader();
+                    this.$nextTick(() => {
+                        ['left', 'center', 'right'].forEach(DomKey => {
+                            resizeFn(DomKey);
+                        });
+                        this.setStandardTable();
+                    });
+                }
+            };
+        },
         handleResize() {
             let getHeight = (DomKey) => {
                 let newHeight = this.$refs[DomKey] ? this.$refs[DomKey].offsetHeight : 0;
@@ -624,29 +708,31 @@ export default {
                 return newHeight === oldHeight;
             };
             let resizeFn = (DomKey) => {
-                let headerRow = this.$refs[DomKey + 'Header']
-                    ? (this.$refs[DomKey + 'Header'].$refs.tr || [])
-                    : [];
+                if (!this.headerFix) {
+                    let headerRow = this.$refs[DomKey + 'Header']
+                        ? (this.$refs[DomKey + 'Header'].$refs.tr || [])
+                        : [];
+                    let headerRowHeight = [];
+                    headerRow.forEach(row => {
+                        let height = row.$el.offsetHeight;
+                        headerRowHeight.push(height);
+                    });
+                    if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
+                        this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
+                    }
+                    this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
+                }
                 let bodyRow = this.$refs[DomKey + 'Body'].$refs.tr
                     ? this.$refs[DomKey + 'Body'].$refs.tr || []
                     : [];
-                let headerRowHeight = [];
-                headerRow.forEach(row => {
-                    let height = row.$el.offsetHeight;
-                    headerRowHeight.push(height);
-                });
                 let BodyRowHeight = [];
                 bodyRow.forEach(row => {
                     let height = row.elm.offsetHeight;
                     BodyRowHeight.push(height);
                 });
-                if (headerRowHeight.toString() !== this.rowHeight.header.toString()) {
-                    this.$set(this[DomKey + 'Table'], 'header', headerRowHeight);
-                }
                 if (BodyRowHeight.toString() !== this.rowHeight.body.toString()) {
                     this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
                 }
-                this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
             };
             return () => {
                 let reset = false;

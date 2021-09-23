@@ -75,7 +75,7 @@
                 </y-table-column>
                 <y-table-column label="二级">
                     <y-table-column label="三级" columnKey="label" width="100px" dragable>
-                        <div slot="header">cell slot can click</div>
+                        <div slot-scope="props" slot="header"><HeaderEx /></div>
                         <div slot-scope="props" slot="cell">
                             {{ props.label + '-' + props.key }}
                         </div>
@@ -95,17 +95,20 @@
 </template>
 
 <script>
+import HeaderEx from './headerex';
 import YTable from './src/index';
 import YTableColumn from './src/components/table-column';
 export default {
     name: 'YTableExample',
     components: {
         YTable,
-        YTableColumn
+        YTableColumn,
+        HeaderEx
     },
     data() {
         let c = '7912837419823741283476123846123784637rey734tr6734tr63tregr7d34gr7fg734fg3yugf73g7gf3';
         return {
+            lll: 100,
             leftheight: 100,
             rightheight: 200,
             left: 0,
@@ -271,6 +274,10 @@ export default {
         };
     },
     methods: {
+        llladd() {
+            this.lll = 200;
+            console.log('22');
+        },
         lefth() {
             this.leftheight = 100;
             this.rightheight = 100;
