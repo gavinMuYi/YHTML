@@ -552,12 +552,7 @@ export default {
         scorllXHandler() {
             let content = this.$refs.centerTableContent;
             content && content.addEventListener('scroll', () => {
-                // ['action', 'left', 'center', 'right'].forEach(key => {
-                //     let el = this.$refs[key + 'FixHeader'];
-                //     el && (el.style.marginTop = (content.scrollTop || 0) + 'px');
-                // });
                 this.scrollLeft = content.scrollLeft;
-                // console.log('---',);
             });
         },
         setWidth(currentcol, val) {
