@@ -158,15 +158,15 @@ export default {
             }
             .y-table-column_sort-icon {
                 width: 10px;
-                height: 17px;
+                height: 15px;
                 margin-left: 5px;
                 position: relative;
                 .y-icon {
                     position: absolute;
                     margin-right: 5px;
                     fill: #a8abb3;
-                    width: 10px;
-                    height: 10px;
+                    width: 9px;
+                    height: 9px;
                     &:hover {
                         cursor: pointer;
                     }
