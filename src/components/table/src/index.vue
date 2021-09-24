@@ -674,7 +674,9 @@ export default {
             this.$set(this, 'rowHeight', val);
         },
         getTableMainBoxHeight() {
-            this.tableMainBoxHeight = this.$refs.tableMainBox.offsetHeight;
+            setTimeout(() => {
+                this.tableMainBoxHeight = this.$refs.tableMainBox.offsetHeight;
+            });
         },
         handleFixedResize() {
             let getHeight = (DomKey) => {
