@@ -38,6 +38,10 @@ export default {
         dragable: {
             type: Boolean,
             default: false
+        },
+        sortable: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -67,6 +71,9 @@ export default {
             this.setParentColumn();
         },
         dragable() {
+            this.setParentColumn();
+        },
+        sortable() {
             this.setParentColumn();
         }
     },
@@ -111,7 +118,8 @@ export default {
                     children: this.column,
                     fixed: this.fixed,
                     rowspan: this.rowspan,
-                    dragable: this.dragable
+                    dragable: this.dragable,
+                    sortable: this.sortable
                 };
                 let that = this;
                 column.headRender = function (h, label, data) {

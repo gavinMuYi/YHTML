@@ -1,11 +1,13 @@
 <script>
 import YCheckbox from '@/components/checkbox';
+import YIcon from '@/components/icon';
 import { throttle } from '@/utils/tools.js';
 
 export default {
     name: 'YTableHeaderRow',
     components: {
-        YCheckbox
+        YCheckbox,
+        YIcon
     },
     props: {
         rowData: {
@@ -102,11 +104,18 @@ export default {
                     </div>
                 </div>
             );
+            let sort = (
+                <div class="y-table-column_sort-icon">
+                    <y-icon name="arrow-up" class="sort-up" />
+                    <y-icon name="arrow-down" class="sort-down" />
+                </div>
+            );
             let thdom = <th
                 colspan={th.colSpan} rowspan={th.rowSpan}
                 class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
                 <div class="y-table-cell">
                     { th.headRender.call(this, h, th.label, th) }
+                    { th.sortable ? sort : '' }
                     {
                         this.residue === th.rowSpan && th.dragable
                             ? line
@@ -146,6 +155,30 @@ export default {
             box-sizing: border-box;
             &:nth-child(1) {
                 border-left: none;
+            }
+            .y-table-column_sort-icon {
+                width: 10px;
+                height: 17px;
+                margin-left: 5px;
+                position: relative;
+                .y-icon {
+                    position: absolute;
+                    margin-right: 5px;
+                    fill: #a8abb3;
+                    width: 10px;
+                    height: 10px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .sort-up {
+                    top: 0px;
+                    left: 0px;
+                }
+                .sort-down {
+                    bottom: 0px;
+                    left: 0px;
+                }
             }
         }
         th:hover {

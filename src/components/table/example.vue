@@ -2,7 +2,7 @@
     <div class="y-table_example">
         <y-table title="TABLE EXAMPLE 0" :lazyLoad="lazyLoad" :headerFix="true" tableHeight="150px">
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable />
-            <y-table-column label="二级" columnKey="label" width="500px" dragable>
+            <y-table-column label="二级" columnKey="label" width="500px" dragable sortable>
             </y-table-column>
             <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px" :rowspan="true" dragable />
         </y-table>
