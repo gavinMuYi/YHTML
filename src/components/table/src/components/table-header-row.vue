@@ -39,6 +39,9 @@ export default {
         };
     },
     methods: {
+        sort(order, key) {
+            console.log(order, key);
+        },
         handleMouseMove(e, tindex, th, width) {
             return (e) => {
                 if (this.moveStatus[tindex]) {
@@ -106,8 +109,8 @@ export default {
             );
             let sort = (
                 <div class="y-table-column_sort-icon">
-                    <y-icon name="arrow-up" class="sort-up" />
-                    <y-icon name="arrow-down" class="sort-down" />
+                    <y-icon name="arrow-up" class="sort-up" on-click={() => { this.sort(true, th.columnKey) }} />
+                    <y-icon name="arrow-down" class="sort-down" on-click={() => { this.sort(false, th.columnKey) }} />
                 </div>
             );
             let thdom = <th

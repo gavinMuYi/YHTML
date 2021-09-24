@@ -1,5 +1,5 @@
 <template>
-    <svg aria-hidden="true" class="y-icon">
+    <svg aria-hidden="true" class="y-icon" @click="handleClick">
         <use :xlink:href="`#icon-${name}`" style="pointer-events:none" />
     </svg>
 </template>
@@ -15,6 +15,11 @@ export default {
         name: {
             type: String,
             default: ''
+        }
+    },
+    methods: {
+        handleClick(e) {
+            this.$emit('click', e);
         }
     }
 };
