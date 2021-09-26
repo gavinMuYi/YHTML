@@ -1,10 +1,10 @@
 <template>
     <thead class="y-table-header">
         <y-table-header-row
-            ref="tr"
+            ref="tr" :defaultSort="currentSort.key ? {} : defaultSort"
             v-for="(row, rindex) in level" :key="'row-' + rindex" :rindex="rindex"
             :residue="level - rindex" :actionTable="actionTable" :level="level"
-            :rowData="columns[rindex]" :style="rowStyle(rindex)"
+            :rowData="columns[rindex]" :style="rowStyle(rindex)" :name="name"
             @columnSort="columnSort" :currentSort="nowSort" />
     </thead>
 </template>
@@ -52,6 +52,12 @@ export default {
         name: {
             type: String,
             default: ''
+        },
+        defaultSort: {
+            type: Object,
+            default: () => {
+                return {};
+            }
         }
     },
     computed: {

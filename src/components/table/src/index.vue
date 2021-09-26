@@ -33,7 +33,7 @@
                         <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" />
                         <y-table-header :columns="headerColumn.headerColumnLeft" :level="headerDeep"
                                         ref="leftFixedHeader" @columnSort="columnSort($event, 'left')"
-                                        :currentSort="currentSort" name="left"
+                                        :currentSort="currentSort" name="left" :defaultSort="defaultSort"
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                     </table>
                 </div>
@@ -43,7 +43,7 @@
                         <y-table-colgroup :colgroup="rowColumn.rowColumn" />
                         <y-table-header :columns="headerColumn.headerColumn" :level="headerDeep"
                                         ref="centerFixedHeader" @columnSort="columnSort($event, 'center')"
-                                        :currentSort="currentSort" name="center"
+                                        :currentSort="currentSort" name="center" :defaultSort="defaultSort"
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                     </table>
                 </div>
@@ -56,7 +56,7 @@
                         <y-table-colgroup :colgroup="rowColumn.rowColumnRight" />
                         <y-table-header :columns="headerColumn.headerColumnRight" :level="headerDeep"
                                         ref="rightFixedHeader" @columnSort="columnSort($event, 'right')"
-                                        :currentSort="currentSort" name="right"
+                                        :currentSort="currentSort" name="right" :defaultSort="defaultSort"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                     </table>
                 </div>
@@ -84,7 +84,7 @@
                         <table ref="left" style="width: 100%;">
                             <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
                             <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnLeft"
-                                            ref="leftHeader" :level="headerDeep" name="left"
+                                            ref="leftHeader" :level="headerDeep" name="left" :defaultSort="defaultSort"
                                             @columnSort="columnSort($event, 'left')" :currentSort="currentSort"
                                             :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                             <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
@@ -99,7 +99,7 @@
                             <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
                             <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumn" ref="centerHeader"
                                             :level="headerDeep" @columnSort="columnSort($event, 'center')"
-                                            :currentSort="currentSort" name="center"
+                                            :currentSort="currentSort" name="center" :defaultSort="defaultSort"
                                             :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                             <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
                                           :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
@@ -118,6 +118,7 @@
                             <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
                             <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnRight"
                                             ref="rightHeader" :level="headerDeep" name="right"
+                                            :defaultSort="defaultSort"
                                             @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
                                             :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                             <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
@@ -214,6 +215,12 @@ export default {
         },
         tableHeight: {
             type: String
+        },
+        defaultSort: {
+            type: Object,
+            default: () => {
+                return {};
+            }
         }
     },
     data() {

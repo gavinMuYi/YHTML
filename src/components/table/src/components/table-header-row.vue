@@ -37,6 +37,16 @@ export default {
             default: () => {
                 return {};
             }
+        },
+        defaultSort: {
+            type: Object,
+            default: () => {
+                return {};
+            }
+        },
+        name: {
+            type: String,
+            default: ''
         }
     },
     data() {
@@ -116,6 +126,15 @@ export default {
             let sorted = null;
             if (this.currentSort.key === th.columnKey && this.currentSort.columnIndex === tindex) {
                 sorted = this.currentSort.order === 'asc' ? 'up' : 'down';
+            }
+            if (this.defaultSort.key && this.defaultSort.key === th.columnKey && th.sortable) {
+                if (this.defaultSort.name) {
+                    if (this.defaultSort.name === this.name && this.defaultSort.index === tindex) {
+                        this.sort(this.defaultSort.order, th.columnKey, th.compare, tindex);
+                    }
+                } else {
+                    this.sort(this.defaultSort.order, th.columnKey, th.compare, tindex);
+                }
             }
             let sort = (
                 <div class="y-table-column_sort-icon">
