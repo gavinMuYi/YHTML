@@ -96,6 +96,12 @@ export default {
                 ...this.rowData,
                 $y_table_position: this.position
             });
+        },
+        handleSelect() {
+            this.$emit('select', {
+                ...this.rowData,
+                $y_table_position: this.position
+            });
         }
     },
     render(h) {
@@ -121,7 +127,7 @@ export default {
                         }}>
                     </div>
                     <div class="y-table_checkbox">
-                        <span on-click={($event) => { $event.stopPropagation() }}>
+                        <span on-click={($event) => { $event.stopPropagation(); this.handleSelect() }}>
                             <y-checkbox />
                         </span>
                     </div>

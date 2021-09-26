@@ -23,7 +23,9 @@
                         :class="['arrow', {'loading': loading}]" v-if="isFolder && !(self && self[maps.cascade])"/>
                 <span v-else class="no-arrow"></span>
                 <span class="label-item">
-                    <span v-if="multiple" @click.stop="multipleSelect"><y-checkbox :status="tracked" /></span>
+                    <span v-if="multiple" @click.stop="multipleSelect">
+                        <y-checkbox :status="tracked" :disable="self[maps.disable]" />
+                    </span>
                     <slot name="item" :data="self" :level="level">
                         <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
                     </slot>
@@ -480,9 +482,15 @@ export default {
             }
             this.extendAction();
             this.extend();
+            if (this.self[this.maps.disable]) {
+                return;
+            }
             this.handleSelect();
         },
         multipleSelect() {
+            if (this.self[this.maps.disable]) {
+                return;
+            }
             let selected = clone(this.self);
             delete selected[this.maps.children];
             delete selected[this.maps.hasChildren];

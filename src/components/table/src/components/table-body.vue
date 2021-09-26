@@ -89,7 +89,10 @@ export default {
         },
         handleClick(rowData) {
             this.$emit('rowClick', rowData);
-        }
+        },
+        handleSelect(rowData) {
+            this.$emit('select', rowData);
+        },
     },
     render(h) {
         this.$refs.tr = [];
@@ -106,7 +109,8 @@ export default {
                     tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])}
                     on-hover={($event) => { this.handleHover($event) }} name={this.name}
                     on-hoverout={($event) => { this.handleHoverOut($event) }}
-                    on-rowClick={($event) => { this.handleClick($event) }} />;
+                    on-rowClick={($event) => { this.handleClick($event) }}
+                    on-select={($event) => { this.handleSelect($event) }} />;
                 this.$refs.tr.push(trDom);
                 trs.push(trDom);
                 if (row.children && row.children.length && row.extend) {

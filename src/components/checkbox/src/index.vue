@@ -1,6 +1,6 @@
 <template>
     <span class="y-checkbox" @click="handleClick">
-        <div :class="['check-icon', {'all': currentStatus === 'all'}]">
+        <div :class="['check-icon', {'all': currentStatus === 'all'}, {'disable': disable}]">
             <y-icon name="check" v-if="currentStatus === 'all'" />
             <div class="half" v-if="currentStatus === 'half'"></div>
         </div>
@@ -24,6 +24,10 @@ export default {
         status: {
             type: String,
             default: 'empty' // empty, half, all
+        },
+        disable: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -38,6 +42,9 @@ export default {
     },
     methods: {
         handleClick() {
+            if (this.disable) {
+                return;
+            }
             if (this.currentStatus === 'all' || this.currentStatus === 'half') {
                 this.currentStatus = 'empty';
             } else {
@@ -51,8 +58,8 @@ export default {
 
 <style lang="less">
     .y-checkbox {
-        cursor: pointer;
         .check-icon {
+            cursor: pointer;
             width: 14px;
             height: 14px;
             display: inline-block;
@@ -68,6 +75,11 @@ export default {
                 left: 4px;
                 background: #18b9ac;
             }
+        }
+        .disable {
+            background: #dadada;
+            opacity: 0.5;
+            pointer-events: none;
         }
         .all {
             background: #18b9ac;

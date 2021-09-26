@@ -71,7 +71,8 @@
                         <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                       :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
                                       @hover="handleHover" @hoverout="handleHoverout" :multiple="multiple"
-                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick" />
+                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                      @select="handleSelect" />
                     </table>
                 </div>
                 <div class="y-table-box" ref="tableMain"
@@ -568,6 +569,9 @@ export default {
             if (rowData.hasChildren || (rowData.children && rowData.children.length)) {
                 this.$refs.dataTable.extendChange(rowData.$y_table_position);
             }
+        },
+        handleSelect(rowData) {
+            console.log('select', rowData);
         },
         updateTotal(val) {
             this.total = val;
