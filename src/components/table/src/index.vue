@@ -847,7 +847,7 @@ export default {
                             width: 10px;
                             height: 17px;
                             position: absolute;
-                            left: -5px;
+                            left: -7px;
                         }
                     }
                 }
