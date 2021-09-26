@@ -88,7 +88,7 @@
                     <y-table-column label="三级" columnKey="label" width="50px">
                     </y-table-column>
                 </y-table-column>
-                <y-table-column label="Labelin1" columnKey="label" width="100px" />
+                <y-table-column label="Labelin1" columnKey="label" width="100px" sortable />
                 <y-table-column label="Labelin2" columnKey="label" width="50px" />
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="550px" dragable/>
@@ -248,7 +248,7 @@ export default {
                 label: 'sd2',
                 key: 'as3d',
             }, {
-                label: 'sd2',
+                label: 'sd32',
                 key: 'as3d',
             }, {
                 label: 'sd2',
