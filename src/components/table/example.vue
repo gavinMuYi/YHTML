@@ -119,7 +119,7 @@ export default {
                 key: 'as3d',
                 c: '32'
             }, {
-                label: 'sd2',
+                label: 'sd3',
                 key: 'as3d',
                 c: '32',
                 hasChildren: true

@@ -31,6 +31,12 @@ export default {
         actionTable: {
             type: Boolean,
             default: false
+        },
+        currentSort: {
+            type: Object,
+            default: () => {
+                return {};
+            }
         }
     },
     data() {
@@ -39,8 +45,8 @@ export default {
         };
     },
     methods: {
-        sort(order, key) {
-            console.log(order, key);
+        sort(order, key, compare, columnIndex) {
+            this.$emit('columnSort', order, key, compare, columnIndex);
         },
         handleMouseMove(e, tindex, th, width) {
             return (e) => {
@@ -107,10 +113,16 @@ export default {
                     </div>
                 </div>
             );
+            let sorted = null;
+            if (this.currentSort.key === th.columnKey && this.currentSort.columnIndex === tindex) {
+                sorted = this.currentSort.order === 'asc' ? 'up' : 'down';
+            }
             let sort = (
                 <div class="y-table-column_sort-icon">
-                    <y-icon name="arrow-up" class="sort-up" on-click={() => { this.sort(true, th.columnKey) }} />
-                    <y-icon name="arrow-down" class="sort-down" on-click={() => { this.sort(false, th.columnKey) }} />
+                    <y-icon name="arrow-up" class={['sort-up', sorted ? (sorted === 'up' ? 'sorted' : '') : '']}
+                        on-click={() => { this.sort('asc', th.columnKey, th.compare, tindex) }} />
+                    <y-icon name="arrow-down" class={['sort-down', sorted ? (sorted === 'down' ? 'sorted' : '') : '']}
+                        on-click={() => { this.sort('desc', th.columnKey, th.compare, tindex) }} />
                 </div>
             );
             let thdom = <th
@@ -181,6 +193,9 @@ export default {
                 .sort-down {
                     bottom: 0px;
                     left: 0px;
+                }
+                .sorted {
+                    fill: #18b9ac;
                 }
             }
         }

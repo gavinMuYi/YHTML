@@ -11,7 +11,8 @@
                         :fixed="column.fixed" />
                 </slot>
                 <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
-                              @updateTotal="updateTotal" @updateTableList="updateTableList" />
+                              @updateTotal="updateTotal" @updateTableList="updateTableList"
+                              :currentSort="currentSort" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
@@ -31,7 +32,8 @@
                     <table class="header-fix" ref="leftFixHeader" style="width: 100%">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" />
                         <y-table-header :columns="headerColumn.headerColumnLeft" :level="headerDeep"
-                                        ref="leftFixedHeader"
+                                        ref="leftFixedHeader" @columnSort="columnSort($event, 'left')"
+                                        :currentSort="currentSort" name="left"
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                     </table>
                 </div>
@@ -40,7 +42,8 @@
                            :style="{position: 'absolute',left: -scrollLeft + 'px'}">
                         <y-table-colgroup :colgroup="rowColumn.rowColumn" />
                         <y-table-header :columns="headerColumn.headerColumn" :level="headerDeep"
-                                        ref="centerFixedHeader"
+                                        ref="centerFixedHeader" @columnSort="columnSort($event, 'center')"
+                                        :currentSort="currentSort" name="center"
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                     </table>
                 </div>
@@ -52,7 +55,8 @@
                     <table class="header-fix" ref="rightFixHeader" style="width: 100%">
                         <y-table-colgroup :colgroup="rowColumn.rowColumnRight" />
                         <y-table-header :columns="headerColumn.headerColumnRight" :level="headerDeep"
-                                        ref="rightFixedHeader"
+                                        ref="rightFixedHeader" @columnSort="columnSort($event, 'right')"
+                                        :currentSort="currentSort" name="right"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                     </table>
                 </div>
@@ -80,7 +84,8 @@
                         <table ref="left" style="width: 100%;">
                             <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
                             <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnLeft"
-                                            ref="leftHeader" :level="headerDeep"
+                                            ref="leftHeader" :level="headerDeep" name="left"
+                                            @columnSort="columnSort($event, 'left')" :currentSort="currentSort"
                                             :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                             <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
                                           :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
@@ -93,7 +98,8 @@
                         <table ref="center">
                             <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
                             <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumn" ref="centerHeader"
-                                            :level="headerDeep"
+                                            :level="headerDeep" @columnSort="columnSort($event, 'center')"
+                                            :currentSort="currentSort" name="center"
                                             :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                             <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
                                           :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
@@ -111,7 +117,8 @@
                         <table ref="right" style="width: 100%">
                             <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
                             <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnRight"
-                                            ref="rightHeader" :level="headerDeep"
+                                            ref="rightHeader" :level="headerDeep" name="right"
+                                            @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
                                             :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                             <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
                                           :rowHeight="rowHeight.body" :multiple="multiple"
@@ -228,6 +235,13 @@ export default {
             tableList: [],
             column: [],
             maps: {},
+            currentSort: {
+                order: null,
+                key: null,
+                compare: null,
+                columnIndex: null,
+                name: null
+            },
             maxExtendLevel: 1,
             currentHoverRow: null,
             scrollLeft: 0,
@@ -530,6 +544,11 @@ export default {
         hanlePagination(val) {
             this.index = val.index;
             this.count = val.count;
+        },
+        columnSort({ order, key, compare, columnIndex }, name) {
+            this.$set(this, 'currentSort', {
+                order, key, compare, columnIndex, name
+            });
         },
         handleClick(rowData) {
             this.$emit('rowClick', rowData);

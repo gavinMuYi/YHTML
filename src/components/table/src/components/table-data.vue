@@ -29,6 +29,12 @@ export default {
         count: {
             type: Number,
             default: -1
+        },
+        currentSort: {
+            type: Object,
+            default: () => {
+                return {};
+            }
         }
     },
     data() {
@@ -49,12 +55,33 @@ export default {
         },
         count(nval) {
             this.updateData();
+        },
+        currentSort(nval, oval) {
+            if (nval.key && (JSON.stringify(nval) !== JSON.stringify(oval))) {
+                this.$set(this, 'tableList', this.sortData(clone(this.tableList)));
+            }
         }
     },
     mounted() {
         this.updateData();
     },
     methods: {
+        sortData(arr) {
+            if (this.currentSort.key) {
+                let key = this.currentSort.key;
+                let compare = this.currentSort.compare || function (a, b) {
+                    return a[key] === b[key]
+                        ? 0
+                        : a[key] > b[key]
+                            ? 1 : -1;
+                };
+                arr.sort(compare);
+                if (this.currentSort.order === 'desc') {
+                    arr.reverse();
+                }
+            }
+            return arr;
+        },
         updateData(leaf) {
             if (leaf) {
                 this.$set(leaf, 'loading', true);
@@ -68,7 +95,7 @@ export default {
             } else {
                 this.lazyLoad(null, this.index, this.count).then(res => {
                     this.total = res.total || 0;
-                    this.$set(this, 'tableList', clone(res.options || []));
+                    this.$set(this, 'tableList', this.sortData(clone(res.options || [])));
                 });
             }
         },

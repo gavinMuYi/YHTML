@@ -28,7 +28,6 @@ module.exports = {
         "no-cond-assign": [2, "except-parens"],
         "no-constant-condition": [2, {"checkLoops": false}],
         "no-control-regex": 2,
-        "no-debugger": 2,
         "no-dupe-args": 2,
         "no-dupe-keys": 2,
         "no-duplicate-case": 2,

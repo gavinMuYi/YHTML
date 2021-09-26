@@ -42,6 +42,9 @@ export default {
         sortable: {
             type: Boolean,
             default: false
+        },
+        compare: {
+            type: Function
         }
     },
     data() {
@@ -74,6 +77,9 @@ export default {
             this.setParentColumn();
         },
         sortable() {
+            this.setParentColumn();
+        },
+        compare() {
             this.setParentColumn();
         }
     },
@@ -119,7 +125,8 @@ export default {
                     fixed: this.fixed,
                     rowspan: this.rowspan,
                     dragable: this.dragable,
-                    sortable: this.sortable
+                    sortable: this.sortable,
+                    compare: this.compare
                 };
                 let that = this;
                 column.headRender = function (h, label, data) {

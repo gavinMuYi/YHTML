@@ -4,7 +4,8 @@
             ref="tr"
             v-for="(row, rindex) in level" :key="'row-' + rindex" :rindex="rindex"
             :residue="level - rindex" :actionTable="actionTable" :level="level"
-            :rowData="columns[rindex]" :style="rowStyle(rindex)" />
+            :rowData="columns[rindex]" :style="rowStyle(rindex)"
+            @columnSort="columnSort" :currentSort="nowSort" />
     </thead>
 </template>
 
@@ -41,6 +42,24 @@ export default {
         actionTable: {
             type: Boolean,
             default: false
+        },
+        currentSort: {
+            type: Object,
+            default: () => {
+                return {};
+            }
+        },
+        name: {
+            type: String,
+            default: ''
+        }
+    },
+    computed: {
+        nowSort() {
+            if (this.currentSort.key && this.currentSort.name === this.name) {
+                return this.currentSort;
+            }
+            return {};
         }
     },
     methods: {
@@ -58,6 +77,11 @@ export default {
                 };
             }
             return {};
+        },
+        columnSort(order, key, compare, columnIndex) {
+            this.$emit('columnSort', {
+                order, key, compare, columnIndex
+            });
         }
     }
 };
