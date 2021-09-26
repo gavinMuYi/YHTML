@@ -104,6 +104,13 @@ export default {
             <td class="y-table-standard-cell"></td>
         );
         let rowSlot = this.$parent.$parent.$scopedSlots['row' + this.rowData.$y_table_level];
+        let icon = this.multiple && !this.name
+            && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
+            ? <span class="y-table-row_icon-box"><y-icon name={this.rowData.loading
+                ? 'loading'
+                : `arrow-${this.rowData.extend ? 'up' : 'down'}`}
+            class="y-table-row_icon" /></span>
+            : '';
         this.actionTable && tds.push(
             <td class="y-table-action-cell">
                 <div style={'display: flex;'}>
@@ -118,6 +125,7 @@ export default {
                             <y-checkbox />
                         </span>
                     </div>
+                    { icon }
                 </div>
             </td>
         );
@@ -134,7 +142,7 @@ export default {
             } else {
                 this.columns.forEach((td, tindex) => {
                     let rowspan = this.getRowspan(td);
-                    let icon = !tindex && (this.name === 'left'
+                    let icon = !this.multiple && !tindex && (this.name === 'left'
                         || (this.name === 'center' && !this.widthLeft))
                         && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
                         ? <y-icon name={this.rowData.loading

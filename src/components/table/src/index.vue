@@ -70,7 +70,7 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="[]" />
                         <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                       :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
-                                      @hover="handleHover" @hoverout="handleHoverout"
+                                      @hover="handleHover" @hoverout="handleHoverout" :multiple="multiple"
                                       :currentHoverRow="currentHoverRow" @rowClick="handleClick" />
                     </table>
                 </div>
@@ -836,9 +836,21 @@ export default {
             }
             .y-table-actions {
                 display: inline-block;
-                position: relative;
                 left: 1px;
                 float: left;
+                .y-table-action-cell {
+                    position: relative;
+                    .y-table-row_icon-box {
+                        position: relative;
+                        .y-table-row_icon {
+                            fill: #496866;
+                            width: 10px;
+                            height: 17px;
+                            position: absolute;
+                            left: -5px;
+                        }
+                    }
+                }
             }
             table {
                 border-spacing: 0px;
