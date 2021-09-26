@@ -221,6 +221,12 @@ export default {
             default: () => {
                 return {};
             }
+        },
+        colspanColumns: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     data() {
