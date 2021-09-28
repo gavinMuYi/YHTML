@@ -18,7 +18,7 @@
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
                  :style="{ width: scorlling ? 'calc(100% - 5px)' : '100%' }" ref="headerFixedBox">
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
-                     v-if="multiple">
+                     v-if="Boolean(multiple && basicIndex)">
                     <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
                         <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                         :rowHeight="rowHeight.header" :selfRowHeight="[]" />
@@ -64,19 +64,22 @@
             <div :style="{ height: fixedBodyTop + 'px'}"></div>
             <div class="y-table-main" :style="{ maxHeight: tableHeight }" ref="tableMainBox">
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
-                     v-if="multiple">
+                     v-if="Boolean(multiple && basicIndex)">
                     <table>
                         <y-table-header v-if="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
                                         :rowHeight="rowHeight.header" :selfRowHeight="[]" />
                         <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                       :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
-                                      @hover="handleHover" @hoverout="handleHoverout" :multiple="multiple"
+                                      @hover="handleHover" @hoverout="handleHoverout"
+                                      :multiple="Boolean(multiple && basicIndex)"
                                       :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                       @select="handleSelect" />
                     </table>
                 </div>
                 <div class="y-table-box" ref="tableMain"
-                     :style="{ width: `calc(100% - ${multiple ? 20 * maxExtendLevel + 40 + 'px' : 0}` }">
+                     :style="{
+                         width: `calc(100% - ${Boolean(multiple && basicIndex) ? 20 * maxExtendLevel + 40 + 'px' : 0}`
+                }">
                     <div class="y-table-left"
                          v-if="rowColumn.rowColumnLeft.length" :style="{
                              minWidth: `${leftTableWidth}`,
@@ -91,7 +94,7 @@
                             <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
                                           :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                          :multiple="multiple"
+                                          :multiple="Boolean(multiple && basicIndex)"
                                           :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
                         </table>
                     </div>
@@ -105,7 +108,7 @@
                             <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
                                           :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                          :multiple="multiple"
+                                          :multiple="Boolean(multiple && basicIndex)"
                                           :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
                                           :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
                         </table>
@@ -123,7 +126,7 @@
                                             @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
                                             :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                             <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
-                                          :rowHeight="rowHeight.body" :multiple="multiple"
+                                          :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
                                           :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                           :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
@@ -140,6 +143,7 @@
 </template>
 
 <script>
+import clone from 'clone';
 import { EleResize } from '@/utils/dom.js';
 import YPagination from '@/components/pagination';
 import YTableColumn from './components/table-column';
@@ -228,10 +232,15 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        basicIndex: {
+            type: String,
+            default: ''
         }
     },
     data() {
         return {
+            currentSelect: [],
             tableMainBoxHeight: 0,
             tableMainHeight: 0,
             fixedBodyTop: 0,
@@ -491,18 +500,33 @@ export default {
             let rows = [];
             let index = -1;
             this.maxExtendLevel = 0;
-            let flat = (arr, level, pre) => {
+            let flat = (arr, level, pre, father) => {
                 arr.forEach((row, rindex) => {
                     this.maps[pre + '-' + rindex] = ++index;
+                    row.children && row.children.length && (row.$childrenLength = row.children.length);
+                    let { children, ...self } = row;
+                    let link = null;
+                    let innerFather = clone(father);
+                    if (father) {
+                        let last = innerFather;
+                        while (last.children) {
+                            last = last.children[0];
+                        }
+                        last.children = [clone(self)];
+                        link = innerFather;
+                    } else {
+                        link = self;
+                    }
                     rows.push({
+                        $link: link,
                         ...row,
                         $y_table_level: level
                     });
                     if (row.extend) {
                         this.maxExtendLevel = Math.max(level, this.maxExtendLevel);
                     }
-                    if (row.children && row.children.length && row.extend) {
-                        flat(row.children, level + 1, pre + '-' + rindex);
+                    if (children && children.length && row.extend) {
+                        flat(children, level + 1, pre + '-' + rindex, clone(link));
                     }
                 });
             };
@@ -571,7 +595,26 @@ export default {
             }
         },
         handleSelect(rowData) {
-            console.log('select', rowData);
+            // if (rowData.$y_table_level === 1) {
+            //     this.currentSelect.push(rowData);
+            // }
+            // let level = rowData.$y_table_level;
+            // let actioned = false;
+            // let flat = (arr, level, maxLevel) => {
+            //     let index = 0;
+            //     while (index < arr.length && arr[index] && !actioned) {
+            //         if (rowData[this.basicIndex] === arr[index][this.basicIndex]) {
+            //             arr.splice(index, 1);
+            //             actioned = true;
+            //         }
+            //     }
+            //     if (level === maxLevel) {
+            //         return;
+            //     }
+            //     flat (arr, level + 1, maxLevel);
+            // };
+            this.currentSelect.push(rowData);
+            console.log('select', rowData.$link);
         },
         updateTotal(val) {
             this.total = val;
@@ -744,7 +787,9 @@ export default {
                             resizeFn(DomKey);
                         });
                         this.setStandardTable();
-                        this.fixedBodyTop = this.$refs.headerFixedBox.offsetHeight;
+                        setTimeout(() => {
+                            this.fixedBodyTop = this.$refs.headerFixedBox.offsetHeight;
+                        });
                     });
                 }
             };

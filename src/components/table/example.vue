@@ -8,7 +8,8 @@
             <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px" :rowspan="true"
                             dragable sortable />
         </y-table>
-        <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1">
+        <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1"
+                 basicIndex="key">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级' + c + c + c + c + str" columnKey="c" :rowspan="true"
                                 dragable>
