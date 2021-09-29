@@ -75,7 +75,8 @@
                                       @hover="handleHover" @hoverout="handleHoverout"
                                       :multiple="Boolean(multiple && basicIndex)"
                                       :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                      @select="handleSelect" :checkBoxStatus="checkBoxStatus" />
+                                      @select="handleSelect" :checkBoxStatus="checkBoxStatus"
+                                      :basicIndex="basicIndex" />
                     </table>
                 </div>
                 <div class="y-table-box" ref="tableMain"
@@ -243,7 +244,7 @@ export default {
     },
     data() {
         return {
-            checkBoxStatus: [],
+            checkBoxStatus: {},
             currentSelect: [],
             tableMainBoxHeight: 0,
             tableMainHeight: 0,
@@ -557,6 +558,9 @@ export default {
                 if (this.headerFix) {
                     this.handleFixedResize()();
                 }
+                if (this.multiple && this.basicIndex) {
+                    this.getCheckBoxStatus();
+                }
             });
         }
     },
@@ -596,23 +600,26 @@ export default {
         },
         handleMultiple(val) {
             this.$set(this, 'currentSelect', val);
-            let checkBoxStatus = [];
+            this.getCheckBoxStatus();
+        },
+        getCheckBoxStatus() {
+            let checkBoxStatus = {};
             let flat = (arr, target) => {
                 arr.forEach(node => {
                     let item = {
                         tracked: node.tracked
                     };
-                    target.push(item);
+                    this.$set(target, node.self[this.basicIndex], item);
                     if (node.$refs.leaf) {
-                        item.children = [];
+                        item.children = {};
                         flat(node.$refs.leaf, item.children);
                     }
                 });
             };
             this.$nextTick(() => {
                 flat(this.$refs.treeManger.$refs.leaf, checkBoxStatus);
+                this.$set(this, 'checkBoxStatus', checkBoxStatus);
             });
-            this.$set(this, 'checkBoxStatus', checkBoxStatus);
         },
         handleSelect(rowData) {
             let mangerLeaf = this.$refs.treeManger;

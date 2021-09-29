@@ -19,7 +19,7 @@
                     </div>
                 </y-table-column>
             </y-table-column>
-            <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable />
+            <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable sortable />
             <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px" :rowspan="true" dragable />
             <y-table-column label="一级">
                 <div slot="header">header-111-一级</div>

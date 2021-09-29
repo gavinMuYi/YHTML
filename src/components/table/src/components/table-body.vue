@@ -65,10 +65,14 @@ export default {
             default: false
         },
         checkBoxStatus: {
-            type: Array,
+            type: Object,
             default: () => {
-                return [];
+                return {};
             }
+        },
+        basicIndex: {
+            type: String,
+            default: ''
         }
     },
     methods: {
@@ -107,11 +111,13 @@ export default {
             arr.forEach((row, rindex) => {
                 let rowPosition = clone(position);
                 rowPosition.push(rindex);
+                let rowData = this.rows[this.maps[pre + '-' + rindex]];
                 let trDom = <y-table-row
-                    checkBoxStatus={checkBoxStatus[rindex] ? checkBoxStatus[rindex].tracked : ''}
+                    checkBoxStatus={this.basicIndex && checkBoxStatus[rowData[this.basicIndex]]
+                        ? checkBoxStatus[rowData[this.basicIndex]].tracked : ''}
                     multiple={this.multiple} widthLeft={this.widthLeft}
                     position={rowPosition} currentHoverRow={this.currentHoverRow}
-                    rowData={this.rows[this.maps[pre + '-' + rindex]]} columns={this.columns}
+                    rowData={rowData} columns={this.columns}
                     index={this.maps[pre + '-' + rindex]} actionTable={this.actionTable}
                     tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])}
                     on-hover={($event) => { this.handleHover($event) }} name={this.name}
@@ -122,7 +128,10 @@ export default {
                 trs.push(trDom);
                 if (row.children && row.children.length && row.extend) {
                     flat(row.children, pre + '-' + rindex, rowPosition,
-                        checkBoxStatus[rindex] ? (checkBoxStatus[rindex].children || []) : []);
+                        this.basicIndex && checkBoxStatus[rowData[this.basicIndex]]
+                            ? (checkBoxStatus[rowData[this.basicIndex]].children || {})
+                            : {}
+                    );
                 }
             });
         };
