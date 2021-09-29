@@ -10,6 +10,8 @@
                         :width="column.width" :label="column.label"
                         :fixed="column.fixed" />
                 </slot>
+                <y-tree v-if="multiple && basicIndex" :options="tableList" :multiple="true" ref="treeManger"
+                        :value="currentSelect" @change="handleMultiple" :maps="treeMangerMap" />
                 <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList"
                               :currentSort="currentSort" />
@@ -73,7 +75,7 @@
                                       @hover="handleHover" @hoverout="handleHoverout"
                                       :multiple="Boolean(multiple && basicIndex)"
                                       :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                      @select="handleSelect" />
+                                      @select="handleSelect" :checkBoxStatus="checkBoxStatus" />
                     </table>
                 </div>
                 <div class="y-table-box" ref="tableMain"
@@ -143,8 +145,8 @@
 </template>
 
 <script>
-import clone from 'clone';
 import { EleResize } from '@/utils/dom.js';
+import YTree from '@/components/tree';
 import YPagination from '@/components/pagination';
 import YTableColumn from './components/table-column';
 import YTableBody from './components/table-body';
@@ -156,6 +158,7 @@ import YTableStandard  from './components/table-standard';
 export default {
     name: 'YTable',
     components: {
+        YTree,
         YPagination,
         YTableColumn,
         YTableColgroup,
@@ -240,6 +243,7 @@ export default {
     },
     data() {
         return {
+            checkBoxStatus: [],
             currentSelect: [],
             tableMainBoxHeight: 0,
             tableMainHeight: 0,
@@ -294,6 +298,17 @@ export default {
         };
     },
     computed: {
+        treeMangerMap() {
+            return {
+                key: this.basicIndex,
+                label: 'label',
+                children: 'children',
+                hasChildren: 'hasChildren',
+                disable: 'disable',
+                extend: 'extend',
+                cascade: 'cascade'
+            };
+        },
         scorlling() {
             if (!this.headerFix) {
                 return false;
@@ -500,33 +515,18 @@ export default {
             let rows = [];
             let index = -1;
             this.maxExtendLevel = 0;
-            let flat = (arr, level, pre, father) => {
+            let flat = (arr, level, pre) => {
                 arr.forEach((row, rindex) => {
                     this.maps[pre + '-' + rindex] = ++index;
-                    row.children && row.children.length && (row.$childrenLength = row.children.length);
-                    let { children, ...self } = row;
-                    let link = null;
-                    let innerFather = clone(father);
-                    if (father) {
-                        let last = innerFather;
-                        while (last.children) {
-                            last = last.children[0];
-                        }
-                        last.children = [clone(self)];
-                        link = innerFather;
-                    } else {
-                        link = self;
-                    }
                     rows.push({
-                        $link: link,
                         ...row,
                         $y_table_level: level
                     });
                     if (row.extend) {
                         this.maxExtendLevel = Math.max(level, this.maxExtendLevel);
                     }
-                    if (children && children.length && row.extend) {
-                        flat(children, level + 1, pre + '-' + rindex, clone(link));
+                    if (row.children && row.children.length && row.extend) {
+                        flat(row.children, level + 1, pre + '-' + rindex);
                     }
                 });
             };
@@ -594,27 +594,32 @@ export default {
                 this.$refs.dataTable.extendChange(rowData.$y_table_position);
             }
         },
+        handleMultiple(val) {
+            this.$set(this, 'currentSelect', val);
+            let checkBoxStatus = [];
+            let flat = (arr, target) => {
+                arr.forEach(node => {
+                    let item = {
+                        tracked: node.tracked
+                    };
+                    target.push(item);
+                    if (node.$refs.leaf) {
+                        item.children = [];
+                        flat(node.$refs.leaf, item.children);
+                    }
+                });
+            };
+            this.$nextTick(() => {
+                flat(this.$refs.treeManger.$refs.leaf, checkBoxStatus);
+            });
+            this.$set(this, 'checkBoxStatus', checkBoxStatus);
+        },
         handleSelect(rowData) {
-            // if (rowData.$y_table_level === 1) {
-            //     this.currentSelect.push(rowData);
-            // }
-            // let level = rowData.$y_table_level;
-            // let actioned = false;
-            // let flat = (arr, level, maxLevel) => {
-            //     let index = 0;
-            //     while (index < arr.length && arr[index] && !actioned) {
-            //         if (rowData[this.basicIndex] === arr[index][this.basicIndex]) {
-            //             arr.splice(index, 1);
-            //             actioned = true;
-            //         }
-            //     }
-            //     if (level === maxLevel) {
-            //         return;
-            //     }
-            //     flat (arr, level + 1, maxLevel);
-            // };
-            this.currentSelect.push(rowData);
-            console.log('select', rowData.$link);
+            let mangerLeaf = this.$refs.treeManger;
+            rowData.$y_table_position.forEach(index => {
+                mangerLeaf = mangerLeaf.$refs.leaf[index];
+            });
+            mangerLeaf && mangerLeaf.multipleSelect();
         },
         updateTotal(val) {
             this.total = val;

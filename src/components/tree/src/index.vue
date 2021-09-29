@@ -346,6 +346,9 @@ export default {
         },
         count() {
             this.init();
+        },
+        options() {
+            this.init();
         }
     },
     mounted() {

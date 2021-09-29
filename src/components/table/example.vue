@@ -29,7 +29,7 @@
                     <y-table-column label="三级" columnKey="label" width="100px" dragable>
                         <div slot="header">cell slot can click</div>
                         <div slot-scope="props" slot="cell">
-                            {{ props.label + '-' + props.key }}
+                            {{ props.selectStatus }}
                         </div>
                     </y-table-column>
                     <y-table-column label="三级" columnKey="label" width="50px" dragable>
@@ -42,11 +42,11 @@
                 <y-table-column label="Labelin2" columnKey="label" width="50px" dragable/>
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="250px" dragable/>
-            <div slot-scope="props" slot="row2">
+            <!-- <div slot-scope="props" slot="row2">
                 <div v-if="props.name === 'left'" @click="lefth"
                      :style="{height: leftheight + 'px'}">d111{{ props }}</div>
                 <div v-else @click="righth" :style="{height: rightheight + 'px'}">d222{{ props}}</div>
-            </div>
+            </div> -->
         </y-table>
         <!-- <div class="ex-table-box" ref="box">
             <table class="ex-table">
@@ -129,17 +129,17 @@ export default {
             }],
             tableList2: [{
                 label: 'sd2',
-                key: 'as3d',
+                key: 'as3d213',
                 c: '32'
             }, {
                 label: 'sd2',
-                key: 'as3d',
+                key: 'as341324d',
                 c: c + c + c,
                 children: [{
-                    key: 'we22222',
+                    key: 'we22222rvfwd',
                     label: 'sdaf22222',
                     children: [{
-                        key: 'wasdffe33333',
+                        key: 'wasdffee33333',
                         label: 'sgdafgfddaf33333'
                     }, {
                         key: 'was3333dffe33333',
@@ -147,8 +147,8 @@ export default {
                     }]
                 }]
             }, {
-                label: 'sd2',
-                key: 'as3d',
+                label: 'sdrrrerv2',
+                key: 'asvrwr3d',
                 c: c + c + c
             }],
             tableList: [{

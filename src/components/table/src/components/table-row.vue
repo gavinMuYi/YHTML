@@ -56,6 +56,10 @@ export default {
         widthLeft: {
             type: Boolean,
             default: false
+        },
+        checkBoxStatus: {
+            type: String,
+            default: ''
         }
     },
     methods: {
@@ -128,7 +132,7 @@ export default {
                     </div>
                     <div class="y-table_checkbox">
                         <span on-click={($event) => { $event.stopPropagation(); this.handleSelect() }}>
-                            <y-checkbox />
+                            <y-checkbox status={ this.checkBoxStatus }/>
                         </span>
                     </div>
                     { icon }

@@ -63,6 +63,12 @@ export default {
         widthLeft: {
             type: Boolean,
             default: false
+        },
+        checkBoxStatus: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     methods: {
@@ -97,11 +103,12 @@ export default {
     render(h) {
         this.$refs.tr = [];
         let trs = [];
-        let flat = (arr, pre, position) => {
+        let flat = (arr, pre, position, checkBoxStatus) => {
             arr.forEach((row, rindex) => {
                 let rowPosition = clone(position);
                 rowPosition.push(rindex);
                 let trDom = <y-table-row
+                    checkBoxStatus={checkBoxStatus[rindex] ? checkBoxStatus[rindex].tracked : ''}
                     multiple={this.multiple} widthLeft={this.widthLeft}
                     position={rowPosition} currentHoverRow={this.currentHoverRow}
                     rowData={this.rows[this.maps[pre + '-' + rindex]]} columns={this.columns}
@@ -114,11 +121,12 @@ export default {
                 this.$refs.tr.push(trDom);
                 trs.push(trDom);
                 if (row.children && row.children.length && row.extend) {
-                    flat(row.children, pre + '-' + rindex, rowPosition);
+                    flat(row.children, pre + '-' + rindex, rowPosition,
+                        checkBoxStatus[rindex] ? (checkBoxStatus[rindex].children || []) : []);
                 }
             });
         };
-        flat(this.tableList, '0', []);
+        flat(this.tableList, '0', [], this.checkBoxStatus);
         return <tbody class="y-table-body">
             { trs }
         </tbody>;
