@@ -11,7 +11,7 @@
                         :fixed="column.fixed" />
                 </slot>
                 <y-tree v-if="multiple && basicIndex" :options="tableList" :multiple="true" ref="treeManger"
-                        :value="currentSelect" @change="handleMultiple" :maps="treeMangerMap" />
+                        :value="currentSelect" @change="handleMultiple" :maps="treeMangerMap" :key="treeRefresh" />
                 <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList"
                               :currentSort="currentSort" />
@@ -244,6 +244,7 @@ export default {
     },
     data() {
         return {
+            treeRefresh: 0,
             checkBoxStatus: {},
             currentSelect: [],
             tableMainBoxHeight: 0,
@@ -553,6 +554,7 @@ export default {
             this.count = nval[0] || 15;
         },
         tableList(nval) {
+            this.treeRefresh++;
             setTimeout(() => {
                 this.handleResize()();
                 if (this.headerFix) {

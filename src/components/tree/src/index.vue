@@ -354,7 +354,7 @@ export default {
     mounted() {
         this.init();
         this.cascadeDomObserver();
-        this.treeObserver();
+        this.cascadeMode && this.treeObserver();
     },
     methods: {
         init() {
@@ -666,7 +666,7 @@ export default {
                 const callback = (mutationsList, observer) => {
                     let totalcascadelevel = 0;
                     let top = 0;
-                    for (let i = 0; i < this.$refs.treePanel.children.length; i++) {
+                    for (let i = 0; i < (this.$refs.treePanel ? this.$refs.treePanel.children.length : 0); i++) {
                         let dom = this.$refs.treePanel.children[i];
                         if (dom.attributes.extendStatus) {
                             totalcascadelevel++;
