@@ -146,6 +146,7 @@
 </template>
 
 <script>
+import clone from 'clone';
 import { EleResize } from '@/utils/dom.js';
 import YTree from '@/components/tree';
 import YPagination from '@/components/pagination';
@@ -240,13 +241,19 @@ export default {
         basicIndex: {
             type: String,
             default: ''
+        },
+        selected: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     data() {
         return {
             treeRefresh: 0,
             checkBoxStatus: {},
-            currentSelect: [],
+            currentSelect: clone(this.selected),
             tableMainBoxHeight: 0,
             tableMainHeight: 0,
             fixedBodyTop: 0,
@@ -537,6 +544,9 @@ export default {
         }
     },
     watch: {
+        selected(nval) {
+            this.$set(this, 'currentSelect', clone(nval));
+        },
         rowHeight(nval) {
             if ((nval.header.length && !this.leftTable.header.length)
                 || (nval.body.length && !this.leftTable.body.length)
@@ -602,6 +612,7 @@ export default {
         },
         handleMultiple(val) {
             this.$set(this, 'currentSelect', val);
+            this.$emit('multipleSelect', val);
             this.getCheckBoxStatus();
         },
         getCheckBoxStatus() {
