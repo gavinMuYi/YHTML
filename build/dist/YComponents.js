@@ -4365,6 +4365,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -4379,6 +4380,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         YCheckbox: __WEBPACK_IMPORTED_MODULE_5__components_checkbox__["default"]
     },
     props: {
+        fatherDisableStatue: {
+            type: Boolean,
+            default: false
+        },
         cascadeBottom: {
             type: Number,
             default: 32
@@ -4514,6 +4519,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         tracked: function tracked() {
             if (this.multiple) {
                 if (this.fatherStatus === 'all' && !this.self[this.maps.disable]) {
+                    return 'all';
+                }
+                if (this.fatherStatus === 'all' && this.fatherDisableStatue) {
                     return 'all';
                 }
                 if (this.selected && this.selected[this.maps.key]) {
@@ -4744,13 +4752,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             this.extendAction();
             this.extend();
-            if (this.self[this.maps.disable]) {
+            if (this.self[this.maps.disable] || this.fatherDisableStatue) {
                 return;
             }
             this.handleSelect();
         },
         multipleSelect: function multipleSelect() {
-            if (this.self[this.maps.disable]) {
+            if (this.self[this.maps.disable] || this.fatherDisableStatue) {
                 return;
             }
             var selected = __WEBPACK_IMPORTED_MODULE_6_clone___default()(this.self);
@@ -10936,7 +10944,9 @@ var render = function() {
                                 _c("y-checkbox", {
                                   attrs: {
                                     status: _vm.tracked,
-                                    disable: _vm.self[_vm.maps.disable]
+                                    disable:
+                                      _vm.self[_vm.maps.disable] ||
+                                      _vm.fatherDisableStatue
                                   }
                                 })
                               ],
@@ -11045,6 +11055,9 @@ var render = function() {
                   fatherStatus: _vm.tracked,
                   cascadeMode: _vm.cascadeMode,
                   fatherID: _vm.fatherID || _vm.treeId,
+                  fatherDisableStatue: Boolean(
+                    _vm.self && _vm.self[_vm.maps.disable]
+                  ),
                   beforeCascadeLevel:
                     _vm.self && _vm.self[_vm.maps.cascade]
                       ? _vm.level

@@ -24,7 +24,7 @@
                 <span v-else class="no-arrow"></span>
                 <span class="label-item">
                     <span v-if="multiple" @click.stop="multipleSelect">
-                        <y-checkbox :status="tracked" :disable="self[maps.disable]" />
+                        <y-checkbox :status="tracked" :disable="self[maps.disable] || fatherDisableStatue" />
                     </span>
                     <slot name="item" :data="self" :level="level">
                         <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
@@ -54,6 +54,7 @@
                 :fatherStatus="tracked"
                 :cascadeMode="cascadeMode"
                 :fatherID="fatherID || treeId"
+                :fatherDisableStatue="Boolean(self && self[maps.disable])"
                 :beforeCascadeLevel="(self && self[maps.cascade]) ? level : beforeCascadeLevel"
                 :cascadeLevel="cascadeLevel + ((self && self[maps.cascade]) ? 1 : 0)"
                 :tracklessData="trackLessSelect.concat(tracklessData)"
@@ -131,6 +132,10 @@ export default {
         YCheckbox
     },
     props: {
+        fatherDisableStatue: {
+            type: Boolean,
+            default: false
+        },
         cascadeBottom: {
             type: Number,
             default: 32
@@ -267,6 +272,9 @@ export default {
         tracked() {
             if (this.multiple) {
                 if (this.fatherStatus === 'all' && !this.self[this.maps.disable]) {
+                    return 'all';
+                }
+                if (this.fatherStatus === 'all' && this.fatherDisableStatue) {
                     return 'all';
                 }
                 if (this.selected && this.selected[this.maps.key]) {
@@ -485,13 +493,13 @@ export default {
             }
             this.extendAction();
             this.extend();
-            if (this.self[this.maps.disable]) {
+            if (this.self[this.maps.disable] || this.fatherDisableStatue) {
                 return;
             }
             this.handleSelect();
         },
         multipleSelect() {
-            if (this.self[this.maps.disable]) {
+            if (this.self[this.maps.disable] || this.fatherDisableStatue) {
                 return;
             }
             let selected = clone(this.self);

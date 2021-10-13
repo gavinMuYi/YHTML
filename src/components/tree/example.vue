@@ -117,8 +117,7 @@ export default {
                         disable: true,
                         children: [{
                             key: 'we21',
-                            label: 'sd32af',
-                            disable: true
+                            label: 'sd32af'
                         }]
                     }, {
                         key: 'was3333dffe',
