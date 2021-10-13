@@ -5429,7 +5429,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             [icon, h(
                                 'span',
                                 { 'class': 'y-table-cell_content' },
-                                [td.render.call(_this, h, _this.rowData[td.columnKey], _this.rowData)]
+                                [td.render.call(_this, h, _this.rowData[td.columnKey], __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, _this.rowData, {
+                                    rowIndex: _this.index
+                                }))]
                             )]
                         )]
                     ));

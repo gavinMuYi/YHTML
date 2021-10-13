@@ -173,7 +173,10 @@ export default {
                             }>
                                 { icon }
                                 <span class="y-table-cell_content">
-                                    { td.render.call(this, h, this.rowData[td.columnKey], this.rowData) }
+                                    { td.render.call(this, h, this.rowData[td.columnKey], {
+                                        ...this.rowData,
+                                        rowIndex: this.index
+                                    }) }
                                 </span>
                             </div>
                         </td>
