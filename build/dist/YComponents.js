@@ -3474,11 +3474,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             rowHeight: {
                 header: [],
                 body: []
-            }
+            },
+            centerGap: 0
         };
     },
 
     computed: {
+        gapLineClass: function gapLineClass() {
+            var className = [];
+            if (!this.scrollLeft) {
+                className.push('no-left-gap');
+            }
+            if (this.scrollLeft === this.centerGap || !this.centerGap) {
+                className.push('no-right-gap');
+            }
+            return className;
+        },
         treeMangerMap: function treeMangerMap() {
             return {
                 key: this.basicIndex,
@@ -3841,12 +3852,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this8 = this;
 
             var content = this.$refs.centerTableContent;
+            var centerTable = this.$refs.center;
             content && content.addEventListener('scroll', function () {
                 _this8.scrollLeft = content.scrollLeft;
+                _this8.centerGap = centerTable.offsetWidth - content.offsetWidth;
             });
+            this.tableGapHandler();
+        },
+        tableGapHandler: function tableGapHandler() {
+            var _this9 = this;
+
+            var content = this.$refs.centerTableContent;
+            var centerTable = this.$refs.center;
+            var handler = function handler() {
+                _this9.centerGap = centerTable.offsetWidth - content.offsetWidth;
+            };
+            __WEBPACK_IMPORTED_MODULE_4__utils_dom_js__["a" /* EleResize */].on(this.$refs.table, handler, this);
         },
         setWidth: function setWidth(currentcol, val) {
-            var _this9 = this;
+            var _this10 = this;
 
             var setColumn = function setColumn(arr) {
                 arr.forEach(function (column) {
@@ -3855,7 +3879,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         setColumn(children);
                     }
                     if (column.uuid === currentcol.uuid) {
-                        _this9.$set(column, 'width', val);
+                        _this10.$set(column, 'width', val);
                     }
                 });
             };
@@ -3950,33 +3974,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$set(this, 'rowHeight', val);
         },
         getTableMainBoxHeight: function getTableMainBoxHeight() {
-            var _this10 = this;
+            var _this11 = this;
 
             setTimeout(function () {
-                _this10.tableMainBoxHeight = _this10.$refs.tableMainBox.offsetHeight;
+                _this11.tableMainBoxHeight = _this11.$refs.tableMainBox.offsetHeight;
             });
         },
         handleFixedResize: function handleFixedResize() {
-            var _this11 = this;
+            var _this12 = this;
 
             var getHeight = function getHeight(DomKey) {
                 DomKey = DomKey + 'FixHeader';
-                var newHeight = _this11.$refs[DomKey] ? _this11.$refs[DomKey].offsetHeight : 0;
-                var oldHeight = _this11[DomKey + 'Height'];
-                _this11[DomKey + 'Height'] = newHeight;
+                var newHeight = _this12.$refs[DomKey] ? _this12.$refs[DomKey].offsetHeight : 0;
+                var oldHeight = _this12[DomKey + 'Height'];
+                _this12[DomKey + 'Height'] = newHeight;
                 return newHeight === oldHeight;
             };
             var resizeFn = function resizeFn(DomKey) {
-                var headerRow = _this11.$refs[DomKey + 'FixedHeader'] ? _this11.$refs[DomKey + 'FixedHeader'].$refs.tr || [] : [];
+                var headerRow = _this12.$refs[DomKey + 'FixedHeader'] ? _this12.$refs[DomKey + 'FixedHeader'].$refs.tr || [] : [];
                 var headerRowHeight = [];
                 headerRow.forEach(function (row) {
                     var height = row.$el.offsetHeight;
                     headerRowHeight.push(height);
                 });
-                if (headerRowHeight.toString() !== _this11.rowHeight.header.toString()) {
-                    _this11.$set(_this11[DomKey + 'Table'], 'header', headerRowHeight);
+                if (headerRowHeight.toString() !== _this12.rowHeight.header.toString()) {
+                    _this12.$set(_this12[DomKey + 'Table'], 'header', headerRowHeight);
                 }
-                _this11.$set(_this11[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
+                _this12.$set(_this12[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
             };
             return function () {
                 var reset = false;
@@ -3985,64 +4009,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     reset = reset || answer;
                 });
                 if (reset) {
-                    _this11.resetTableHeader();
-                    _this11.$nextTick(function () {
+                    _this12.resetTableHeader();
+                    _this12.$nextTick(function () {
                         ['left', 'center', 'right'].forEach(function (DomKey) {
                             resizeFn(DomKey);
                         });
-                        _this11.setStandardTable();
+                        _this12.setStandardTable();
                         setTimeout(function () {
-                            _this11.fixedBodyTop = _this11.$refs.headerFixedBox.offsetHeight;
+                            _this12.fixedBodyTop = _this12.$refs.headerFixedBox.offsetHeight;
                         });
                     });
                 }
             };
         },
         handleResize: function handleResize() {
-            var _this12 = this;
+            var _this13 = this;
 
             var getHeight = function getHeight(DomKey) {
-                var newHeight = _this12.$refs[DomKey] ? _this12.$refs[DomKey].offsetHeight : 0;
-                var oldHeight = _this12[DomKey + 'Height'];
-                _this12[DomKey + 'Height'] = newHeight;
+                var newHeight = _this13.$refs[DomKey] ? _this13.$refs[DomKey].offsetHeight : 0;
+                var oldHeight = _this13[DomKey + 'Height'];
+                _this13[DomKey + 'Height'] = newHeight;
                 return newHeight === oldHeight;
             };
             var resizeFn = function resizeFn(DomKey) {
-                if (!_this12.headerFix) {
-                    var headerRow = _this12.$refs[DomKey + 'Header'] ? _this12.$refs[DomKey + 'Header'].$refs.tr || [] : [];
+                if (!_this13.headerFix) {
+                    var headerRow = _this13.$refs[DomKey + 'Header'] ? _this13.$refs[DomKey + 'Header'].$refs.tr || [] : [];
                     var headerRowHeight = [];
                     headerRow.forEach(function (row) {
                         var height = row.$el.offsetHeight;
                         headerRowHeight.push(height);
                     });
-                    if (headerRowHeight.toString() !== _this12.rowHeight.header.toString()) {
-                        _this12.$set(_this12[DomKey + 'Table'], 'header', headerRowHeight);
+                    if (headerRowHeight.toString() !== _this13.rowHeight.header.toString()) {
+                        _this13.$set(_this13[DomKey + 'Table'], 'header', headerRowHeight);
                     }
-                    _this12.$set(_this12[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
+                    _this13.$set(_this13[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
                 }
-                var bodyRow = _this12.$refs[DomKey + 'Body'].$refs.tr ? _this12.$refs[DomKey + 'Body'].$refs.tr || [] : [];
+                var bodyRow = _this13.$refs[DomKey + 'Body'].$refs.tr ? _this13.$refs[DomKey + 'Body'].$refs.tr || [] : [];
                 var BodyRowHeight = [];
                 bodyRow.forEach(function (row) {
                     var height = row.elm.offsetHeight;
                     BodyRowHeight.push(height);
                 });
-                if (BodyRowHeight.toString() !== _this12.rowHeight.body.toString()) {
-                    _this12.$set(_this12[DomKey + 'Table'], 'body', BodyRowHeight);
+                if (BodyRowHeight.toString() !== _this13.rowHeight.body.toString()) {
+                    _this13.$set(_this13[DomKey + 'Table'], 'body', BodyRowHeight);
                 }
+            };
+            var getGap = function getGap() {
+                var content = _this13.$refs.centerTableContent;
+                var centerTable = _this13.$refs.center;
+                _this13.centerGap = centerTable.offsetWidth - content.offsetWidth;
             };
             return function () {
                 var reset = false;
                 ['left', 'center', 'right'].forEach(function (DomKey) {
                     reset = reset || !getHeight(DomKey);
                 });
+                getGap();
                 if (reset) {
-                    _this12.resetTableStyle();
-                    _this12.$nextTick(function () {
+                    _this13.resetTableStyle();
+                    _this13.$nextTick(function () {
                         ['left', 'center', 'right'].forEach(function (DomKey) {
                             resizeFn(DomKey);
                         });
-                        _this12.setStandardTable();
-                        _this12.tableMainHeight = _this12.$refs.tableMain.offsetHeight;
+                        _this13.setStandardTable();
+                        _this13.tableMainHeight = _this13.$refs.tableMain.offsetHeight;
                     });
                 }
             };
@@ -7797,7 +7827,7 @@ exports = module.exports = __webpack_require__(3)(true);
 
 
 // module
-exports.push([module.i, "\n.y-table .y-table-title {\n  margin-top: 0px;\n}\n.y-table .y-table-content {\n  position: relative;\n}\n.y-table .y-table-content .y-table-main {\n  overflow-y: auto;\n  position: relative;\n}\n.y-table .y-table-content .y-table-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: hidden;\n}\n.y-table .y-table-content .y-table-box-headerFixed {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: hidden;\n  width: 100%;\n  z-index: 1000;\n  position: absolute;\n}\n.y-table .y-table-content .y-table-box-headerFixed .y-table-center {\n  overflow-x: hidden;\n}\n.y-table .y-table-content .y-table-hidden {\n  width: 0px;\n  height: 0px;\n  overflow: hidden;\n  opacity: 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n.y-table .y-table-content .y-table-actions {\n  display: inline-block;\n  left: 1px;\n  float: left;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell .y-table-row_icon-box {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell .y-table-row_icon-box .y-table-row_icon {\n  fill: #496866;\n  width: 10px;\n  height: 17px;\n  position: absolute;\n  left: -7px;\n}\n.y-table .y-table-content table {\n  border-spacing: 0px;\n  table-layout: fixed;\n  word-break: break-all;\n}\n.y-table .y-table-content table .y-table-cell {\n  font-size: 14px;\n  font-weight: 400;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 5px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.y-table .y-table-content table .y-table-cell .y-table-row_icon {\n  margin-right: 5px;\n  fill: #496866;\n  width: 10px;\n  height: 10px;\n}\n.y-table .y-table-content table .y-table-cell .y-table-cell_content {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.y-table .y-table-content table .y-table-standard-cell {\n  width: 0;\n  height: 1px;\n  padding: 0;\n}\n.y-table .y-table-content .y-table-center {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  overflow-x: auto;\n}\n.y-table .y-table-content .y-table-center table {\n  min-width: 100%;\n}\n.y-table .y-table-content .y-table-left {\n  z-index: 10;\n  position: relative;\n  -webkit-box-shadow: 1px -2px 8px #a4ede0;\n          box-shadow: 1px -2px 8px #a4ede0;\n}\n.y-table .y-table-content .y-table-right {\n  z-index: 10;\n  position: relative;\n  -webkit-box-shadow: -1px -2px 8px #a4ede0;\n          box-shadow: -1px -2px 8px #a4ede0;\n}\n.y-table .y-table-content .y-table-center {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions table .y-table-action-cell .y-table_checkbox {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  width: 37px;\n  height: 16px;\n}\n.y-table .y-pagination {\n  margin-top: 10px;\n}\n", "", {"version":3,"sources":["/Users/gavinjhyang/YHTML/src/components/table/src/index.vue"],"names":[],"mappings":";AACA;EACE,gBAAgB;CACjB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,iBAAiB;EACjB,mBAAmB;CACpB;AACD;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,iBAAiB;CAClB;AACD;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,iBAAiB;EACjB,YAAY;EACZ,cAAc;EACd,mBAAmB;CACpB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,WAAW;EACX,YAAY;EACZ,iBAAiB;EACjB,WAAW;EACX,mBAAmB;EACnB,OAAO;EACP,QAAQ;CACT;AACD;EACE,sBAAsB;EACtB,UAAU;EACV,YAAY;CACb;AACD;EACE,mBAAmB;CACpB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,cAAc;EACd,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,WAAW;CACZ;AACD;EACE,oBAAoB;EACpB,oBAAoB;EACpB,sBAAsB;CACvB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,0BAA0B;MACtB,uBAAuB;UACnB,oBAAoB;EAC5B,aAAa;EACb,+BAA+B;UACvB,uBAAuB;CAChC;AACD;EACE,kBAAkB;EAClB,cAAc;EACd,YAAY;EACZ,aAAa;CACd;AACD;EACE,oBAAoB;MAChB,YAAY;UACR,QAAQ;CACjB;AACD;EACE,SAAS;EACT,YAAY;EACZ,WAAW;CACZ;AACD;EACE,oBAAoB;MAChB,YAAY;UACR,QAAQ;EAChB,iBAAiB;CAClB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,YAAY;EACZ,mBAAmB;EACnB,yCAAyC;UACjC,iCAAiC;CAC1C;AACD;EACE,YAAY;EACZ,mBAAmB;EACnB,0CAA0C;UAClC,kCAAkC;CAC3C;AACD;EACE,mBAAmB;CACpB;AACD;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,YAAY;EACZ,aAAa;CACd;AACD;EACE,iBAAiB;CAClB","file":"index.vue","sourcesContent":["\n.y-table .y-table-title {\n  margin-top: 0px;\n}\n.y-table .y-table-content {\n  position: relative;\n}\n.y-table .y-table-content .y-table-main {\n  overflow-y: auto;\n  position: relative;\n}\n.y-table .y-table-content .y-table-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: hidden;\n}\n.y-table .y-table-content .y-table-box-headerFixed {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: hidden;\n  width: 100%;\n  z-index: 1000;\n  position: absolute;\n}\n.y-table .y-table-content .y-table-box-headerFixed .y-table-center {\n  overflow-x: hidden;\n}\n.y-table .y-table-content .y-table-hidden {\n  width: 0px;\n  height: 0px;\n  overflow: hidden;\n  opacity: 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n.y-table .y-table-content .y-table-actions {\n  display: inline-block;\n  left: 1px;\n  float: left;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell .y-table-row_icon-box {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell .y-table-row_icon-box .y-table-row_icon {\n  fill: #496866;\n  width: 10px;\n  height: 17px;\n  position: absolute;\n  left: -7px;\n}\n.y-table .y-table-content table {\n  border-spacing: 0px;\n  table-layout: fixed;\n  word-break: break-all;\n}\n.y-table .y-table-content table .y-table-cell {\n  font-size: 14px;\n  font-weight: 400;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 5px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.y-table .y-table-content table .y-table-cell .y-table-row_icon {\n  margin-right: 5px;\n  fill: #496866;\n  width: 10px;\n  height: 10px;\n}\n.y-table .y-table-content table .y-table-cell .y-table-cell_content {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.y-table .y-table-content table .y-table-standard-cell {\n  width: 0;\n  height: 1px;\n  padding: 0;\n}\n.y-table .y-table-content .y-table-center {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  overflow-x: auto;\n}\n.y-table .y-table-content .y-table-center table {\n  min-width: 100%;\n}\n.y-table .y-table-content .y-table-left {\n  z-index: 10;\n  position: relative;\n  -webkit-box-shadow: 1px -2px 8px #a4ede0;\n          box-shadow: 1px -2px 8px #a4ede0;\n}\n.y-table .y-table-content .y-table-right {\n  z-index: 10;\n  position: relative;\n  -webkit-box-shadow: -1px -2px 8px #a4ede0;\n          box-shadow: -1px -2px 8px #a4ede0;\n}\n.y-table .y-table-content .y-table-center {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions table .y-table-action-cell .y-table_checkbox {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  width: 37px;\n  height: 16px;\n}\n.y-table .y-pagination {\n  margin-top: 10px;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "\n.y-table .y-table-title {\n  margin-top: 0px;\n}\n.y-table .y-table-content {\n  position: relative;\n}\n.y-table .y-table-content .y-table-main {\n  overflow-y: auto;\n  position: relative;\n}\n.y-table .y-table-content .y-table-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: hidden;\n}\n.y-table .y-table-content .y-table-box-headerFixed {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: hidden;\n  width: 100%;\n  z-index: 1000;\n  position: absolute;\n}\n.y-table .y-table-content .y-table-box-headerFixed .y-table-center {\n  overflow-x: hidden;\n}\n.y-table .y-table-content .y-table-hidden {\n  width: 0px;\n  height: 0px;\n  overflow: hidden;\n  opacity: 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n.y-table .y-table-content .y-table-actions {\n  display: inline-block;\n  left: 1px;\n  float: left;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell .y-table-row_icon-box {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell .y-table-row_icon-box .y-table-row_icon {\n  fill: #496866;\n  width: 10px;\n  height: 17px;\n  position: absolute;\n  left: -7px;\n}\n.y-table .y-table-content table {\n  border-spacing: 0px;\n  table-layout: fixed;\n  word-break: break-all;\n}\n.y-table .y-table-content table .y-table-cell {\n  font-size: 14px;\n  font-weight: 400;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 5px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.y-table .y-table-content table .y-table-cell .y-table-row_icon {\n  margin-right: 5px;\n  fill: #496866;\n  width: 10px;\n  height: 10px;\n}\n.y-table .y-table-content table .y-table-cell .y-table-cell_content {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.y-table .y-table-content table .y-table-standard-cell {\n  width: 0;\n  height: 1px;\n  padding: 0;\n}\n.y-table .y-table-content .y-table-center {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  overflow-x: auto;\n}\n.y-table .y-table-content .y-table-center table {\n  min-width: 100%;\n}\n.y-table .y-table-content .y-table-left {\n  z-index: 10;\n  position: relative;\n  -webkit-box-shadow: 1px -2px 8px #a4ede0;\n          box-shadow: 1px -2px 8px #a4ede0;\n}\n.y-table .y-table-content .y-table-right {\n  z-index: 10;\n  position: relative;\n  -webkit-box-shadow: -1px -2px 8px #a4ede0;\n          box-shadow: -1px -2px 8px #a4ede0;\n}\n.y-table .y-table-content .y-table-center {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions table .y-table-action-cell .y-table_checkbox {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  width: 37px;\n  height: 16px;\n}\n.y-table .no-left-gap .y-table-left {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.y-table .no-right-gap .y-table-right {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.y-table .y-pagination {\n  margin-top: 10px;\n}\n", "", {"version":3,"sources":["/Users/gavinjhyang/YHTML/src/components/table/src/index.vue"],"names":[],"mappings":";AACA;EACE,gBAAgB;CACjB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,iBAAiB;EACjB,mBAAmB;CACpB;AACD;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,iBAAiB;CAClB;AACD;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,iBAAiB;EACjB,YAAY;EACZ,cAAc;EACd,mBAAmB;CACpB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,WAAW;EACX,YAAY;EACZ,iBAAiB;EACjB,WAAW;EACX,mBAAmB;EACnB,OAAO;EACP,QAAQ;CACT;AACD;EACE,sBAAsB;EACtB,UAAU;EACV,YAAY;CACb;AACD;EACE,mBAAmB;CACpB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,cAAc;EACd,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,WAAW;CACZ;AACD;EACE,oBAAoB;EACpB,oBAAoB;EACpB,sBAAsB;CACvB;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,0BAA0B;MACtB,uBAAuB;UACnB,oBAAoB;EAC5B,aAAa;EACb,+BAA+B;UACvB,uBAAuB;CAChC;AACD;EACE,kBAAkB;EAClB,cAAc;EACd,YAAY;EACZ,aAAa;CACd;AACD;EACE,oBAAoB;MAChB,YAAY;UACR,QAAQ;CACjB;AACD;EACE,SAAS;EACT,YAAY;EACZ,WAAW;CACZ;AACD;EACE,oBAAoB;MAChB,YAAY;UACR,QAAQ;EAChB,iBAAiB;CAClB;AACD;EACE,gBAAgB;CACjB;AACD;EACE,YAAY;EACZ,mBAAmB;EACnB,yCAAyC;UACjC,iCAAiC;CAC1C;AACD;EACE,YAAY;EACZ,mBAAmB;EACnB,0CAA0C;UAClC,kCAAkC;CAC3C;AACD;EACE,mBAAmB;CACpB;AACD;EACE,qBAAqB;EACrB,qBAAqB;EACrB,cAAc;EACd,yBAAyB;MACrB,sBAAsB;UAClB,wBAAwB;EAChC,YAAY;EACZ,aAAa;CACd;AACD;EACE,yBAAyB;UACjB,iBAAiB;CAC1B;AACD;EACE,yBAAyB;UACjB,iBAAiB;CAC1B;AACD;EACE,iBAAiB;CAClB","file":"index.vue","sourcesContent":["\n.y-table .y-table-title {\n  margin-top: 0px;\n}\n.y-table .y-table-content {\n  position: relative;\n}\n.y-table .y-table-content .y-table-main {\n  overflow-y: auto;\n  position: relative;\n}\n.y-table .y-table-content .y-table-box {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: hidden;\n}\n.y-table .y-table-content .y-table-box-headerFixed {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow: hidden;\n  width: 100%;\n  z-index: 1000;\n  position: absolute;\n}\n.y-table .y-table-content .y-table-box-headerFixed .y-table-center {\n  overflow-x: hidden;\n}\n.y-table .y-table-content .y-table-hidden {\n  width: 0px;\n  height: 0px;\n  overflow: hidden;\n  opacity: 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n.y-table .y-table-content .y-table-actions {\n  display: inline-block;\n  left: 1px;\n  float: left;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell .y-table-row_icon-box {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions .y-table-action-cell .y-table-row_icon-box .y-table-row_icon {\n  fill: #496866;\n  width: 10px;\n  height: 17px;\n  position: absolute;\n  left: -7px;\n}\n.y-table .y-table-content table {\n  border-spacing: 0px;\n  table-layout: fixed;\n  word-break: break-all;\n}\n.y-table .y-table-content table .y-table-cell {\n  font-size: 14px;\n  font-weight: 400;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 5px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.y-table .y-table-content table .y-table-cell .y-table-row_icon {\n  margin-right: 5px;\n  fill: #496866;\n  width: 10px;\n  height: 10px;\n}\n.y-table .y-table-content table .y-table-cell .y-table-cell_content {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.y-table .y-table-content table .y-table-standard-cell {\n  width: 0;\n  height: 1px;\n  padding: 0;\n}\n.y-table .y-table-content .y-table-center {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  overflow-x: auto;\n}\n.y-table .y-table-content .y-table-center table {\n  min-width: 100%;\n}\n.y-table .y-table-content .y-table-left {\n  z-index: 10;\n  position: relative;\n  -webkit-box-shadow: 1px -2px 8px #a4ede0;\n          box-shadow: 1px -2px 8px #a4ede0;\n}\n.y-table .y-table-content .y-table-right {\n  z-index: 10;\n  position: relative;\n  -webkit-box-shadow: -1px -2px 8px #a4ede0;\n          box-shadow: -1px -2px 8px #a4ede0;\n}\n.y-table .y-table-content .y-table-center {\n  position: relative;\n}\n.y-table .y-table-content .y-table-actions table .y-table-action-cell .y-table_checkbox {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  width: 37px;\n  height: 16px;\n}\n.y-table .no-left-gap .y-table-left {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.y-table .no-right-gap .y-table-right {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.y-table .y-pagination {\n  margin-top: 10px;\n}\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -12113,7 +12143,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "y-table" },
+    { ref: "table", staticClass: "y-table" },
     [
       _vm.title
         ? _c("h2", { staticClass: "y-table-title" }, [
@@ -12121,521 +12151,534 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("div", { ref: "tableContent", staticClass: "y-table-content" }, [
-        _c(
-          "div",
-          { staticClass: "y-table-hidden" },
-          [
-            _vm._t("default", function() {
-              return _vm._l(_vm.columnConfig, function(column, index) {
-                return _c("y-table-column", {
-                  key: column.key + index,
-                  attrs: {
-                    highlight: _vm.highlight,
-                    columnKey: column.key,
-                    width: column.width,
-                    label: column.label,
-                    fixed: column.fixed
-                  }
+      _c(
+        "div",
+        {
+          ref: "tableContent",
+          class: ["y-table-content"].concat(_vm.gapLineClass)
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "y-table-hidden" },
+            [
+              _vm._t("default", function() {
+                return _vm._l(_vm.columnConfig, function(column, index) {
+                  return _c("y-table-column", {
+                    key: column.key + index,
+                    attrs: {
+                      highlight: _vm.highlight,
+                      columnKey: column.key,
+                      width: column.width,
+                      label: column.label,
+                      fixed: column.fixed
+                    }
+                  })
                 })
-              })
-            }),
-            _vm._v(" "),
-            _vm.multiple && _vm.basicIndex
-              ? _c("y-tree", {
-                  key: _vm.treeRefresh,
-                  ref: "treeManger",
-                  attrs: {
-                    options: _vm.tableList,
-                    multiple: true,
-                    value: _vm.currentSelect,
-                    maps: _vm.treeMangerMap
-                  },
-                  on: { change: _vm.handleMultiple }
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _c("y-table-data", {
-              ref: "dataTable",
-              attrs: {
-                lazyLoad: _vm.fetchFunc,
-                index: _vm.index,
-                count: _vm.count,
-                currentSort: _vm.currentSort
-              },
-              on: {
-                updateTotal: _vm.updateTotal,
-                updateTableList: _vm.updateTableList
-              }
-            }),
-            _vm._v(" "),
-            _c("y-table-standard", {
-              attrs: { standardTable: _vm.standardTable },
-              on: { rowHeightChange: _vm.rowHeightChange }
-            })
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _vm.headerFix
-          ? _c(
-              "div",
-              {
-                key: "headerFixBox",
-                ref: "headerFixedBox",
-                staticClass: "y-table-box-headerFixed",
-                style: { width: _vm.scorlling ? "calc(100% - 5px)" : "100%" }
-              },
-              [
-                Boolean(_vm.multiple && _vm.basicIndex)
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "y-table-actions",
-                        style: { width: 20 * _vm.maxExtendLevel + 40 + "px" }
-                      },
-                      [
-                        _vm.headerFix
-                          ? _c(
-                              "table",
-                              {
-                                ref: "actionFixHeader",
-                                staticClass: "header-fix",
-                                staticStyle: { width: "100%" }
-                              },
-                              [
-                                _c("y-table-header", {
-                                  attrs: {
-                                    columns: [],
-                                    level: _vm.headerDeep,
-                                    actionTable: true,
-                                    rowHeight: _vm.rowHeight.header,
-                                    selfRowHeight: []
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          : _vm._e()
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.rowColumn.rowColumnLeft.length
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "y-table-left",
-                        style: {
-                          minWidth: "" + _vm.leftTableWidth,
-                          width: "" + _vm.leftTableWidth
-                        }
-                      },
-                      [
-                        _c(
-                          "table",
-                          {
-                            ref: "leftFixHeader",
-                            staticClass: "header-fix",
-                            staticStyle: { width: "100%" }
-                          },
-                          [
-                            _c("y-table-colgroup", {
-                              attrs: { colgroup: _vm.rowColumn.rowColumnLeft }
-                            }),
-                            _vm._v(" "),
-                            _c("y-table-header", {
-                              ref: "leftFixedHeader",
-                              attrs: {
-                                columns: _vm.headerColumn.headerColumnLeft,
-                                level: _vm.headerDeep,
-                                currentSort: _vm.currentSort,
-                                name: "left",
-                                defaultSort: _vm.defaultSort,
-                                rowHeight: _vm.rowHeight.header,
-                                selfRowHeight: _vm.leftTable.header
-                              },
-                              on: {
-                                columnSort: function($event) {
-                                  return _vm.columnSort($event, "left")
-                                }
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "y-table-center" }, [
-                  _c(
-                    "table",
-                    {
-                      ref: "centerFixHeader",
-                      staticClass: "header-fix",
-                      style: {
-                        position: "absolute",
-                        left: -_vm.scrollLeft + "px"
-                      }
+              }),
+              _vm._v(" "),
+              _vm.multiple && _vm.basicIndex
+                ? _c("y-tree", {
+                    key: _vm.treeRefresh,
+                    ref: "treeManger",
+                    attrs: {
+                      options: _vm.tableList,
+                      multiple: true,
+                      value: _vm.currentSelect,
+                      maps: _vm.treeMangerMap
                     },
-                    [
-                      _c("y-table-colgroup", {
-                        attrs: { colgroup: _vm.rowColumn.rowColumn }
-                      }),
-                      _vm._v(" "),
-                      _c("y-table-header", {
-                        ref: "centerFixedHeader",
-                        attrs: {
-                          columns: _vm.headerColumn.headerColumn,
-                          level: _vm.headerDeep,
-                          currentSort: _vm.currentSort,
-                          name: "center",
-                          defaultSort: _vm.defaultSort,
-                          rowHeight: _vm.rowHeight.header,
-                          selfRowHeight: _vm.centerTable.header
-                        },
-                        on: {
-                          columnSort: function($event) {
-                            return _vm.columnSort($event, "center")
-                          }
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _vm.rowColumn.rowColumnRight.length
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "y-table-right",
-                        style: {
-                          minWidth: "" + _vm.rightTableWidth,
-                          width: "" + _vm.rightTableWidth
-                        }
-                      },
-                      [
-                        _c(
-                          "table",
-                          {
-                            ref: "rightFixHeader",
-                            staticClass: "header-fix",
-                            staticStyle: { width: "100%" }
-                          },
-                          [
-                            _c("y-table-colgroup", {
-                              attrs: { colgroup: _vm.rowColumn.rowColumnRight }
-                            }),
-                            _vm._v(" "),
-                            _c("y-table-header", {
-                              ref: "rightFixedHeader",
-                              attrs: {
-                                columns: _vm.headerColumn.headerColumnRight,
-                                level: _vm.headerDeep,
-                                currentSort: _vm.currentSort,
-                                name: "right",
-                                defaultSort: _vm.defaultSort,
-                                rowHeight: _vm.rowHeight.header,
-                                selfRowHeight: _vm.rightTable.header
-                              },
-                              on: {
-                                columnSort: function($event) {
-                                  return _vm.columnSort($event, "right")
-                                }
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  : _vm._e()
-              ]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { style: { height: _vm.fixedBodyTop + "px" } }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            ref: "tableMainBox",
-            staticClass: "y-table-main",
-            style: { maxHeight: _vm.tableHeight }
-          },
-          [
-            Boolean(_vm.multiple && _vm.basicIndex)
-              ? _c(
-                  "div",
-                  {
-                    staticClass: "y-table-actions",
-                    style: { width: 20 * _vm.maxExtendLevel + 40 + "px" }
-                  },
-                  [
-                    _c(
-                      "table",
-                      [
-                        !_vm.headerFix
-                          ? _c("y-table-header", {
-                              attrs: {
-                                columns: [],
-                                level: _vm.headerDeep,
-                                actionTable: true,
-                                rowHeight: _vm.rowHeight.header,
-                                selfRowHeight: []
-                              }
-                            })
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("y-table-body", {
-                          attrs: {
-                            columns: [],
-                            rowHeight: _vm.rowHeight.body,
-                            actionTable: true,
-                            selfRowHeight: [],
-                            tableList: _vm.tableList,
-                            rows: _vm.rows,
-                            maps: _vm.maps,
-                            multiple: Boolean(_vm.multiple && _vm.basicIndex),
-                            currentHoverRow: _vm.currentHoverRow,
-                            checkBoxStatus: _vm.checkBoxStatus,
-                            basicIndex: _vm.basicIndex
-                          },
-                          on: {
-                            hover: _vm.handleHover,
-                            hoverout: _vm.handleHoverout,
-                            rowClick: _vm.handleClick,
-                            select: _vm.handleSelect
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                ref: "tableMain",
-                staticClass: "y-table-box",
-                style: {
-                  width:
-                    "calc(100% - " +
-                    (Boolean(_vm.multiple && _vm.basicIndex)
-                      ? 20 * _vm.maxExtendLevel + 40 + "px"
-                      : 0)
+                    on: { change: _vm.handleMultiple }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("y-table-data", {
+                ref: "dataTable",
+                attrs: {
+                  lazyLoad: _vm.fetchFunc,
+                  index: _vm.index,
+                  count: _vm.count,
+                  currentSort: _vm.currentSort
+                },
+                on: {
+                  updateTotal: _vm.updateTotal,
+                  updateTableList: _vm.updateTableList
                 }
-              },
-              [
-                _vm.rowColumn.rowColumnLeft.length
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "y-table-left",
-                        style: {
-                          minWidth: "" + _vm.leftTableWidth,
-                          width: "" + _vm.leftTableWidth
-                        }
-                      },
-                      [
-                        _c(
-                          "table",
-                          { ref: "left", staticStyle: { width: "100%" } },
-                          [
-                            _c("y-table-colgroup", {
-                              ref: "leftColgroup",
-                              attrs: { colgroup: _vm.rowColumn.rowColumnLeft }
-                            }),
-                            _vm._v(" "),
-                            !_vm.headerFix
-                              ? _c("y-table-header", {
-                                  ref: "leftHeader",
-                                  attrs: {
-                                    columns: _vm.headerColumn.headerColumnLeft,
-                                    level: _vm.headerDeep,
-                                    name: "left",
-                                    defaultSort: _vm.defaultSort,
-                                    currentSort: _vm.currentSort,
-                                    rowHeight: _vm.rowHeight.header,
-                                    selfRowHeight: _vm.leftTable.header
-                                  },
-                                  on: {
-                                    columnSort: function($event) {
-                                      return _vm.columnSort($event, "left")
+              }),
+              _vm._v(" "),
+              _c("y-table-standard", {
+                attrs: { standardTable: _vm.standardTable },
+                on: { rowHeightChange: _vm.rowHeightChange }
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _vm.headerFix
+            ? _c(
+                "div",
+                {
+                  key: "headerFixBox",
+                  ref: "headerFixedBox",
+                  staticClass: "y-table-box-headerFixed",
+                  style: { width: _vm.scorlling ? "calc(100% - 5px)" : "100%" }
+                },
+                [
+                  Boolean(_vm.multiple && _vm.basicIndex)
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "y-table-actions",
+                          style: { width: 20 * _vm.maxExtendLevel + 40 + "px" }
+                        },
+                        [
+                          _vm.headerFix
+                            ? _c(
+                                "table",
+                                {
+                                  ref: "actionFixHeader",
+                                  staticClass: "header-fix",
+                                  staticStyle: { width: "100%" }
+                                },
+                                [
+                                  _c("y-table-header", {
+                                    attrs: {
+                                      columns: [],
+                                      level: _vm.headerDeep,
+                                      actionTable: true,
+                                      rowHeight: _vm.rowHeight.header,
+                                      selfRowHeight: []
                                     }
+                                  })
+                                ],
+                                1
+                              )
+                            : _vm._e()
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.rowColumn.rowColumnLeft.length
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "y-table-left",
+                          style: {
+                            minWidth: "" + _vm.leftTableWidth,
+                            width: "" + _vm.leftTableWidth
+                          }
+                        },
+                        [
+                          _c(
+                            "table",
+                            {
+                              ref: "leftFixHeader",
+                              staticClass: "header-fix",
+                              staticStyle: { width: "100%" }
+                            },
+                            [
+                              _c("y-table-colgroup", {
+                                attrs: { colgroup: _vm.rowColumn.rowColumnLeft }
+                              }),
+                              _vm._v(" "),
+                              _c("y-table-header", {
+                                ref: "leftFixedHeader",
+                                attrs: {
+                                  columns: _vm.headerColumn.headerColumnLeft,
+                                  level: _vm.headerDeep,
+                                  currentSort: _vm.currentSort,
+                                  name: "left",
+                                  defaultSort: _vm.defaultSort,
+                                  rowHeight: _vm.rowHeight.header,
+                                  selfRowHeight: _vm.leftTable.header
+                                },
+                                on: {
+                                  columnSort: function($event) {
+                                    return _vm.columnSort($event, "left")
                                   }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("y-table-body", {
-                              ref: "leftBody",
-                              attrs: {
-                                columns: _vm.rowColumn.rowColumnLeft,
-                                rowHeight: _vm.rowHeight.body,
-                                selfRowHeight: _vm.leftTable.body,
-                                tableList: _vm.tableList,
-                                name: "left",
-                                currentHoverRow: _vm.currentHoverRow,
-                                multiple: Boolean(
-                                  _vm.multiple && _vm.basicIndex
-                                ),
-                                rows: _vm.rows,
-                                maps: _vm.maps
-                              },
-                              on: {
-                                rowClick: _vm.handleClick,
-                                hover: _vm.handleHover,
-                                hoverout: _vm.handleHoverout
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    key: "center",
-                    ref: "centerTableContent",
-                    staticClass: "y-table-center"
-                  },
-                  [
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "y-table-center" }, [
                     _c(
                       "table",
-                      { ref: "center" },
+                      {
+                        ref: "centerFixHeader",
+                        staticClass: "header-fix",
+                        style: {
+                          position: "absolute",
+                          left: -_vm.scrollLeft + "px"
+                        }
+                      },
                       [
                         _c("y-table-colgroup", {
-                          ref: "centerColgroup",
                           attrs: { colgroup: _vm.rowColumn.rowColumn }
                         }),
                         _vm._v(" "),
-                        !_vm.headerFix
-                          ? _c("y-table-header", {
-                              ref: "centerHeader",
-                              attrs: {
-                                columns: _vm.headerColumn.headerColumn,
-                                level: _vm.headerDeep,
-                                currentSort: _vm.currentSort,
-                                name: "center",
-                                defaultSort: _vm.defaultSort,
-                                rowHeight: _vm.rowHeight.header,
-                                selfRowHeight: _vm.centerTable.header
-                              },
-                              on: {
-                                columnSort: function($event) {
-                                  return _vm.columnSort($event, "center")
-                                }
-                              }
-                            })
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("y-table-body", {
-                          ref: "centerBody",
+                        _c("y-table-header", {
+                          ref: "centerFixedHeader",
                           attrs: {
-                            columns: _vm.rowColumn.rowColumn,
-                            rowHeight: _vm.rowHeight.body,
-                            selfRowHeight: _vm.centerTable.body,
-                            tableList: _vm.tableList,
+                            columns: _vm.headerColumn.headerColumn,
+                            level: _vm.headerDeep,
+                            currentSort: _vm.currentSort,
                             name: "center",
-                            currentHoverRow: _vm.currentHoverRow,
-                            multiple: Boolean(_vm.multiple && _vm.basicIndex),
-                            rows: _vm.rows,
-                            maps: _vm.maps,
-                            widthLeft: Boolean(
-                              _vm.rowColumn.rowColumnLeft.length
-                            )
+                            defaultSort: _vm.defaultSort,
+                            rowHeight: _vm.rowHeight.header,
+                            selfRowHeight: _vm.centerTable.header
                           },
                           on: {
-                            rowClick: _vm.handleClick,
-                            hover: _vm.handleHover,
-                            hoverout: _vm.handleHoverout
+                            columnSort: function($event) {
+                              return _vm.columnSort($event, "center")
+                            }
                           }
                         })
                       ],
                       1
                     )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.rowColumn.rowColumnRight.length
-                  ? _c(
-                      "div",
-                      {
-                        staticClass: "y-table-right",
-                        style: {
-                          minWidth: "" + _vm.rightTableWidth,
-                          width: "" + _vm.rightTableWidth
-                        }
-                      },
-                      [
-                        _c(
-                          "table",
-                          { ref: "right", staticStyle: { width: "100%" } },
-                          [
-                            _c("y-table-colgroup", {
-                              ref: "rightColgroup",
-                              attrs: { colgroup: _vm.rowColumn.rowColumnRight }
-                            }),
-                            _vm._v(" "),
-                            !_vm.headerFix
-                              ? _c("y-table-header", {
-                                  ref: "rightHeader",
-                                  attrs: {
-                                    columns: _vm.headerColumn.headerColumnRight,
-                                    level: _vm.headerDeep,
-                                    name: "right",
-                                    defaultSort: _vm.defaultSort,
-                                    currentSort: _vm.currentSort,
-                                    rowHeight: _vm.rowHeight.header,
-                                    selfRowHeight: _vm.rightTable.header
-                                  },
-                                  on: {
-                                    columnSort: function($event) {
-                                      return _vm.columnSort($event, "right")
-                                    }
+                  ]),
+                  _vm._v(" "),
+                  _vm.rowColumn.rowColumnRight.length
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "y-table-right",
+                          style: {
+                            minWidth: "" + _vm.rightTableWidth,
+                            width: "" + _vm.rightTableWidth
+                          }
+                        },
+                        [
+                          _c(
+                            "table",
+                            {
+                              ref: "rightFixHeader",
+                              staticClass: "header-fix",
+                              staticStyle: { width: "100%" }
+                            },
+                            [
+                              _c("y-table-colgroup", {
+                                attrs: {
+                                  colgroup: _vm.rowColumn.rowColumnRight
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("y-table-header", {
+                                ref: "rightFixedHeader",
+                                attrs: {
+                                  columns: _vm.headerColumn.headerColumnRight,
+                                  level: _vm.headerDeep,
+                                  currentSort: _vm.currentSort,
+                                  name: "right",
+                                  defaultSort: _vm.defaultSort,
+                                  rowHeight: _vm.rowHeight.header,
+                                  selfRowHeight: _vm.rightTable.header
+                                },
+                                on: {
+                                  columnSort: function($event) {
+                                    return _vm.columnSort($event, "right")
                                   }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("y-table-body", {
-                              ref: "rightBody",
-                              attrs: {
-                                columns: _vm.rowColumn.rowColumnRight,
-                                rowHeight: _vm.rowHeight.body,
-                                multiple: Boolean(
-                                  _vm.multiple && _vm.basicIndex
-                                ),
-                                selfRowHeight: _vm.rightTable.body,
-                                tableList: _vm.tableList,
-                                name: "right",
-                                currentHoverRow: _vm.currentHoverRow,
-                                rows: _vm.rows,
-                                maps: _vm.maps
-                              },
-                              on: {
-                                rowClick: _vm.handleClick,
-                                hover: _vm.handleHover,
-                                hoverout: _vm.handleHoverout
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  : _vm._e()
-              ]
-            )
-          ]
-        )
-      ]),
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { style: { height: _vm.fixedBodyTop + "px" } }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              ref: "tableMainBox",
+              staticClass: "y-table-main",
+              style: { maxHeight: _vm.tableHeight }
+            },
+            [
+              Boolean(_vm.multiple && _vm.basicIndex)
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "y-table-actions",
+                      style: { width: 20 * _vm.maxExtendLevel + 40 + "px" }
+                    },
+                    [
+                      _c(
+                        "table",
+                        [
+                          !_vm.headerFix
+                            ? _c("y-table-header", {
+                                attrs: {
+                                  columns: [],
+                                  level: _vm.headerDeep,
+                                  actionTable: true,
+                                  rowHeight: _vm.rowHeight.header,
+                                  selfRowHeight: []
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("y-table-body", {
+                            attrs: {
+                              columns: [],
+                              rowHeight: _vm.rowHeight.body,
+                              actionTable: true,
+                              selfRowHeight: [],
+                              tableList: _vm.tableList,
+                              rows: _vm.rows,
+                              maps: _vm.maps,
+                              multiple: Boolean(_vm.multiple && _vm.basicIndex),
+                              currentHoverRow: _vm.currentHoverRow,
+                              checkBoxStatus: _vm.checkBoxStatus,
+                              basicIndex: _vm.basicIndex
+                            },
+                            on: {
+                              hover: _vm.handleHover,
+                              hoverout: _vm.handleHoverout,
+                              rowClick: _vm.handleClick,
+                              select: _vm.handleSelect
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  ref: "tableMain",
+                  staticClass: "y-table-box",
+                  style: {
+                    width:
+                      "calc(100% - " +
+                      (Boolean(_vm.multiple && _vm.basicIndex)
+                        ? 20 * _vm.maxExtendLevel + 40 + "px"
+                        : 0)
+                  }
+                },
+                [
+                  _vm.rowColumn.rowColumnLeft.length
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "y-table-left",
+                          style: {
+                            minWidth: "" + _vm.leftTableWidth,
+                            width: "" + _vm.leftTableWidth
+                          }
+                        },
+                        [
+                          _c(
+                            "table",
+                            { ref: "left", staticStyle: { width: "100%" } },
+                            [
+                              _c("y-table-colgroup", {
+                                ref: "leftColgroup",
+                                attrs: { colgroup: _vm.rowColumn.rowColumnLeft }
+                              }),
+                              _vm._v(" "),
+                              !_vm.headerFix
+                                ? _c("y-table-header", {
+                                    ref: "leftHeader",
+                                    attrs: {
+                                      columns:
+                                        _vm.headerColumn.headerColumnLeft,
+                                      level: _vm.headerDeep,
+                                      name: "left",
+                                      defaultSort: _vm.defaultSort,
+                                      currentSort: _vm.currentSort,
+                                      rowHeight: _vm.rowHeight.header,
+                                      selfRowHeight: _vm.leftTable.header
+                                    },
+                                    on: {
+                                      columnSort: function($event) {
+                                        return _vm.columnSort($event, "left")
+                                      }
+                                    }
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c("y-table-body", {
+                                ref: "leftBody",
+                                attrs: {
+                                  columns: _vm.rowColumn.rowColumnLeft,
+                                  rowHeight: _vm.rowHeight.body,
+                                  selfRowHeight: _vm.leftTable.body,
+                                  tableList: _vm.tableList,
+                                  name: "left",
+                                  currentHoverRow: _vm.currentHoverRow,
+                                  multiple: Boolean(
+                                    _vm.multiple && _vm.basicIndex
+                                  ),
+                                  rows: _vm.rows,
+                                  maps: _vm.maps
+                                },
+                                on: {
+                                  rowClick: _vm.handleClick,
+                                  hover: _vm.handleHover,
+                                  hoverout: _vm.handleHoverout
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      key: "center",
+                      ref: "centerTableContent",
+                      staticClass: "y-table-center"
+                    },
+                    [
+                      _c(
+                        "table",
+                        { ref: "center" },
+                        [
+                          _c("y-table-colgroup", {
+                            ref: "centerColgroup",
+                            attrs: { colgroup: _vm.rowColumn.rowColumn }
+                          }),
+                          _vm._v(" "),
+                          !_vm.headerFix
+                            ? _c("y-table-header", {
+                                ref: "centerHeader",
+                                attrs: {
+                                  columns: _vm.headerColumn.headerColumn,
+                                  level: _vm.headerDeep,
+                                  currentSort: _vm.currentSort,
+                                  name: "center",
+                                  defaultSort: _vm.defaultSort,
+                                  rowHeight: _vm.rowHeight.header,
+                                  selfRowHeight: _vm.centerTable.header
+                                },
+                                on: {
+                                  columnSort: function($event) {
+                                    return _vm.columnSort($event, "center")
+                                  }
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("y-table-body", {
+                            ref: "centerBody",
+                            attrs: {
+                              columns: _vm.rowColumn.rowColumn,
+                              rowHeight: _vm.rowHeight.body,
+                              selfRowHeight: _vm.centerTable.body,
+                              tableList: _vm.tableList,
+                              name: "center",
+                              currentHoverRow: _vm.currentHoverRow,
+                              multiple: Boolean(_vm.multiple && _vm.basicIndex),
+                              rows: _vm.rows,
+                              maps: _vm.maps,
+                              widthLeft: Boolean(
+                                _vm.rowColumn.rowColumnLeft.length
+                              )
+                            },
+                            on: {
+                              rowClick: _vm.handleClick,
+                              hover: _vm.handleHover,
+                              hoverout: _vm.handleHoverout
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.rowColumn.rowColumnRight.length
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "y-table-right",
+                          style: {
+                            minWidth: "" + _vm.rightTableWidth,
+                            width: "" + _vm.rightTableWidth
+                          }
+                        },
+                        [
+                          _c(
+                            "table",
+                            { ref: "right", staticStyle: { width: "100%" } },
+                            [
+                              _c("y-table-colgroup", {
+                                ref: "rightColgroup",
+                                attrs: {
+                                  colgroup: _vm.rowColumn.rowColumnRight
+                                }
+                              }),
+                              _vm._v(" "),
+                              !_vm.headerFix
+                                ? _c("y-table-header", {
+                                    ref: "rightHeader",
+                                    attrs: {
+                                      columns:
+                                        _vm.headerColumn.headerColumnRight,
+                                      level: _vm.headerDeep,
+                                      name: "right",
+                                      defaultSort: _vm.defaultSort,
+                                      currentSort: _vm.currentSort,
+                                      rowHeight: _vm.rowHeight.header,
+                                      selfRowHeight: _vm.rightTable.header
+                                    },
+                                    on: {
+                                      columnSort: function($event) {
+                                        return _vm.columnSort($event, "right")
+                                      }
+                                    }
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c("y-table-body", {
+                                ref: "rightBody",
+                                attrs: {
+                                  columns: _vm.rowColumn.rowColumnRight,
+                                  rowHeight: _vm.rowHeight.body,
+                                  multiple: Boolean(
+                                    _vm.multiple && _vm.basicIndex
+                                  ),
+                                  selfRowHeight: _vm.rightTable.body,
+                                  tableList: _vm.tableList,
+                                  name: "right",
+                                  currentHoverRow: _vm.currentHoverRow,
+                                  rows: _vm.rows,
+                                  maps: _vm.maps
+                                },
+                                on: {
+                                  rowClick: _vm.handleClick,
+                                  hover: _vm.handleHover,
+                                  hoverout: _vm.handleHoverout
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ]
+              )
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
       !_vm.scrollTable
         ? _c("y-pagination", {

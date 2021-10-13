@@ -1,7 +1,7 @@
 <template>
-    <div class="y-table">
+    <div class="y-table" ref="table">
         <h2 v-if="title" class="y-table-title">{{ title }}</h2>
-        <div class="y-table-content" ref="tableContent">
+        <div :class="['y-table-content', ...gapLineClass]" ref="tableContent">
             <div class="y-table-hidden">
                 <slot>
                     <y-table-column
@@ -303,10 +303,21 @@ export default {
             rowHeight: {
                 header: [],
                 body: []
-            }
+            },
+            centerGap: 0
         };
     },
     computed: {
+        gapLineClass() {
+            let className = [];
+            if (!this.scrollLeft) {
+                className.push('no-left-gap');
+            }
+            if (this.scrollLeft === this.centerGap || !this.centerGap) {
+                className.push('no-right-gap');
+            }
+            return className;
+        },
         treeMangerMap() {
             return {
                 key: this.basicIndex,
@@ -655,9 +666,20 @@ export default {
         },
         scorllXHandler() {
             let content = this.$refs.centerTableContent;
+            let centerTable = this.$refs.center;
             content && content.addEventListener('scroll', () => {
                 this.scrollLeft = content.scrollLeft;
+                this.centerGap = centerTable.offsetWidth - content.offsetWidth;
             });
+            this.tableGapHandler();
+        },
+        tableGapHandler() {
+            let content = this.$refs.centerTableContent;
+            let centerTable = this.$refs.center;
+            let handler = () => {
+                this.centerGap = centerTable.offsetWidth - content.offsetWidth;
+            };
+            EleResize.on(this.$refs.table, handler, this);
         },
         setWidth(currentcol, val) {
             let setColumn = (arr) => {
@@ -853,11 +875,17 @@ export default {
                     this.$set(this[DomKey + 'Table'], 'body', BodyRowHeight);
                 }
             };
+            let getGap = () => {
+                let content = this.$refs.centerTableContent;
+                let centerTable = this.$refs.center;
+                this.centerGap = centerTable.offsetWidth - content.offsetWidth;
+            };
             return () => {
                 let reset = false;
                 ['left', 'center', 'right'].forEach(DomKey => {
                     reset = reset || !getHeight(DomKey);
                 });
+                getGap();
                 if (reset) {
                     this.resetTableStyle();
                     this.$nextTick(() => {
@@ -985,6 +1013,16 @@ export default {
                         }
                     }
                 }
+            }
+        }
+        .no-left-gap {
+            .y-table-left {
+                box-shadow: none;
+            }
+        }
+        .no-right-gap {
+            .y-table-right {
+                box-shadow: none;
             }
         }
         .y-pagination {
