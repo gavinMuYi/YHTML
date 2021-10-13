@@ -102,7 +102,8 @@ export default {
             singleKey: 0,
             options: [{
                 label: 'sqwerd',
-                key: 'asqewqwrd'
+                key: 'asqewqwrd',
+                disable: true
             }, {
                 label: 'sd',
                 key: 'asd',
@@ -113,9 +114,11 @@ export default {
                     children: [{
                         key: 'wasdffe',
                         label: 'sgdafgfddaf',
+                        disable: true,
                         children: [{
                             key: 'we21',
-                            label: 'sd32af'
+                            label: 'sd32af',
+                            disable: true
                         }]
                     }, {
                         key: 'was3333dffe',

@@ -266,7 +266,7 @@ export default {
         },
         tracked() {
             if (this.multiple) {
-                if (this.fatherStatus === 'all') {
+                if (this.fatherStatus === 'all' && !this.self[this.maps.disable]) {
                     return 'all';
                 }
                 if (this.selected && this.selected[this.maps.key]) {
@@ -523,10 +523,13 @@ export default {
                 if (this.level) {
                     let selectedChildren = clone(this.selected[this.maps.children] || []);
                     if (this.tracked === 'all') {
-                        selectedChildren = clone(this.dataList).map(item => {
-                            delete item[this.maps.children];
-                            delete item[this.maps.hasChildren];
-                            return item;
+                        selectedChildren = [];
+                        clone(this.dataList).forEach(item => {
+                            if (!item[this.maps.disable]) {
+                                delete item[this.maps.children];
+                                delete item[this.maps.hasChildren];
+                                selectedChildren.push(item);
+                            }
                         });
                     }
                     let childIndex = -1;

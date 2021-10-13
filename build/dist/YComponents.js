@@ -4513,7 +4513,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         tracked: function tracked() {
             if (this.multiple) {
-                if (this.fatherStatus === 'all') {
+                if (this.fatherStatus === 'all' && !this.self[this.maps.disable]) {
                     return 'all';
                 }
                 if (this.selected && this.selected[this.maps.key]) {
@@ -4782,10 +4782,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.level) {
                     var selectedChildren = __WEBPACK_IMPORTED_MODULE_6_clone___default()(this.selected[this.maps.children] || []);
                     if (this.tracked === 'all') {
-                        selectedChildren = __WEBPACK_IMPORTED_MODULE_6_clone___default()(this.dataList).map(function (item) {
-                            delete item[_this5.maps.children];
-                            delete item[_this5.maps.hasChildren];
-                            return item;
+                        selectedChildren = [];
+                        __WEBPACK_IMPORTED_MODULE_6_clone___default()(this.dataList).forEach(function (item) {
+                            if (!item[_this5.maps.disable]) {
+                                delete item[_this5.maps.children];
+                                delete item[_this5.maps.hasChildren];
+                                selectedChildren.push(item);
+                            }
                         });
                     }
                     var childIndex = -1;
