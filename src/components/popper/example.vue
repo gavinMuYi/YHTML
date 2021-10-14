@@ -18,7 +18,11 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import YPopper from './src/index';
+import createPopperDirective from './src/createPopperDirective';
+Vue.directive('ypop', createPopperDirective());
+
 export default {
     name: 'YPopperExample',
     components: {

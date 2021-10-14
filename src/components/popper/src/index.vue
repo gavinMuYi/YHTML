@@ -9,9 +9,6 @@
     </div>
 </template>
 <script>
-import Vue from 'vue';
-import createPopperDirective from './createPopperDirective';
-Vue.directive('ypop', createPopperDirective());
 
 export default {
     name: 'YPopper',
