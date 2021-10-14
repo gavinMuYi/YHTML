@@ -86,11 +86,11 @@ function handleHover(target, el, mos, delay) {
             target.$refs.selfPop.style.bottom = 'auto';
             const position = getPosition(el);
             const box = el.getBoundingClientRect();
-            const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
-            const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
             const placement = getPlacement(target, box);
             const startLeft = position.x + placement.x;
             const startTop = position.y + placement.y;
+            const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
+            const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
             const windowWidth = document.documentElement.clientWidth;
             const windowHeight = document.documentElement.clientHeight;
             const rightOver = popWidth + startLeft > windowWidth;
@@ -134,11 +134,11 @@ function handleClick(target, el) {
             target.$refs.selfPop.style.bottom = 'auto';
             const position = getPosition(el);
             const box = el.getBoundingClientRect();
-            const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
-            const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
             const placement = getPlacement(target, box);
             const startLeft = position.x + placement.x;
             const startTop = position.y + placement.y;
+            const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
+            const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
             const windowWidth = document.documentElement.clientWidth;
             const windowHeight = document.documentElement.clientHeight;
             const rightOver = popWidth + startLeft > windowWidth;
