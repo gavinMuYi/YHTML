@@ -166,7 +166,7 @@ function doBind(el, binding, vnode, path, listener) {
         if (!target) {
             return;
         }
-        if (listener) {
+        if (listener && !binding.modifiers.rightClick) {
             EleResize.on(target.$el, parsePosition.bind(window, target, el, true, false), window);
             let oldReSize = window.onresize;
             window.onresize = function () {
