@@ -19,6 +19,10 @@ export default {
         clazz: {
             type: String,
             default: ''
+        },
+        placement: {
+            type: String,
+            default: 'bottom-middle'
         }
     },
     data() {

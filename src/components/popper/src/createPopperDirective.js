@@ -12,6 +12,36 @@ function getPosition(dom) {
     };
 }
 
+function getPlacement(target, box) {
+    const placement = target.placement.split('-');
+    let y = 0;
+    let x = 0;
+    switch (placement[0]) {
+        case 'top':
+            break;
+        case 'middle':
+            y = box.height / 2;
+            break;
+        case 'bottom':
+            y = box.height;
+            break;
+    }
+    switch (placement[1]) {
+        case 'start':
+            break;
+        case 'middle':
+            x = box.width / 2;
+            break;
+        case 'end':
+            x = box.width;
+            break;
+    }
+    return {
+        x,
+        y
+    };
+}
+
 function rightClick(target, ev, el) {
     if (ev.button === 2) {
         target.show = false;
@@ -58,8 +88,9 @@ function handleHover(target, el, mos, delay) {
             const box = el.getBoundingClientRect();
             const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
             const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
-            const startLeft = position.x + box.width / 2;
-            const startTop = position.y + box.height;
+            const placement = getPlacement(target, box);
+            const startLeft = position.x + placement.x;
+            const startTop = position.y + placement.y;
             const windowWidth = document.documentElement.clientWidth;
             const windowHeight = document.documentElement.clientHeight;
             const rightOver = popWidth + startLeft > windowWidth;
@@ -95,37 +126,41 @@ function handleHover(target, el, mos, delay) {
 }
 
 function handleClick(target, el) {
-    target.show = false;
-    target.$nextTick(() => {
-        target.$refs.selfPop.style.left = 'auto';
-        target.$refs.selfPop.style.right = 'auto';
-        target.$refs.selfPop.style.top = 'auto';
-        target.$refs.selfPop.style.bottom = 'auto';
-        const position = getPosition(el);
-        const box = el.getBoundingClientRect();
-        const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
-        const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
-        const startLeft = position.x + box.width / 2;
-        const startTop = position.y + box.height;
-        const windowWidth = document.documentElement.clientWidth;
-        const windowHeight = document.documentElement.clientHeight;
-        const rightOver = popWidth + startLeft > windowWidth;
-        const bottomOver = popHeight + startTop > windowHeight;
-        if (startLeft + startTop === 0) {
-            return;
-        }
-        if (rightOver) {
-            target.$refs.selfPop.style.right = '0px';
-        } else {
-            target.$refs.selfPop.style.left = `${startLeft}px`;
-        }
-        if (bottomOver) {
-            target.$refs.selfPop.style.bottom = '0px';
-        } else {
-            target.$refs.selfPop.style.top = `${startTop}px`;
-        }
-        target.show = true;
-    });
+    if (!target.show) {
+        target.$nextTick(() => {
+            target.$refs.selfPop.style.left = 'auto';
+            target.$refs.selfPop.style.right = 'auto';
+            target.$refs.selfPop.style.top = 'auto';
+            target.$refs.selfPop.style.bottom = 'auto';
+            const position = getPosition(el);
+            const box = el.getBoundingClientRect();
+            const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
+            const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
+            const placement = getPlacement(target, box);
+            const startLeft = position.x + placement.x;
+            const startTop = position.y + placement.y;
+            const windowWidth = document.documentElement.clientWidth;
+            const windowHeight = document.documentElement.clientHeight;
+            const rightOver = popWidth + startLeft > windowWidth;
+            const bottomOver = popHeight + startTop > windowHeight;
+            if (startLeft + startTop === 0) {
+                return;
+            }
+            if (rightOver) {
+                target.$refs.selfPop.style.right = '0px';
+            } else {
+                target.$refs.selfPop.style.left = `${startLeft}px`;
+            }
+            if (bottomOver) {
+                target.$refs.selfPop.style.bottom = '0px';
+            } else {
+                target.$refs.selfPop.style.top = `${startTop}px`;
+            }
+            target.show = true;
+        });
+    } else {
+        target.closePop();
+    }
 }
 
 export default function createPopperDirective(path) {
