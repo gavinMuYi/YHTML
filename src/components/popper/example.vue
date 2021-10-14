@@ -3,8 +3,9 @@
         <y-popper ref="tips1">delay pop</y-popper>
         <y-popper ref="tips2">hover pop</y-popper>
         <y-popper ref="tips3">rightClick pop</y-popper>
-        <y-popper ref="tips4">click pop</y-popper>
         <y-popper ref="tips5">show pop</y-popper>
+        <y-popper ref="tips7"><div v-ypop:tips4.click class="exbox">嵌套</div></y-popper>
+        <y-popper ref="tips4">click pop</y-popper>
         <y-popper ref="tips6">manual pop</y-popper>
         <div v-ypop:tips1.hover.delay class="exbox">delay</div>
         <div v-ypop:tips2.hover class="exbox">hover</div>
@@ -14,6 +15,7 @@
         <div v-ypop:tips5.show class="exbox">show</div>
         <button @click="trigger">trigger</button>
         <div v-ypop:tips6.manual class="exbox">manual</div>
+        <div v-ypop:tips7.click class="exbox">嵌套</div>
     </div>
 </template>
 

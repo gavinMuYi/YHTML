@@ -167,49 +167,51 @@ export default function createPopperDirective(path) {
     return {
         bind: function (el, binding, vnode) {
             // 就近取pop
-            let item = vnode.context.$parent.$refs[binding.arg] || window.pops[binding.arg];
-            let target = vnode.context.$parent.$refs[binding.arg] || window.pops[binding.arg];
-            if (path && path.length) {
-                path.forEach(name => {
-                    target = target && target.$refs[name];
-                });
-            }
-            if (!target) {
-                return;
-            }
-            if (binding.modifiers.rightClick) {
-                el.addEventListener('contextmenu', function (e) {
-                    rightClick(target, e, el);
-                });
-            }
-            if (binding.modifiers.hover) {
-                el.addEventListener('mouseenter', function () {
-                    handleHover(target, el, true, binding.modifiers.delay);
-                });
-                el.addEventListener('mouseleave', function () {
-                    handleHover(target, el, false, binding.modifiers.delay);
-                });
-            }
-            if (binding.modifiers.click) {
-                el.addEventListener('click', function (e) {
+            setTimeout(() => {
+                let item = vnode.context.$parent.$refs[binding.arg] || window.pops[binding.arg];
+                let target = vnode.context.$parent.$refs[binding.arg] || window.pops[binding.arg];
+                if (path && path.length) {
+                    path.forEach(name => {
+                        target = target && target.$refs[name];
+                    });
+                }
+                if (!target) {
+                    return;
+                }
+                if (binding.modifiers.rightClick) {
+                    el.addEventListener('contextmenu', function (e) {
+                        rightClick(target, e, el);
+                    });
+                }
+                if (binding.modifiers.hover) {
+                    el.addEventListener('mouseenter', function () {
+                        handleHover(target, el, true, binding.modifiers.delay);
+                    });
+                    el.addEventListener('mouseleave', function () {
+                        handleHover(target, el, false, binding.modifiers.delay);
+                    });
+                }
+                if (binding.modifiers.click) {
+                    el.addEventListener('click', function (e) {
+                        handleClick(target, el);
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                }
+                if (binding.modifiers.show) {
                     handleClick(target, el);
-                    e.preventDefault();
-                    e.stopPropagation();
-                });
-            }
-            if (binding.modifiers.show) {
-                handleClick(target, el);
-                target.cantCloseByOthers = true;
-            }
-            if (binding.modifiers.manual) {
-                item.showPop = () => {
-                    handleClick(target, el);
-                };
-                item.hidePop = () => {
-                    target.closePop();
-                };
-                target.cantCloseByOthers = true;
-            }
+                    target.cantCloseByOthers = true;
+                }
+                if (binding.modifiers.manual) {
+                    item.showPop = () => {
+                        handleClick(target, el);
+                    };
+                    item.hidePop = () => {
+                        target.closePop();
+                    };
+                    target.cantCloseByOthers = true;
+                }
+            });
         }
     };
 }
