@@ -145,29 +145,6 @@ function rightClick(target, ev, el) {
     if (ev.button === 2) {
         target.show = false;
         target.$nextTick(() => {
-            target.$refs.selfPop.style.left = 'auto';
-            target.$refs.selfPop.style.right = 'auto';
-            target.$refs.selfPop.style.top = 'auto';
-            target.$refs.selfPop.style.bottom = 'auto';
-            const position = getPosition(el);
-            const popWidth = target.$refs.selfPop.getBoundingClientRect().width;
-            const popHeight = target.$refs.selfPop.getBoundingClientRect().height;
-            const startLeft = ev.offsetX + position.x;
-            const startTop = ev.offsetY + position.y;
-            const windowWidth = document.documentElement.offsetWidth;
-            const windowHeight = document.documentElement.offsetHeight;
-            const rightOver = popWidth + startLeft > windowWidth;
-            const bottomOver = popHeight + startTop > windowHeight;
-            if (rightOver) {
-                target.$refs.selfPop.style.right = '0px';
-            } else {
-                target.$refs.selfPop.style.left = `${startLeft}px`;
-            }
-            if (bottomOver) {
-                target.$refs.selfPop.style.bottom = '0px';
-            } else {
-                target.$refs.selfPop.style.top = `${startTop}px`;
-            }
             target.opacity = true;
             target.show = true;
             target.$lastevX = ev.offsetX;
