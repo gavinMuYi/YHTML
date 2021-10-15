@@ -73,7 +73,7 @@ function getPlacement(placement, box, popWidth, popHeight) {
     };
 }
 
-function parsePosition(target, el, moniter, containChange) {
+function parsePosition(target, el, moniter, containChange, X, Y) {
     let check = target.$el.getBoundingClientRect();
     if (!containChange && moniter) {
         if (target.lastSize && check.width === target.lastSize.width && check.height === target.lastSize.height) {
@@ -97,15 +97,15 @@ function parsePosition(target, el, moniter, containChange) {
         const windowWidth = document.documentElement.offsetWidth;
         const windowHeight = document.documentElement.offsetHeight;
         const placement = getPlacement(target.placement, box, popWidth, popHeight);
-        let startLeft = position.x + placement.x;
-        let startTop = position.y + placement.y;
+        let startLeft = position.x + (X !== undefined ? X : placement.x);
+        let startTop = position.y + (Y !== undefined ? Y : placement.y);
         let rightOver = popWidth + startLeft > windowWidth;
         let bottomOver = popHeight + startTop > windowHeight;
         if (target.priority && target.priority.length && (rightOver || bottomOver)) {
             for (let i = 0; i < target.priority.length; i++) {
                 let placementrPiority = getPlacement(target.priority[i], box, popWidth, popHeight);
-                let startLeftPiority = position.x + placementrPiority.x;
-                let startTopPiority = position.y + placementrPiority.y;
+                let startLeftPiority = position.x + (X !== undefined ? X : placementrPiority.x);
+                let startTopPiority = position.y + (Y !== undefined ? Y : placementrPiority.y);
                 let rightOverPiority = popWidth + startLeftPiority > windowWidth;
                 let bottomOverPiority = popHeight + startTopPiority > windowHeight;
                 if (!rightOverPiority && !bottomOverPiority) {
@@ -120,13 +120,22 @@ function parsePosition(target, el, moniter, containChange) {
         if (startLeft + startTop === 0) {
             return;
         }
+        console.log(rightOver, popWidth, startLeft, windowWidth);
         if (rightOver) {
-            target.$refs.selfPop.style.right = '0px';
+            if (X !== undefined) {
+                target.$refs.selfPop.style.left = `${windowWidth - popWidth}px`;
+            } else {
+                target.$refs.selfPop.style.right = '0px';
+            }
         } else {
             target.$refs.selfPop.style.left = `${startLeft}px`;
         }
         if (bottomOver) {
-            target.$refs.selfPop.style.bottom = '0px';
+            if (Y !== undefined) {
+                target.$refs.selfPop.style.bottom = `${windowHeight - popHeight}px`;
+            } else {
+                target.$refs.selfPop.style.bottom = '0px';
+            }
         } else {
             target.$refs.selfPop.style.top = `${startTop}px`;
         }
@@ -160,7 +169,12 @@ function rightClick(target, ev, el) {
             } else {
                 target.$refs.selfPop.style.top = `${startTop}px`;
             }
+            target.opacity = true;
             target.show = true;
+            setTimeout(() => {
+                parsePosition(target, el, false, false, ev.offsetX, ev.offsetY);
+                target.opacity = false;
+            });
         });
     }
     ev.preventDefault();
@@ -171,9 +185,13 @@ function handleHover(target, el, mos, delay) {
     if (mos) {
         target.show = false;
         target.$nextTick(() => {
-            parsePosition(target, el);
-            target.$lastel = el;
+            target.opacity = true;
             target.show = true;
+            setTimeout(() => {
+                parsePosition(target, el);
+                target.opacity = false;
+            });
+            target.$lastel = el;
         });
     } else {
         if (delay) {
@@ -193,17 +211,25 @@ function handleHover(target, el, mos, delay) {
 function handleClick(target, el) {
     if (!target.show) {
         target.$nextTick(() => {
-            parsePosition(target, el);
-            target.$lastel = el;
+            target.opacity = true;
             target.show = true;
+            setTimeout(() => {
+                parsePosition(target, el);
+                target.opacity = false;
+            });
+            target.$lastel = el;
         });
     } else {
         target.closePop();
         if (target.$lastel && target.$lastel !== el) {
             target.$nextTick(() => {
-                parsePosition(target, el);
-                target.$lastel = el;
+                target.opacity = true;
                 target.show = true;
+                setTimeout(() => {
+                    parsePosition(target, el);
+                    target.opacity = false;
+                });
+                target.$lastel = el;
             });
         }
     }
@@ -223,11 +249,13 @@ function doBind(el, binding, vnode, path, listener) {
             return;
         }
         if (listener && !binding.modifiers.rightClick) {
-            EleResize.on(target.$el, parsePosition.bind(window, target, target.$lastel || el, true, false), window);
+            EleResize.on(target.$el,
+                parsePosition.bind(window, target, target.$lastel || el, true, false, undefined, undefined), window
+            );
             let oldReSize = window.onresize;
             window.onresize = function () {
                 if (target.show) {
-                    parsePosition(target, target.$lastel || el, true, true);
+                    parsePosition(target, target.$lastel || el, true, true, undefined, undefined);
                 }
                 oldReSize && oldReSize.call(window);
             };

@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="['y-popper', clazz]"
+        :class="['y-popper', clazz, {'y-nosee-popper': opacity}]"
         v-show="show"
         ref="selfPop"
         @mouseenter.stop="hover = true"
@@ -30,6 +30,7 @@ export default {
     },
     data() {
         return {
+            opacity: false,
             show: false,
             hover: false,
             waitToClose: false,
@@ -87,5 +88,8 @@ export default {
         border-radius: 3px;
         padding: 10px;
         box-shadow: 2px 4px 10px 0 rgba(30, 35, 48, 0.08);
+    }
+    .y-nosee-popper {
+        opacity: 0;
     }
 </style>
