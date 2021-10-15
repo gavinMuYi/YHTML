@@ -199,6 +199,13 @@ function handleClick(target, el) {
         });
     } else {
         target.closePop();
+        if (target.$lastel && target.$lastel !== el) {
+            target.$nextTick(() => {
+                parsePosition(target, el);
+                target.$lastel = el;
+                target.show = true;
+            });
+        }
     }
 }
 

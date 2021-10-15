@@ -13,6 +13,7 @@
         <div v-ypop:tips2.hover class="exbox">hover2</div>
         <div v-ypop:tips3.rightClick class="exbox">rightClick</div>
         <div v-ypop:tips4.click class="exbox">click</div>
+        <div v-ypop:tips4.click class="exbox">click2</div>
         <div v-ypop:tips5.show class="exbox">show</div>
         <button @click="trigger">trigger</button>
         <div v-ypop:tips6.manual class="exbox">manual</div>
