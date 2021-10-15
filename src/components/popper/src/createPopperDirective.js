@@ -120,7 +120,6 @@ function parsePosition(target, el, moniter, containChange, X, Y) {
         if (startLeft + startTop === 0) {
             return;
         }
-        console.log(rightOver, popWidth, startLeft, windowWidth);
         if (rightOver) {
             if (X !== undefined) {
                 target.$refs.selfPop.style.left = `${windowWidth - popWidth}px`;
