@@ -3,7 +3,8 @@
         <y-popper ref="tips1">delay pop</y-popper>
         <y-popper ref="tips2">hover pop</y-popper>
         <y-popper ref="tips3">rightClick pop</y-popper>
-        <y-popper ref="tips5">show pop</y-popper>
+        <y-popper ref="tips5"
+                  placement="bottom-end" :priority="['top-middle', 'bottom-start', 'left-middle']">show pop</y-popper>
         <y-popper ref="tips7"><div v-ypop:tips4.click class="exbox">嵌套</div></y-popper>
         <y-popper ref="tips4">click pop</y-popper>
         <y-popper ref="tips6">manual pop</y-popper>

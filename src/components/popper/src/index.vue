@@ -20,6 +20,12 @@ export default {
         placement: {
             type: String,
             default: 'bottom-middle'
+        },
+        priority: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     data() {

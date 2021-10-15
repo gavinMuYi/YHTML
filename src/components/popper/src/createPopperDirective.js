@@ -14,27 +14,56 @@ function getPosition(dom) {
     };
 }
 
-function getPlacement(target, box) {
-    const placement = target.placement.split('-');
+function getPlacement(placement, box, popWidth, popHeight) {
     let y = 0;
     let x = 0;
-    switch (placement[0]) {
-        case 'top':
+    switch (placement) {
+        case 'left-start':
+            y = 0;
+            x = -popWidth;
             break;
-        case 'middle':
+        case 'left-middle':
             y = box.height / 2;
+            x = -popWidth;
             break;
-        case 'bottom':
+        case 'left-end':
             y = box.height;
+            x = -popWidth;
             break;
-    }
-    switch (placement[1]) {
-        case 'start':
+        case 'right-start':
+            y = 0;
+            x = box.width;
             break;
-        case 'middle':
+        case 'right-middle':
+            y = box.height / 2;
+            x = box.width;
+            break;
+        case 'right-end':
+            y = box.height;
+            x = box.width;
+            break;
+        case 'top-start':
+            y = -popHeight;
+            x = 0;
+            break;
+        case 'top-middle':
+            y = -popHeight;
             x = box.width / 2;
             break;
-        case 'end':
+        case 'top-end':
+            y = -popHeight;
+            x = box.width;
+            break;
+        case 'bottom-start':
+            y = box.height;
+            x = 0;
+            break;
+        case 'bottom-middle':
+            y = box.height;
+            x = box.width / 2;
+            break;
+        case 'bottom-end':
+            y = box.height;
             x = box.width;
             break;
     }
@@ -62,15 +91,31 @@ function parsePosition(target, el, moniter, containChange) {
     target.$refs.selfPop.style.bottom = 'auto';
     const position = getPosition(el);
     const box = el.getBoundingClientRect();
-    const placement = getPlacement(target, box);
-    const startLeft = position.x + placement.x;
-    const startTop = position.y + placement.y;
-    const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
-    const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
+    const popWidth = target.$refs.selfPop.getBoundingClientRect().width;
+    const popHeight = target.$refs.selfPop.getBoundingClientRect().height;
     const windowWidth = document.documentElement.offsetWidth;
     const windowHeight = document.documentElement.offsetHeight;
-    const rightOver = popWidth + startLeft > windowWidth;
-    const bottomOver = popHeight + startTop > windowHeight;
+    const placement = getPlacement(target.placement, box, popWidth, popHeight);
+    let startLeft = position.x + placement.x;
+    let startTop = position.y + placement.y;
+    let rightOver = popWidth + startLeft > windowWidth;
+    let bottomOver = popHeight + startTop > windowHeight;
+    if (target.priority && target.priority.length && (rightOver || bottomOver)) {
+        for (let i = 0; i < target.priority.length; i++) {
+            let placementrPiority = getPlacement(target.priority[i], box, popWidth, popHeight);
+            let startLeftPiority = position.x + placementrPiority.x;
+            let startTopPiority = position.y + placementrPiority.y;
+            let rightOverPiority = popWidth + startLeftPiority > windowWidth;
+            let bottomOverPiority = popHeight + startTopPiority > windowHeight;
+            if (!rightOverPiority && !bottomOverPiority) {
+                startLeft = startLeftPiority;
+                startTop = startTopPiority;
+                rightOver = rightOverPiority;
+                bottomOver = bottomOverPiority;
+                break;
+            }
+        }
+    }
     if (startLeft + startTop === 0) {
         return;
     }
@@ -95,8 +140,8 @@ function rightClick(target, ev, el) {
             target.$refs.selfPop.style.top = 'auto';
             target.$refs.selfPop.style.bottom = 'auto';
             const position = getPosition(el);
-            const popWidth = Number(getComputedStyle(target.$refs.selfPop).width.replace('px', ''));
-            const popHeight = Number(getComputedStyle(target.$refs.selfPop).height.replace('px', ''));
+            const popWidth = target.$refs.selfPop.getBoundingClientRect().width;
+            const popHeight = target.$refs.selfPop.getBoundingClientRect().height;
             const startLeft = ev.offsetX + position.x;
             const startTop = ev.offsetY + position.y;
             const windowWidth = document.documentElement.offsetWidth;
