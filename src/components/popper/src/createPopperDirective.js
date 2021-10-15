@@ -170,6 +170,8 @@ function rightClick(target, ev, el) {
             }
             target.opacity = true;
             target.show = true;
+            target.$lastevX = ev.offsetX;
+            target.$lastevY = ev.offsetY;
             setTimeout(() => {
                 parsePosition(target, el, false, false, ev.offsetX, ev.offsetY);
                 target.opacity = false;
@@ -247,14 +249,15 @@ function doBind(el, binding, vnode, path, listener) {
         if (!target) {
             return;
         }
-        if (listener && !binding.modifiers.rightClick) {
+        if (listener) {
             EleResize.on(target.$el,
-                parsePosition.bind(window, target, target.$lastel || el, true, false, undefined, undefined), window
+                parsePosition.bind(window, target, target.$lastel || el, true, false, target.$lastevX, target.$lastevY),
+                window
             );
             let oldReSize = window.onresize;
             window.onresize = function () {
                 if (target.show) {
-                    parsePosition(target, target.$lastel || el, true, true, undefined, undefined);
+                    parsePosition(target, target.$lastel || el, true, true, target.$lastevX, target.$lastevY);
                 }
                 oldReSize && oldReSize.call(window);
             };
