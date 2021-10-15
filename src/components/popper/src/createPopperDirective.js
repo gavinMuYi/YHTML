@@ -85,49 +85,51 @@ function parsePosition(target, el, moniter, containChange) {
             };
         }
     }
-    target.$refs.selfPop.style.left = 'auto';
-    target.$refs.selfPop.style.right = 'auto';
-    target.$refs.selfPop.style.top = 'auto';
-    target.$refs.selfPop.style.bottom = 'auto';
-    const position = getPosition(el);
-    const box = el.getBoundingClientRect();
-    const popWidth = target.$refs.selfPop.getBoundingClientRect().width;
-    const popHeight = target.$refs.selfPop.getBoundingClientRect().height;
-    const windowWidth = document.documentElement.offsetWidth;
-    const windowHeight = document.documentElement.offsetHeight;
-    const placement = getPlacement(target.placement, box, popWidth, popHeight);
-    let startLeft = position.x + placement.x;
-    let startTop = position.y + placement.y;
-    let rightOver = popWidth + startLeft > windowWidth;
-    let bottomOver = popHeight + startTop > windowHeight;
-    if (target.priority && target.priority.length && (rightOver || bottomOver)) {
-        for (let i = 0; i < target.priority.length; i++) {
-            let placementrPiority = getPlacement(target.priority[i], box, popWidth, popHeight);
-            let startLeftPiority = position.x + placementrPiority.x;
-            let startTopPiority = position.y + placementrPiority.y;
-            let rightOverPiority = popWidth + startLeftPiority > windowWidth;
-            let bottomOverPiority = popHeight + startTopPiority > windowHeight;
-            if (!rightOverPiority && !bottomOverPiority) {
-                startLeft = startLeftPiority;
-                startTop = startTopPiority;
-                rightOver = rightOverPiority;
-                bottomOver = bottomOverPiority;
-                break;
+    if (target.$refs.selfPop) {
+        target.$refs.selfPop.style.left = 'auto';
+        target.$refs.selfPop.style.right = 'auto';
+        target.$refs.selfPop.style.top = 'auto';
+        target.$refs.selfPop.style.bottom = 'auto';
+        const position = getPosition(el);
+        const box = el.getBoundingClientRect();
+        const popWidth = target.$refs.selfPop.getBoundingClientRect().width;
+        const popHeight = target.$refs.selfPop.getBoundingClientRect().height;
+        const windowWidth = document.documentElement.offsetWidth;
+        const windowHeight = document.documentElement.offsetHeight;
+        const placement = getPlacement(target.placement, box, popWidth, popHeight);
+        let startLeft = position.x + placement.x;
+        let startTop = position.y + placement.y;
+        let rightOver = popWidth + startLeft > windowWidth;
+        let bottomOver = popHeight + startTop > windowHeight;
+        if (target.priority && target.priority.length && (rightOver || bottomOver)) {
+            for (let i = 0; i < target.priority.length; i++) {
+                let placementrPiority = getPlacement(target.priority[i], box, popWidth, popHeight);
+                let startLeftPiority = position.x + placementrPiority.x;
+                let startTopPiority = position.y + placementrPiority.y;
+                let rightOverPiority = popWidth + startLeftPiority > windowWidth;
+                let bottomOverPiority = popHeight + startTopPiority > windowHeight;
+                if (!rightOverPiority && !bottomOverPiority) {
+                    startLeft = startLeftPiority;
+                    startTop = startTopPiority;
+                    rightOver = rightOverPiority;
+                    bottomOver = bottomOverPiority;
+                    break;
+                }
             }
         }
-    }
-    if (startLeft + startTop === 0) {
-        return;
-    }
-    if (rightOver) {
-        target.$refs.selfPop.style.right = '0px';
-    } else {
-        target.$refs.selfPop.style.left = `${startLeft}px`;
-    }
-    if (bottomOver) {
-        target.$refs.selfPop.style.bottom = '0px';
-    } else {
-        target.$refs.selfPop.style.top = `${startTop}px`;
+        if (startLeft + startTop === 0) {
+            return;
+        }
+        if (rightOver) {
+            target.$refs.selfPop.style.right = '0px';
+        } else {
+            target.$refs.selfPop.style.left = `${startLeft}px`;
+        }
+        if (bottomOver) {
+            target.$refs.selfPop.style.bottom = '0px';
+        } else {
+            target.$refs.selfPop.style.top = `${startTop}px`;
+        }
     }
 }
 
@@ -170,6 +172,7 @@ function handleHover(target, el, mos, delay) {
         target.show = false;
         target.$nextTick(() => {
             parsePosition(target, el);
+            target.$lastel = el;
             target.show = true;
         });
     } else {
@@ -191,6 +194,7 @@ function handleClick(target, el) {
     if (!target.show) {
         target.$nextTick(() => {
             parsePosition(target, el);
+            target.$lastel = el;
             target.show = true;
         });
     } else {
@@ -212,10 +216,12 @@ function doBind(el, binding, vnode, path, listener) {
             return;
         }
         if (listener && !binding.modifiers.rightClick) {
-            EleResize.on(target.$el, parsePosition.bind(window, target, el, true, false), window);
+            EleResize.on(target.$el, parsePosition.bind(window, target, target.$lastel || el, true, false), window);
             let oldReSize = window.onresize;
             window.onresize = function () {
-                parsePosition(target, el, true, true);
+                if (target.show) {
+                    parsePosition(target, target.$lastel || el, true, true);
+                }
                 oldReSize && oldReSize.call(window);
             };
         }
