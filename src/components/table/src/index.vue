@@ -588,7 +588,7 @@ export default {
             this.treeRefresh++;
             setTimeout(() => {
                 // 重置行高
-                this.handleResize()(false);
+                this.handleResize()(true);
                 if (this.headerFix) {
                     this.handleFixedResize()();
                 }

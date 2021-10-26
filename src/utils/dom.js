@@ -1,8 +1,24 @@
 export const EleResize = {
+    _limit: function (e) {
+        if (e.stashCount === undefined) {
+            e.stashCount = 0;
+        }
+        if (!e.limitTimer) {
+            e.limitTimer = setTimeout(() => {
+                if (e.stashCount > 5) {
+                    EleResize.reSet(e);
+                }
+                e.stashCount = 0;
+                e.limitTimer = null;
+            }, 200);
+        }
+        e.stashCount++;
+    },
     _handleResize: function (e) {
         let ele = e.target || e.srcElement;
         let trigger = ele.__resizeTrigger__;
         if (trigger) {
+            EleResize._limit(trigger);
             let handlers = trigger.__z_resizeListeners;
             if (handlers) {
                 let size = handlers.length;
@@ -78,6 +94,10 @@ if (document.attachEvent) {
             }
         }
     };
+    EleResize.reSet = function (ele) {
+        ele.detachEvent('onresize', EleResize._handleResize);
+        ele.attachEvent('onresize', EleResize._handleResize);
+    };
 } else {
     EleResize.on = function (ele, handler, context) {
         let handlers = ele.__z_resizeListeners;
@@ -111,5 +131,23 @@ if (document.attachEvent) {
                 delete ele.__z_resizeListeners;
             }
         }
+    };
+    EleResize.reSet = function (ele) {
+        let trigger = ele.__resizeTrigger__;
+        let handlers = ele.__z_resizeListeners;
+        if (trigger) {
+            trigger.contentDocument.defaultView.removeEventListener('resize', EleResize._handleResize);
+            ele.removeChild(trigger);
+            delete ele.__resizeTrigger__;
+        }
+        delete ele.__z_resizeListeners;
+        ele.__z_resizeListeners = handlers;
+
+        if (getComputedStyle(ele, null).position === 'static') {
+            ele.style.position = 'relative';
+        }
+        let obj = EleResize._createResizeTrigger(ele);
+        ele.__resizeTrigger__ = obj;
+        obj.__resizeElement__ = ele;
     };
 }
