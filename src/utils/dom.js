@@ -5,7 +5,7 @@ export const EleResize = {
         }
         if (!e.limitTimer) {
             e.limitTimer = setTimeout(() => {
-                if (e.stashCount > 5) {
+                if (e.stashCount > 2) {
                     EleResize.reSet(e);
                 }
                 e.stashCount = 0;
