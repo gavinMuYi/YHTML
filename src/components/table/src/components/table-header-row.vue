@@ -58,6 +58,9 @@ export default {
         sort(order, key, compare, columnIndex) {
             this.$emit('columnSort', order, key, compare, columnIndex);
         },
+        extend(key, newStatus, index) {
+            this.$emit('newExtendStatus', { key, newStatus, index });
+        },
         handleMouseMove(e, tindex, th, width) {
             return (e) => {
                 if (this.moveStatus[tindex]) {
@@ -144,10 +147,15 @@ export default {
                         on-click={() => { this.sort('desc', th.columnKey, th.compare, tindex) }} />
                 </div>
             );
+            let extendIcon = (
+                <y-icon name={'arrow-' + (th.extend ? 'up' : 'down')}
+                    on-click={() => { this.extend(th.columnKey, !th.extend, tindex) }} />
+            );
             let thdom = <th
                 colspan={th.colSpan} rowspan={th.rowSpan}
                 class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
                 <div class="y-table-cell">
+                    { th.withChildren ? extendIcon : '' }
                     { th.headRender.call(this, h, th.label, th) }
                     { th.sortable ? sort : '' }
                     {

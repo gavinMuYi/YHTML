@@ -5,7 +5,7 @@
             v-for="(row, rindex) in level" :key="'row-' + rindex" :rindex="rindex"
             :residue="level - rindex" :actionTable="actionTable" :level="level"
             :rowData="columns[rindex]" :style="rowStyle(rindex)" :name="name"
-            @columnSort="columnSort" :currentSort="nowSort" />
+            @columnSort="columnSort" :currentSort="nowSort" @newExtendStatus="newExtendStatus($event, rindex)" />
     </thead>
 </template>
 
@@ -88,7 +88,12 @@ export default {
             this.$emit('columnSort', {
                 order, key, compare, columnIndex
             });
-        }
+        },
+        newExtendStatus({ key, newStatus, index }, rindex) {
+            this.$emit('newExtendStatus', {
+                key, newStatus, gindex: index, deep: rindex + 1
+            });
+        },
     }
 };
 </script>

@@ -35,6 +35,7 @@
                         <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" />
                         <y-table-header :columns="headerColumn.headerColumnLeft" :level="headerDeep"
                                         ref="leftFixedHeader" @columnSort="columnSort($event, 'left')"
+                                        @newExtendStatus="newExtendStatus($event, 'left')"
                                         :currentSort="currentSort" name="left" :defaultSort="defaultSort"
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                     </table>
@@ -45,6 +46,7 @@
                         <y-table-colgroup :colgroup="rowColumn.rowColumn" />
                         <y-table-header :columns="headerColumn.headerColumn" :level="headerDeep"
                                         ref="centerFixedHeader" @columnSort="columnSort($event, 'center')"
+                                        @newExtendStatus="newExtendStatus($event, 'center')"
                                         :currentSort="currentSort" name="center" :defaultSort="defaultSort"
                                         :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                     </table>
@@ -58,6 +60,7 @@
                         <y-table-colgroup :colgroup="rowColumn.rowColumnRight" />
                         <y-table-header :columns="headerColumn.headerColumnRight" :level="headerDeep"
                                         ref="rightFixedHeader" @columnSort="columnSort($event, 'right')"
+                                        @newExtendStatus="newExtendStatus($event, 'right')"
                                         :currentSort="currentSort" name="right" :defaultSort="defaultSort"
                                         :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                     </table>
@@ -97,6 +100,7 @@
                                                 ref="leftHeader" :level="headerDeep" name="left"
                                                 :defaultSort="defaultSort"
                                                 @columnSort="columnSort($event, 'left')" :currentSort="currentSort"
+                                                @newExtendStatus="newExtendStatus($event, 'left')"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                                 <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody"
                                               :rowHeight="rowHeight.body"
@@ -113,6 +117,7 @@
                                 <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumn"
                                                 ref="centerHeader"
                                                 :level="headerDeep" @columnSort="columnSort($event, 'center')"
+                                                @newExtendStatus="newExtendStatus($event, 'center')"
                                                 :currentSort="currentSort" name="center" :defaultSort="defaultSort"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                                 <y-table-body :columns="rowColumn.rowColumn" ref="centerBody"
@@ -135,6 +140,7 @@
                                                 ref="rightHeader" :level="headerDeep" name="right"
                                                 :defaultSort="defaultSort"
                                                 @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
+                                                @newExtendStatus="newExtendStatus($event, 'right')"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
                                 <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
                                               :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
@@ -318,6 +324,24 @@ export default {
         };
     },
     computed: {
+        _column() {
+            return this.column;
+            // let filterCloumn = clone(this.column);
+            // let recursion = (arr) => {
+            //     arr.forEach(item => {
+            //         if (item.children && item.children.length) {
+            //             item.withChildren = true;
+            //             if (item.extend) {
+            //                 recursion(item.children);
+            //             } else {
+            //                 item.children = [];
+            //             }
+            //         }
+            //     });
+            // };
+            // recursion(filterCloumn);
+            // return filterCloumn;
+        },
         gapLineClass() {
             let className = [];
             if (!this.scrollLeft) {
@@ -398,7 +422,7 @@ export default {
                     }
                 });
             };
-            recursion(this.column, 0);
+            recursion(this._column, 0);
             let res = [];
             headerColumn.forEach((row, index) => {
                 res.push([]);
@@ -445,7 +469,7 @@ export default {
                     }
                 });
             };
-            getColumn(this.column);
+            getColumn(this._column);
             let res = [];
             res = res.concat(rowColumnLeft.map(col => {
                 return {
@@ -503,7 +527,7 @@ export default {
                     }
                 });
             };
-            recursion(this.column, 1);
+            recursion(this._column, 1);
             return deep;
         },
         leftTableWidth() {
@@ -626,6 +650,26 @@ export default {
                 order, key, compare, columnIndex, name
             });
         },
+        newExtendStatus({ key, newStatus, gindex, deep }, name) {
+            let recursion = (arr, d, fixed) => {
+                arr.forEach(item => {
+                    if (deep === d) {
+                        if ((fixed || item.fixed || 'center') === name) {
+                            gindex--;
+                        }
+                        if (gindex === -1) {
+                            item.extend = newStatus;
+                        }
+                    } else if (deep > d) {
+                        recursion(item.children, d + 1, fixed || item.fixed || 'center');
+                    }
+                });
+            };
+            recursion(this.column, 1);
+            // this.$set(this, 'currentSort', {
+            //     order, key, compare, columnIndex, name
+            // });
+        },
         handleClick(rowData) {
             this.$emit('rowClick', rowData);
             if (rowData.hasChildren || (rowData.children && rowData.children.length)) {
@@ -704,7 +748,7 @@ export default {
                     }
                 });
             };
-            setColumn(this.column);
+            setColumn(this._column);
         },
         resetTableHeader() {
             this.$set(this.leftTable, 'header', []);

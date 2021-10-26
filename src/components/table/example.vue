@@ -21,16 +21,13 @@
             </y-table-column>
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable sortable />
             <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px" :rowspan="true" dragable />
-            <y-table-column label="一级">
+            <y-table-column label="一级" columnKey="key">
                 <div slot="header">header-111-一级</div>
                 <y-table-column label="二级" columnKey="label" width="50px" dragable>
                 </y-table-column>
-                <y-table-column label="二级">
+                <y-table-column label="二级" columnKey="key" dragable>
                     <y-table-column label="三级" columnKey="label" width="100px" dragable>
                         <div slot="header">cell slot can click</div>
-                        <div slot-scope="props" slot="cell">
-                            {{ props.selectStatus }}
-                        </div>
                     </y-table-column>
                     <y-table-column label="三级" columnKey="label" width="50px" dragable>
                         <div slot="header">header-111-三级</div>
@@ -72,11 +69,11 @@
                 </y-table-column>
             </y-table-column>
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" />
-            <y-table-column label="一级">
+            <y-table-column label="一级" columnKey="key">
                 <div slot="header">header-111-一级</div>
                 <y-table-column label="二级" columnKey="label" width="50px" dragable>
                 </y-table-column>
-                <y-table-column label="二级">
+                <y-table-column label="二级" columnKey="key">
                     <y-table-column label="三级" columnKey="label" width="100px" dragable>
                         <div slot-scope="props" slot="header"><HeaderEx /></div>
                         <div slot-scope="props" slot="cell">
