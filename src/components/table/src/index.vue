@@ -587,7 +587,8 @@ export default {
         tableList(nval) {
             this.treeRefresh++;
             setTimeout(() => {
-                this.handleResize()();
+                // 重置行高
+                this.handleResize()(false);
                 if (this.headerFix) {
                     this.handleFixedResize()();
                 }
@@ -890,13 +891,13 @@ export default {
                 let centerTable = this.$refs.center;
                 this.centerGap = centerTable.offsetWidth - content.offsetWidth;
             };
-            return () => {
+            return (reSizing) => {
                 let reset = false;
                 ['left', 'center', 'right'].forEach(DomKey => {
                     reset = reset || !getHeight(DomKey);
                 });
                 getGap();
-                if (reset) {
+                if (reset || reSizing) {
                     this.resetTableStyle();
                     this.$nextTick(() => {
                         ['left', 'center', 'right'].forEach(DomKey => {
