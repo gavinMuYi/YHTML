@@ -18,7 +18,7 @@
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
-                 :style="{ width: scorlling ? 'calc(100% - 5px)' : '100%' }" ref="headerFixedBox">
+                 ref="headerFixedBox">
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
                      v-if="Boolean(multiple && basicIndex)">
                     <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
@@ -64,76 +64,86 @@
                 </div>
             </div>
             <div :style="{ height: fixedBodyTop + 'px'}"></div>
-            <div class="y-table-main" :style="{ maxHeight: tableHeight }" ref="tableMainBox">
-                <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
-                     v-if="Boolean(multiple && basicIndex)">
-                    <table>
-                        <y-table-header v-if="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="[]" />
-                        <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
-                                      :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
-                                      @hover="handleHover" @hoverout="handleHoverout"
-                                      :multiple="Boolean(multiple && basicIndex)"
-                                      :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                      @select="handleSelect" :checkBoxStatus="checkBoxStatus"
-                                      :basicIndex="basicIndex" />
-                    </table>
-                </div>
-                <div class="y-table-box" ref="tableMain"
-                     :style="{
-                         width: `calc(100% - ${Boolean(multiple && basicIndex) ? 20 * maxExtendLevel + 40 + 'px' : 0}`
-                }">
-                    <div class="y-table-left"
-                         v-if="rowColumn.rowColumnLeft.length" :style="{
-                             minWidth: `${leftTableWidth}`,
-                             width: `${leftTableWidth}`
-                    }">
-                        <table ref="left" style="width: 100%;">
-                            <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
-                            <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnLeft"
-                                            ref="leftHeader" :level="headerDeep" name="left" :defaultSort="defaultSort"
-                                            @columnSort="columnSort($event, 'left')" :currentSort="currentSort"
-                                            :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
-                            <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody" :rowHeight="rowHeight.body"
-                                          :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
-                                          :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+            <div class="y-table-scrolling">
+                <div class="y-table-main" ref="tableMainBox"
+                     :style="{ maxHeight: tableHeight, width: scorlling ? 'calc(100% + 5px)' : '100%' }">
+                    <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
+                         v-if="Boolean(multiple && basicIndex)">
+                        <table>
+                            <y-table-header v-if="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
+                                            :rowHeight="rowHeight.header" :selfRowHeight="[]" />
+                            <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
+                                          :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
+                                          @hover="handleHover" @hoverout="handleHoverout"
                                           :multiple="Boolean(multiple && basicIndex)"
-                                          :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
+                                          :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                          @select="handleSelect" :checkBoxStatus="checkBoxStatus"
+                                          :basicIndex="basicIndex" />
                         </table>
                     </div>
-                    <div class="y-table-center" ref="centerTableContent" key="center">
-                        <table ref="center">
-                            <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
-                            <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumn" ref="centerHeader"
-                                            :level="headerDeep" @columnSort="columnSort($event, 'center')"
-                                            :currentSort="currentSort" name="center" :defaultSort="defaultSort"
-                                            :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
-                            <y-table-body :columns="rowColumn.rowColumn" ref="centerBody" :rowHeight="rowHeight.body"
-                                          :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
-                                          :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                          :multiple="Boolean(multiple && basicIndex)"
-                                          :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
-                                          :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
-                        </table>
-                    </div>
-                    <div class="y-table-right"
-                         v-if="rowColumn.rowColumnRight.length" :style="{
-                             minWidth: `${rightTableWidth}`,
-                             width: `${rightTableWidth}`
+                    <div class="y-table-box" ref="tableMain"
+                         :style="{
+                             width: `calc(100% - ${Boolean(multiple && basicIndex)
+                             ? 20 * maxExtendLevel + 40 + 'px' : 0}`
                     }">
-                        <table ref="right" style="width: 100%">
-                            <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
-                            <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnRight"
-                                            ref="rightHeader" :level="headerDeep" name="right"
-                                            :defaultSort="defaultSort"
-                                            @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
-                                            :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
-                            <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
-                                          :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
-                                          :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
-                                          :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                          :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout" />
-                        </table>
+                        <div class="y-table-left"
+                             v-if="rowColumn.rowColumnLeft.length" :style="{
+                                 minWidth: `${leftTableWidth}`,
+                                 width: `${leftTableWidth}`
+                        }">
+                            <table ref="left" style="width: 100%;">
+                                <y-table-colgroup :colgroup="rowColumn.rowColumnLeft" ref="leftColgroup" />
+                                <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnLeft"
+                                                ref="leftHeader" :level="headerDeep" name="left"
+                                                :defaultSort="defaultSort"
+                                                @columnSort="columnSort($event, 'left')" :currentSort="currentSort"
+                                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                                <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody"
+                                              :rowHeight="rowHeight.body"
+                                              :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
+                                              :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              :multiple="Boolean(multiple && basicIndex)"
+                                              :rows="rows" :maps="maps" @hover="handleHover"
+                                              @hoverout="handleHoverout" />
+                            </table>
+                        </div>
+                        <div class="y-table-center" ref="centerTableContent" key="center">
+                            <table ref="center">
+                                <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
+                                <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumn"
+                                                ref="centerHeader"
+                                                :level="headerDeep" @columnSort="columnSort($event, 'center')"
+                                                :currentSort="currentSort" name="center" :defaultSort="defaultSort"
+                                                :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
+                                <y-table-body :columns="rowColumn.rowColumn" ref="centerBody"
+                                              :rowHeight="rowHeight.body"
+                                              :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
+                                              :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              :multiple="Boolean(multiple && basicIndex)"
+                                              :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
+                                              :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
+                            </table>
+                        </div>
+                        <div class="y-table-right"
+                             v-if="rowColumn.rowColumnRight.length" :style="{
+                                 minWidth: `${rightTableWidth}`,
+                                 width: `${rightTableWidth}`
+                        }">
+                            <table ref="right" style="width: 100%">
+                                <y-table-colgroup :colgroup="rowColumn.rowColumnRight" ref="rightColgroup" />
+                                <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnRight"
+                                                ref="rightHeader" :level="headerDeep" name="right"
+                                                :defaultSort="defaultSort"
+                                                @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
+                                                :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
+                                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
+                                              :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
+                                              :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
+                                              :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              :rows="rows" :maps="maps" @hover="handleHover"
+                                              @hoverout="handleHoverout" />
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -909,9 +919,13 @@ export default {
         }
         .y-table-content {
             position: relative;
-            .y-table-main {
+            .y-table-scrolling {
                 overflow-y: auto;
+                overflow-x: hidden;
                 position: relative;
+                .y-table-main {
+                    position: relative;
+                }
             }
             .y-table-box {
                 display: flex;
