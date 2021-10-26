@@ -325,22 +325,25 @@ export default {
     },
     computed: {
         _column() {
-            return this.column;
-            // let filterCloumn = clone(this.column);
-            // let recursion = (arr) => {
-            //     arr.forEach(item => {
-            //         if (item.children && item.children.length) {
-            //             item.withChildren = true;
-            //             if (item.extend) {
-            //                 recursion(item.children);
-            //             } else {
-            //                 item.children = [];
-            //             }
-            //         }
-            //     });
-            // };
-            // recursion(filterCloumn);
-            // return filterCloumn;
+            let filterCloumn = this.column;
+            let recursion = (arr) => {
+                arr.forEach(item => {
+                    if (item.extend && item.children_bak && item.children_bak.length) {
+                        item.children = clone(item.children_bak);
+                    }
+                    if (item.children && item.children.length) {
+                        item.withChildren = true;
+                        if (item.extend) {
+                            recursion(item.children);
+                        } else {
+                            item.children_bak = clone(item.children);
+                            item.children = [];
+                        }
+                    }
+                });
+            };
+            recursion(filterCloumn);
+            return filterCloumn;
         },
         gapLineClass() {
             let className = [];
