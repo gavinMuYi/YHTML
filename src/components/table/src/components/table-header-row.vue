@@ -229,7 +229,7 @@ export default {
                     left: 0px;
                 }
                 .sorted {
-                    fill: #18b9ac;
+                    fill: #496866;
                 }
             }
         }
