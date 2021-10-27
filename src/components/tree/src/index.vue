@@ -8,7 +8,7 @@
               :handleSelect="handleSelect"
               :multipleSelect="multipleSelect">
             <div
-                :ref="(self && self[maps.cascade])
+                :ref="(self && self[_maps.cascade])
                     ? (extendStatus ? 'cascadeLeavesShow' : 'cascadeleavesHide')
                 : (extendStatus ? 'leavesShow' : 'leavesHide')"
                 v-if="self" @click="extendSelect" @mouseenter="extendCascade"
@@ -16,37 +16,37 @@
                     'list-item',
                     `level${level}`,
                     {'is-selected': isSelected},
-                    {'cascade-open': isFolder && self && self[maps.cascade] && extendStatus}
+                    {'cascade-open': isFolder && self && self[_maps.cascade] && extendStatus}
                 ]"
                 :style="`padding-left: ${15 * (level - beforeCascadeLevel - 1) + 8}px`">
                 <y-icon :name="loading ? 'loading' : `arrow-${extendStatus ? 'up' : 'down'}`"
-                        :class="['arrow', {'loading': loading}]" v-if="isFolder && !(self && self[maps.cascade])"/>
+                        :class="['arrow', {'loading': loading}]" v-if="isFolder && !(self && self[_maps.cascade])"/>
                 <span v-else class="no-arrow"></span>
                 <span class="label-item">
                     <span v-if="multiple" @click.stop="multipleSelect">
-                        <y-checkbox :status="tracked" :disable="self[maps.disable] || fatherDisableStatue" />
+                        <y-checkbox :status="tracked" :disable="self[_maps.disable] || fatherDisableStatue" />
                     </span>
                     <slot name="item" :data="self" :level="level">
-                        <y-cell :highlight="highlight" :label="self[maps.label]"></y-cell>
+                        <y-cell :highlight="highlight" :label="self[_maps.label]"></y-cell>
                     </slot>
                 </span>
                 <y-icon :name="loading ? 'loading' : `arrow-${extendStatus ? 'left' : 'right'}`"
                         :class="['cascade-arrow', 'arrow', {'loading': loading}]"
-                        v-if="isFolder && self && self[maps.cascade]"/>
+                        v-if="isFolder && self && self[_maps.cascade]"/>
             </div>
         </slot>
-        <div :class="['y-tree-children_group', {'cascade-fixed': self && self[maps.cascade] === 'fixed'}]"
+        <div :class="['y-tree-children_group', {'cascade-fixed': self && self[_maps.cascade] === 'fixed'}]"
              v-show="extendStatus" ref="childrenContent" :style="{ ...leafGroupStyle, ...topStyle }"
-             :extendStatus="extendStatus" :cascadeRelative="self && self[maps.cascade] === 'relative'">
+             :extendStatus="extendStatus" :cascadeRelative="self && self[_maps.cascade] === 'relative'">
             <y-tree
-                v-for="(child, cIndex) in dataList" :key="child[maps.key] + cIndex + '-' + level"
+                v-for="(child, cIndex) in dataList" :key="child[_maps.key] + cIndex + '-' + level"
                 ref="leaf"
                 :accordion="accordion"
-                :options="child[maps.children]"
+                :options="child[_maps.children]"
                 :lazyLoad="lazyLoad"
                 :level="level + 1"
                 :self="child"
-                :maps="maps"
+                :maps="_maps"
                 :track="track"
                 :count="count"
                 :treeSize="treeSize"
@@ -54,11 +54,11 @@
                 :fatherStatus="tracked"
                 :cascadeMode="cascadeMode"
                 :fatherID="fatherID || treeId"
-                :fatherDisableStatue="Boolean(self && self[maps.disable])"
-                :beforeCascadeLevel="(self && self[maps.cascade]) ? level : beforeCascadeLevel"
-                :cascadeLevel="cascadeLevel + ((self && self[maps.cascade]) ? 1 : 0)"
+                :fatherDisableStatue="Boolean(self && self[_maps.disable])"
+                :beforeCascadeLevel="(self && self[_maps.cascade]) ? level : beforeCascadeLevel"
+                :cascadeLevel="cascadeLevel + ((self && self[_maps.cascade]) ? 1 : 0)"
                 :tracklessData="trackLessSelect.concat(tracklessData)"
-                :selected="checkTrack(child[maps.key])"
+                :selected="checkTrack(child[_maps.key])"
                 @childSelect="handleChildSelect">
                 <template slot="line" slot-scope="props">
                     <slot name="line"
@@ -70,7 +70,7 @@
                           :multipleSelect="props.multipleSelect">
                         <template slot="item" slot-scope="props">
                             <slot name="item" :data="props.data" :level="props.level">
-                                <y-cell :highlight="highlight" :label="props.data[maps.label]"></y-cell>
+                                <y-cell :highlight="highlight" :label="props.data[_maps.label]"></y-cell>
                             </slot>
                         </template>
                     </slot>
@@ -263,27 +263,39 @@ export default {
         };
     },
     computed: {
+        _maps() {
+            return {
+                key: 'key',
+                label: 'label',
+                children: 'children',
+                hasChildren: 'hasChildren',
+                disable: 'disable',
+                extend: 'extend',
+                cascade: 'cascade',
+                ...this.maps
+            };
+        },
         isFolder() {
             if (!this.self) return true;
-            return (this.self[this.maps.children]
-                && this.self[this.maps.children].length)
-                || this.self[this.maps.hasChildren];
+            return (this.self[this._maps.children]
+                && this.self[this._maps.children].length)
+                || this.self[this._maps.hasChildren];
         },
         tracked() {
             if (this.multiple) {
-                if (this.fatherStatus === 'all' && !this.self[this.maps.disable]) {
+                if (this.fatherStatus === 'all' && !this.self[this._maps.disable]) {
                     return 'all';
                 }
                 if (this.fatherStatus === 'all' && this.fatherDisableStatue) {
                     return 'all';
                 }
-                if (this.selected && this.selected[this.maps.key]) {
+                if (this.selected && this.selected[this._maps.key]) {
                     return this.selected.half ? 'half' : 'all';
                 } else {
                     return 'empty';
                 }
             }
-            return this.selected && this.selected[this.maps.key] ? 'selected' : '';
+            return this.selected && this.selected[this._maps.key] ? 'selected' : '';
         },
         isSelected() {
             if (!this.multiple) {
@@ -305,7 +317,7 @@ export default {
         leafGroupStyle() {
             let style = {};
             if (this.treeSize) {
-                if (!this.level || (this.self && this.self[this.maps.cascade])) {
+                if (!this.level || (this.self && this.self[this._maps.cascade])) {
                     style.width = this.treeSize[0] + 'px';
                 }
                 if (!this.level) {
@@ -314,11 +326,11 @@ export default {
                     style.border = '1px solid #e3f0ef';
                     style.boxSizing = 'border-box';
                 }
-                if (this.self && this.self[this.maps.cascade]) {
+                if (this.self && this.self[this._maps.cascade]) {
                     style.position = 'absolute';
                     style.top = '0px';
                     style.left = this.treeSize[0]
-                        * (this.cascadeLevel + ((this.self && this.self[this.maps.cascade]) ? 1 : 0)) + 'px';
+                        * (this.cascadeLevel + ((this.self && this.self[this._maps.cascade]) ? 1 : 0)) + 'px';
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
                     style.border = '1px solid #e3f0ef';
@@ -377,15 +389,15 @@ export default {
             }
             if (this.tracklessData.length && this.self) {
                 let reshow = this.tracklessData.filter(item => {
-                    return item[this.maps.key] === this.self[this.maps.key];
+                    return item[this._maps.key] === this.self[this._maps.key];
                 })[0];
                 if (reshow && this.multiple) {
                     if (!this.isFolder) {
                         this.$emit('childSelect', this.self, true);
                     } else {
                         let selected = clone(this.self);
-                        delete selected[this.maps.children];
-                        delete selected[this.maps.hasChildren];
+                        delete selected[this._maps.children];
+                        delete selected[this._maps.hasChildren];
                         this.$emit('childSelect', selected, true);
                     }
                 }
@@ -454,10 +466,10 @@ export default {
                     leaf.$refs.leaf && loop(leaf.$refs.leaf);
                 });
             };
-            if ((this.self && this.self[this.maps.cascade]) || closeChildContent) {
+            if ((this.self && this.self[this._maps.cascade]) || closeChildContent) {
                 this.$refs.leaf && loop(this.$refs.leaf);
                 let parent = this.$parent;
-                while (parent.$parent && parent.self && !parent.self[this.maps.cascade]) {
+                while (parent.$parent && parent.self && !parent.self[this._maps.cascade]) {
                     parent = parent.$parent;
                 }
                 let cascadeLoop = (arr) => {
@@ -479,13 +491,13 @@ export default {
             }
         },
         extendCascade(close) {
-            if (this.self && this.self[this.maps.cascade] && this.cascadeMode === 'hover') {
+            if (this.self && this.self[this._maps.cascade] && this.cascadeMode === 'hover') {
                 this.extendAction();
                 this.isFolder && (this.extendStatus = true);
             }
         },
         extendSelect(close) {
-            if (!close && this.self && this.self[this.maps.cascade] && this.cascadeMode === 'hover') {
+            if (!close && this.self && this.self[this._maps.cascade] && this.cascadeMode === 'hover') {
                 return;
             }
             if (!this.isFolder && !this.multiple && this.cascadeMode) {
@@ -493,18 +505,18 @@ export default {
             }
             this.extendAction();
             this.extend();
-            if (this.self[this.maps.disable] || this.fatherDisableStatue) {
+            if (this.self[this._maps.disable] || this.fatherDisableStatue) {
                 return;
             }
             this.handleSelect();
         },
         multipleSelect() {
-            if (this.self[this.maps.disable] || this.fatherDisableStatue) {
+            if (this.self[this._maps.disable] || this.fatherDisableStatue) {
                 return;
             }
             let selected = clone(this.self);
-            delete selected[this.maps.children];
-            delete selected[this.maps.hasChildren];
+            delete selected[this._maps.children];
+            delete selected[this._maps.hasChildren];
             this.$emit('childSelect', selected, true);
         },
         handleChildSelect(item, byhand) {
@@ -529,13 +541,13 @@ export default {
                 let selected;
                 let childClear = false;
                 if (this.level) {
-                    let selectedChildren = clone(this.selected[this.maps.children] || []);
+                    let selectedChildren = clone(this.selected[this._maps.children] || []);
                     if (this.tracked === 'all') {
                         selectedChildren = [];
                         clone(this.dataList).forEach(item => {
-                            if (!item[this.maps.disable]) {
-                                delete item[this.maps.children];
-                                delete item[this.maps.hasChildren];
+                            if (!item[this._maps.disable]) {
+                                delete item[this._maps.children];
+                                delete item[this._maps.hasChildren];
                                 selectedChildren.push(item);
                             }
                         });
@@ -546,7 +558,7 @@ export default {
                         if (i.half) {
                             historyChildHalf[index] = true;
                         }
-                        i[this.maps.key] === item[this.maps.key] && (childIndex = index);
+                        i[this._maps.key] === item[this._maps.key] && (childIndex = index);
                     });
                     if (childIndex > -1) {
                         if (historyChildHalf[childIndex]) {
@@ -571,8 +583,8 @@ export default {
                     let half = Boolean(selectedChildren.length < this.dataList.length || this.loadMore
                         || Object.keys(historyChildHalf).length);
                     let selfSelected = clone(this.self);
-                    delete selfSelected[this.maps.children];
-                    delete selfSelected[this.maps.hasChildren];
+                    delete selfSelected[this._maps.children];
+                    delete selfSelected[this._maps.hasChildren];
                     selected = {
                         ...selfSelected,
                         half: half
@@ -592,7 +604,7 @@ export default {
                 } else {
                     let selectedIndex = -1;
                     this.treeSelect.forEach((i, index) => {
-                        i[this.maps.key] === item[this.maps.key] && (selectedIndex = index);
+                        i[this._maps.key] === item[this._maps.key] && (selectedIndex = index);
                     });
                     if (selectedIndex > -1) {
                         if (byhand) {
@@ -614,12 +626,12 @@ export default {
         },
         checkTrack(key) {
             if (this.level) {
-                return this.selected[this.maps.children] && this.selected[this.maps.children].filter(item => {
-                    return item[this.maps.key] === key;
+                return this.selected[this._maps.children] && this.selected[this._maps.children].filter(item => {
+                    return item[this._maps.key] === key;
                 })[0];
             } else {
                 return this.treeSelect.filter(item => {
-                    return item[this.maps.key] === key;
+                    return item[this._maps.key] === key;
                 })[0];
             }
         },
@@ -633,7 +645,7 @@ export default {
                         if (!item.half) {
                             flated.push(item);
                         } else {
-                            flat(item[this.maps.children]);
+                            flat(item[this._maps.children]);
                         }
                     });
                 };
@@ -642,11 +654,11 @@ export default {
             }
         },
         cascadeDomObserver() {
-            if (this.self && this.self[this.maps.cascade]) {
+            if (this.self && this.self[this._maps.cascade]) {
                 document.getElementById(this.fatherID).appendChild(this.$refs.childrenContent);
-                if (this.self[this.maps.cascade] === 'relative') {
+                if (this.self[this._maps.cascade] === 'relative') {
                     let parent = this.$parent;
-                    while (parent && parent.self && !parent.self[this.maps.cascade]) {
+                    while (parent && parent.self && !parent.self[this._maps.cascade]) {
                         parent = parent.$parent;
                     }
                     let content = parent.$refs.childrenContent;
