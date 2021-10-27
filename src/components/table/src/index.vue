@@ -329,7 +329,7 @@ export default {
             let recursion = (arr) => {
                 arr.forEach(item => {
                     if (item.extend && item.children_bak && item.children_bak.length) {
-                        item.children = clone(item.children_bak);
+                        item.children = item.children_bak;
                     }
                     if (item.children && item.children.length) {
                         item.withChildren = true;
@@ -661,7 +661,7 @@ export default {
                             gindex--;
                         }
                         if (gindex === -1) {
-                            item.extend = newStatus;
+                            this.$set(item, 'extend', newStatus);
                         }
                     } else if (deep > d) {
                         recursion(item.children, d + 1, fixed || item.fixed || 'center');
