@@ -1,7 +1,7 @@
 <template>
     <div class="y-popmenu_example">
         <YPopmenu ref="menu" />
-        <div v-ypopmenu:menu.click style="display: inline-block">ddd</div>
+        <div v-ypopmenu:menu.click style="display: inline-block">trigger</div>
     </div>
 </template>
 
