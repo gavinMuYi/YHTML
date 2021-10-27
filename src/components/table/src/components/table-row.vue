@@ -118,7 +118,7 @@ export default {
             && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
             ? <span class="y-table-row_icon-box"><y-icon name={this.rowData.loading
                 ? 'loading'
-                : `arrow-${this.rowData.extend ? 'up' : 'down'}`}
+                : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
             class="y-table-row_icon" /></span>
             : '';
         this.actionTable && tds.push(
@@ -157,7 +157,7 @@ export default {
                         && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
                         ? <y-icon name={this.rowData.loading
                             ? 'loading'
-                            : `arrow-${this.rowData.extend ? 'up' : 'down'}`}
+                            : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
                         class="y-table-row_icon" />
                         : '';
                     rowspan && tds.push(

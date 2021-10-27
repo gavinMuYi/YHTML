@@ -19,7 +19,7 @@
             </div>
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
                  ref="headerFixedBox">
-                <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
+                <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 60 + 'px' }"
                      v-if="Boolean(multiple && basicIndex)">
                     <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
                         <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
@@ -70,7 +70,7 @@
             <div class="y-table-scrolling">
                 <div class="y-table-main" ref="tableMainBox"
                      :style="{ maxHeight: tableHeight, width: scorlling ? 'calc(100% + 5px)' : '100%' }">
-                    <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 40 + 'px' }"
+                    <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 60 + 'px' }"
                          v-if="Boolean(multiple && basicIndex)">
                         <table>
                             <y-table-header v-if="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
@@ -87,7 +87,7 @@
                     <div class="y-table-box" ref="tableMain"
                          :style="{
                              width: `calc(100% - ${Boolean(multiple && basicIndex)
-                             ? 20 * maxExtendLevel + 40 + 'px' : 0}`
+                             ? 20 * maxExtendLevel + 60 + 'px' : 0}`
                     }">
                         <div class="y-table-left"
                              v-if="rowColumn.rowColumnLeft.length" :style="{
@@ -1008,10 +1008,9 @@ export default {
                         position: relative;
                         .y-table-row_icon {
                             fill: #496866;
-                            width: 10px;
-                            height: 17px;
+                            height: 19px;
                             position: absolute;
-                            left: -7px;
+                            left: -55px;
                         }
                     }
                 }
@@ -1031,8 +1030,6 @@ export default {
                     .y-table-row_icon {
                         margin-right: 5px;
                         fill: #496866;
-                        width: 10px;
-                        height: 10px;
                     }
                     .y-table-cell_content {
                         flex: 1;
@@ -1070,7 +1067,7 @@ export default {
                         .y-table_checkbox {
                             display: flex;
                             justify-content: center;
-                            width: 37px;
+                            width: 58px;
                             height: 16px;
                         }
                     }

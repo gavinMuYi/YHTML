@@ -148,7 +148,7 @@ export default {
                 </div>
             );
             let extendIcon = (
-                <y-icon name={'arrow-' + (th.extend ? 'up' : 'down')}
+                <y-icon name={'arrow-' + (th.extend ? 'minus' : 'add')} class="y-table-header-extend"
                     on-click={() => { this.extend(th.columnKey, !th.extend, tindex) }} />
             );
             let thdom = <th
@@ -197,6 +197,13 @@ export default {
             box-sizing: border-box;
             &:nth-child(1) {
                 border-left: none;
+            }
+            .y-table-header-extend {
+                margin-right: 5px;
+                fill: #496866;
+                &:hover {
+                    cursor: pointer;
+                }
             }
             .y-table-column_sort-icon {
                 width: 10px;
