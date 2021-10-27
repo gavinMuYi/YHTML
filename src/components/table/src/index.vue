@@ -669,9 +669,6 @@ export default {
                 });
             };
             recursion(this.column, 1);
-            // this.$set(this, 'currentSort', {
-            //     order, key, compare, columnIndex, name
-            // });
         },
         handleClick(rowData) {
             this.$emit('rowClick', rowData);
