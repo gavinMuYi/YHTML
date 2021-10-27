@@ -1,13 +1,13 @@
 <template>
     <div class="y-popmenu">
-        <y-popper ref="pop" clazz="y-popmenu">
+        <y-popper ref="pop" :clazz="`y-popmenu ${clazz}`" :placement="placement" :priority="priority">
             <div v-if="!options.length" class="no-data">暂无数据</div>
             <div v-else>
                 <div v-for="(item, index) in options" :key="item[_maps.key] + '-' + index"
                      :class="['y-popmenu_item', {'disable': item[_maps.disable]},
                               {'selected': showSelect && currentSelect === item[_maps.key]}]"
                      @click="select(item)">
-                    <y-cell :label="item[_maps.label]" :highlight="highlight"
+                    <y-cell :label="String(item[_maps.label])" :highlight="highlight"
                             :highlightCaseConvert="highlightCaseConvert"
                             :highlightColor="highlightColor" />
                 </div>
@@ -27,6 +27,20 @@ export default {
         YCell
     },
     props: {
+        clazz: {
+            type: String,
+            default: ''
+        },
+        placement: {
+            type: String,
+            default: 'bottom-middle'
+        },
+        priority: {
+            type: Array,
+            default: () => {
+                return [];
+            }
+        },
         selected: {
             type: String,
             default: null
@@ -99,7 +113,7 @@ export default {
     .y-popmenu {
         padding: 5px 0!important;
         .y-popmenu_item {
-            min-width: 100px;
+            min-width: 50px;
             max-width: 200px;
             display: flex;
             align-items: center;

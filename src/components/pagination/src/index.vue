@@ -1,6 +1,10 @@
 <template>
     <div class="y-pagination">
-        <div class="total-count" @click="currentCount++">共 {{ total }} 项，每页显示 {{ currentCount }}</div>
+        <div class="total-count">共 {{ total }} 项，每页显示
+            <YPopmenu ref="count" :options="countMenus" :showSelect="true" clazz="y-pagination_count-popmenu"
+                      placement="bottom-start" @change="val => { currentCount = val.value }" />
+            <span class="count-change" v-ypopmenu:count.click> {{ currentCount }} <y-icon name="arrow-down" /> </span>
+        </div>
         <div class="page-nums">
             <div :class="['arrow', {'disable': currentIndex === 1}]"
                  @click="currentIndex = 1"><y-icon name="goto-start" /></div>
@@ -51,11 +55,13 @@
 </template>
 
 <script>
+import YPopmenu from '@/components/popmenu';
 import YIcon from '@/components/icon';
 
 export default {
     name: 'YPagination',
     components: {
+        YPopmenu,
         YIcon
     },
     props: {
@@ -87,6 +93,15 @@ export default {
     computed: {
         limit() {
             return Math.ceil(this.total / this.currentCount);
+        },
+        countMenus() {
+            return this.countOptions.map(i => {
+                return {
+                    key: 'key' + i,
+                    label: i,
+                    value: i
+                };
+            });
         }
     },
     watch: {
@@ -122,6 +137,15 @@ export default {
             font-size: 14px;
             display: flex;
             align-items: center;
+            .count-change {
+                display: inline-block;
+                margin-left: 8px;
+                .y-icon {
+                    fill: #496866;
+                    width: 10px;
+                    height: 10px;
+                }
+            }
         }
         .page-nums {
             display: flex;
@@ -178,6 +202,14 @@ export default {
                 .y-icon {
                     fill: #e3f0ef;
                 }
+            }
+        }
+    }
+    .y-pagination_count-popmenu {
+        .y-popmenu_item {
+            .y-cell-label {
+                display: flex;
+                justify-content: center;
             }
         }
     }
