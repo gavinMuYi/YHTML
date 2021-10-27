@@ -9,9 +9,13 @@ import clone from 'clone';
 export default {
     name: 'YTableData',
     props: {
+        async: {
+            type: Boolean,
+            default: true
+        },
         lazyLoad: {
             type: Function,
-            default: (index, count) => {
+            default: (leaf, index, count) => {
                 return new Promise((resolve, reject) => {
                     resolve();
                 }).then(() => {
@@ -58,7 +62,10 @@ export default {
         },
         currentSort(nval, oval) {
             if (nval.key && (JSON.stringify(nval) !== JSON.stringify(oval))) {
-                this.$set(this, 'tableList', this.sortData(clone(this.tableList)));
+                this.lazyLoad(null, this.index, this.count, this.async ? nval : this.sortData).then(res => {
+                    this.total = res.total || 0;
+                    this.$set(this, 'tableList', clone(res.options));
+                });
             }
         }
     },
@@ -93,9 +100,9 @@ export default {
                     delete leaf.loading;
                 });
             } else {
-                this.lazyLoad(null, this.index, this.count).then(res => {
+                this.lazyLoad(null, this.index, this.count, this.async ? this.currentSort : this.sortData).then(res => {
                     this.total = res.total || 0;
-                    this.$set(this, 'tableList', this.sortData(clone(res.options || [])));
+                    this.$set(this, 'tableList', clone(res.options));
                 });
             }
         },

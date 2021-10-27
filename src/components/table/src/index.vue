@@ -14,7 +14,7 @@
                         :value="currentSelect" @change="handleMultiple" :maps="treeMangerMap" :key="treeRefresh" />
                 <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList"
-                              :currentSort="currentSort" />
+                              :currentSort="currentSort" :async="!Boolean(options)" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
@@ -192,7 +192,7 @@ export default {
         },
         lazyLoad: {
             type: Function,
-            default: (index, count) => {
+            default: (leaf, index, count) => {
                 return new Promise((resolve, reject) => {
                     resolve();
                 }).then(() => {
@@ -631,15 +631,16 @@ export default {
     methods: {
         initLoad() {
             return this.options
-                ? (leaf, index, count) => {
+                ? (leaf, index, count, sortFunc) => {
+                    let ops = sortFunc ? sortFunc(this.options) : this.options;
                     return new Promise((resolve, reject) => {
                         resolve();
                     }).then(() => {
                         return {
                             options: count > -1
-                                ? this.options.slice((index - 1) * count, index * count)
-                                : this.options,
-                            total: this.options.length
+                                ? ops.slice((index - 1) * count, index * count)
+                                : ops,
+                            total: ops.length
                         };
                     });
                 } : this.lazyLoad;
