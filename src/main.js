@@ -3,6 +3,10 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import createPopperDirective from '@/components/popper/src/createPopperDirective';
+
+Vue.directive('ypop', createPopperDirective());
+Vue.directive('ypopmenu', createPopperDirective(['pop']));
 
 Vue.config.productionTip = false;
 

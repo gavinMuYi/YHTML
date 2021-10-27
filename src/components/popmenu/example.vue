@@ -6,10 +6,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import YPopmenu from './src/index';
-import createPopperDirective from '@/components/popper/src/createPopperDirective';
-Vue.directive('ypopmenu', createPopperDirective(['pop']));
 
 export default {
     name: 'YPopmenuExample',
