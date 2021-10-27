@@ -96,15 +96,12 @@ export default {
 <style lang="less">
    .y-cell {
         display: inline-block;
-        width: 100%;
-        font-size: 0;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        overflow:hidden;
+        font-size: 14px;
         .y-cell-label {
             font-size: 14px;
-            display: inline-block;
-            width: 100%;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
         }
    }
 </style>

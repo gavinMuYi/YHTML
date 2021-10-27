@@ -207,6 +207,9 @@ export default {
     }
     .y-pagination_count-popmenu {
         .y-popmenu_item {
+            .y-cell {
+                width: 100%;
+            }
             .y-cell-label {
                 display: flex;
                 justify-content: center;
