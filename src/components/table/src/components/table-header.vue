@@ -102,7 +102,7 @@ export default {
     .y-table-header {
         background: #dbf4f0;
         .y-table-cell {
-            min-height: 50px;
+            min-height: 60px;
             position: relative;
         }
     }
