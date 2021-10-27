@@ -113,7 +113,7 @@ export default {
     .y-popmenu {
         padding: 5px 0!important;
         .y-popmenu_item {
-            min-width: 50px;
+            min-width: 30px;
             max-width: 200px;
             display: flex;
             align-items: center;
