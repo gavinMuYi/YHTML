@@ -663,6 +663,7 @@ export default {
                         }
                         if (gindex === -1) {
                             this.$set(item, 'extend', newStatus);
+                            gindex--;
                         }
                     } else if (deep > d) {
                         recursion(item.children, d + 1, fixed || item.fixed || 'center');
