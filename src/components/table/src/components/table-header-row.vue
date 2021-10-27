@@ -198,6 +198,9 @@ export default {
             &:nth-child(1) {
                 border-left: none;
             }
+            .y-table-cell {
+                font-weight: 600;
+            }
             .y-table-header-extend {
                 margin-right: 5px;
                 fill: #496866;

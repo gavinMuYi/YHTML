@@ -216,8 +216,8 @@ function handleClick(target, el) {
 function doBind(el, binding, vnode, path, listener) {
     // 就近取pop
     setTimeout(() => {
-        let item = vnode.context.$parent.$refs[binding.arg] || window.pops[binding.arg];
-        let target = vnode.context.$parent.$refs[binding.arg] || window.pops[binding.arg];
+        let item = vnode.context.$refs[binding.arg] || window.pops[binding.arg];
+        let target = vnode.context.$refs[binding.arg] || window.pops[binding.arg];
         if (path && path.length) {
             path.forEach(name => {
                 target = target && target.$refs[name];
