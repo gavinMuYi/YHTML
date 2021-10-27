@@ -283,7 +283,6 @@ export default {
             this.rightheight = 100;
         },
         lazyLoad(leaf, index, count, sort) {
-            console.log(leaf, index, count, sort);
             if (leaf) {
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {

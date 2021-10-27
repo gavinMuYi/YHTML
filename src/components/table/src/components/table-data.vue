@@ -39,6 +39,12 @@ export default {
             default: () => {
                 return {};
             }
+        },
+        defaultSort: {
+            type: Object,
+            default: () => {
+                return {};
+            }
         }
     },
     data() {
@@ -70,7 +76,9 @@ export default {
         }
     },
     mounted() {
-        this.updateData();
+        if (!this.defaultSort.key) {
+            this.updateData();
+        }
     },
     methods: {
         sortData(arr) {

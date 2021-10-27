@@ -14,7 +14,7 @@
                         :value="currentSelect" @change="handleMultiple" :maps="treeMangerMap" :key="treeRefresh" />
                 <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList"
-                              :currentSort="currentSort" :async="!Boolean(options)" />
+                              :currentSort="currentSort" :async="!Boolean(options)" :defaultSort="defaultSort" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
