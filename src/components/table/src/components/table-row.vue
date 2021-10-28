@@ -57,6 +57,10 @@ export default {
             type: Boolean,
             default: false
         },
+        allSelected: {
+            type: Boolean,
+            default: false
+        },
         checkBoxStatus: {
             type: String,
             default: ''
@@ -130,9 +134,9 @@ export default {
                             marginLeft: 20 * (this.rowData.$y_table_level - 1) + 'px'
                         }}>
                     </div>
-                    <div class="y-table_checkbox">
+                    <div class={ ['y-table_checkbox', this.allSelected ? 'allselect-disable' : ''] }>
                         <span on-click={($event) => { $event.stopPropagation(); this.handleSelect() }}>
-                            <y-checkbox status={ this.checkBoxStatus }/>
+                            <y-checkbox status={ this.allSelected ? 'all' : this.checkBoxStatus }/>
                         </span>
                     </div>
                     { icon }
@@ -202,6 +206,12 @@ export default {
         td {
             border-bottom: 1px solid #e3f0ef;
             box-sizing: border-box;
+            .allselect-disable {
+                span {
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
+            }
         }
     }
 </style>

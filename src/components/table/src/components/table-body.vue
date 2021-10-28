@@ -70,6 +70,10 @@ export default {
                 return {};
             }
         },
+        allSelected: {
+            type: Boolean,
+            default: false
+        },
         basicIndex: {
             type: String,
             default: ''
@@ -117,7 +121,7 @@ export default {
                         ? checkBoxStatus[rowData[this.basicIndex]].tracked : ''}
                     multiple={this.multiple} widthLeft={this.widthLeft}
                     position={rowPosition} currentHoverRow={this.currentHoverRow}
-                    rowData={rowData} columns={this.columns}
+                    rowData={rowData} columns={this.columns} allSelected={this.allSelected}
                     index={this.maps[pre + '-' + rindex]} actionTable={this.actionTable}
                     tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])}
                     on-hover={($event) => { this.handleHover($event) }} name={this.name}

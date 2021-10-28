@@ -9,7 +9,7 @@
                             dragable sortable />
         </y-table>
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1"
-                 basicIndex="key">
+                 basicIndex="key" :pageBatchSelect="true">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级' + c + c + c + c + str" columnKey="c" :rowspan="true"
                                 dragable>

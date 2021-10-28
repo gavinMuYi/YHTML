@@ -24,6 +24,7 @@
                     <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
                         <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                         :rowHeight="rowHeight.header" :selfRowHeight="[]"
+                                        :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')"
                                         @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus" />
                     </table>
                 </div>
@@ -67,7 +68,19 @@
                     </table>
                 </div>
             </div>
-            <div :style="{ height: fixedBodyTop + 'px'}"></div>
+            <div :style="{ height: fixedBodyTop + 'px', position: 'relative' }">
+                <div class="all-select-toast"
+                     v-if="pageBatchSelect && currentSelect.length"
+                     :style="{ bottom: headerFix ? '-15px' : -headerTop -15 + 'px'}">
+                    <div class="count">
+                        【跨页选择】当前已选中 {{ currentSelect[0] === 'all' ? total : currentSelect.length }} 条数据
+                    </div>
+                    <div class="operator">
+                        <div class="all-select" @click="currentSelect = ['all']">全选所有</div>
+                        <div @click="currentSelect = [];checkBoxStatus = {};headerCheckBoxStatus = ''">取消全选</div>
+                    </div>
+                </div>
+            </div>
             <div class="y-table-scrolling">
                 <div class="y-table-main" ref="tableMainBox"
                      :style="{ maxHeight: tableHeight, width: scorlling ? 'calc(100% + 5px)' : '100%' }">
@@ -76,14 +89,17 @@
                         <table>
                             <y-table-header v-if="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
                                             :rowHeight="rowHeight.header" :selfRowHeight="[]" @select="handleSelect"
-                                            :checkBoxStatus="headerCheckBoxStatus" />
+                                            :checkBoxStatus="headerCheckBoxStatus"
+                                            :allSelected="Boolean(currentSelect.length
+                                            && currentSelect[0] === 'all')" />
                             <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                           :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
                                           @hover="handleHover" @hoverout="handleHoverout"
                                           :multiple="Boolean(multiple && basicIndex)"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                           @select="handleSelect" :checkBoxStatus="checkBoxStatus"
-                                          :basicIndex="basicIndex" />
+                                          :basicIndex="basicIndex"
+                                          :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')" />
                         </table>
                     </div>
                     <div class="y-table-box" ref="tableMain"
@@ -241,6 +257,10 @@ export default {
             type: Boolean,
             default: false
         },
+        pageBatchSelect: {
+            type: Boolean,
+            default: false
+        },
         tableHeight: {
             type: String
         },
@@ -276,6 +296,7 @@ export default {
             tableMainBoxHeight: 0,
             tableMainHeight: 0,
             fixedBodyTop: 0,
+            headerTop: 0,
             leftFixHeaderHeight: 0,
             centerFixHeaderHeight: 0,
             rightFixHeaderHeight: 0,
@@ -998,7 +1019,10 @@ export default {
                             resizeFn(DomKey);
                         });
                         this.setStandardTable();
-                        this.tableMainHeight = this.$refs.tableMain.offsetHeight;
+                        setTimeout(() => {
+                            this.tableMainHeight = this.$refs.tableMain.offsetHeight;
+                            !this.headerFix && (this.headerTop = this.$refs.leftHeader.$el.offsetHeight);
+                        });
                     });
                 }
             };
@@ -1014,6 +1038,38 @@ export default {
         }
         .y-table-content {
             position: relative;
+            .all-select-toast {
+                position: absolute;
+                width: 400px;
+                border-radius: 2px;
+                height: 30px;
+                display: flex;
+                font-size: 12px;
+                padding: 0 10px;
+                box-sizing: border-box;
+                align-items: center;
+                background: #ffffff;
+                z-index: 100000000;
+                margin-left: -200px;
+                left: 50%;
+                box-shadow: 1px 2px 8px #a4ede0;
+                .count {
+                    flex: 1;
+                }
+                .operator {
+                    float: right;
+                    div {
+                        display: inline-block;
+                        &:hover {
+                            cursor: pointer;
+                            color: #18b9ac;
+                        }
+                    }
+                    .all-select {
+                        margin-right: 10px;
+                    }
+                }
+            }
             .y-table-scrolling {
                 overflow-y: auto;
                 overflow-x: hidden;

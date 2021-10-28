@@ -48,6 +48,10 @@ export default {
             type: String,
             default: ''
         },
+        allSelected: {
+            type: Boolean,
+            default: false
+        },
         checkBoxStatus: {
             type: String,
             default: ''
@@ -116,9 +120,11 @@ export default {
         );
         this.actionTable && !this.rindex && ths.push(
             <th class="y-table-action-cell" rowspan={this.level}>
-                <div class="y-table_checkbox" style="width: 100%">
+                <div style="width: 100%" class={ ['y-table_checkbox', this.allSelected ? 'allselect-disable' : ''] }>
                     <span on-click={($event) => { $event.stopPropagation() }}>
-                        <y-checkbox status={ this.checkBoxStatus } on-change={(e) => { this.handleSelect(e) }}/>
+                        <y-checkbox
+                            status={ this.allSelected ? 'all' : this.checkBoxStatus }
+                            on-change={(e) => { this.handleSelect(e) }}/>
                     </span>
                 </div>
             </th>
@@ -206,6 +212,12 @@ export default {
             box-sizing: border-box;
             &:nth-child(1) {
                 border-left: none;
+            }
+            .allselect-disable {
+                span {
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
             }
             .y-table-cell {
                 font-weight: 600;
