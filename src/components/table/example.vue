@@ -35,7 +35,7 @@
                     <y-table-column label="三级" columnKey="label" width="50px" dragable>
                     </y-table-column>
                 </y-table-column>
-                <y-table-column label="Labelin1" columnKey="label" width="100px" dragable/>
+                <y-table-column label="Labelin1" columnKey="label" width="100px" dragable align="right" />
                 <y-table-column label="Labelin2" columnKey="label" width="50px" dragable/>
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="250px" dragable/>

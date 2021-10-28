@@ -1175,9 +1175,15 @@ export default {
                         margin-right: 5px;
                         fill: #496866;
                     }
-                    .y-table-cell_content {
-                        flex: 1;
-                    }
+                }
+                .y-table-cell_left {
+                    justify-content: left;
+                }
+                .y-table-cell_center {
+                    justify-content: center;
+                }
+                .y-table-cell_right {
+                    justify-content: right;
                 }
                 .y-table-standard-cell {
                     width: 0;

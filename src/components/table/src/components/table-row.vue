@@ -171,7 +171,7 @@ export default {
                     rowspan && tds.push(
                         <td colspan={1} rowspan={rowspan}
                             class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
-                            <div class="y-table-cell" style={
+                            <div class={['y-table-cell', `y-table-cell_${td.align}`]} style={
                                 {
                                     marginLeft: !this.multiple && !tindex && (this.name === 'left'
                                     || (this.name === 'center' && !this.widthLeft))

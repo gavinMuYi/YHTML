@@ -49,6 +49,10 @@ export default {
         },
         compare: {
             type: Function
+        },
+        align: {
+            type: String,
+            default: 'left'
         }
     },
     data() {
@@ -87,6 +91,9 @@ export default {
             this.setParentColumn();
         },
         compare() {
+            this.setParentColumn();
+        },
+        align() {
             this.setParentColumn();
         }
     },
@@ -134,7 +141,8 @@ export default {
                     dragable: this.dragable,
                     sortable: this.sortable,
                     extend: this.extend,
-                    compare: this.compare
+                    compare: this.compare,
+                    align: this.align
                 };
                 let that = this;
                 column.headRender = function (h, label, data) {

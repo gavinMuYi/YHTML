@@ -173,7 +173,7 @@ export default {
             let thdom = <th
                 colspan={th.colSpan} rowspan={th.rowSpan}
                 class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
-                <div class="y-table-cell">
+                <div class={['y-table-cell', `y-table-cell_${th.align}`]}>
                     { th.withChildren ? extendIcon : '' }
                     { th.headRender.call(this, h, th.label, th) }
                     { th.sortable ? sort : '' }
