@@ -106,6 +106,9 @@ export default {
         },
         handleSelect(rowData) {
             this.$emit('select', rowData);
+        },
+        allSelectToast() {
+            this.$emit('allSelectToast');
         }
     },
     render(h) {
@@ -127,6 +130,7 @@ export default {
                     on-hover={($event) => { this.handleHover($event) }} name={this.name}
                     on-hoverout={($event) => { this.handleHoverOut($event) }}
                     on-rowClick={($event) => { this.handleClick($event) }}
+                    on-allSelectToast={() => { this.allSelectToast() }}
                     on-select={($event) => { this.handleSelect($event) }} />;
                 this.$refs.tr.push(trDom);
                 trs.push(trDom);

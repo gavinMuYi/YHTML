@@ -111,6 +111,9 @@ export default {
         },
         handleSelect(status) {
             this.$emit('select', status);
+        },
+        allSelectToast() {
+            this.$emit('allSelectToast');
         }
     },
     render(h) {
@@ -120,7 +123,8 @@ export default {
         );
         this.actionTable && !this.rindex && ths.push(
             <th class="y-table-action-cell" rowspan={this.level}>
-                <div style="width: 100%" class={ ['y-table_checkbox', this.allSelected ? 'allselect-disable' : ''] }>
+                <div style="width: 100%" class={ ['y-table_checkbox', this.allSelected ? 'allselect-disable' : ''] }
+                    on-click={($event) => { $event.stopPropagation(); this.allSelectToast() }}>
                     <span on-click={($event) => { $event.stopPropagation() }}>
                         <y-checkbox
                             status={ this.allSelected ? 'all' : this.checkBoxStatus }

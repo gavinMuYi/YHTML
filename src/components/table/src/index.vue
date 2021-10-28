@@ -25,7 +25,8 @@
                         <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                         :rowHeight="rowHeight.header" :selfRowHeight="[]"
                                         :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')"
-                                        @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus" />
+                                        @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
+                                        @allSelectToast="allSelectToast = true" />
                     </table>
                 </div>
                 <div class="y-table-left"
@@ -80,6 +81,10 @@
                         <div @click="currentSelect = [];checkBoxStatus = {};headerCheckBoxStatus = ''">取消全选</div>
                     </div>
                 </div>
+                <div v-if="allSelectToast" class="all-select-toast-tip"
+                     :style="{ bottom: headerFix ? '-42px' : -headerTop -42 + 'px'}">
+                    <y-icon name="bell" />不支持逐行取消全选结果
+                </div>
             </div>
             <div class="y-table-scrolling">
                 <div class="y-table-main" ref="tableMainBox"
@@ -91,14 +96,15 @@
                                             :rowHeight="rowHeight.header" :selfRowHeight="[]" @select="handleSelect"
                                             :checkBoxStatus="headerCheckBoxStatus"
                                             :allSelected="Boolean(currentSelect.length
-                                            && currentSelect[0] === 'all')" />
+                                            && currentSelect[0] === 'all')"
+                                            @allSelectToast="allSelectToast = true" />
                             <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                           :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
                                           @hover="handleHover" @hoverout="handleHoverout"
                                           :multiple="Boolean(multiple && basicIndex)"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                           @select="handleSelect" :checkBoxStatus="checkBoxStatus"
-                                          :basicIndex="basicIndex"
+                                          :basicIndex="basicIndex" @allSelectToast="allSelectToast = true"
                                           :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')" />
                         </table>
                     </div>
@@ -183,6 +189,7 @@
 import clone from 'clone';
 import { EleResize } from '@/utils/dom.js';
 import YTree from '@/components/tree';
+import YIcon from '@/components/icon';
 import YPagination from '@/components/pagination';
 import YTableColumn from './components/table-column';
 import YTableBody from './components/table-body';
@@ -195,6 +202,7 @@ export default {
     name: 'YTable',
     components: {
         YTree,
+        YIcon,
         YPagination,
         YTableColumn,
         YTableColgroup,
@@ -289,6 +297,7 @@ export default {
     },
     data() {
         return {
+            allSelectToast: false,
             headerCheckBoxStatus: '',
             treeRefresh: 0,
             checkBoxStatus: {},
@@ -616,6 +625,13 @@ export default {
         }
     },
     watch: {
+        allSelectToast(nval) {
+            if (nval) {
+                setTimeout(() => {
+                    this.allSelectToast = false;
+                }, 2000);
+            }
+        },
         selected(nval) {
             this.$set(this, 'currentSelect', clone(nval));
         },
@@ -1049,7 +1065,7 @@ export default {
                 box-sizing: border-box;
                 align-items: center;
                 background: #ffffff;
-                z-index: 100000000;
+                z-index: 100000;
                 margin-left: -200px;
                 left: 50%;
                 box-shadow: 1px 2px 8px #a4ede0;
@@ -1068,6 +1084,28 @@ export default {
                     .all-select {
                         margin-right: 10px;
                     }
+                }
+            }
+            .all-select-toast-tip {
+                position: absolute;
+                width: 200px;
+                border-radius: 2px;
+                height: 24px;
+                display: flex;
+                font-size: 12px;
+                padding: 0 10px;
+                box-sizing: border-box;
+                align-items: center;
+                background: #009688;
+                color: #ffffff;
+                z-index: 100000;
+                margin-left: -100px;
+                left: 50%;
+                justify-content: center;
+                box-shadow: 1px 2px 8px #a4ede0;
+                .y-icon {
+                    fill: #ffffff;
+                    margin-right: 5px;
                 }
             }
             .y-table-scrolling {

@@ -110,6 +110,9 @@ export default {
                 ...this.rowData,
                 $y_table_position: this.position
             });
+        },
+        allSelectToast() {
+            this.$emit('allSelectToast');
         }
     },
     render(h) {
@@ -134,7 +137,8 @@ export default {
                             marginLeft: 20 * (this.rowData.$y_table_level - 1) + 'px'
                         }}>
                     </div>
-                    <div class={ ['y-table_checkbox', this.allSelected ? 'allselect-disable' : ''] }>
+                    <div class={ ['y-table_checkbox', this.allSelected ? 'allselect-disable' : ''] }
+                        on-click={($event) => { $event.stopPropagation(); this.allSelectToast() }} >
                         <span on-click={($event) => { $event.stopPropagation(); this.handleSelect() }}>
                             <y-checkbox status={ this.allSelected ? 'all' : this.checkBoxStatus }/>
                         </span>
