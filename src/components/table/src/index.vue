@@ -625,6 +625,7 @@ export default {
                 if (this.multiple && this.basicIndex) {
                     this.getCheckBoxStatus();
                 }
+                this.updateHeaderCheckBox();
             });
         }
     },
