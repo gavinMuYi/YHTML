@@ -81,8 +81,9 @@
                         <div @click="currentSelect = [];checkBoxStatus = {};headerCheckBoxStatus = ''">取消全选</div>
                     </div>
                 </div>
-                <div v-if="allSelectToast" class="all-select-toast-tip"
-                     :style="{ bottom: headerFix ? '-42px' : -headerTop -42 + 'px'}">
+                <div class="all-select-toast-tip"
+                     :style="{ bottom: headerFix ? '-42px' : -headerTop -42 + 'px',
+                               opacity: allSelectToast ? 1 : 0}">
                     <y-icon name="bell" />不支持逐行取消全选结果
                 </div>
             </div>
@@ -1103,6 +1104,8 @@ export default {
                 left: 50%;
                 justify-content: center;
                 box-shadow: 1px 2px 8px #a4ede0;
+                transition: opacity 0.8s;
+                transition-timing-function: ease-out;
                 .y-icon {
                     fill: #ffffff;
                     margin-right: 5px;
