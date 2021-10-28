@@ -629,7 +629,7 @@ export default {
             if (nval) {
                 setTimeout(() => {
                     this.allSelectToast = false;
-                }, 2000);
+                }, 5000);
             }
         },
         selected(nval) {
