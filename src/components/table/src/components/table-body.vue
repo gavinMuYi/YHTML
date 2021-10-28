@@ -102,7 +102,7 @@ export default {
         },
         handleSelect(rowData) {
             this.$emit('select', rowData);
-        },
+        }
     },
     render(h) {
         this.$refs.tr = [];

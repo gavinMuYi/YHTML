@@ -23,7 +23,8 @@
                      v-if="Boolean(multiple && basicIndex)">
                     <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
                         <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="[]" />
+                                        :rowHeight="rowHeight.header" :selfRowHeight="[]"
+                                        @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus" />
                     </table>
                 </div>
                 <div class="y-table-left"
@@ -74,7 +75,8 @@
                          v-if="Boolean(multiple && basicIndex)">
                         <table>
                             <y-table-header v-if="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
-                                            :rowHeight="rowHeight.header" :selfRowHeight="[]" />
+                                            :rowHeight="rowHeight.header" :selfRowHeight="[]" @select="handleSelect"
+                                            :checkBoxStatus="headerCheckBoxStatus" />
                             <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                           :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
                                           @hover="handleHover" @hoverout="handleHoverout"
@@ -267,6 +269,7 @@ export default {
     },
     data() {
         return {
+            headerCheckBoxStatus: '',
             treeRefresh: 0,
             checkBoxStatus: {},
             currentSelect: clone(this.selected),
@@ -702,12 +705,56 @@ export default {
                 this.$set(this, 'checkBoxStatus', checkBoxStatus);
             });
         },
-        handleSelect(rowData) {
+        handleSelect(rowData, status) {
             let mangerLeaf = this.$refs.treeManger;
+            if (!rowData) {
+                let needClick = {
+                    empty: 'all',
+                    all: 'empty'
+                };
+                if (mangerLeaf && mangerLeaf.$refs.leaf) {
+                    mangerLeaf.$refs.leaf.forEach(item => {
+                        item.tracked === needClick[status] && item.multipleSelect();
+                        if (item.tracked === 'half') {
+                            item.multipleSelect();
+                            if (status === 'all') {
+                                item.multipleSelect();
+                            }
+                        }
+                    });
+                }
+                return;
+            }
             rowData.$y_table_position.forEach(index => {
                 mangerLeaf = mangerLeaf.$refs.leaf[index];
             });
             mangerLeaf && mangerLeaf.multipleSelect();
+            this.updateHeaderCheckBox();
+        },
+        updateHeaderCheckBox() {
+            this.$nextTick(() => {
+                let status = 'empty';
+                let hasEmpty = false;
+                let hasAll = false;
+                let mangerLeaf = this.$refs.treeManger;
+                if (mangerLeaf && mangerLeaf.$refs.leaf) {
+                    mangerLeaf.$refs.leaf.forEach(item => {
+                        item.tracked === 'half' && (status = 'half');
+                        item.tracked === 'empty' && (hasEmpty = true);
+                        item.tracked === 'all' && (hasAll = true);
+                    });
+                    if (hasEmpty && hasAll) {
+                        status = 'half';
+                    }
+                    if (!hasEmpty && hasAll && status !== 'half') {
+                        status = 'all';
+                    }
+                    if (hasEmpty && !hasAll && status !== 'half') {
+                        status = 'empty';
+                    }
+                }
+                this.headerCheckBoxStatus = status;
+            });
         },
         updateTotal(val) {
             this.total = val;

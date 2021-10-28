@@ -5,6 +5,7 @@
             v-for="(row, rindex) in level" :key="'row-' + rindex" :rindex="rindex"
             :residue="level - rindex" :actionTable="actionTable" :level="level"
             :rowData="columns[rindex]" :style="rowStyle(rindex)" :name="name"
+            @select="handleSelect" :checkBoxStatus="checkBoxStatus"
             @columnSort="columnSort" :currentSort="nowSort" @newExtendStatus="newExtendStatus($event, rindex)" />
     </thead>
 </template>
@@ -58,6 +59,10 @@ export default {
             default: () => {
                 return {};
             }
+        },
+        checkBoxStatus: {
+            type: String,
+            default: ''
         }
     },
     computed: {
@@ -94,6 +99,9 @@ export default {
                 key, newStatus, gindex: index, deep: rindex + 1
             });
         },
+        handleSelect(status) {
+            this.$emit('select', null, status);
+        }
     }
 };
 </script>

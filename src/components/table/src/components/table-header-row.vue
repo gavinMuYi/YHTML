@@ -47,6 +47,10 @@ export default {
         name: {
             type: String,
             default: ''
+        },
+        checkBoxStatus: {
+            type: String,
+            default: ''
         }
     },
     data() {
@@ -100,6 +104,9 @@ export default {
             };
             document.addEventListener('mousemove', moveEvent);
             document.addEventListener('mouseup', handleMouseUp);
+        },
+        handleSelect(status) {
+            this.$emit('select', status);
         }
     },
     render(h) {
@@ -110,7 +117,9 @@ export default {
         this.actionTable && !this.rindex && ths.push(
             <th class="y-table-action-cell" rowspan={this.level}>
                 <div class="y-table_checkbox" style="width: 100%">
-                    <y-checkbox />
+                    <span on-click={($event) => { $event.stopPropagation() }}>
+                        <y-checkbox status={ this.checkBoxStatus } on-change={(e) => { this.handleSelect(e) }}/>
+                    </span>
                 </div>
             </th>
         );
