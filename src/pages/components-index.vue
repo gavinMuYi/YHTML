@@ -40,35 +40,42 @@ export default {
             display: flex;
             align-items: center;
             padding-left: 20px;
-            background: #39a9a1;
-            color: #ffffff;
+            color: #39a9a1;
             border-bottom: 1px solid #e3f0ef;
             font-size: 20px;
             box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            z-index: 10000000000;
+            box-shadow: -1px -2px 8px #a4ede0;
         }
         .components-page-body {
             display: flex;
             min-height: ~'calc(100% - 80px)';
+            margin-top: 80px;
             .components-page-menu {
                 width: 200px;
-                border-right: 1px solid #e3f0ef;
                 box-sizing: border-box;
                 padding-top: 30px;
+                border-right: 1px solid #e3f0ef;
+                box-shadow: -1px -2px 8px #a4ede0;
                 a {
                     display: flex;
                     height: 40px;
                     color: #5e6d82;
                     align-items: center;
-                    padding-left: 30px;
+                    padding-left: 40px;
                     &:hover {
-                        background: #cbf9f1;
+                        color: #18b9ac;
                         cursor: pointer;
                     }
                 }
                 .selected {
-                    background: #a4ede0;
+                    color: #18b9ac;
                     &:hover {
-                        background: #a4ede0;
+                        color: #18b9ac;
                         cursor: pointer;
                     }
                 }
@@ -77,7 +84,7 @@ export default {
                 flex: 1;
                 overflow: hidden;
                 box-sizing: border-box;
-                padding:  100px 120px;
+                padding:  120px 150px 120px 100px;
             }
         }
     }
