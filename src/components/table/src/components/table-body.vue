@@ -77,6 +77,10 @@ export default {
         basicIndex: {
             type: String,
             default: ''
+        },
+        stripe: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -144,7 +148,7 @@ export default {
             });
         };
         flat(this.tableList, '0', [], this.checkBoxStatus);
-        return <tbody class="y-table-body">
+        return <tbody class={['y-table-body', this.stripe ? 'y-table-stripe_body' : '']}>
             { trs }
         </tbody>;
     }
@@ -153,8 +157,25 @@ export default {
 
 <style lang="less">
     .y-table-body {
+        .y-table-row_hover {
+            background: #cbf9f15c;
+            cursor: pointer;
+        }
         .y-table-cell {
             min-height: 50px;
+        }
+    }
+    .y-table-stripe_body {
+        .y-table-row:nth-child(2n) {
+            background: #f7f7f7;
+        }
+        .y-table-row_hover:nth-child(2n + 1) {
+            background: #cbf9f15c;
+            cursor: pointer;
+        }
+        .y-table-row_hover:nth-child(2n) {
+            background: #dee1e170;
+            cursor: pointer;
         }
     }
 </style>

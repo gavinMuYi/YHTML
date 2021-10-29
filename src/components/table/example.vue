@@ -59,7 +59,7 @@
             </table>
         </div> -->
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2"
-                 :headerFix="true" tableHeight="500px">
+                 :headerFix="true" tableHeight="500px" :stripe="true">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级'" columnKey="key" :rowspan="true">
                     <div slot-scope="props" slot="header">{{ 'headerddd-111-一级' + str }}</div>

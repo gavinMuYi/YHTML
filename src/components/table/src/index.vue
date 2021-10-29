@@ -83,7 +83,8 @@
                 </div>
                 <div class="all-select-toast-tip"
                      :style="{ bottom: headerFix ? '-42px' : -headerTop -42 + 'px',
-                               opacity: allSelectToast ? 1 : 0}">
+                               opacity: allSelectToast ? 1 : 0,
+                               height: allSelectToast ? '24px' : 0}">
                     <y-icon name="bell" />不支持逐行取消全选结果
                 </div>
             </div>
@@ -102,7 +103,7 @@
                             <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                           :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
                                           @hover="handleHover" @hoverout="handleHoverout"
-                                          :multiple="Boolean(multiple && basicIndex)"
+                                          :multiple="Boolean(multiple && basicIndex)" :stripe="stripe"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                           @select="handleSelect" :checkBoxStatus="checkBoxStatus"
                                           :basicIndex="basicIndex" @allSelectToast="allSelectToast = true"
@@ -128,7 +129,7 @@
                                                 @newExtendStatus="newExtendStatus($event, 'left')"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                                 <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody"
-                                              :rowHeight="rowHeight.body"
+                                              :rowHeight="rowHeight.body" :stripe="stripe"
                                               :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :multiple="Boolean(multiple && basicIndex)"
@@ -146,7 +147,7 @@
                                                 :currentSort="currentSort" name="center" :defaultSort="defaultSort"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                                 <y-table-body :columns="rowColumn.rowColumn" ref="centerBody"
-                                              :rowHeight="rowHeight.body"
+                                              :rowHeight="rowHeight.body" :stripe="stripe"
                                               :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :multiple="Boolean(multiple && basicIndex)"
@@ -167,7 +168,7 @@
                                                 @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
                                                 @newExtendStatus="newExtendStatus($event, 'right')"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
-                                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody"
+                                <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :stripe="stripe"
                                               :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
                                               :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
@@ -294,6 +295,10 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        stripe: {
+            type: Boolean,
+            default: false
         }
     },
     data() {

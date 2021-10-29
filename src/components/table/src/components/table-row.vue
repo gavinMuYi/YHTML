@@ -193,11 +193,12 @@ export default {
             }
         }
         return (
-            <tr class="y-table-row"
-                style={this.currentHoverRow === this.index ? { background: '#cbf9f15c' } : {}}
-                on-mouseenter={() => { this.handleHover(this.index) }}
-                on-mouseleave={() => { this.handleHoverOut(this.index) }}
-                on-click={() => { this.handleClick() }}>
+            <tr class={['y-table-row', this.currentHoverRow === this.index
+                && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
+                ? 'y-table-row_hover' : '']}
+            on-mouseenter={() => { this.handleHover(this.index) }}
+            on-mouseleave={() => { this.handleHoverOut(this.index) }}
+            on-click={() => { this.handleClick() }}>
                 { tds }
             </tr>
         );
