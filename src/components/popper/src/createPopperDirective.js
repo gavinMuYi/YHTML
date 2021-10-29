@@ -75,6 +75,15 @@ function getPlacement(placement, box, popWidth, popHeight) {
 
 function parsePosition(target, el, moniter, containChange, X, Y) {
     let check = target.$el.getBoundingClientRect();
+    let inlineParentPosition = {};
+    let inline = target.inline;
+    if (inline) {
+        let inlineFather = target.$el.parentElement;
+        while (inlineFather && getComputedStyle(inlineFather, null).position === 'static') {
+            inlineFather = inlineFather.parentElement;
+        }
+        inlineParentPosition = getPosition(inlineFather);
+    }
     if (!containChange && moniter) {
         if (target.lastSize && check.width === target.lastSize.width && check.height === target.lastSize.height) {
             return;
@@ -121,22 +130,38 @@ function parsePosition(target, el, moniter, containChange, X, Y) {
             return;
         }
         if (rightOver) {
-            if (X !== undefined) {
-                target.$refs.selfPop.style.left = `${windowWidth - popWidth}px`;
+            if (inline) {
+                target.$refs.selfPop.style.left = `${windowWidth - popWidth - inlineParentPosition.x}px`;
             } else {
-                target.$refs.selfPop.style.right = '0px';
+                if (X !== undefined) {
+                    target.$refs.selfPop.style.left = `${windowWidth - popWidth}px`;
+                } else {
+                    target.$refs.selfPop.style.right = '0px';
+                }
             }
         } else {
-            target.$refs.selfPop.style.left = `${startLeft}px`;
+            if (inline) {
+                target.$refs.selfPop.style.left = `${startLeft - inlineParentPosition.x}px`;
+            } else {
+                target.$refs.selfPop.style.left = `${startLeft}px`;
+            }
         }
         if (bottomOver) {
-            if (Y !== undefined) {
-                target.$refs.selfPop.style.bottom = `${windowHeight - popHeight}px`;
+            if (inline) {
+                target.$refs.selfPop.style.top = `${windowHeight - popHeight - inlineParentPosition.y}px`;
             } else {
-                target.$refs.selfPop.style.bottom = '0px';
+                if (Y !== undefined) {
+                    target.$refs.selfPop.style.bottom = `${windowHeight - popHeight}px`;
+                } else {
+                    target.$refs.selfPop.style.bottom = '0px';
+                }
             }
         } else {
-            target.$refs.selfPop.style.top = `${startTop}px`;
+            if (inline) {
+                target.$refs.selfPop.style.top = `${startTop - inlineParentPosition.y}px`;
+            } else {
+                target.$refs.selfPop.style.top = `${startTop}px`;
+            }
         }
     }
 }

@@ -26,6 +26,10 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        inline: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -59,14 +63,16 @@ export default {
             if (that.cantCloseByOthers) return;
             if (!that.$el.contains(e.target)) that.closePop();
         });
-        this.$nextTick(() => {
-            const body = document.querySelector('body');
-            if (body.append) {
-                body.append(this.$el);
-            } else {
-                body.appendChild(this.$el);
-            }
-        });
+        if (!this.inline) {
+            this.$nextTick(() => {
+                const body = document.querySelector('body');
+                if (body.append) {
+                    body.append(this.$el);
+                } else {
+                    body.appendChild(this.$el);
+                }
+            });
+        }
     },
     beforeDestroy() {
         this.$el.remove();

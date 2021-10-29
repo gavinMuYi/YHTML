@@ -3,7 +3,7 @@
         <y-popper ref="tips1">delay pop</y-popper>
         <y-popper ref="tips2">hover pop</y-popper>
         <y-popper ref="tips3">rightClick pop</y-popper>
-        <y-popper ref="tips5"
+        <y-popper ref="tips5" :inline="true"
                   placement="bottom-end" :priority="['top-middle', 'bottom-start', 'left-middle']">show pop</y-popper>
         <y-popper ref="tips7"><div v-ypop:tips4.click class="exbox">嵌套</div></y-popper>
         <y-popper ref="tips4">click pop</y-popper>
@@ -14,7 +14,7 @@
         <div v-ypop:tips3.rightClick class="exbox">rightClick</div>
         <div v-ypop:tips4.click class="exbox">click</div>
         <div v-ypop:tips4.click class="exbox">click2</div>
-        <div v-ypop:tips5.show class="exbox">show</div>
+        <div v-ypop:tips5.show class="exbox">show inline</div>
         <button @click="trigger">trigger</button>
         <div v-ypop:tips6.manual class="exbox">manual</div>
         <div v-ypop:tips7.click class="exbox">嵌套</div>
@@ -49,6 +49,7 @@ export default {
 
 <style lang="less">
     .y-popper_example {
+        position: relative;
         .exbox {
             height: 50px;
             width: 100px;
