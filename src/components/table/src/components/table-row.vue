@@ -64,6 +64,10 @@ export default {
         checkBoxStatus: {
             type: String,
             default: ''
+        },
+        setRowClass: {
+            type: Function,
+            default: null
         }
     },
     methods: {
@@ -117,6 +121,8 @@ export default {
     },
     render(h) {
         let tds = [];
+        let hoverClassName = this.setRowClass && this.setRowClass(this.rowData, this.index)
+            ? this.setRowClass(this.rowData, this.index) + '_hover' : 'y-table-row_hover';
         tds.push(
             <td class="y-table-standard-cell"></td>
         );
@@ -195,7 +201,7 @@ export default {
         return (
             <tr class={['y-table-row', this.currentHoverRow === this.index
                 && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
-                ? 'y-table-row_hover' : '']}
+                ? hoverClassName : '', this.setRowClass ? this.setRowClass(this.rowData, this.index) : '']}
             on-mouseenter={() => { this.handleHover(this.index) }}
             on-mouseleave={() => { this.handleHoverOut(this.index) }}
             on-click={() => { this.handleClick() }}>

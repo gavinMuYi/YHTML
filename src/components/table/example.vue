@@ -1,7 +1,7 @@
 <template>
     <div class="y-table_example">
         <y-table title="TABLE EXAMPLE 0" :lazyLoad="lazyLoad" :headerFix="true" tableHeight="150px"
-                 :defaultSort="{key: 'label', order: 'desc'}">
+                 :defaultSort="{key: 'label', order: 'desc'}" :setRowClass="setRowClass">
             <y-table-column label="keyLabelRight" columnKey="key" fixed="right" width="200px" dragable />
             <y-table-column label="二级" columnKey="label" width="500px" dragable sortable>
             </y-table-column>
@@ -270,6 +270,11 @@ export default {
         };
     },
     methods: {
+        setRowClass(rowData, index) {
+            if (index === 2) {
+                return 'customer-row-warning';
+            }
+        },
         llladd() {
             this.lll = 200;
             console.log('22');
@@ -348,6 +353,9 @@ export default {
         }
         .y-table {
             margin-bottom: 40px;
+            .customer-row-warning {
+                background: #fbfb9f;
+            }
         }
     }
 </style>

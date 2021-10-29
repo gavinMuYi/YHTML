@@ -102,7 +102,7 @@
                                             @allSelectToast="allSelectToast = true" />
                             <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                           :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
-                                          @hover="handleHover" @hoverout="handleHoverout"
+                                          @hover="handleHover" @hoverout="handleHoverout" :setRowClass="setRowClass"
                                           :multiple="Boolean(multiple && basicIndex)" :stripe="stripe"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                           @select="handleSelect" :checkBoxStatus="checkBoxStatus"
@@ -129,7 +129,7 @@
                                                 @newExtendStatus="newExtendStatus($event, 'left')"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                                 <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody"
-                                              :rowHeight="rowHeight.body" :stripe="stripe"
+                                              :rowHeight="rowHeight.body" :stripe="stripe" :setRowClass="setRowClass"
                                               :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :multiple="Boolean(multiple && basicIndex)"
@@ -150,7 +150,7 @@
                                               :rowHeight="rowHeight.body" :stripe="stripe"
                                               :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                              :multiple="Boolean(multiple && basicIndex)"
+                                              :multiple="Boolean(multiple && basicIndex)" :setRowClass="setRowClass"
                                               :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
                                               :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
                             </table>
@@ -173,7 +173,7 @@
                                               :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :rows="rows" :maps="maps" @hover="handleHover"
-                                              @hoverout="handleHoverout" />
+                                              @hoverout="handleHoverout" :setRowClass="setRowClass" />
                             </table>
                         </div>
                     </div>
@@ -299,6 +299,10 @@ export default {
         stripe: {
             type: Boolean,
             default: false
+        },
+        setRowClass: {
+            type: Function,
+            default: null
         }
     },
     data() {

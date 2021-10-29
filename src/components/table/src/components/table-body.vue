@@ -81,6 +81,10 @@ export default {
         stripe: {
             type: Boolean,
             default: false
+        },
+        setRowClass: {
+            type: Function,
+            default: null
         }
     },
     methods: {
@@ -124,6 +128,7 @@ export default {
                 rowPosition.push(rindex);
                 let rowData = this.rows[this.maps[pre + '-' + rindex]];
                 let trDom = <y-table-row
+                    setRowClass={this.setRowClass}
                     checkBoxStatus={this.basicIndex && checkBoxStatus[rowData[this.basicIndex]]
                         ? checkBoxStatus[rowData[this.basicIndex]].tracked : ''}
                     multiple={this.multiple} widthLeft={this.widthLeft}
