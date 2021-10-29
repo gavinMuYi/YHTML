@@ -89,8 +89,8 @@ export default {
     .y-popper {
         z-index: 100000;
         position: absolute;
-        background: #FFF;
-        border: 1px solid #ededed;
+        background: @white;
+        border: 1px solid @commonGray;
         border-radius: 3px;
         padding: 10px;
         box-shadow: 2px 4px 10px 0 rgba(30, 35, 48, 0.08);

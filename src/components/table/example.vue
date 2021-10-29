@@ -338,7 +338,7 @@ export default {
                 border-spacing: 0px;
                 min-width: 100%;
                 td {
-                    background: #fff;
+                    background: @white;
                 }
                 .left {
                     position: relative;

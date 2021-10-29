@@ -47,7 +47,7 @@ export default {
             position: fixed;
             top: 0;
             width: 100%;
-            background: #ffffff;
+            background: @white;
             z-index: 10000000000;
             box-shadow: -1px -2px 8px @backgroundGreen;
         }
@@ -64,7 +64,7 @@ export default {
                 a {
                     display: flex;
                     height: 40px;
-                    color: #5e6d82;
+                    color: @font;
                     align-items: center;
                     padding-left: 40px;
                     &:hover {

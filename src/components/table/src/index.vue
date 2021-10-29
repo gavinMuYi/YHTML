@@ -1081,7 +1081,7 @@ export default {
                 padding: 0 10px;
                 box-sizing: border-box;
                 align-items: center;
-                background: #ffffff;
+                background: @white;
                 z-index: 100000;
                 margin-left: -200px;
                 left: 50%;
@@ -1113,8 +1113,8 @@ export default {
                 padding: 0 10px;
                 box-sizing: border-box;
                 align-items: center;
-                background: #009688;
-                color: #ffffff;
+                background: @deepGreen;
+                color: @white;
                 z-index: 100000;
                 margin-left: -100px;
                 left: 50%;
@@ -1123,7 +1123,7 @@ export default {
                 transition: opacity 0.8s;
                 transition-timing-function: ease-out;
                 .y-icon {
-                    fill: #ffffff;
+                    fill: @white;
                     margin-right: 5px;
                 }
             }

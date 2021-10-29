@@ -185,7 +185,7 @@ export default {
             cursor: pointer;
         }
         .y-table-row_hover:nth-child(2n) {
-            background: #dee1e170;
+            background: @backgroundGrayHoverOpacity;
             cursor: pointer;
         }
     }

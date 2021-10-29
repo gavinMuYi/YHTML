@@ -63,7 +63,7 @@ export default {
             width: 14px;
             height: 14px;
             display: inline-block;
-            border: 1px solid #dadada;
+            border: 1px solid @commonGray;
             border-radius: 2px;
             position: relative;
             .half {
@@ -77,7 +77,7 @@ export default {
             }
         }
         .disable {
-            background: #dadada;
+            background: @commonGray;
             opacity: 0.5;
             pointer-events: none;
         }
