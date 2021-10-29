@@ -354,7 +354,7 @@ export default {
         .y-table {
             margin-bottom: 40px;
             .customer-row-warning {
-                background: #fbfb9f;
+                background: #fb9f9f;
             }
         }
     }
