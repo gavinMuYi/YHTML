@@ -106,6 +106,7 @@
                                           :multiple="Boolean(multiple && basicIndex)" :stripe="stripe"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                           @select="handleSelect" :checkBoxStatus="checkBoxStatus"
+                                          :colspanKeys="colspanKeys"
                                           :basicIndex="basicIndex" @allSelectToast="allSelectToast = true"
                                           :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')" />
                         </table>
@@ -134,7 +135,7 @@
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :multiple="Boolean(multiple && basicIndex)"
                                               :rows="rows" :maps="maps" @hover="handleHover"
-                                              @hoverout="handleHoverout" />
+                                              @hoverout="handleHoverout" :colspanKeys="colspanKeys" />
                             </table>
                         </div>
                         <div class="y-table-center" ref="centerTableContent" key="center">
@@ -147,7 +148,7 @@
                                                 :currentSort="currentSort" name="center" :defaultSort="defaultSort"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                                 <y-table-body :columns="rowColumn.rowColumn" ref="centerBody"
-                                              :rowHeight="rowHeight.body" :stripe="stripe"
+                                              :rowHeight="rowHeight.body" :stripe="stripe" :colspanKeys="colspanKeys"
                                               :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :multiple="Boolean(multiple && basicIndex)" :setRowClass="setRowClass"
@@ -172,7 +173,7 @@
                                               :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
                                               :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
-                                              :rows="rows" :maps="maps" @hover="handleHover"
+                                              :rows="rows" :maps="maps" @hover="handleHover" :colspanKeys="colspanKeys"
                                               @hoverout="handleHoverout" :setRowClass="setRowClass" />
                             </table>
                         </div>
@@ -303,6 +304,12 @@ export default {
         setRowClass: {
             type: Function,
             default: null
+        },
+        colspanKeys: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     data() {

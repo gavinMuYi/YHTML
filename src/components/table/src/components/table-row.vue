@@ -68,6 +68,12 @@ export default {
         setRowClass: {
             type: Function,
             default: null
+        },
+        colspanKeys: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     methods: {
@@ -164,38 +170,110 @@ export default {
                 </td>
                 );
             } else {
-                this.columns.forEach((td, tindex) => {
-                    let rowspan = this.getRowspan(td);
-                    let icon = !this.multiple && !tindex && (this.name === 'left'
-                        || (this.name === 'center' && !this.widthLeft))
-                        && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
-                        ? <y-icon name={this.rowData.loading
-                            ? 'loading'
-                            : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
-                        class="y-table-row_icon" />
-                        : '';
-                    rowspan && tds.push(
-                        <td colspan={1} rowspan={rowspan}
-                            class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
-                            <div class={['y-table-cell', `y-table-cell_${td.align}`]} style={
-                                {
-                                    marginLeft: !this.multiple && !tindex && (this.name === 'left'
-                                    || (this.name === 'center' && !this.widthLeft))
-                                        ? 20 * (this.rowData.$y_table_level - 1) + 'px'
-                                        : 0
+                if (this.colspanKeys.length) {
+                    let rowSpans = [];
+                    this.columns.forEach((td, tindex) => {
+                        let rowspan = this.getRowspan(td);
+                        rowSpans.push(rowspan);
+                    });
+                    let canSpan = (a, b, rsa, rsb) => {
+                        let aKey = a.columnKey;
+                        let bKey = b.columnKey;
+                        let canspan = false;
+                        this.colspanKeys.forEach(group => {
+                            if (group.indexOf(aKey) > -1 && group.indexOf(bKey) > -1
+                            && this.rowData[aKey] === this.rowData[bKey] && rsa === rsb) {
+                                canspan = true;
+                            }
+                        });
+                        return canspan;
+                    };
+                    this.columns.forEach((td, tindex) => {
+                        let icon = !this.multiple && !tindex && (this.name === 'left'
+                            || (this.name === 'center' && !this.widthLeft))
+                            && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
+                            ? <y-icon name={this.rowData.loading
+                                ? 'loading'
+                                : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
+                            class="y-table-row_icon" />
+                            : '';
+                        let rowspan = rowSpans[tindex];
+                        let colspan = 1;
+                        if (rowspan) {
+                            if (rowSpans[tindex - 1] && rowSpans[tindex] === rowSpans[tindex - 1]) {
+                                if (canSpan(this.columns[tindex - 1], this.columns[tindex],
+                                    rowSpans[tindex - 1], rowSpans[tindex])) {
+                                    colspan = 0;
                                 }
-                            }>
-                                { icon }
-                                <span class="y-table-cell_content">
-                                    { td.render.call(this, h, this.rowData[td.columnKey], {
-                                        ...this.rowData,
-                                        rowIndex: this.index
-                                    }) }
-                                </span>
-                            </div>
-                        </td>
-                    );
-                });
+                            }
+                            if (colspan && rowSpans[tindex + 1] && rowSpans[tindex] === rowSpans[tindex + 1]) {
+                                let start = tindex;
+                                let a = this.columns[start];
+                                let b = this.columns[start + 1];
+                                while (a && b && canSpan(a, b, rowSpans[start], rowSpans[start + 1])) {
+                                    colspan++;
+                                    start++;
+                                    a = this.columns[start];
+                                    b = this.columns[start + 1];
+                                }
+                            }
+                        }
+                        rowspan && colspan && tds.push(
+                            <td colspan={colspan} rowspan={rowspan}
+                                class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
+                                <div class={['y-table-cell', `y-table-cell_${td.align}`]} style={
+                                    {
+                                        marginLeft: !this.multiple && !tindex && (this.name === 'left'
+                                        || (this.name === 'center' && !this.widthLeft))
+                                            ? 20 * (this.rowData.$y_table_level - 1) + 'px'
+                                            : 0
+                                    }
+                                }>
+                                    { icon }
+                                    <span class="y-table-cell_content">
+                                        { td.render.call(this, h, this.rowData[td.columnKey], {
+                                            ...this.rowData,
+                                            rowIndex: this.index
+                                        }) }
+                                    </span>
+                                </div>
+                            </td>
+                        );
+                    });
+                } else {
+                    this.columns.forEach((td, tindex) => {
+                        let icon = !this.multiple && !tindex && (this.name === 'left'
+                            || (this.name === 'center' && !this.widthLeft))
+                            && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
+                            ? <y-icon name={this.rowData.loading
+                                ? 'loading'
+                                : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
+                            class="y-table-row_icon" />
+                            : '';
+                        let rowspan = this.getRowspan(td);
+                        rowspan && tds.push(
+                            <td colspan={1} rowspan={rowspan}
+                                class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
+                                <div class={['y-table-cell', `y-table-cell_${td.align}`]} style={
+                                    {
+                                        marginLeft: !this.multiple && !tindex && (this.name === 'left'
+                                        || (this.name === 'center' && !this.widthLeft))
+                                            ? 20 * (this.rowData.$y_table_level - 1) + 'px'
+                                            : 0
+                                    }
+                                }>
+                                    { icon }
+                                    <span class="y-table-cell_content">
+                                        { td.render.call(this, h, this.rowData[td.columnKey], {
+                                            ...this.rowData,
+                                            rowIndex: this.index
+                                        }) }
+                                    </span>
+                                </div>
+                            </td>
+                        );
+                    });
+                }
             }
         }
         return (

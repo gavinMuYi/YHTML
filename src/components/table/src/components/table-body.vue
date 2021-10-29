@@ -85,6 +85,12 @@ export default {
         setRowClass: {
             type: Function,
             default: null
+        },
+        colspanKeys: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     methods: {
@@ -128,7 +134,7 @@ export default {
                 rowPosition.push(rindex);
                 let rowData = this.rows[this.maps[pre + '-' + rindex]];
                 let trDom = <y-table-row
-                    setRowClass={this.setRowClass}
+                    setRowClass={this.setRowClass} colspanKeys={this.colspanKeys}
                     checkBoxStatus={this.basicIndex && checkBoxStatus[rowData[this.basicIndex]]
                         ? checkBoxStatus[rowData[this.basicIndex]].tracked : ''}
                     multiple={this.multiple} widthLeft={this.widthLeft}
