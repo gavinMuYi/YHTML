@@ -23,7 +23,7 @@ function getPlacement(placement, box, popWidth, popHeight) {
             x = -popWidth;
             break;
         case 'left-middle':
-            y = box.height / 2;
+            y = (box.height - popHeight) / 2;
             x = -popWidth;
             break;
         case 'left-end':
@@ -35,7 +35,7 @@ function getPlacement(placement, box, popWidth, popHeight) {
             x = box.width;
             break;
         case 'right-middle':
-            y = box.height / 2;
+            y = (box.height - popHeight) / 2;
             x = box.width;
             break;
         case 'right-end':
@@ -48,7 +48,7 @@ function getPlacement(placement, box, popWidth, popHeight) {
             break;
         case 'top-middle':
             y = -popHeight;
-            x = box.width / 2;
+            x = (box.width - popWidth) / 2;
             break;
         case 'top-end':
             y = -popHeight;
@@ -60,7 +60,7 @@ function getPlacement(placement, box, popWidth, popHeight) {
             break;
         case 'bottom-middle':
             y = box.height;
-            x = box.width / 2;
+            x = (box.width - popWidth) / 2;
             break;
         case 'bottom-end':
             y = box.height;
