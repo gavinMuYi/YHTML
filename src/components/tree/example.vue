@@ -405,7 +405,7 @@ export default {
     .box-out {
         margin-bottom: 100px;
         .title {
-            color: #39a9a1;
+            color: @title;
             margin-bottom: 20px;
             font-size: 20px;
         }
@@ -417,7 +417,7 @@ export default {
     .box {
         height: 450px;
         overflow: auto;
-        border: 1px solid #e3f0ef;
+        border: 1px solid @gray;
     }
 }
 </style>

@@ -201,13 +201,13 @@ export default {
         left: 2px;
         width: 16px;
         height: 16px;
-        fill: #18b9ac;
+        fill: @fontHighLight;
     }
     .level-header {
         display: flex;
     }
     .level-header-border {
-        border-top: 1px solid #f0fffd;
+        border-top: 1px solid @lightGrayHover;
     }
 }
 .header-y-td-border {
@@ -216,7 +216,7 @@ export default {
         position: absolute;
         content: '';
         height: 100%;
-        border-left: 1px solid #f0fffd;
+        border-left: 1px solid @lightGrayHover;
 
     }
 }

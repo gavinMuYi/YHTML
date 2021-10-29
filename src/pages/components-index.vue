@@ -40,8 +40,8 @@ export default {
             display: flex;
             align-items: center;
             padding-left: 20px;
-            color: #39a9a1;
-            border-bottom: 1px solid #e3f0ef;
+            color: @title;
+            border-bottom: 1px solid @gray;
             font-size: 20px;
             box-sizing: border-box;
             position: fixed;
@@ -49,7 +49,7 @@ export default {
             width: 100%;
             background: #ffffff;
             z-index: 10000000000;
-            box-shadow: -1px -2px 8px #a4ede0;
+            box-shadow: -1px -2px 8px @backgroundGreen;
         }
         .components-page-body {
             display: flex;
@@ -59,8 +59,8 @@ export default {
                 width: 200px;
                 box-sizing: border-box;
                 padding-top: 30px;
-                border-right: 1px solid #e3f0ef;
-                box-shadow: -1px -2px 8px #a4ede0;
+                border-right: 1px solid @gray;
+                box-shadow: -1px -2px 8px @backgroundGreen;
                 a {
                     display: flex;
                     height: 40px;
@@ -68,14 +68,14 @@ export default {
                     align-items: center;
                     padding-left: 40px;
                     &:hover {
-                        color: #18b9ac;
+                        color: @fontHighLight;
                         cursor: pointer;
                     }
                 }
                 .selected {
-                    color: #18b9ac;
+                    color: @fontHighLight;
                     &:hover {
-                        color: #18b9ac;
+                        color: @fontHighLight;
                         cursor: pointer;
                     }
                 }

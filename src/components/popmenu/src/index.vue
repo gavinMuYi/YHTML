@@ -120,7 +120,7 @@ export default {
             height: 26px;
             padding: 0 10px;
             &:hover {
-                background: #cbf9f1;
+                background: @backgroundGreenHover;
                 cursor: pointer;
             }
         }
@@ -129,9 +129,9 @@ export default {
             opacity: 0.7;
         }
         .selected {
-            background: #a4ede0;
+            background: @backgroundGreen;
             &:hover {
-                background: #a4ede0;
+                background: @backgroundGreen;
                 cursor: pointer;
             }
         }

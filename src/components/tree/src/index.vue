@@ -323,7 +323,7 @@ export default {
                 if (!this.level) {
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
-                    style.border = '1px solid #e3f0ef';
+                    style.border = '1px solid @gray';
                     style.boxSizing = 'border-box';
                 }
                 if (this.self && this.self[this._maps.cascade]) {
@@ -333,7 +333,7 @@ export default {
                         * (this.cascadeLevel + ((this.self && this.self[this._maps.cascade]) ? 1 : 0)) + 'px';
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
-                    style.border = '1px solid #e3f0ef';
+                    style.border = '1px solid @gray';
                     style.boxSizing = 'border-box';
                 }
             }
@@ -730,7 +730,7 @@ export default {
                 margin-right: 5px;
             }
             .arrow {
-                fill: #496866;
+                fill: @font;
                 width: 10px;
                 height: 10px;
                 margin-top: 3px;
@@ -742,14 +742,14 @@ export default {
                 margin-top: 5px;
             }
             .loading {
-                fill: #18b9ac;
+                fill: @fontHighLight;
                 width: 14px;
                 height: 14px;
                 margin-top: 3px;
                 margin-right: 5px;
             }
             &:hover {
-                background: #cbf9f1;
+                background: @backgroundGreenHover;
                 cursor: pointer;
             }
         }
@@ -761,15 +761,15 @@ export default {
             font-size: 14px;
             line-height: 32px;
             &:hover {
-                color: #18b9ac;
+                color: @fontHighLight;
             }
             span {
-                color: #a8abb3;
+                color: @fontGray;
             }
             .loading {
-                color: #18b9ac;
+                color: @fontHighLight;
                 .y-icon {
-                    fill: #18b9ac;
+                    fill: @fontHighLight;
                     width: 14px;
                     height: 14px;
                     position: relative;
@@ -778,22 +778,22 @@ export default {
             }
         }
         .no-data {
-            color: #a8abb3;
+            color: @fontGray;
             font-size: 14px;
             line-height: 32px;
             text-align: center;
         }
         .is-selected {
-            background: #a4ede0;
+            background: @backgroundGreen;
             &:hover {
-                background: #a4ede0;
+                background: @backgroundGreen;
                 cursor: pointer;
             }
         }
         .cascade-open{
-            background: #cbf9f1;
+            background: @backgroundGreenHover;
             &:hover {
-                background: #cbf9f1;
+                background: @backgroundGreenHover;
                 cursor: pointer;
             }
         }

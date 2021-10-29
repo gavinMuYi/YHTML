@@ -169,7 +169,7 @@ export default {
 <style lang="less">
     .y-table-body {
         .y-table-row_hover {
-            background: #cbf9f15c;
+            background: @backgroundGreenHoverOpacity;
             cursor: pointer;
         }
         .y-table-cell {
@@ -178,10 +178,10 @@ export default {
     }
     .y-table-stripe_body {
         .y-table-row:nth-child(2n) {
-            background: #f7f7f7;
+            background: @backgroundGray;
         }
         .y-table-row_hover:nth-child(2n + 1) {
-            background: #cbf9f15c;
+            background: @backgroundGreenHoverOpacity;
             cursor: pointer;
         }
         .y-table-row_hover:nth-child(2n) {

@@ -1085,7 +1085,7 @@ export default {
                 z-index: 100000;
                 margin-left: -200px;
                 left: 50%;
-                box-shadow: 1px 2px 8px #a4ede0;
+                box-shadow: 1px 2px 8px @backgroundGreen;
                 .count {
                     flex: 1;
                 }
@@ -1095,7 +1095,7 @@ export default {
                         display: inline-block;
                         &:hover {
                             cursor: pointer;
-                            color: #18b9ac;
+                            color: @fontHighLight;
                         }
                     }
                     .all-select {
@@ -1119,7 +1119,7 @@ export default {
                 margin-left: -100px;
                 left: 50%;
                 justify-content: center;
-                box-shadow: 1px 2px 8px #a4ede0;
+                box-shadow: 1px 2px 8px @backgroundGreen;
                 transition: opacity 0.8s;
                 transition-timing-function: ease-out;
                 .y-icon {
@@ -1167,7 +1167,7 @@ export default {
                     .y-table-row_icon-box {
                         position: relative;
                         .y-table-row_icon {
-                            fill: #496866;
+                            fill: @font;
                             height: 19px;
                             position: absolute;
                             left: -55px;
@@ -1189,7 +1189,7 @@ export default {
                     box-sizing: border-box;
                     .y-table-row_icon {
                         margin-right: 5px;
-                        fill: #496866;
+                        fill: @font;
                     }
                 }
                 .y-table-cell_left {
@@ -1217,12 +1217,12 @@ export default {
             .y-table-left {
                 z-index: 10;
                 position: relative;
-                box-shadow: 1px -2px 8px #a4ede0;
+                box-shadow: 1px -2px 8px @backgroundGreen;
             }
             .y-table-right {
                 z-index: 10;
                 position: relative;
-                box-shadow: -1px -2px 8px #a4ede0;
+                box-shadow: -1px -2px 8px @backgroundGreen;
             }
             .y-table-center {
                 position: relative;

@@ -39,7 +39,7 @@ export default {
 }
 .y-tree-table-row-isFolder {
     &:hover {
-        background: #cbf9f1;
+        background: @backgroundGreenHover;
         cursor: pointer;
     }
 }

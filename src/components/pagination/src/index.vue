@@ -141,7 +141,7 @@ export default {
                 display: inline-block;
                 margin-left: 8px;
                 .y-icon {
-                    fill: #496866;
+                    fill: @font;
                     width: 10px;
                     height: 10px;
                 }
@@ -161,19 +161,19 @@ export default {
                 align-items: center;
                 justify-content: center;
                 font-size: 12px;
-                color: #a8abb3;
+                color: @fontGray;
             }
             .nums:hover {
-                background: #cbf9f1;
-                color: #496866;
+                background: @backgroundGreenHover;
+                color: @font;
                 cursor: pointer;
             }
             .selected {
-                background: #18b9ac;
-                color: #e6fffe;
+                background: @fontHighLight;
+                color: @iconDiff;
                 &:hover {
-                    background: #18b9ac;
-                    color: #e6fffe;
+                    background: @fontHighLight;
+                    color: @iconDiff;
                     cursor: pointer;
                 }
             }
@@ -185,22 +185,22 @@ export default {
                 align-items: center;
                 justify-content: center;
                 .y-icon {
-                    fill: #a8abb3;
+                    fill: @fontGray;
                     width: 12px;
                     height: 12px;
                 }
                 &:hover {
-                    background: #cbf9f1;
+                    background: @backgroundGreenHover;
                     cursor: pointer;
                     .y-icon {
-                        fill: #496866;
+                        fill: @font;
                     }
                 }
             }
             .disable {
                 pointer-events: none;
                 .y-icon {
-                    fill: #e3f0ef;
+                    fill: @gray;
                 }
             }
         }

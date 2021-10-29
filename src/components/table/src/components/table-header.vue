@@ -116,7 +116,7 @@ export default {
 
 <style lang="less">
     .y-table-header {
-        background: #dbf4f0;
+        background: @greenGray;
         .y-table-cell {
             min-height: 60px;
             position: relative;

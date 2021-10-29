@@ -293,7 +293,7 @@ export default {
 <style lang="less">
     .y-table-row {
         td {
-            border-bottom: 1px solid #e3f0ef;
+            border-bottom: 1px solid @gray;
             box-sizing: border-box;
             .allselect-disable {
                 span {

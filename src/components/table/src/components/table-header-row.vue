@@ -207,7 +207,7 @@ export default {
             .y-table-column_drag-move-line {
                 height: 20px;
                 width: 2px;
-                background: #18b9ac5c;
+                background: @fontHighLightOpacity;
             }
         }
         th {
@@ -228,7 +228,7 @@ export default {
             }
             .y-table-header-extend {
                 margin-right: 5px;
-                fill: #496866;
+                fill: @font;
                 &:hover {
                     cursor: pointer;
                 }
@@ -241,7 +241,7 @@ export default {
                 .y-icon {
                     position: absolute;
                     margin-right: 5px;
-                    fill: #a8abb3;
+                    fill: @fontGray;
                     width: 9px;
                     height: 9px;
                     &:hover {
@@ -257,7 +257,7 @@ export default {
                     left: 0px;
                 }
                 .sorted {
-                    fill: #496866;
+                    fill: @font;
                 }
             }
         }

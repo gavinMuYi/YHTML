@@ -173,11 +173,11 @@ export default {
                 }
             }
             .y-th {
-                background: #dbf4f0;
+                background: @greenGray;
                 min-height: 60px;
             }
             .y-tr {
-                border-bottom: 1px solid #e3f0ef;
+                border-bottom: 1px solid @gray;
                 min-height: 50px;
             }
             .table-load {

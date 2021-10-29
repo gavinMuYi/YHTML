@@ -73,7 +73,7 @@ export default {
                 position: absolute;
                 top: 4px;
                 left: 4px;
-                background: #18b9ac;
+                background: @fontHighLight;
             }
         }
         .disable {
@@ -82,14 +82,14 @@ export default {
             pointer-events: none;
         }
         .all {
-            background: #18b9ac;
+            background: @fontHighLight;
             .y-icon {
                 width: 10px;
                 height: 10px;
                 position: absolute;
                 top: 2px;
                 left: 2px;
-                fill: #e6fffe;
+                fill: @iconDiff;
             }
         }
         .label {
