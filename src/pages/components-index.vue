@@ -55,7 +55,9 @@ export default {
             display: flex;
             min-height: ~'calc(100% - 80px)';
             margin-top: 80px;
+            height: 100%;
             .components-page-menu {
+                overflow: auto;
                 width: 200px;
                 box-sizing: border-box;
                 padding-top: 30px;
@@ -81,8 +83,8 @@ export default {
                 }
             }
             .components-page-content {
+                overflow: auto;
                 flex: 1;
-                overflow: hidden;
                 box-sizing: border-box;
                 padding:  120px 150px 120px 100px;
             }

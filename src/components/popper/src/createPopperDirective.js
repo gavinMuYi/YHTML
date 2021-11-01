@@ -1,13 +1,30 @@
 import { EleResize } from '@/utils/dom.js';
 
-function getPosition(dom) {
+function checkScroll(dom) {
+    return true;
+}
+
+function getPosition(dom, { target, el, moniter, containChange, X, Y, second }) {
     var iTop = 0;
     var iLeft = 0;
+    let domPel = dom;
     do {
-        iTop += dom.offsetTop;
-        iLeft += dom.offsetLeft;
-        dom = dom.offsetParent;
-    } while (dom && dom.offsetParent);
+        if (target.show && checkScroll(domPel) && !second) {
+            domPel.addEventListener('scroll', () => {
+                parsePosition(target, el, moniter, containChange, X, Y, true);
+            });
+        }
+        if (dom === domPel) {
+            iTop += dom.offsetTop;
+            iLeft += dom.offsetLeft;
+            dom = dom.offsetParent;
+            domPel = domPel.parentElement;
+        } else {
+            iTop -= domPel.scrollTop;
+            iLeft -= domPel.scrollLeft;
+            domPel = domPel.parentElement;
+        }
+    } while (dom && (dom.offsetParent || dom.parentElement));
     return {
         x: iLeft,
         y: iTop
@@ -73,7 +90,7 @@ function getPlacement(placement, box, popWidth, popHeight) {
     };
 }
 
-function parsePosition(target, el, moniter, containChange, X, Y) {
+function parsePosition(target, el, moniter, containChange, X, Y, second) {
     let check = target.$el.getBoundingClientRect();
     let inlineParentPosition = {};
     let inline = target.inline;
@@ -82,7 +99,7 @@ function parsePosition(target, el, moniter, containChange, X, Y) {
         while (inlineFather && getComputedStyle(inlineFather, null).position === 'static') {
             inlineFather = inlineFather.parentElement;
         }
-        inlineParentPosition = getPosition(inlineFather);
+        inlineParentPosition = getPosition(inlineFather, { target, el, moniter, containChange, X, Y, second });
     }
     if (!containChange && moniter) {
         if (target.lastSize && check.width === target.lastSize.width && check.height === target.lastSize.height) {
@@ -99,7 +116,7 @@ function parsePosition(target, el, moniter, containChange, X, Y) {
         target.$refs.selfPop.style.right = 'auto';
         target.$refs.selfPop.style.top = 'auto';
         target.$refs.selfPop.style.bottom = 'auto';
-        const position = getPosition(el);
+        const position = getPosition(el, { target, el, moniter, containChange, X, Y, second });
         const box = el.getBoundingClientRect();
         const popWidth = target.$refs.selfPop.getBoundingClientRect().width;
         const popHeight = target.$refs.selfPop.getBoundingClientRect().height;
