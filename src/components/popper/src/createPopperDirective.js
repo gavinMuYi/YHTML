@@ -23,18 +23,34 @@ function getPosition(dom, { target, el, moniter, containChange, X, Y, second }) 
     let domPel = dom;
     do {
         if (target.show && checkScroll(domPel) && !second) {
-            domPel.addEventListener('scroll', () => {
-                parsePosition(target, el, moniter, containChange, X, Y, true);
-            });
+            if (!domPel.YpopScroll || (domPel.YpopScroll && !domPel.YpopScroll[target._uid])) {
+                domPel.addEventListener('scroll', () => {
+                    parsePosition(target, el, moniter, containChange, X, Y, true);
+                });
+                if (!domPel.YpopScroll) {
+                    domPel.YpopScroll = {};
+                    domPel.YpopScroll[target._uid] = true;
+                } else {
+                    domPel.YpopScroll[target._uid] = true;
+                }
+            }
         }
         if (target.show && domPel.parentElement && checkPosition(domPel.parentElement) && !second) {
             let targetNode = domPel.parentElement;
-            const config = { attributes: true, childList: true, subtree: true };
-            const callback = () => {
-                parsePosition(target, el, moniter, containChange, X, Y, true);
-            };
-            const observer = new MutationObserver(callback);
-            observer.observe(targetNode, config);
+            if (!targetNode.YpopObserver || (targetNode.YpopObserver && !targetNode.YpopObserver[target._uid])) {
+                const config = { attributes: true, childList: true, subtree: true };
+                const callback = () => {
+                    parsePosition(target, el, moniter, containChange, X, Y, true);
+                };
+                const observer = new MutationObserver(callback);
+                observer.observe(targetNode, config);
+                if (!targetNode.YpopObserver) {
+                    targetNode.YpopObserver = {};
+                    targetNode.YpopObserver[target._uid] = true;
+                } else {
+                    targetNode.YpopObserver[target._uid] = true;
+                }
+            }
         }
         if (dom === domPel) {
             iTop += dom.offsetTop;
