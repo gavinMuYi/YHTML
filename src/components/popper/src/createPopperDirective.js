@@ -21,11 +21,14 @@ function getPosition(dom, { target, el, moniter, containChange, X, Y, second }) 
     var iTop = 0;
     var iLeft = 0;
     let domPel = dom;
+    if (!dom) {
+        return;
+    }
     do {
-        if (target.show && checkScroll(domPel) && !second) {
+        if (target.show && domPel && checkScroll(domPel) && !second) {
             if (!domPel.YpopScroll || (domPel.YpopScroll && !domPel.YpopScroll[target._uid])) {
                 domPel.addEventListener('scroll', () => {
-                    parsePosition(target, el, moniter, containChange, X, Y, true);
+                    parsePosition(target, target.$lastel || el, moniter, containChange, X, Y, true);
                 });
                 if (!domPel.YpopScroll) {
                     domPel.YpopScroll = {};
@@ -35,12 +38,12 @@ function getPosition(dom, { target, el, moniter, containChange, X, Y, second }) 
                 }
             }
         }
-        if (target.show && domPel.parentElement && checkPosition(domPel.parentElement) && !second) {
+        if (target.show && domPel && domPel.parentElement && checkPosition(domPel.parentElement) && !second) {
             let targetNode = domPel.parentElement;
             if (!targetNode.YpopObserver || (targetNode.YpopObserver && !targetNode.YpopObserver[target._uid])) {
                 const config = { attributes: true, childList: true, subtree: true };
                 const callback = () => {
-                    parsePosition(target, el, moniter, containChange, X, Y, true);
+                    parsePosition(target, target.$lastel || el, moniter, containChange, X, Y, true);
                 };
                 const observer = new MutationObserver(callback);
                 observer.observe(targetNode, config);
@@ -243,13 +246,13 @@ function handleHover(target, el, mos, delay) {
     if (mos) {
         target.show = false;
         target.$nextTick(() => {
+            target.$lastel = el;
             target.opacity = true;
             target.show = true;
             setTimeout(() => {
                 parsePosition(target, el);
                 target.opacity = false;
             });
-            target.$lastel = el;
         });
     } else {
         if (delay) {
@@ -269,25 +272,25 @@ function handleHover(target, el, mos, delay) {
 function handleClick(target, el) {
     if (!target.show) {
         target.$nextTick(() => {
+            target.$lastel = el;
             target.opacity = true;
             target.show = true;
             setTimeout(() => {
                 parsePosition(target, el);
                 target.opacity = false;
             });
-            target.$lastel = el;
         });
     } else {
         target.closePop();
         if (target.$lastel && target.$lastel !== el) {
             target.$nextTick(() => {
+                target.$lastel = el;
                 target.opacity = true;
                 target.show = true;
                 setTimeout(() => {
                     parsePosition(target, el);
                     target.opacity = false;
                 });
-                target.$lastel = el;
             });
         }
     }
