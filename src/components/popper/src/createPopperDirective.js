@@ -1,7 +1,20 @@
 import { EleResize } from '@/utils/dom.js';
 
 function checkScroll(dom) {
-    return true;
+    const nodeName = dom.nodeName.toLowerCase();
+    if (nodeName === 'body' || nodeName === 'html') {
+        return false;
+    }
+    const { overflow, overflowX, overflowY } = getComputedStyle(dom);
+    if (/(auto|scroll)/.test(overflow + overflowY + overflowX)) {
+        return true;
+    }
+    return false;
+}
+
+function checkPosition(dom) {
+    let position = getComputedStyle(dom, null).position;
+    return !(position === 'static' || position === 'relative');
 }
 
 function getPosition(dom, { target, el, moniter, containChange, X, Y, second }) {
@@ -13,6 +26,15 @@ function getPosition(dom, { target, el, moniter, containChange, X, Y, second }) 
             domPel.addEventListener('scroll', () => {
                 parsePosition(target, el, moniter, containChange, X, Y, true);
             });
+        }
+        if (target.show && domPel.parentElement && checkPosition(domPel.parentElement) && !second) {
+            let targetNode = domPel.parentElement;
+            const config = { attributes: true, childList: true, subtree: true };
+            const callback = () => {
+                parsePosition(target, el, moniter, containChange, X, Y, true);
+            };
+            const observer = new MutationObserver(callback);
+            observer.observe(targetNode, config);
         }
         if (dom === domPel) {
             iTop += dom.offsetTop;
