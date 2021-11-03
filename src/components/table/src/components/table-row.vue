@@ -301,6 +301,9 @@ export default {
                     pointer-events: none;
                 }
             }
+            .y-table-cell_content {
+                flex: 1;
+            }
         }
     }
 </style>

@@ -4333,6 +4333,12 @@ if (document.attachEvent) {
     },
 
     computed: {
+        tables: function tables() {
+            var tables = ['center'];
+            this.rowColumn.rowColumnLeft.length && tables.unshift('left');
+            this.rowColumn.rowColumnRight.length && tables.push('right');
+            return tables;
+        },
         _column: function _column() {
             var filterCloumn = this.column;
             var recursion = function recursion(arr) {
@@ -4961,14 +4967,14 @@ if (document.attachEvent) {
             };
             return function () {
                 var reset = false;
-                ['left', 'center', 'right'].forEach(function (DomKey) {
+                _this15.tables.forEach(function (DomKey) {
                     var answer = !getHeight(DomKey);
                     reset = reset || answer;
                 });
                 if (reset) {
                     _this15.resetTableHeader();
                     _this15.$nextTick(function () {
-                        ['left', 'center', 'right'].forEach(function (DomKey) {
+                        _this15.tables.forEach(function (DomKey) {
                             resizeFn(DomKey);
                         });
                         _this15.setStandardTable();
@@ -5018,20 +5024,20 @@ if (document.attachEvent) {
             };
             return function (reSizing) {
                 var reset = false;
-                ['left', 'center', 'right'].forEach(function (DomKey) {
+                _this16.tables.forEach(function (DomKey) {
                     reset = reset || !getHeight(DomKey);
                 });
                 getGap();
                 if (reset || reSizing) {
                     _this16.resetTableStyle();
                     _this16.$nextTick(function () {
-                        ['left', 'center', 'right'].forEach(function (DomKey) {
+                        _this16.tables.forEach(function (DomKey) {
                             resizeFn(DomKey);
                         });
                         _this16.setStandardTable();
                         setTimeout(function () {
                             _this16.tableMainHeight = _this16.$refs.tableMain.offsetHeight;
-                            !_this16.headerFix && (_this16.headerTop = _this16.$refs.leftHeader.$el.offsetHeight);
+                            !_this16.headerFix && (_this16.headerTop = _this16.$refs.centerHeader.$el.offsetHeight);
                         });
                     });
                 }
@@ -12921,7 +12927,7 @@ exports = module.exports = __webpack_require__(3)(true);
 
 
 // module
-exports.push([module.i, "\n.y-table-row td {\n  border-bottom: 1px solid #e3f0ef;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.y-table-row td .allselect-disable span {\n  opacity: 0.5;\n  pointer-events: none;\n}\n", "", {"version":3,"sources":["/Users/gavinjhyang/YHTML/src/components/table/src/components/table-row.vue"],"names":[],"mappings":";AACA;EACE,iCAAiC;EACjC,+BAA+B;UACvB,uBAAuB;CAChC;AACD;EACE,aAAa;EACb,qBAAqB;CACtB","file":"table-row.vue","sourcesContent":["\n.y-table-row td {\n  border-bottom: 1px solid #e3f0ef;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.y-table-row td .allselect-disable span {\n  opacity: 0.5;\n  pointer-events: none;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, "\n.y-table-row td {\n  border-bottom: 1px solid #e3f0ef;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.y-table-row td .allselect-disable span {\n  opacity: 0.5;\n  pointer-events: none;\n}\n.y-table-row td .y-table-cell_content {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n", "", {"version":3,"sources":["/Users/gavinjhyang/YHTML/src/components/table/src/components/table-row.vue"],"names":[],"mappings":";AACA;EACE,iCAAiC;EACjC,+BAA+B;UACvB,uBAAuB;CAChC;AACD;EACE,aAAa;EACb,qBAAqB;CACtB;AACD;EACE,oBAAoB;MAChB,YAAY;UACR,QAAQ;CACjB","file":"table-row.vue","sourcesContent":["\n.y-table-row td {\n  border-bottom: 1px solid #e3f0ef;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.y-table-row td .allselect-disable span {\n  opacity: 0.5;\n  pointer-events: none;\n}\n.y-table-row td .y-table-cell_content {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n"],"sourceRoot":""}]);
 
 // exports
 

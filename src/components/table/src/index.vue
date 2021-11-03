@@ -374,6 +374,12 @@ export default {
         };
     },
     computed: {
+        tables() {
+            let tables = ['center'];
+            this.rowColumn.rowColumnLeft.length && tables.unshift('left');
+            this.rowColumn.rowColumnRight.length && tables.push('right');
+            return tables;
+        },
         _column() {
             let filterCloumn = this.column;
             let recursion = (arr) => {
@@ -982,14 +988,14 @@ export default {
             };
             return () => {
                 let reset = false;
-                ['left', 'center', 'right'].forEach(DomKey => {
+                this.tables.forEach(DomKey => {
                     let answer = !getHeight(DomKey);
                     reset = reset || answer;
                 });
                 if (reset) {
                     this.resetTableHeader();
                     this.$nextTick(() => {
-                        ['left', 'center', 'right'].forEach(DomKey => {
+                        this.tables.forEach(DomKey => {
                             resizeFn(DomKey);
                         });
                         this.setStandardTable();
@@ -1041,20 +1047,20 @@ export default {
             };
             return (reSizing) => {
                 let reset = false;
-                ['left', 'center', 'right'].forEach(DomKey => {
+                this.tables.forEach(DomKey => {
                     reset = reset || !getHeight(DomKey);
                 });
                 getGap();
                 if (reset || reSizing) {
                     this.resetTableStyle();
                     this.$nextTick(() => {
-                        ['left', 'center', 'right'].forEach(DomKey => {
+                        this.tables.forEach(DomKey => {
                             resizeFn(DomKey);
                         });
                         this.setStandardTable();
                         setTimeout(() => {
                             this.tableMainHeight = this.$refs.tableMain.offsetHeight;
-                            !this.headerFix && (this.headerTop = this.$refs.leftHeader.$el.offsetHeight);
+                            !this.headerFix && (this.headerTop = this.$refs.centerHeader.$el.offsetHeight);
                         });
                     });
                 }
