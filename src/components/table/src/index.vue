@@ -88,9 +88,12 @@
                     <y-icon name="bell" />不支持逐行取消全选结果
                 </div>
             </div>
-            <div class="y-table-scrolling">
+            <div class="y-table-scrolling" ref="scrolling">
                 <div class="y-table-main" ref="tableMainBox"
-                     :style="{ maxHeight: tableHeight, width: scorlling ? 'calc(100% + 5px)' : '100%' }">
+                     :style="{
+                         maxHeight: tableHeight,
+                         width: scorlling ? `calc(100% + ${scrollingWidth}px)` : '100%'
+                }">
                     <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 60 + 'px' }"
                          v-if="Boolean(multiple && basicIndex)">
                         <table>
@@ -316,6 +319,7 @@ export default {
         return {
             allSelectToast: false,
             headerCheckBoxStatus: '',
+            scrollingWidth: 0,
             treeRefresh: 0,
             checkBoxStatus: {},
             currentSelect: clone(this.selected),
@@ -691,8 +695,24 @@ export default {
     },
     mounted() {
         this.scorllXHandler();
+        this.getScrollingWidth();
     },
     methods: {
+        getScrollingWidth() {
+            var outer = document.createElement('div');
+            outer.style.visibility = 'hidden';
+            outer.style.width = '100px';
+            outer.style.msOverflowStyle = 'scrollbar';
+            this.$refs.scrolling.appendChild(outer);
+            var widthNoScroll = outer.offsetWidth;
+            outer.style.overflow = 'scroll';
+            var inner = document.createElement('div');
+            inner.style.width = '100％';
+            outer.appendChild(inner);
+            var widthWithScroll = inner.offsetWidth;
+            outer.parentNode.removeChild(outer);
+            this.scrollingWidth = widthNoScroll - widthWithScroll;
+        },
         initLoad() {
             return this.options
                 ? (leaf, index, count, sortFunc) => {
