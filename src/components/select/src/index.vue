@@ -9,7 +9,7 @@
         </span>
         <y-popper
             ref="ySelectPop"
-            clazz="y-select-pop"
+            :clazz="`y-select-pop ${cascadeMode ? 'y-select-pop-cascade' : 'y-select-pop-common'}`"
             :placement="placement">
             <div class="y-select-pop_tree"
                  @click.stop="() => {}">
@@ -199,11 +199,16 @@ export default {
     }
     .y-select-pop {
         margin-top: 2px;
-        width: 320px;
         .y-select-pop_tree {
             border: 1px solid  @commonGray;
-            max-height: 400px;
+            font-size: 0px;
+        }
+    }
+    .y-select-pop-common {
+        width: 300px;
+        .y-select-pop_tree {
             overflow: auto;
+            max-height: 400px;
         }
     }
 </style>

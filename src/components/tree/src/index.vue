@@ -754,9 +754,9 @@ export default {
                 cursor: pointer;
             }
         }
-        .level1>.no-arrow {
-            width: 10px;
-        }
+        // .level1>.no-arrow {
+        //     width: 10px;
+        // }
         .load-more {
             cursor: pointer;
             font-size: 14px;

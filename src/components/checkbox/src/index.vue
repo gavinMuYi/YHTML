@@ -58,6 +58,7 @@ export default {
 
 <style lang="less">
     .y-checkbox {
+        font-size: 16px;
         .check-icon {
             cursor: pointer;
             width: 14px;
