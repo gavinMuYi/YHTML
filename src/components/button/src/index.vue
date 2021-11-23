@@ -1,5 +1,5 @@
 <template>
-    <div :class="[
+    <button :class="[
         'y-button',
         `y-button_${status}`,
         `y-button_${size}`,
@@ -8,8 +8,10 @@
         <div class="btn-loading" v-if="loading">
             <y-icon name="loading" />
         </div>
-        <slot />
-    </div>
+        <span :style="{
+            opacity: loading ? 0 : 1
+        }"><slot /></span>
+    </button>
 </template>
 
 <script>
@@ -53,6 +55,8 @@ export default {
         display: inline-block;
         box-sizing: border-box;
         position: relative;
+        border: none;
+        box-shadow: 1px 2px 2px @gray;
         .btn-loading {
             position: absolute;
             width: 100%;
@@ -70,67 +74,54 @@ export default {
     }
     .y-button_default {
         background: @lightGray;
-        color: @font;
-        border: 1px solid @commonGray;
-        .btn-loading {
-            background: @lightGray;
+        &>span {
+            color: @font;
         }
+        border: 1px solid @commonGray;
         &:hover {
-            border: 1px solid @deepGreen;
+            border: 1px solid @fontGray;
         }
     }
     .y-button_primary {
         background: @fontHighLight;
-        color: @white;
+        &>span {
+            color: @white;
+        }
         &:hover {
             background: @greenLight;
-        }
-        .btn-loading {
-            background: @fontHighLight;
         }
     }
     .y-button_warning {
         background: @warning;
-        color: @font;
+        &>span {
+            color: @font;
+        }
         &:hover {
             background: @warningLight;
-        }
-        .btn-loading {
-            background: @warning;
         }
     }
     .y-button_error {
         background: @errorDeep;
-        color: @white;
+        &>span {
+            color: @white;
+        }
         &:hover {
             background: @error;
-        }
-        .btn-loading {
-            background: @errorDeep;
         }
     }
     .y-button_min {
         font-size: 12px;
         padding: 5px 12px;
-        border-radius: 2px;
-        .btn-loading {
-            border-radius: 2px;
-        }
+        border-radius: 3px;
     }
     .y-button_medium {
         font-size: 16px;
         padding: 8px 18px;
         border-radius: 3px;
-        .btn-loading {
-            border-radius: 3px;
-        }
     }
     .y-button_max {
         font-size: 20px;
         padding: 10px 30px;
         border-radius: 5px;
-        .btn-loading {
-            border-radius: 5px;
-        }
     }
 </style>
