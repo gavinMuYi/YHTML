@@ -16,6 +16,7 @@
                     'list-item',
                     `level${level}`,
                     {'is-selected': isSelected},
+                    {'is-disable': self[_maps.disable] || fatherDisableStatue},
                     {'cascade-open': isFolder && self && self[_maps.cascade] && extendStatus}
                 ]"
                 :style="`padding-left: ${15 * (level - beforeCascadeLevel - 1) + 8}px`">
@@ -788,6 +789,11 @@ export default {
             &:hover {
                 background: @backgroundGreen;
                 cursor: pointer;
+            }
+        }
+        .is-disable {
+            .label-item > .y-cell {
+                opacity: 0.5;
             }
         }
         .cascade-open{
