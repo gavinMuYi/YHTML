@@ -11,6 +11,7 @@
             ref="ySelectPop"
             :clazz="`y-select-pop ${cascadeMode ? 'y-select-pop-cascade' : 'y-select-pop-common'}`"
             :placement="placement">
+            <div class="y-select-pop_search-bar" v-if="searchPlaceholder"></div>
             <div class="y-select-pop_tree"
                  @click.stop="() => {}">
                 <y-tree
@@ -37,6 +38,7 @@
                     :fatherStatus="fatherStatus"
                     @change="handleChange" />
             </div>
+            <div class="y-select-pop_action-bar"></div>
         </y-popper>
     </div>
 </template>
@@ -45,6 +47,8 @@
 import YPopper from '@/components/popper';
 import YCell from '@/components/cell';
 import YTree from '@/components/tree';
+import clone from 'clone';
+
 export default {
     name: 'YSelect',
     components: {
@@ -53,6 +57,10 @@ export default {
         YTree
     },
     props: {
+        searchPlaceholder: {
+            type: String,
+            default: '请搜索'
+        },
         placement: {
             type: String,
             default: 'bottom-start'
@@ -171,11 +179,17 @@ export default {
     },
     data() {
         return {
+            tempValue: clone(this.value)
         };
+    },
+    watch: {
+        value(nval) {
+            this.$set(this, 'tempValue', clone(nval));
+        }
     },
     methods: {
         handleChange(val) {
-            console.log(val);
+            this.$set(this, 'tempValue', clone(val));
         }
     }
 };
@@ -202,6 +216,14 @@ export default {
         .y-select-pop_tree {
             border: 1px solid  @commonGray;
             font-size: 0px;
+        }
+        .y-select-pop_search-bar {
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        .y-select-pop_action-bar {
+            height: 30px;
+            margin-top: 10px;
         }
     }
     .y-select-pop-common {
