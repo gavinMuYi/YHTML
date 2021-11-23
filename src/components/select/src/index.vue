@@ -11,7 +11,8 @@
             ref="ySelectPop"
             :clazz="`y-select-pop ${cascadeMode ? 'y-select-pop-cascade' : 'y-select-pop-common'}`"
             :placement="placement">
-            <div class="y-select-pop_search-bar" v-if="searchPlaceholder"></div>
+            <div class="y-select-pop_search-bar" v-if="searchPlaceholder" @click.stop="() => {}">
+            </div>
             <div class="y-select-pop_tree"
                  @click.stop="() => {}">
                 <y-tree
@@ -23,7 +24,7 @@
                     :fatherID="fatherID"
                     :treeSize="treeSize"
                     :cascadeLevel="cascadeLevel"
-                    :value="value"
+                    :value="currentValue"
                     :tracklessData="tracklessData"
                     :options="options"
                     :lazyLoad="lazyLoad"
@@ -38,12 +39,18 @@
                     :fatherStatus="fatherStatus"
                     @change="handleChange" />
             </div>
-            <div class="y-select-pop_action-bar"></div>
+            <div class="y-select-pop_action-bar" @click.stop="() => {}">
+                <div class="y-select-pop_btns">
+                    <y-button size="min" status="primary" @click="confirm">确定</y-button>
+                    <y-button size="min" @click="cancel">取消</y-button>
+                </div>
+            </div>
         </y-popper>
     </div>
 </template>
 
 <script>
+import YButton from '@/components/button';
 import YPopper from '@/components/popper';
 import YCell from '@/components/cell';
 import YTree from '@/components/tree';
@@ -52,6 +59,7 @@ import clone from 'clone';
 export default {
     name: 'YSelect',
     components: {
+        YButton,
         YPopper,
         YCell,
         YTree
@@ -179,17 +187,28 @@ export default {
     },
     data() {
         return {
+            currentValue: clone(this.value),
             tempValue: clone(this.value)
         };
     },
     watch: {
         value(nval) {
             this.$set(this, 'tempValue', clone(nval));
+            this.$set(this, 'currentValue', clone(nval));
         }
     },
     methods: {
         handleChange(val) {
             this.$set(this, 'tempValue', clone(val));
+        },
+        confirm() {
+            this.$set(this, 'currentValue', clone(this.tempValue));
+            this.$refs.ySelectPop.closePop();
+            this.$emit('confirm', this.currentValue);
+        },
+        cancel() {
+            this.$set(this, 'tempValue', clone(this.currentValue));
+            this.$refs.ySelectPop.closePop();
         }
     }
 };
@@ -224,6 +243,9 @@ export default {
         .y-select-pop_action-bar {
             height: 30px;
             margin-top: 10px;
+            .y-select-pop_btns {
+                float: right;
+            }
         }
     }
     .y-select-pop-common {

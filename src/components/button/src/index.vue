@@ -4,7 +4,7 @@
         `y-button_${status}`,
         `y-button_${size}`,
         { 'y-button_disable': disable }
-    ]">
+    ]" @click="click">
         <div class="btn-loading" v-if="loading">
             <y-icon name="loading" />
         </div>
@@ -45,6 +45,9 @@ export default {
         };
     },
     methods: {
+        click(e) {
+            this.$emit('click', e);
+        }
     }
 };
 </script>
