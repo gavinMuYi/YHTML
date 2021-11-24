@@ -69,11 +69,11 @@
                           :extend="props.extend" :extendSelect="props.extendSelect"
                           :handleSelect="props.handleSelect"
                           :multipleSelect="props.multipleSelect">
-                        <template slot="item" slot-scope="props">
-                            <slot name="item" :data="props.data" :level="props.level">
-                                <y-cell :highlight="highlight" :label="props.data[_maps.label]"></y-cell>
-                            </slot>
-                        </template>
+                    </slot>
+                </template>
+                <template slot="item" slot-scope="props">
+                    <slot name="item" :data="props.data" :level="props.level">
+                        <y-cell :highlight="highlight" :label="props.data[_maps.label]"></y-cell>
                     </slot>
                 </template>
                 <template slot="nodata">
