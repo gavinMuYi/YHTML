@@ -1,5 +1,9 @@
 <template>
-    <div class="y-input_example"></div>
+    <div class="y-input_example">
+        <y-input size="max" />
+        <y-input @blur="handler" @focus="handler" @change="handler" @input="handler" />
+        <y-input size="min" type="password" leftIcon="loading" rightIcon="loading" />
+    </div>
 </template>
 
 <script>
@@ -14,6 +18,9 @@ export default {
         };
     },
     methods: {
+        handler(e, val) {
+            console.log(e, val);
+        }
     }
 };
 </script>
