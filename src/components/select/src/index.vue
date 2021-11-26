@@ -26,7 +26,7 @@
                     :fatherID="fatherID"
                     :treeSize="treeSize"
                     :cascadeLevel="cascadeLevel"
-                    :value="currentValue"
+                    :value="tempValue"
                     :tracklessData="tracklessData"
                     :options="options"
                     :lazyLoad="lazyLoad"
@@ -212,8 +212,8 @@ export default {
         },
         confirm() {
             this.$set(this, 'currentValue', clone(this.tempValue));
-            this.$refs.ySelectPop.closePop();
             this.$emit('confirm', this.currentValue);
+            this.$refs.ySelectPop.closePop();
         },
         cancel() {
             this.$set(this, 'tempValue', clone(this.currentValue));

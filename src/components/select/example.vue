@@ -2,8 +2,8 @@
     <div class="y-select_example">
         <y-select
             :treeSize="[300, 400]" :multiple="true" cascadeMode="hover"
-            :options="options1" @change="val => {singleValue = val}" :value="singleValue" />
-        <y-select :lazyLoad="lazyLoad" @change="val => {singleValue = val}" :value="singleValue" />
+            :options="options1" @confirm="handleValue" :value="singleValue" />
+        <y-select :lazyLoad="lazyLoad" @confirm="handleValue" :value="singleValue" />
     </div>
 </template>
 
@@ -337,6 +337,10 @@ export default {
                     hasChildren: true
                 }];
             });
+        },
+        handleValue(val) {
+            this.singleValue = val;
+            console.log(val);
         }
     }
 };
