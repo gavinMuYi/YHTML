@@ -1,8 +1,8 @@
 <template>
     <span class="y-checkbox" @click="handleClick">
         <div :class="['check-icon', {'all': currentStatus === 'all'}, {'disable': disable}]">
-            <y-icon name="check" v-if="currentStatus === 'all'" />
-            <div class="half" v-if="currentStatus === 'half'"></div>
+            <y-icon name="check" v-show="currentStatus === 'all'" />
+            <div class="half" v-show="currentStatus === 'half'"></div>
         </div>
         <div v-if="label" class="label">{{ label }}</div>
     </span>
@@ -67,6 +67,14 @@ export default {
             border: 1px solid @commonGray;
             border-radius: 2px;
             position: relative;
+            .y-icon {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                fill: @iconDiff;
+            }
             .half {
                 width: 6px;
                 height: 6px;
@@ -84,14 +92,6 @@ export default {
         }
         .all {
             background: @fontHighLight;
-            .y-icon {
-                width: 10px;
-                height: 10px;
-                position: absolute;
-                top: 2px;
-                left: 2px;
-                fill: @iconDiff;
-            }
         }
         .label {
             display: inline-block;

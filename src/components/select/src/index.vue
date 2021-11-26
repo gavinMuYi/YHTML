@@ -2,9 +2,11 @@
     <div class="y-select">
         <span v-ypop:ySelectPop.click class="trigger-binder">
             <slot name="trigger" :triggerTexts="triggerTexts">
-                <div :class="['y-select-trigger', {'y-select-trigger_muti': multiple && triggerTexts.length}]">
-                    <y-cell :label="triggerTexts[0] || placeholder" />
-                    <div class="trigger-num" v-if="multiple && triggerTexts.length">等 {{ triggerTexts.length }} 项</div>
+                <div :class="['y-select-trigger', {'y-select-trigger_muti': multiple && triggerTexts.length > 1}]">
+                    <y-cell :label="currentAsyncSelectAll ? '全部选项' : (triggerTexts[0] || placeholder)" />
+                    <div class="trigger-num" v-if="!currentAsyncSelectAll && multiple && triggerTexts.length > 1">
+                        等 {{ triggerTexts.length }} 项
+                    </div>
                 </div>
             </slot>
         </span>
@@ -15,12 +17,13 @@
             <div class="y-select-pop_search-bar" v-if="searchPlaceholder" @click.stop="() => {}">
                 <y-input size="min" class="y-select_input" leftIcon="search" quickClear @change="handleSearch" />
             </div>
-            <div class="y-select-pop_tree"
+            <div :class="['y-select-pop_tree', {'y-tree_selectall': asyncSelectAll}]"
                  @click.stop="() => {}">
                 <div class="tree-loading" v-if="!options && loading">
                     <y-icon name="loading" />
                 </div>
                 <y-tree
+                    ref="tree"
                     :key="highlight"
                     :fatherDisableStatue="fatherDisableStatue"
                     :cascadeBottom="cascadeBottom"
@@ -54,6 +57,10 @@
                 </y-tree>
             </div>
             <div class="y-select-pop_action-bar" @click.stop="() => {}">
+                <div class="y-select-pop_tree_actions" v-if="multiple && quickSelectAll">
+                    <span @click="selectAll">全选</span>
+                    <span @click="clearAll">清空</span>
+                </div>
                 <div class="y-select-pop_btns">
                     <y-button size="min" status="primary" @click="confirm">确定</y-button>
                     <y-button size="min" @click="cancel">取消</y-button>
@@ -109,6 +116,10 @@ export default {
             default: ''
         },
         accordion: {
+            type: Boolean,
+            default: false
+        },
+        quickSelectAll: {
             type: Boolean,
             default: false
         },
@@ -192,6 +203,10 @@ export default {
             type: Boolean,
             default: true
         },
+        allSelected: {
+            type: Boolean,
+            default: false
+        },
         selected: {
             type: Object,
             default: () => {
@@ -209,6 +224,8 @@ export default {
             tempValue: clone(this.value),
             highlight: '',
             loading: true,
+            asyncSelectAll: this.allSelected,
+            currentAsyncSelectAll: this.allSelected
         };
     },
     computed: {
@@ -271,12 +288,33 @@ export default {
         },
         confirm() {
             this.$set(this, 'currentValue', clone(this.tempValue));
-            this.$emit('confirm', this.currentValue);
+            this.$emit('confirm', this.asyncSelectAll ? 'all' : this.currentValue);
+            this.currentAsyncSelectAll = this.asyncSelectAll;
             this.$refs.ySelectPop.closePop();
         },
         cancel() {
             this.$set(this, 'tempValue', clone(this.currentValue));
             this.$refs.ySelectPop.closePop();
+        },
+        selectAll() {
+            if (this.options) {
+                let leaves = this.$refs.tree.$refs.leaf;
+                leaves && leaves.forEach(leaf => {
+                    if (leaf.tracked !== 'all') {
+                        leaf.multipleSelect();
+                        if (leaf.tracked === 'half') {
+                            leaf.multipleSelect();
+                        }
+                    }
+                });
+            } else {
+                this.clearAll();
+                this.asyncSelectAll = true;
+            }
+        },
+        clearAll() {
+            this.asyncSelectAll = false;
+            this.$set(this, 'tempValue', []);
         }
     }
 };
@@ -331,6 +369,16 @@ export default {
                 }
             }
         }
+        .y-tree_selectall {
+            opacity: 0.5;
+            pointer-events: none;
+            .check-icon {
+                background: @fontHighLight;
+                .y-icon {
+                    display: inline-block!important;
+                }
+            }
+        }
         .y-select-pop_search-bar {
             height: 30px;
             margin-bottom: 10px;
@@ -341,6 +389,19 @@ export default {
         .y-select-pop_action-bar {
             height: 30px;
             margin-top: 10px;
+            .y-select-pop_tree_actions {
+                float: left;
+                span {
+                    display: inline-block;
+                    margin-right: 8px;
+                    margin-top: 8px;
+                    font-size: 12px;
+                    cursor: pointer;
+                    &:hover {
+                        color: @fontHighLight;
+                    }
+                }
+            }
             .y-select-pop_btns {
                 float: right;
             }
