@@ -50,6 +50,7 @@
                 :maps="_maps"
                 :track="track"
                 :count="count"
+                :highlight="highlight"
                 :treeSize="treeSize"
                 :multiple="multiple"
                 :fatherStatus="tracked"
@@ -220,6 +221,10 @@ export default {
         highlight: {
             type: String,
             default: ''
+        },
+        highlightFilter: {
+            type: Boolean,
+            default: true
         },
         multiple: {
             type: Boolean,
@@ -404,6 +409,15 @@ export default {
                 }
             }
         },
+        flatFilter(arr) {
+            let newarr = arr.filter(item => {
+                if (item[this._maps.children]) {
+                    item[this._maps.children] = this.flatFilter(item[this._maps.children]);
+                }
+                return item[this._maps.label].indexOf(this.highlight) > -1;
+            });
+            return newarr;
+        },
         initLoad() {
             return this.options
                 ? () => {
@@ -411,7 +425,7 @@ export default {
                         resolve();
                     }).then(() => {
                         return {
-                            options: this.options,
+                            options: this.highlightFilter ? this.flatFilter(clone(this.options)) : this.options,
                             total: this.options.length
                         };
                     });

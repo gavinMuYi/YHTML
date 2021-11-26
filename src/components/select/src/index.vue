@@ -17,6 +17,7 @@
             <div class="y-select-pop_tree"
                  @click.stop="() => {}">
                 <y-tree
+                    :key="highlight"
                     :fatherDisableStatue="fatherDisableStatue"
                     :cascadeBottom="cascadeBottom"
                     :cascadeMode="cascadeMode"
@@ -34,6 +35,7 @@
                     :maps="maps"
                     :count="count"
                     :highlight="highlight"
+                    :highlightFilter="highlightFilter"
                     :multiple="multiple"
                     :track="track"
                     :selected="selected"
@@ -165,9 +167,9 @@ export default {
             type: Number,
             default: -1
         },
-        highlight: {
-            type: String,
-            default: ''
+        highlightFilter: {
+            type: Boolean,
+            default: true
         },
         multiple: {
             type: Boolean,
@@ -191,7 +193,8 @@ export default {
     data() {
         return {
             currentValue: clone(this.value),
-            tempValue: clone(this.value)
+            tempValue: clone(this.value),
+            highlight: ''
         };
     },
     watch: {
@@ -202,7 +205,7 @@ export default {
     },
     methods: {
         handleSearch(val) {
-            console.log(val);
+            this.highlight = val;
         },
         handleChange(val) {
             this.$set(this, 'tempValue', clone(val));
@@ -261,7 +264,7 @@ export default {
         width: 300px;
         .y-select-pop_tree {
             overflow: auto;
-            max-height: 400px;
+            height: 400px;
         }
     }
 </style>

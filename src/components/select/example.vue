@@ -3,7 +3,7 @@
         <y-select
             :treeSize="[300, 400]" :multiple="true" cascadeMode="hover"
             :options="options1" @change="val => {singleValue = val}" :value="singleValue" />
-        <y-select :options="options" @change="val => {singleValue = val}" :value="singleValue" />
+        <y-select :lazyLoad="lazyLoad" @change="val => {singleValue = val}" :value="singleValue" />
     </div>
 </template>
 
@@ -325,6 +325,7 @@ export default {
     },
     methods: {
         lazyLoad(index, count, highlight, self) {
+            console.log(index, count, highlight, self);
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve();
