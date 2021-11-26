@@ -1,7 +1,7 @@
 <template>
     <div class="y-select">
         <span v-ypop:ySelectPop.click class="trigger-binder">
-            <slot name="trigger">
+            <slot name="trigger" :triggerTexts="triggerTexts">
                 <div :class="['y-select-trigger', {'y-select-trigger_muti': multiple && triggerTexts.length}]">
                     <y-cell :label="triggerTexts[0] || placeholder" />
                     <div class="trigger-num" v-if="multiple && triggerTexts.length">等 {{ triggerTexts.length }} 项</div>
@@ -45,7 +45,13 @@
                     :selected="selected"
                     :fatherStatus="fatherStatus"
                     @change="handleChange"
-                    @loaded="handleLoaded" />
+                    @loaded="handleLoaded">
+                    <template slot="item" slot-scope="props">
+                        <slot name="item" :data="props.data" :level="props.level">
+                            <y-cell :highlight="highlight" :label="props.data[_maps.label]"></y-cell>
+                        </slot>
+                    </template>
+                </y-tree>
             </div>
             <div class="y-select-pop_action-bar" @click.stop="() => {}">
                 <div class="y-select-pop_btns">
@@ -206,6 +212,18 @@ export default {
         };
     },
     computed: {
+        _maps() {
+            return {
+                key: 'key',
+                label: 'label',
+                children: 'children',
+                hasChildren: 'hasChildren',
+                disable: 'disable',
+                extend: 'extend',
+                cascade: 'cascade',
+                ...this.maps
+            };
+        },
         triggerTexts() {
             let labels = [];
             let _maps = {
