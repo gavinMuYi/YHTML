@@ -25,18 +25,27 @@ export default {
             labelGroup: []
         };
     },
-    mounted() {
-        if (this.highlight) {
-            this.labelGroup = this.getTemplate(this.label, this.highlight);
-        }
-        else {
-            this.labelGroup.push({
-                label: this.label,
-                highlight: false
-            });
+    watch: {
+        label(nval) {
+            this.init();
         }
     },
+    mounted() {
+        this.init();
+    },
     methods: {
+        init() {
+            this.labelGroup = [];
+            if (this.highlight) {
+                this.labelGroup = this.getTemplate(this.label, this.highlight);
+            }
+            else {
+                this.labelGroup.push({
+                    label: this.label,
+                    highlight: false
+                });
+            }
+        },
         // 将字段高亮转化为数组
         getTemplate(label, hl) {
             let raw = label;

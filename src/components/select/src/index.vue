@@ -2,8 +2,9 @@
     <div class="y-select">
         <span v-ypop:ySelectPop.click class="trigger-binder">
             <slot name="trigger">
-                <div class="y-select-trigger">
-                    <y-cell :label="placeholder" />
+                <div :class="['y-select-trigger', {'y-select-trigger_muti': multiple && triggerTexts.length}]">
+                    <y-cell :label="triggerTexts[0] || placeholder" />
+                    <div class="trigger-num" v-if="multiple && triggerTexts.length">等 {{ triggerTexts.length }} 项</div>
                 </div>
             </slot>
         </span>
@@ -204,6 +205,33 @@ export default {
             loading: true,
         };
     },
+    computed: {
+        triggerTexts() {
+            let labels = [];
+            let _maps = {
+                key: 'key',
+                label: 'label',
+                children: 'children',
+                hasChildren: 'hasChildren',
+                disable: 'disable',
+                extend: 'extend',
+                cascade: 'cascade',
+                ...this.maps
+            };
+            let flatValue = function (arr) {
+                arr.forEach(item => {
+                    if (item[_maps.children]) {
+                        flatValue(item[_maps.children]);
+                    } else {
+                        labels.push(item[_maps.label]);
+                    }
+                });
+            };
+            flatValue(this.currentValue);
+            console.log(labels);
+            return labels;
+        }
+    },
     watch: {
         value(nval) {
             this.$set(this, 'tempValue', clone(nval));
@@ -249,6 +277,21 @@ export default {
                 border-radius: 3px;
                 box-sizing: border-box;
                 padding: 4px 10px;
+                .y-cell {
+                    width: 100%;
+                }
+            }
+            .y-select-trigger_muti {
+                position: relative;
+                .y-cell {
+                    width: ~'calc(100% - 50px)';
+                }
+                .trigger-num {
+                    position: absolute;
+                    right: 10px;
+                    top: 4px;
+                    font-size: 14px;
+                }
             }
         }
     }
