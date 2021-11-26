@@ -2,7 +2,7 @@
     <div :class="clazz">
         <y-icon :name="leftIcon" v-if="leftIcon" class="left-icon">
         </y-icon>
-        <y-icon :name="rightIcon" v-if="rightIcon" class="right-icon">
+        <y-icon name="clear" v-if="quickClear" class="right-icon" @click="clear">
         </y-icon>
         <input ref="input" :type="type" v-model="currentValue"
                @blur="handleBlur" @focus="handleFocus"
@@ -51,9 +51,9 @@ export default {
             type: String,
             default: ''
         },
-        rightIcon: {
-            type: String,
-            default: ''
+        quickClear: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -70,7 +70,7 @@ export default {
                 'y-input',
                 `y-input_${this.size}`,
                 { 'y-input_withLeftIcon': this.leftIcon },
-                { 'y-input_withRightIcon': this.rightIcon }
+                { 'y-input_withRightIcon': this.quickClear }
             ];
         }
     },
@@ -107,6 +107,10 @@ export default {
         },
         handleChange(e) {
             this.$emit('change', this.currentValue);
+        },
+        clear() {
+            this.currentValue = '';
+            this.handleChange();
         }
     }
 };
@@ -127,6 +131,21 @@ export default {
             &:focus {
                 outline: none;
                 border: 1px solid @greenLight;
+            }
+        }
+        .y-icon {
+            fill: @font;
+        }
+        .right-icon {
+            display: none;
+            cursor: pointer;
+            &:hover {
+                fill: @fontHighLight;
+            }
+        }
+        &:hover {
+            .right-icon {
+                display: inline-block;
             }
         }
     }

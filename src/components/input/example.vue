@@ -2,7 +2,7 @@
     <div class="y-input_example">
         <y-input size="max" />
         <y-input @blur="handler" @focus="handler" @change="handler" @input="handler" />
-        <y-input size="min" type="password" leftIcon="loading" rightIcon="loading" />
+        <y-input size="min" type="password" leftIcon="search" quickClear />
     </div>
 </template>
 

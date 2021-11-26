@@ -12,6 +12,7 @@
             :clazz="`y-select-pop ${cascadeMode ? 'y-select-pop-cascade' : 'y-select-pop-common'}`"
             :placement="placement">
             <div class="y-select-pop_search-bar" v-if="searchPlaceholder" @click.stop="() => {}">
+                <y-input size="min" class="y-select_input" leftIcon="search" quickClear @change="handleSearch" />
             </div>
             <div class="y-select-pop_tree"
                  @click.stop="() => {}">
@@ -52,6 +53,7 @@
 <script>
 import YButton from '@/components/button';
 import YPopper from '@/components/popper';
+import YInput from '@/components/input';
 import YCell from '@/components/cell';
 import YTree from '@/components/tree';
 import clone from 'clone';
@@ -61,6 +63,7 @@ export default {
     components: {
         YButton,
         YPopper,
+        YInput,
         YCell,
         YTree
     },
@@ -198,6 +201,9 @@ export default {
         }
     },
     methods: {
+        handleSearch(val) {
+            console.log(val);
+        },
         handleChange(val) {
             this.$set(this, 'tempValue', clone(val));
         },
@@ -239,6 +245,9 @@ export default {
         .y-select-pop_search-bar {
             height: 30px;
             margin-bottom: 10px;
+            .y-select_input {
+                width: 200px;
+            }
         }
         .y-select-pop_action-bar {
             height: 30px;
