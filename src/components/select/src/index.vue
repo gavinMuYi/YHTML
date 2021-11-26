@@ -16,6 +16,9 @@
             </div>
             <div class="y-select-pop_tree"
                  @click.stop="() => {}">
+                <div class="tree-loading" v-if="!options && loading">
+                    <y-icon name="loading" />
+                </div>
                 <y-tree
                     :key="highlight"
                     :fatherDisableStatue="fatherDisableStatue"
@@ -40,7 +43,8 @@
                     :track="track"
                     :selected="selected"
                     :fatherStatus="fatherStatus"
-                    @change="handleChange" />
+                    @change="handleChange"
+                    @loaded="handleLoaded" />
             </div>
             <div class="y-select-pop_action-bar" @click.stop="() => {}">
                 <div class="y-select-pop_btns">
@@ -58,6 +62,7 @@ import YPopper from '@/components/popper';
 import YInput from '@/components/input';
 import YCell from '@/components/cell';
 import YTree from '@/components/tree';
+import YIcon from '@/components/icon';
 import clone from 'clone';
 
 export default {
@@ -67,7 +72,8 @@ export default {
         YPopper,
         YInput,
         YCell,
-        YTree
+        YTree,
+        YIcon
     },
     props: {
         searchPlaceholder: {
@@ -194,13 +200,17 @@ export default {
         return {
             currentValue: clone(this.value),
             tempValue: clone(this.value),
-            highlight: ''
+            highlight: '',
+            loading: true,
         };
     },
     watch: {
         value(nval) {
             this.$set(this, 'tempValue', clone(nval));
             this.$set(this, 'currentValue', clone(nval));
+        },
+        highlight(nval) {
+            this.loading = true;
         }
     },
     methods: {
@@ -209,6 +219,9 @@ export default {
         },
         handleChange(val) {
             this.$set(this, 'tempValue', clone(val));
+        },
+        handleLoaded() {
+            this.loading = false;
         },
         confirm() {
             this.$set(this, 'currentValue', clone(this.tempValue));
@@ -244,6 +257,18 @@ export default {
         .y-select-pop_tree {
             border: 1px solid  @commonGray;
             font-size: 0px;
+            .tree-loading {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .y-icon {
+                    fill: @fontHighLight;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
         }
         .y-select-pop_search-bar {
             height: 30px;
