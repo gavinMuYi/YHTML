@@ -8,9 +8,8 @@
             <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px" :rowspan="true"
                             dragable sortable />
         </y-table>
-        <button @click="reverse = !reverse">reverse</button>
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1"
-                 basicIndex="key" :pageBatchSelect="true" :sortColumns="reverse ? sortColumns : sortColumnsReverse">
+                 basicIndex="key" :pageBatchSelect="true">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级' + c + c + c + c + str" columnKey="c" :rowspan="true"
                                 dragable>
@@ -59,11 +58,12 @@
                 </tr>
             </table>
         </div> -->
+        <button @click="reverse = !reverse">reverse</button>
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2"
                  :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['key', 'label']]"
                  :sortColumns="reverse ? sortColumns : sortColumnsReverse">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
-                <y-table-column :label="'headerddd-111-一级'" columnKey="key" :rowspan="true">
+                <y-table-column :label="'headerddd-111-一级'" columnKey="key" :rowspan="true" dimension>
                     <div slot-scope="props" slot="header">{{ 'headerddd-111-一级' + str }}</div>
                     <div slot-scope="props" slot="cell" @click="heightadd">
                         {{ props.label + '-' + props.key + str }}

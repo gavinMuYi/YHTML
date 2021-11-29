@@ -8,12 +8,16 @@
                         v-for="(column, index) in columnConfig" :key="column.key + index"
                         :highlight="highlight" :columnKey="column.key"
                         :width="column.width" :label="column.label"
-                        :fixed="column.fixed" />
+                        :fixed="column.fixed" :rowspan="column.rowspan"
+                        :dragable="column.dragable" :sortable="column.sortable"
+                        :extend="column.extend" :compare="column.compare"
+                        :align="column.align" :dimension="column.dimension" />
                 </slot>
                 <y-tree v-if="multiple && basicIndex" :options="tableList" :multiple="true" ref="treeManger"
                         :value="currentSelect" @change="handleMultiple" :maps="treeMangerMap" :key="treeRefresh" />
                 <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList"
+                              :dimensionAssemble="dimensionAssemble"
                               :currentSort="currentSort" :async="!Boolean(options)" :defaultSort="defaultSort" />
                 <y-table-standard :standardTable="standardTable" @rowHeightChange="rowHeightChange" />
             </div>
@@ -109,7 +113,7 @@
                                           :multiple="Boolean(multiple && basicIndex)" :stripe="stripe"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                           @select="handleSelect" :checkBoxStatus="checkBoxStatus"
-                                          :colspanKeys="colspanKeys"
+                                          :colspanKeys="colspanKeys" @dimensionExtend="dimensionExtend"
                                           :basicIndex="basicIndex" @allSelectToast="allSelectToast = true"
                                           :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')" />
                         </table>
@@ -137,6 +141,7 @@
                                               :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :multiple="Boolean(multiple && basicIndex)"
+                                              @dimensionExtend="dimensionExtend"
                                               :rows="rows" :maps="maps" @hover="handleHover"
                                               @hoverout="handleHoverout" :colspanKeys="colspanKeys" />
                             </table>
@@ -154,6 +159,7 @@
                                               :rowHeight="rowHeight.body" :stripe="stripe" :colspanKeys="colspanKeys"
                                               :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              @dimensionExtend="dimensionExtend"
                                               :multiple="Boolean(multiple && basicIndex)" :setRowClass="setRowClass"
                                               :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
                                               :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
@@ -176,6 +182,7 @@
                                               :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
                                               :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              @dimensionExtend="dimensionExtend"
                                               :rows="rows" :maps="maps" @hover="handleHover" :colspanKeys="colspanKeys"
                                               @hoverout="handleHoverout" :setRowClass="setRowClass" />
                             </table>
@@ -319,6 +326,12 @@ export default {
             default: (val) => {
                 return val;
             }
+        },
+        dimensionPriority: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     data() {
@@ -346,6 +359,7 @@ export default {
             total: 0,
             tableList: [],
             column: [],
+            dimensionAssemble: [],
             maps: {},
             currentSort: {
                 order: null,
@@ -409,7 +423,8 @@ export default {
                 });
             };
             recursion(filterCloumn);
-            return this.sortColumns(clone(filterCloumn));
+            this.sortColumns(filterCloumn);
+            return filterCloumn;
         },
         gapLineClass() {
             let className = [];
@@ -739,6 +754,48 @@ export default {
             this.index = val.index;
             this.count = val.count;
         },
+        dimensionExtend(data) {
+            let priority = this.dimensionPriority.filter(item => {
+                return item.indexOf(data.column.columnKey) > -1;
+            });
+            if (priority.length) {
+                let checkPriority = priority[0];
+                let lastIndex = checkPriority.indexOf(data.column.columnKey);
+                let containIndex = null;
+                this.dimensionAssemble.forEach((dimension, index) => {
+                    let checked = true;
+                    for (let i = 0; i <= lastIndex; i++) {
+                        if (dimension.data[checkPriority[i]] !== data.data[checkPriority[i]]) {
+                            checked = false;
+                        }
+                    }
+                    if (checked) {
+                        containIndex = index;
+                    }
+                });
+                if (containIndex !== null) {
+                    this.dimensionAssemble.splice(containIndex, 1);
+                } else {
+                    this.dimensionAssemble.push({
+                        ...data,
+                        priority: checkPriority
+                    });
+                }
+            } else {
+                let containIndex = null;
+                this.dimensionAssemble.forEach((dimension, index) => {
+                    if (dimension.data[dimension.column.columnKey] === data.data[data.column.columnKey]) {
+                        containIndex = index;
+                    }
+                });
+                if (containIndex !== null) {
+                    this.dimensionAssemble.splice(containIndex, 1);
+                } else {
+                    this.dimensionAssemble.push(data);
+                }
+            }
+            console.log(this.dimensionAssemble);
+        },
         columnSort({ order, key, compare, columnIndex }, name) {
             this.$set(this, 'currentSort', {
                 order, key, compare, columnIndex, name
@@ -760,7 +817,7 @@ export default {
                     }
                 });
             };
-            recursion(this.column, 1);
+            recursion(this._column, 1);
         },
         handleClick(rowData) {
             this.$emit('rowClick', rowData);

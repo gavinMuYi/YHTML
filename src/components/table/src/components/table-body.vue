@@ -121,6 +121,9 @@ export default {
         handleSelect(rowData) {
             this.$emit('select', rowData);
         },
+        dimensionExtend(data) {
+            this.$emit('dimensionExtend', data);
+        },
         allSelectToast() {
             this.$emit('allSelectToast');
         }
@@ -146,6 +149,7 @@ export default {
                     on-hoverout={($event) => { this.handleHoverOut($event) }}
                     on-rowClick={($event) => { this.handleClick($event) }}
                     on-allSelectToast={() => { this.allSelectToast() }}
+                    on-dimensionExtend={($event) => { this.dimensionExtend($event) }}
                     on-select={($event) => { this.handleSelect($event) }} />;
                 this.$refs.tr.push(trDom);
                 trs.push(trDom);

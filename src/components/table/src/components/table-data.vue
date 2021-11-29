@@ -45,6 +45,12 @@ export default {
             default: () => {
                 return {};
             }
+        },
+        dimensionAssemble: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     data() {

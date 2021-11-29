@@ -123,6 +123,11 @@ export default {
         },
         allSelectToast() {
             this.$emit('allSelectToast');
+        },
+        dimensionExtend(extend, data, column) {
+            this.$emit('dimensionExtend', {
+                extend, data, column
+            });
         }
     },
     render(h) {
@@ -137,7 +142,7 @@ export default {
             && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
             ? <span class="y-table-row_icon-box"><y-icon name={this.rowData.loading
                 ? 'loading'
-                : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
+                : `arrow-${this.rowData.extend ? 'up' : 'down'}`}
             class="y-table-row_icon" /></span>
             : '';
         this.actionTable && tds.push(
@@ -194,7 +199,7 @@ export default {
                             && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
                             ? <y-icon name={this.rowData.loading
                                 ? 'loading'
-                                : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
+                                : `arrow-${this.rowData.extend ? 'up' : 'down'}`}
                             class="y-table-row_icon" />
                             : '';
                         let rowspan = rowSpans[tindex];
@@ -230,6 +235,24 @@ export default {
                                     }
                                 }>
                                     { icon }
+                                    {
+                                        td.dimension && rowspan > 1
+                                            ? (
+                                                <y-icon name="arrow-minus" class="y-table-row_icon"
+                                                    on-click={() => {
+                                                        this.dimensionExtend(false, this.rowData, td);
+                                                    }} />
+                                            ) : ''
+                                    }
+                                    {
+                                        td.dimension && rowspan === 1 && this.rowData.dimensionCanExtend
+                                            ? (
+                                                <y-icon name="arrow-add" class="y-table-row_icon"
+                                                    on-click={() => {
+                                                        this.dimensionExtend(true, this.rowData, td);
+                                                    }} />
+                                            ) : ''
+                                    }
                                     <span class="y-table-cell_content">
                                         { td.render.call(this, h, this.rowData[td.columnKey], {
                                             ...this.rowData,
@@ -247,7 +270,7 @@ export default {
                             && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
                             ? <y-icon name={this.rowData.loading
                                 ? 'loading'
-                                : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
+                                : `arrow-${this.rowData.extend ? 'up' : 'down'}`}
                             class="y-table-row_icon" />
                             : '';
                         let rowspan = this.getRowspan(td);
@@ -263,6 +286,24 @@ export default {
                                     }
                                 }>
                                     { icon }
+                                    {
+                                        td.dimension && rowspan > 1
+                                            ? (
+                                                <y-icon name="arrow-minus" class="y-table-row_icon"
+                                                    on-click={() => {
+                                                        this.dimensionExtend(false, this.rowData, td);
+                                                    }} />
+                                            ) : ''
+                                    }
+                                    {
+                                        td.dimension && rowspan === 1 && this.rowData.dimensionCanExtend
+                                            ? (
+                                                <y-icon name="arrow-add" class="y-table-row_icon"
+                                                    on-click={() => {
+                                                        this.dimensionExtend(true, this.rowData, td);
+                                                    }} />
+                                            ) : ''
+                                    }
                                     <span class="y-table-cell_content">
                                         { td.render.call(this, h, this.rowData[td.columnKey], {
                                             ...this.rowData,

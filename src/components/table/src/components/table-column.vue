@@ -53,6 +53,10 @@ export default {
         align: {
             type: String,
             default: 'left'
+        },
+        dimension: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -94,6 +98,9 @@ export default {
             this.setParentColumn();
         },
         align() {
+            this.setParentColumn();
+        },
+        dimension() {
             this.setParentColumn();
         }
     },
@@ -142,7 +149,8 @@ export default {
                     sortable: this.sortable,
                     extend: this.extend,
                     compare: this.compare,
-                    align: this.align
+                    align: this.align,
+                    dimension: this.dimension
                 };
                 let that = this;
                 column.headRender = function (h, label, data) {
