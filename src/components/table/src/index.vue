@@ -313,6 +313,12 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        sortColumns: {
+            type: Function,
+            default: (val) => {
+                return val;
+            }
         }
     },
     data() {
@@ -403,7 +409,7 @@ export default {
                 });
             };
             recursion(filterCloumn);
-            return filterCloumn;
+            return this.sortColumns(clone(filterCloumn));
         },
         gapLineClass() {
             let className = [];

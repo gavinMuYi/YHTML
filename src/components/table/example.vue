@@ -8,8 +8,9 @@
             <y-table-column label="keyLabelL" columnKey="key" fixed="left" width="100px" :rowspan="true"
                             dragable sortable />
         </y-table>
+        <button @click="reverse = !reverse">reverse</button>
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList2" title="TABLE EXAMPLE 1"
-                 basicIndex="key" :pageBatchSelect="true">
+                 basicIndex="key" :pageBatchSelect="true" :sortColumns="reverse ? sortColumns : sortColumnsReverse">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级' + c + c + c + c + str" columnKey="c" :rowspan="true"
                                 dragable>
@@ -59,7 +60,8 @@
             </table>
         </div> -->
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableList" title="TABLE EXAMPLE 2"
-                 :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['key', 'label']]">
+                 :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['key', 'label']]"
+                 :sortColumns="reverse ? sortColumns : sortColumnsReverse">
             <y-table-column :label="'keyLabelLeft'" columnKey="key" fixed="left">
                 <y-table-column :label="'headerddd-111-一级'" columnKey="key" :rowspan="true">
                     <div slot-scope="props" slot="header">{{ 'headerddd-111-一级' + str }}</div>
@@ -108,6 +110,9 @@ export default {
     data() {
         let c = '7912837419823741283476123846123784637rey734tr6734tr63tregr7d34gr7fg734fg3yugf73g7gf3';
         return {
+            reverse: true,
+            sortColumns: val => { return val },
+            sortColumnsReverse: val => { return val.reverse() },
             lll: 100,
             leftheight: 100,
             rightheight: 200,
