@@ -332,6 +332,12 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        dimensionHandler: {
+            type: Function,
+            default: (val) => {
+                return val;
+            }
         }
     },
     data() {
@@ -738,6 +744,7 @@ export default {
             return this.options
                 ? (leaf, index, count, sortFunc, dimensionAssemble) => {
                     let ops = sortFunc ? sortFunc(this.options) : this.options;
+                    ops = this.dimensionHandler(ops);
                     return new Promise((resolve, reject) => {
                         resolve();
                     }).then(() => {
