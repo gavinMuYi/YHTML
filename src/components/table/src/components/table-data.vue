@@ -79,6 +79,13 @@ export default {
                     this.$set(this, 'tableList', clone(res.options));
                 });
             }
+        },
+        dimensionAssemble(nval, oval) {
+            this.lazyLoad(null, this.index, this.count, this.async ? this.currentSort : this.sortData, nval)
+                .then(res => {
+                    this.total = res.total || 0;
+                    this.$set(this, 'tableList', clone(res.options));
+                });
         }
     },
     mounted() {

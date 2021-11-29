@@ -736,7 +736,8 @@ export default {
         },
         initLoad() {
             return this.options
-                ? (leaf, index, count, sortFunc) => {
+                ? (leaf, index, count, sortFunc, dimensionAssemble) => {
+                    console.log('---', dimensionAssemble);
                     let ops = sortFunc ? sortFunc(this.options) : this.options;
                     return new Promise((resolve, reject) => {
                         resolve();
@@ -794,7 +795,6 @@ export default {
                     this.dimensionAssemble.push(data);
                 }
             }
-            console.log(this.dimensionAssemble);
         },
         columnSort({ order, key, compare, columnIndex }, name) {
             this.$set(this, 'currentSort', {
