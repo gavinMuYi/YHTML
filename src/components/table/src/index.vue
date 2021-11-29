@@ -737,7 +737,6 @@ export default {
         initLoad() {
             return this.options
                 ? (leaf, index, count, sortFunc, dimensionAssemble) => {
-                    console.log('---', dimensionAssemble);
                     let ops = sortFunc ? sortFunc(this.options) : this.options;
                     return new Promise((resolve, reject) => {
                         resolve();
