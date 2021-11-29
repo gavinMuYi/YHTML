@@ -22,6 +22,9 @@
                 <div class="tree-loading" v-if="!options && loading">
                     <y-icon name="loading" />
                 </div>
+                <div class="async-data-muti-tip" v-if="asyncSelectAll">
+                    异步数据全选暂不支持逐个取消
+                </div>
                 <y-tree
                     ref="tree"
                     :key="highlight"
@@ -216,6 +219,10 @@ export default {
         fatherStatus: {
             type: String,
             default: ''
+        },
+        asyncSelectMode: {
+            type: Boolean,
+            default: true
         }
     },
     data() {
@@ -297,7 +304,7 @@ export default {
             this.$refs.ySelectPop.closePop();
         },
         selectAll() {
-            if (this.options) {
+            if (this.options || !this.asyncSelectMode) {
                 let leaves = this.$refs.tree.$refs.leaf;
                 leaves && leaves.forEach(leaf => {
                     if (leaf.tracked !== 'all') {
@@ -372,6 +379,20 @@ export default {
         .y-tree_selectall {
             opacity: 0.5;
             pointer-events: none;
+            position: relative;
+            .async-data-muti-tip {
+                position: absolute;
+                top: 185px;
+                font-size: 12px;
+                display: inline-block;
+                z-index: 1;
+                background: @white;
+                color: @fontHighLight;
+                padding: 5px 20px;
+                border-radius: 5px;
+                left: 50%;
+                margin-left: -105px;
+            }
             .check-icon {
                 background: @fontHighLight;
                 .y-icon {

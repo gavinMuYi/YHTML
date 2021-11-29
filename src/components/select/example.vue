@@ -3,7 +3,8 @@
         <y-select
             :treeSize="[300, 400]" :multiple="true" cascadeMode="hover" quickSelectAll
             :options="options1" @confirm="handleValue" :value="singleValue" />
-        <y-select :lazyLoad="lazyLoad" @confirm="handleValue" :value="singleValue" multiple quickSelectAll />
+        <y-select :lazyLoad="lazyLoad" @confirm="handleValue" :value="singleValue" multiple quickSelectAll
+                  :asyncSelectMode="true" />
     </div>
 </template>
 

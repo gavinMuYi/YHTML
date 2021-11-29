@@ -735,6 +735,12 @@ export default {
             line-height: 16px;
             display: flex;
             padding-right: 15px;
+            .label-item {
+                width: 100%;
+                .y-cell {
+                    max-width: ~'calc(100% - 25px)';
+                }
+            }
             .no-arrow {
                 display: inline-block;
                 width: 14px;
