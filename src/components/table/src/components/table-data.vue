@@ -123,7 +123,8 @@ export default {
             if (item.hasChildren) {
                 this.updateData(item);
             }
-            this.$set(item, 'extend', !item.extend);
+            item && this.$set(item, 'extend', !item.extend);
+            this.$emit('updateTableList', this.tableList);
         }
     }
 };

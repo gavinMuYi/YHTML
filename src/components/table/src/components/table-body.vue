@@ -91,6 +91,16 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        transverseTreeTable: {
+            type: Boolean,
+            default: false
+        },
+        transverseTreeTableColumns: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     methods: {
@@ -133,7 +143,15 @@ export default {
                 let rowPosition = clone(position);
                 rowPosition.push(rindex);
                 let rowData = this.rows[this.maps[pre + '-' + rindex]];
+                let heightStyle = {};
+                if (this.transverseTreeTable && row.children && row.children.length && row.extend) {
+                    heightStyle.height = '0px';
+                    heightStyle.maxHeight = '0px';
+                    heightStyle.display = 'none';
+                }
                 let trDom = <y-table-row
+                    transverseTreeTable={this.transverseTreeTable}
+                    transverseTreeTableColumns={this.transverseTreeTableColumns}
                     setRowClass={this.setRowClass} colspanKeys={this.colspanKeys}
                     checkBoxStatus={this.basicIndex && checkBoxStatus[rowData[this.basicIndex]]
                         ? checkBoxStatus[rowData[this.basicIndex]].tracked : ''}
@@ -141,7 +159,10 @@ export default {
                     position={rowPosition} currentHoverRow={this.currentHoverRow}
                     rowData={rowData} columns={this.columns} allSelected={this.allSelected}
                     index={this.maps[pre + '-' + rindex]} actionTable={this.actionTable}
-                    tableList={this.rows} style={this.rowStyle(this.maps[pre + '-' + rindex])}
+                    tableList={this.rows} style={{
+                        ...this.rowStyle(this.maps[pre + '-' + rindex]),
+                        ...heightStyle
+                    }}
                     on-hover={($event) => { this.handleHover($event) }} name={this.name}
                     on-hoverout={($event) => { this.handleHoverOut($event) }}
                     on-rowClick={($event) => { this.handleClick($event) }}

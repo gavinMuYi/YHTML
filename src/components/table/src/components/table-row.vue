@@ -74,6 +74,16 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        transverseTreeTable: {
+            type: Boolean,
+            default: false
+        },
+        transverseTreeTableColumns: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     methods: {
@@ -197,6 +207,23 @@ export default {
                                 : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
                             class="y-table-row_icon" />
                             : '';
+                        if (this.transverseTreeTable) {
+                            let currentIndex = this.transverseTreeTableColumns.indexOf(td.columnKey);
+                            if (currentIndex > -1 && currentIndex === this.rowData.$y_table_level - 1
+                            && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))) {
+                                icon = <y-icon name={this.rowData.loading
+                                    ? 'loading'
+                                    : 'arrow-add'}
+                                class="y-table-row_icon" />;
+                            } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
+                                icon = <y-icon name={this.rowData.loading
+                                    ? 'loading'
+                                    : 'arrow-minus'}
+                                class="y-table-row_icon" />;
+                            } else {
+                                icon = '';
+                            }
+                        }
                         let rowspan = rowSpans[tindex];
                         let colspan = 1;
                         if (rowspan) {
@@ -250,6 +277,23 @@ export default {
                                 : `arrow-${this.rowData.extend ? 'minus' : 'add'}`}
                             class="y-table-row_icon" />
                             : '';
+                        if (this.transverseTreeTable) {
+                            let currentIndex = this.transverseTreeTableColumns.indexOf(td.columnKey);
+                            if (currentIndex > -1 && currentIndex === this.rowData.$y_table_level - 1
+                            && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))) {
+                                icon = <y-icon name={this.rowData.loading
+                                    ? 'loading'
+                                    : 'arrow-add'}
+                                class="y-table-row_icon" />;
+                            } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
+                                icon = <y-icon name={this.rowData.loading
+                                    ? 'loading'
+                                    : 'arrow-minus'}
+                                class="y-table-row_icon" />;
+                            } else {
+                                icon = '';
+                            }
+                        }
                         let rowspan = this.getRowspan(td);
                         rowspan && tds.push(
                             <td colspan={1} rowspan={rowspan}

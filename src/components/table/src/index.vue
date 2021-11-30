@@ -109,7 +109,8 @@
                                           :multiple="Boolean(multiple && basicIndex)" :stripe="stripe"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                           @select="handleSelect" :checkBoxStatus="checkBoxStatus"
-                                          :colspanKeys="colspanKeys"
+                                          :colspanKeys="colspanKeys" :transverseTreeTable="transverseTreeTable"
+                                          :transverseTreeTableColumns="transverseTreeTableColumns"
                                           :basicIndex="basicIndex" @allSelectToast="allSelectToast = true"
                                           :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')" />
                         </table>
@@ -137,6 +138,8 @@
                                               :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :multiple="Boolean(multiple && basicIndex)"
+                                              :transverseTreeTable="transverseTreeTable"
+                                              :transverseTreeTableColumns="transverseTreeTableColumns"
                                               :rows="rows" :maps="maps" @hover="handleHover"
                                               @hoverout="handleHoverout" :colspanKeys="colspanKeys" />
                             </table>
@@ -151,6 +154,8 @@
                                                 :currentSort="currentSort" name="center" :defaultSort="defaultSort"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
                                 <y-table-body :columns="rowColumn.rowColumn" ref="centerBody"
+                                              :transverseTreeTable="transverseTreeTable"
+                                              :transverseTreeTableColumns="transverseTreeTableColumns"
                                               :rowHeight="rowHeight.body" :stripe="stripe" :colspanKeys="colspanKeys"
                                               :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
@@ -176,6 +181,8 @@
                                               :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
                                               :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              :transverseTreeTable="transverseTreeTable"
+                                              :transverseTreeTableColumns="transverseTreeTableColumns"
                                               :rows="rows" :maps="maps" @hover="handleHover" :colspanKeys="colspanKeys"
                                               @hoverout="handleHoverout" :setRowClass="setRowClass" />
                             </table>
@@ -1018,23 +1025,25 @@ export default {
                 this.$set(this[DomKey + 'Table'], 'headerMax', headerRowHeight.length - 1);
             };
             return () => {
-                let reset = false;
-                this.tables.forEach(DomKey => {
-                    let answer = !getHeight(DomKey);
-                    reset = reset || answer;
-                });
-                if (reset) {
-                    this.resetTableHeader();
-                    this.$nextTick(() => {
-                        this.tables.forEach(DomKey => {
-                            resizeFn(DomKey);
-                        });
-                        this.setStandardTable();
-                        setTimeout(() => {
-                            this.fixedBodyTop = this.$refs.headerFixedBox.offsetHeight;
-                        });
+                setTimeout(() => {
+                    let reset = false;
+                    this.tables.forEach(DomKey => {
+                        let answer = !getHeight(DomKey);
+                        reset = reset || answer;
                     });
-                }
+                    if (reset) {
+                        this.resetTableHeader();
+                        this.$nextTick(() => {
+                            this.tables.forEach(DomKey => {
+                                resizeFn(DomKey);
+                            });
+                            this.setStandardTable();
+                            setTimeout(() => {
+                                this.fixedBodyTop = this.$refs.headerFixedBox.offsetHeight;
+                            });
+                        });
+                    }
+                });
             };
         },
         handleResize() {
@@ -1077,24 +1086,26 @@ export default {
                 this.centerGap = centerTable.offsetWidth - content.offsetWidth;
             };
             return (reSizing) => {
-                let reset = false;
-                this.tables.forEach(DomKey => {
-                    reset = reset || !getHeight(DomKey);
-                });
-                getGap();
-                if (reset || reSizing) {
-                    this.resetTableStyle();
-                    this.$nextTick(() => {
-                        this.tables.forEach(DomKey => {
-                            resizeFn(DomKey);
-                        });
-                        this.setStandardTable();
-                        setTimeout(() => {
-                            this.tableMainHeight = this.$refs.tableMain.offsetHeight;
-                            !this.headerFix && (this.headerTop = this.$refs.centerHeader.$el.offsetHeight);
-                        });
+                setTimeout(() => {
+                    let reset = false;
+                    this.tables.forEach(DomKey => {
+                        reset = reset || !getHeight(DomKey);
                     });
-                }
+                    getGap();
+                    if (reset || reSizing) {
+                        this.resetTableStyle();
+                        this.$nextTick(() => {
+                            this.tables.forEach(DomKey => {
+                                resizeFn(DomKey);
+                            });
+                            this.setStandardTable();
+                            setTimeout(() => {
+                                this.tableMainHeight = this.$refs.tableMain.offsetHeight;
+                                !this.headerFix && (this.headerTop = this.$refs.centerHeader.$el.offsetHeight);
+                            });
+                        });
+                    }
+                });
             };
         }
     }

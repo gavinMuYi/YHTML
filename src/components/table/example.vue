@@ -92,12 +92,21 @@
             <y-table-column label="keyLabelCenter" columnKey="key" width="550px" dragable/>
         </y-table>
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableListArea" title="TABLE EXAMPLE 3"
-                 :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['area', 'p', 'r']]">
-            <y-table-column label="区域" columnKey="area" dragable fixed="left" />
-            <y-table-column label="省" columnKey="p" dragable fixed="left" />
-            <y-table-column label="区" columnKey="r" dragable fixed="left" />
+                 :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['area', 'p', 'r']]"
+                 transverseTreeTable :transverseTreeTableColumns="['area', 'p', 'r']" >
+            <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
+            <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />
+            <y-table-column label="区" columnKey="r" dragable fixed="left" rowspan />
             <y-table-column label="利润" columnKey="m" dragable/>
-            <y-table-column label="销售额" columnKey="all" dragable/>
+            <y-table-column label="销售额" columnKey="all" dragable />
+        </y-table>
+        <y-table :multiple="true" :contentMaxHeight="250" :options="tableListArea" title="TABLE EXAMPLE 4"
+                 :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['area', 'p', 'r']]" >
+            <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
+            <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />
+            <y-table-column label="区" columnKey="r" dragable fixed="left" rowspan />
+            <y-table-column label="利润" columnKey="m" dragable/>
+            <y-table-column label="销售额" columnKey="all" dragable />
         </y-table>
     </div>
 </template>
@@ -157,6 +166,12 @@ export default {
                         area: '东北',
                         p: '辽宁',
                         r: 'A区',
+                        m: 3241,
+                        all: 51521,
+                    }, {
+                        area: '东北',
+                        p: '辽宁',
+                        r: 'B区',
                         m: 3241,
                         all: 51521,
                     }, {
@@ -234,8 +249,8 @@ export default {
                         key: 'wasdffe',
                         label: 'sgdafgfddaf'
                     }, {
-                        key: 'was3333dffe',
-                        label: 'sg4444dafgfddaf'
+                        key: 'wasdffe',
+                        label: 'sgdafgfddaf'
                     }]
                 }, {
                     key: 'wesad3123f',
