@@ -1,4 +1,5 @@
 <script>
+import clone from 'clone';
 import YCheckbox from '@/components/checkbox';
 import YIcon from '@/components/icon';
 
@@ -125,6 +126,18 @@ export default {
                 $y_table_position: this.position
             });
         },
+        handleOpen() {
+            this.$emit('rowOpen', {
+                $y_table_position: this.position
+            });
+        },
+        handleClose(index) {
+            let fatherPosition = clone(this.position);
+            fatherPosition.length = index + 1;
+            this.$emit('rowOpen', {
+                $y_table_position: fatherPosition
+            });
+        },
         handleSelect() {
             this.$emit('select', {
                 ...this.rowData,
@@ -214,12 +227,14 @@ export default {
                                 icon = <y-icon name={this.rowData.loading
                                     ? 'loading'
                                     : 'arrow-add'}
-                                class="y-table-row_icon" />;
+                                class="y-table-row_icon"
+                                on-click={() => { this.handleOpen() }} />;
                             } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
                                 icon = <y-icon name={this.rowData.loading
                                     ? 'loading'
                                     : 'arrow-minus'}
-                                class="y-table-row_icon" />;
+                                class="y-table-row_icon"
+                                on-click={() => { this.handleClose(currentIndex) }} />;
                             } else {
                                 icon = '';
                             }
@@ -284,7 +299,9 @@ export default {
                                 icon = <y-icon name={this.rowData.loading
                                     ? 'loading'
                                     : 'arrow-add'}
-                                class="y-table-row_icon" />;
+                                class="y-table-row_icon"
+                                on-click={() => { this.handleOpen() }}
+                                on-click={() => { this.handleClose(currentIndex) }} />;
                             } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
                                 icon = <y-icon name={this.rowData.loading
                                     ? 'loading'
@@ -324,9 +341,9 @@ export default {
             <tr class={['y-table-row', this.currentHoverRow === this.index
                 && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))
                 ? hoverClassName : '', this.setRowClass ? this.setRowClass(this.rowData, this.index) : '']}
-            on-mouseenter={() => { this.handleHover(this.index) }}
-            on-mouseleave={() => { this.handleHoverOut(this.index) }}
-            on-click={() => { this.handleClick() }}>
+            on-mouseenter={() => { if (!this.transverseTreeTable) this.handleHover(this.index); }}
+            on-mouseleave={() => { if (!this.transverseTreeTable) this.handleHoverOut(this.index); }}
+            on-click={() => { if (!this.transverseTreeTable) this.handleClick(); }}>
                 { tds }
             </tr>
         );

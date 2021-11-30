@@ -109,6 +109,7 @@
                                           @hover="handleHover" @hoverout="handleHoverout" :setRowClass="setRowClass"
                                           :multiple="Boolean(multiple && basicIndex)" :stripe="stripe"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                          @rowOpen="handleRowOpen"
                                           @select="handleSelect" :checkBoxStatus="checkBoxStatus"
                                           :colspanKeys="colspanKeys" :transverseTreeTable="transverseTreeTable"
                                           :transverseTreeTableColumns="transverseTreeTableColumns"
@@ -138,6 +139,7 @@
                                               :rowHeight="rowHeight.body" :stripe="stripe" :setRowClass="setRowClass"
                                               :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              @rowOpen="handleRowOpen"
                                               :multiple="Boolean(multiple && basicIndex)"
                                               :transverseTreeTable="transverseTreeTable"
                                               :transverseTreeTableColumns="transverseTreeTableColumns"
@@ -161,6 +163,7 @@
                                               :rowHeight="rowHeight.body" :stripe="stripe" :colspanKeys="colspanKeys"
                                               :selfRowHeight="centerTable.body" :tableList="tableList" name="center"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              @rowOpen="handleRowOpen"
                                               :multiple="Boolean(multiple && basicIndex)" :setRowClass="setRowClass"
                                               :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
                                               :transverseHeightMaps="transverseHeightMaps"
@@ -184,6 +187,7 @@
                                               :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
                                               :selfRowHeight="rightTable.body" :tableList="tableList" name="right"
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
+                                              @rowOpen="handleRowOpen"
                                               :transverseTreeTable="transverseTreeTable"
                                               :transverseTreeTableColumns="transverseTreeTableColumns"
                                               :rows="rows" :maps="maps" @hover="handleHover" :colspanKeys="colspanKeys"
@@ -793,6 +797,9 @@ export default {
             if (rowData.hasChildren || (rowData.children && rowData.children.length)) {
                 this.$refs.dataTable.extendChange(rowData.$y_table_position);
             }
+        },
+        handleRowOpen(rowData) {
+            this.$refs.dataTable.extendChange(rowData.$y_table_position);
         },
         handleMultiple(val) {
             this.$set(this, 'currentSelect', val);
