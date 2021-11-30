@@ -105,6 +105,7 @@
                                             @allSelectToast="allSelectToast = true" />
                             <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                           :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
+                                          :transverseHeightMaps="transverseHeightMaps"
                                           @hover="handleHover" @hoverout="handleHoverout" :setRowClass="setRowClass"
                                           :multiple="Boolean(multiple && basicIndex)" :stripe="stripe"
                                           :currentHoverRow="currentHoverRow" @rowClick="handleClick"
@@ -141,6 +142,7 @@
                                               :transverseTreeTable="transverseTreeTable"
                                               :transverseTreeTableColumns="transverseTreeTableColumns"
                                               :rows="rows" :maps="maps" @hover="handleHover"
+                                              :transverseHeightMaps="transverseHeightMaps"
                                               @hoverout="handleHoverout" :colspanKeys="colspanKeys" />
                             </table>
                         </div>
@@ -161,6 +163,7 @@
                                               :currentHoverRow="currentHoverRow" @rowClick="handleClick"
                                               :multiple="Boolean(multiple && basicIndex)" :setRowClass="setRowClass"
                                               :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
+                                              :transverseHeightMaps="transverseHeightMaps"
                                               :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
                             </table>
                         </div>
@@ -184,6 +187,7 @@
                                               :transverseTreeTable="transverseTreeTable"
                                               :transverseTreeTableColumns="transverseTreeTableColumns"
                                               :rows="rows" :maps="maps" @hover="handleHover" :colspanKeys="colspanKeys"
+                                              :transverseHeightMaps="transverseHeightMaps"
                                               @hoverout="handleHoverout" :setRowClass="setRowClass" />
                             </table>
                         </div>
@@ -359,6 +363,7 @@ export default {
             tableList: [],
             column: [],
             maps: {},
+            transverseHeightMaps: {},
             currentSort: {
                 order: null,
                 key: null,
@@ -647,11 +652,20 @@ export default {
         },
         rows() {
             this.maps = {};
+            this.transverseHeightMaps = {};
             let rows = [];
             let index = -1;
+            let transverseIndex = -1;
             this.maxExtendLevel = 0;
             let flat = (arr, level, pre) => {
                 arr.forEach((row, rindex) => {
+                    if (this.transverseTreeTable) {
+                        if (!(row.children && row.children.length && row.extend)) {
+                            this.transverseHeightMaps[pre + '-' + rindex] = ++transverseIndex;
+                        } else {
+                            this.transverseHeightMaps[pre + '-' + rindex] = transverseIndex;
+                        }
+                    }
                     this.maps[pre + '-' + rindex] = ++index;
                     rows.push({
                         ...row,
