@@ -91,6 +91,14 @@
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="550px" dragable/>
         </y-table>
+        <y-table :multiple="true" :contentMaxHeight="250" :options="tableListArea" title="TABLE EXAMPLE 3"
+                 :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['area', 'p', 'r']]">
+            <y-table-column label="区域" columnKey="area" dragable fixed="left" />
+            <y-table-column label="省" columnKey="p" dragable fixed="left" />
+            <y-table-column label="区" columnKey="r" dragable fixed="left" />
+            <y-table-column label="利润" columnKey="m" dragable/>
+            <y-table-column label="销售额" columnKey="all" dragable/>
+        </y-table>
     </div>
 </template>
 
@@ -114,6 +122,71 @@ export default {
             left: 0,
             str: '',
             c: c,
+            tableListArea: [{
+                area: '东北',
+                p: '东北',
+                r: '东北',
+                m: 3241,
+                all: 51521,
+                children: [{
+                    area: '东北',
+                    p: '吉林',
+                    r: '吉林',
+                    m: 3241,
+                    all: 51521,
+                    children: [{
+                        area: '东北',
+                        p: '吉林',
+                        r: 'A区',
+                        m: 3241,
+                        all: 51521,
+                    }, {
+                        area: '东北',
+                        p: '吉林',
+                        r: 'B区',
+                        m: 3241,
+                        all: 51521,
+                    }]
+                }, {
+                    area: '东北',
+                    p: '辽宁',
+                    r: '辽宁',
+                    m: 3241,
+                    all: 51521,
+                    children: [{
+                        area: '东北',
+                        p: '辽宁',
+                        r: 'A区',
+                        m: 3241,
+                        all: 51521,
+                    }, {
+                        area: '东北',
+                        p: '辽宁',
+                        r: 'B区',
+                        m: 3241,
+                        all: 51521,
+                    }]
+                }, {
+                    area: '东北',
+                    p: '黑龙江',
+                    r: '黑龙江',
+                    m: 3241,
+                    all: 51521,
+                    children: [{
+                        area: '东北',
+                        p: '黑龙江',
+                        r: 'A区',
+                        m: 3241,
+                        all: 51521,
+                    }, {
+                        area: '东北',
+                        p: '黑龙江',
+                        r: 'B区',
+                        m: 3241,
+                        all: 51521,
+                    }]
+                }]
+            }],
             tableList3: [{
                 label: 'sd2',
                 key: 'as3d1',

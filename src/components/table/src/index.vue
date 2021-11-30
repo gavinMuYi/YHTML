@@ -43,7 +43,7 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
                     </table>
                 </div>
-                <div class="y-table-center">
+                <div class="y-table-center" :style="{height: centerFixHeaderHeight + 'px'}">
                     <table class="header-fix" ref="centerFixHeader"
                            :style="{position: 'absolute',left: -scrollLeft + 'px'}">
                         <y-table-colgroup :colgroup="rowColumn.rowColumn" />
@@ -313,7 +313,18 @@ export default {
             default: () => {
                 return [];
             }
+        },
+        transverseTreeTable: {
+            type: Boolean,
+            default: false
+        },
+        transverseTreeTableColumns: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
+
     },
     data() {
         return {
