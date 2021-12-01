@@ -94,21 +94,40 @@ export default {
             let data = this.tableList;
             if (column.rowspan) {
                 let key = column.columnKey;
-                if (data[index - 1] && data[index][key] === data[index - 1][key]
-                    && (!data[index].children || !data[index].children.length)
-                    && (!data[index - 1].children || !data[index - 1].children.length)
-                    && !data[index].hasChildren && !data[index - 1].hasChildren) {
-                    rowspan = 0;
-                }
-                else {
-                    let i = index + 1;
-                    rowspan = 1;
-                    while (data[i] && data[i][key] === data[i - 1][key]
-                        && (!data[i].children || !data[i].children.length)
-                        && (!data[i - 1].children || !data[i - 1].children.length)
-                        && !data[i].hasChildren && !data[i - 1].hasChildren) {
-                        rowspan++;
-                        i++;
+                if (this.transverseTreeTable && key === this.transverseTreeTableColumns[0]) {
+                    let minus = index;
+                    while (data[minus - 1] && data[index][key] === data[minus - 1][key] && rowspan) {
+                        if (!data[minus - 1].extend) {
+                            rowspan = 0;
+                        }
+                        minus--;
+                    }
+                    if (rowspan && !data[index].extend) {
+                        let add = index;
+                        while (data[add + 1] && data[add][key] === data[add + 1][key]) {
+                            if (!data[add + 1].extend) {
+                                rowspan++;
+                            }
+                            add++;
+                        }
+                    }
+                } else {
+                    if (data[index - 1] && data[index][key] === data[index - 1][key]
+                        && (!data[index].children || !data[index].children.length)
+                        && (!data[index - 1].children || !data[index - 1].children.length)
+                        && !data[index].hasChildren && !data[index - 1].hasChildren) {
+                        rowspan = 0;
+                    }
+                    else {
+                        let i = index + 1;
+                        rowspan = 1;
+                        while (data[i] && data[i][key] === data[i - 1][key]
+                            && (!data[i].children || !data[i].children.length)
+                            && (!data[i - 1].children || !data[i - 1].children.length)
+                            && !data[i].hasChildren && !data[i - 1].hasChildren) {
+                            rowspan++;
+                            i++;
+                        }
                     }
                 }
             }

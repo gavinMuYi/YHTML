@@ -91,8 +91,8 @@
             </y-table-column>
             <y-table-column label="keyLabelCenter" columnKey="key" width="550px" dragable/>
         </y-table>
-        <y-table :multiple="true" :contentMaxHeight="250" :options="tableListArea" title="TABLE EXAMPLE 3"
-                 :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['area', 'p', 'r']]"
+        <y-table :multiple="true" :options="tableListArea" title="TABLE EXAMPLE 3"
+                 :stripe="true" :colspanKeys="[['area', 'p', 'r']]"
                  transverseTreeTable :transverseTreeTableColumns="['area', 'p', 'r']" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
             <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />
