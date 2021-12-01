@@ -105,7 +105,7 @@
                  transverseTreeTable :transverseTreeTableColumns="['area', 'p', 'r']" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
             <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />
-            <y-table-column label="区" columnKey="r" dragable fixed="left" rowspan />
+            <y-table-column label="区" columnKey="r" dragable fixed="left" />
             <y-table-column label="利润" columnKey="m" dragable/>
             <y-table-column label="销售额" columnKey="all" dragable />
         </y-table>
@@ -113,7 +113,7 @@
                  :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['area', 'p', 'r']]" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
             <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />
-            <y-table-column label="区" columnKey="r" dragable fixed="left" rowspan />
+            <y-table-column label="区" columnKey="r" dragable fixed="left" />
             <y-table-column label="利润" columnKey="m" dragable/>
             <y-table-column label="销售额" columnKey="all" dragable />
         </y-table>
@@ -186,7 +186,7 @@ export default {
                     }, {
                         area: '东北',
                         p: '辽宁',
-                        r: 'B区',
+                        r: 'C区',
                         m: 3247581,
                         all: 5152357571,
                     }]
