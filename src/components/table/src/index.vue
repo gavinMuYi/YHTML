@@ -147,7 +147,9 @@
                                               :transverseTreeTableColumns="transverseTreeTableColumns"
                                               :rows="rows" :maps="maps" @hover="handleHover"
                                               :transverseHeightMaps="transverseHeightMaps"
-                                              @hoverout="handleHoverout" :colspanKeys="colspanKeys" />
+                                              @hoverout="handleHoverout" :colspanKeys="colspanKeys"
+                                              :allSelected="Boolean(currentSelect.length
+                                              && currentSelect[0] === 'all')" />
                             </table>
                         </div>
                         <div class="y-table-center" ref="centerTableContent" key="center">
@@ -170,7 +172,9 @@
                                               :multiple="Boolean(multiple && basicIndex)" :setRowClass="setRowClass"
                                               :rows="rows" :maps="maps" @hover="handleHover" @hoverout="handleHoverout"
                                               :transverseHeightMaps="transverseHeightMaps"
-                                              :widthLeft="Boolean(rowColumn.rowColumnLeft.length)" />
+                                              :widthLeft="Boolean(rowColumn.rowColumnLeft.length)"
+                                              :allSelected="Boolean(currentSelect.length
+                                              && currentSelect[0] === 'all')" />
                             </table>
                         </div>
                         <div class="y-table-right"
@@ -196,7 +200,9 @@
                                               :transverseTreeTableColumns="transverseTreeTableColumns"
                                               :rows="rows" :maps="maps" @hover="handleHover" :colspanKeys="colspanKeys"
                                               :transverseHeightMaps="transverseHeightMaps"
-                                              @hoverout="handleHoverout" :setRowClass="setRowClass" />
+                                              @hoverout="handleHoverout" :setRowClass="setRowClass"
+                                              :allSelected="Boolean(currentSelect.length
+                                              && currentSelect[0] === 'all')" />
                             </table>
                         </div>
                     </div>

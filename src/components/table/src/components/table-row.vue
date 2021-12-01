@@ -218,13 +218,18 @@ export default {
                 status = this.allSelected ? 'all' : this.checkBoxStatus;
             }
             if (currentIndex < this.rowData.$y_table_level - 1) {
-                let cloneTTTCs = clone(this.transverseTreeTableColumns);
-                cloneTTTCs.length = currentIndex + 1;
-                let target = clone(this.allCheckBoxStatus);
-                cloneTTTCs.forEach(key => {
-                    target = target[this.rowData[key]] ? target[this.rowData[key]] : target.children[this.rowData[key]];
-                });
-                status = this.allSelected ? 'all' : target.tracked;
+                if (!Object.keys(this.allCheckBoxStatus).length) {
+                    status = this.allSelected ? 'all' : 'empty';
+                } else {
+                    let cloneTTTCs = clone(this.transverseTreeTableColumns);
+                    cloneTTTCs.length = currentIndex + 1;
+                    let target = clone(this.allCheckBoxStatus);
+                    cloneTTTCs.forEach(key => {
+                        target = target[this.rowData[key]]
+                            ? target[this.rowData[key]] : target.children[this.rowData[key]];
+                    });
+                    status = this.allSelected ? 'all' : target.tracked;
+                }
             }
             return (<span class={ [
                 'y-table_checkbox_transverse',
