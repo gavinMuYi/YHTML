@@ -104,6 +104,7 @@ export default {
                     this.$set(leaf, 'children', clone(res || []));
                     delete leaf.loading;
                     delete leaf.hasChildren;
+                    this.$set(leaf, 'extend', !leaf.extend);
                 }).catch(e => {
                     delete leaf.loading;
                 });
@@ -122,8 +123,9 @@ export default {
             });
             if (item.hasChildren) {
                 this.updateData(item);
+            } else {
+                item && this.$set(item, 'extend', !item.extend);
             }
-            item && this.$set(item, 'extend', !item.extend);
             this.$emit('updateTableList', this.tableList);
         }
     }
