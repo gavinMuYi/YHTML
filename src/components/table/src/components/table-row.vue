@@ -283,7 +283,8 @@ export default {
                                 class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
                                 <div class={['y-table-cell', `y-table-cell_${td.align}`]} style={
                                     {
-                                        marginLeft: !this.multiple && !tindex && (this.name === 'left'
+                                        marginLeft: !this.transverseTreeTable
+                                        && !this.multiple && !tindex && (this.name === 'left'
                                         || (this.name === 'center' && !this.widthLeft))
                                             ? 20 * (this.rowData.$y_table_level - 1) + 'px'
                                             : 0
@@ -334,7 +335,8 @@ export default {
                                 class={[td.fixed ? `y-table-cell_fixed-${td.fixed}` : '']}>
                                 <div class={['y-table-cell', `y-table-cell_${td.align}`]} style={
                                     {
-                                        marginLeft: !this.multiple && !tindex && (this.name === 'left'
+                                        marginLeft: !this.transverseTreeTable
+                                        && !this.multiple && !tindex && (this.name === 'left'
                                         || (this.name === 'center' && !this.widthLeft))
                                             ? 20 * (this.rowData.$y_table_level - 1) + 'px'
                                             : 0
