@@ -100,6 +100,15 @@
             <y-table-column label="利润" columnKey="m" dragable/>
             <y-table-column label="销售额" columnKey="all" dragable />
         </y-table>
+        <y-table :multiple="true" :lazyLoad="lazyLoadArea" title="TABLE EXAMPLE 3 LAZY"
+                 :stripe="true" :colspanKeys="[['area', 'p', 'r']]"
+                 transverseTreeTable :transverseTreeTableColumns="['area', 'p', 'r']" >
+            <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
+            <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />
+            <y-table-column label="区" columnKey="r" dragable fixed="left" rowspan />
+            <y-table-column label="利润" columnKey="m" dragable/>
+            <y-table-column label="销售额" columnKey="all" dragable />
+        </y-table>
         <y-table :multiple="true" :contentMaxHeight="250" :options="tableListArea" title="TABLE EXAMPLE 4"
                  :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['area', 'p', 'r']]" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
@@ -135,70 +144,70 @@ export default {
                 area: '东北',
                 p: '东北',
                 r: '东北',
-                m: 3241,
-                all: 51521,
+                m: 321241,
+                all: 51524131,
                 children: [{
                     area: '东北',
                     p: '吉林',
                     r: '吉林',
-                    m: 3241,
-                    all: 51521,
+                    m: 3285741,
+                    all: 5153521,
                     children: [{
                         area: '东北',
                         p: '吉林',
                         r: 'A区',
-                        m: 3241,
-                        all: 51521,
+                        m: 324197858,
+                        all: 515216875,
                     }, {
                         area: '东北',
                         p: '吉林',
                         r: 'B区',
-                        m: 3241,
-                        all: 51521,
+                        m: 32418758,
+                        all: 56471521,
                     }]
                 }, {
                     area: '东北',
                     p: '辽宁',
                     r: '辽宁',
-                    m: 3241,
-                    all: 51521,
+                    m: 3248751,
+                    all: 5157521,
                     children: [{
                         area: '东北',
                         p: '辽宁',
                         r: 'A区',
-                        m: 3241,
-                        all: 51521,
+                        m: 3287541,
+                        all: 5155821,
                     }, {
                         area: '东北',
                         p: '辽宁',
                         r: 'B区',
-                        m: 3241,
-                        all: 51521,
+                        m: 3282541,
+                        all: 5581521,
                     }, {
                         area: '东北',
                         p: '辽宁',
                         r: 'B区',
-                        m: 3241,
-                        all: 51521,
+                        m: 3247581,
+                        all: 5152357571,
                     }]
                 }, {
                     area: '东北',
                     p: '黑龙江',
                     r: '黑龙江',
-                    m: 3241,
-                    all: 51521,
+                    m: 3246531,
+                    all: 51528467801,
                     children: [{
                         area: '东北',
                         p: '黑龙江',
                         r: 'A区',
-                        m: 3241,
-                        all: 51521,
+                        m: 32789041,
+                        all: 515068021,
                     }, {
                         area: '东北',
                         p: '黑龙江',
                         r: 'B区',
-                        m: 3241,
-                        all: 51521,
+                        m: 324542131,
+                        all: 5106547635521,
                     }]
                 }]
             }],
@@ -374,6 +383,52 @@ export default {
         righth() {
             this.leftheight = 200;
             this.rightheight = 100;
+        },
+        lazyLoadArea(leaf, index, count, sort) {
+            let getItem = (arr, item) => {
+                let answer = null;
+                arr.forEach(i => {
+                    if (i.all === item.all) {
+                        answer = i.children.map(k => {
+                            let { children, ...les } = k;
+                            if (children) {
+                                les.hasChildren = true;
+                            }
+                            return les;
+                        });
+                    } else {
+                        if (i.children) {
+                            !answer && (answer = getItem(i.children, item, answer));
+                        }
+                    }
+                });
+                return answer;
+            };
+            if (leaf) {
+                let answer = getItem(this.tableListArea, leaf);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve();
+                    }, 1000);
+                }).then(() => {
+                    return answer;
+                });
+            } else {
+                return new Promise((resolve, reject) => {
+                    resolve();
+                }).then(() => {
+                    return {
+                        options: this.tableListArea.map(item => {
+                            let { children, ...les } = item;
+                            if (children) {
+                                les.hasChildren = true;
+                            }
+                            return les;
+                        }),
+                        total: 1
+                    };
+                });
+            }
         },
         lazyLoad(leaf, index, count, sort) {
             if (leaf) {
