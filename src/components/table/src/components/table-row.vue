@@ -66,6 +66,12 @@ export default {
             type: String,
             default: ''
         },
+        allCheckBoxStatus: {
+            type: Object,
+            default: () => {
+                return {};
+            }
+        },
         setRowClass: {
             type: Function,
             default: null
@@ -207,15 +213,30 @@ export default {
                 </div>
             </td>
         );
-        let transverseCheckbox = (<span class={ [
-            'y-table_checkbox_transverse',
-            this.allSelected ? 'allselect-disable' : ''
-        ] }
-        on-click={($event) => { $event.stopPropagation(); this.allSelectToast() }} >
-            <span on-click={($event) => { $event.stopPropagation(); this.handleTransSelect() }}>
-                <y-checkbox status={ this.allSelected ? 'all' : this.checkBoxStatus }/>
-            </span>
-        </span>);
+        let transverseCheckbox = (currentIndex) => {
+            let status = 'empty';
+            if (currentIndex === this.rowData.$y_table_level - 1) {
+                status = this.allSelected ? 'all' : this.checkBoxStatus;
+            }
+            if (currentIndex < this.rowData.$y_table_level - 1) {
+                let cloneTTTCs = clone(this.transverseTreeTableColumns);
+                cloneTTTCs.length = currentIndex + 1;
+                let target = clone(this.allCheckBoxStatus);
+                cloneTTTCs.forEach(key => {
+                    target = target[this.rowData[key]] ? target[this.rowData[key]] : target.children[this.rowData[key]];
+                });
+                status = this.allSelected ? 'all' : target.tracked;
+            }
+            return (<span class={ [
+                'y-table_checkbox_transverse',
+                this.allSelected ? 'allselect-disable' : ''
+            ] }
+            on-click={($event) => { $event.stopPropagation(); this.allSelectToast() }} >
+                <span on-click={($event) => { $event.stopPropagation(); this.handleTransSelect() }}>
+                    <y-checkbox status={ status }/>
+                </span>
+            </span>);
+        };
         if (!this.actionTable) {
             if (rowSlot) {
                 tds.push(<td colspan={this.columns.length}>
@@ -265,7 +286,7 @@ export default {
                                             : 'arrow-add'}
                                         class="y-table-row_icon"
                                         on-click={() => { this.handleOpen() }} />
-                                        { this.multiple ? transverseCheckbox : ''}
+                                        { this.multiple ? transverseCheckbox(currentIndex) : ''}
                                     </span>
                                 );
                             } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
@@ -275,7 +296,7 @@ export default {
                                             name="arrow-minus"
                                             class="y-table-row_icon"
                                             on-click={() => { this.handleClose(currentIndex) }} />
-                                        { this.multiple ? transverseCheckbox : ''}
+                                        { this.multiple ? transverseCheckbox(currentIndex) : ''}
                                     </span>
                                 );
                             } else if (currentIndex > -1 && currentIndex === this.rowData.$y_table_level - 1
@@ -284,7 +305,7 @@ export default {
                                 || (this.rowData.children && this.rowData.children.length))) {
                                 icon = (
                                     <span>
-                                        { this.multiple ? transverseCheckbox : ''}
+                                        { this.multiple ? transverseCheckbox(currentIndex) : ''}
                                     </span>
                                 );
                             } else {
@@ -357,7 +378,7 @@ export default {
                                         class="y-table-row_icon"
                                         on-click={() => { this.handleOpen() }}
                                         on-click={() => { this.handleClose(currentIndex) }} />
-                                        { this.multiple ? transverseCheckbox : ''}
+                                        { this.multiple ? transverseCheckbox(currentIndex) : ''}
                                     </span>
                                 );
                             } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
@@ -366,7 +387,7 @@ export default {
                                         <y-icon
                                             name="arrow-minus"
                                             class="y-table-row_icon" />
-                                        { this.multiple ? transverseCheckbox : ''}
+                                        { this.multiple ? transverseCheckbox(currentIndex) : ''}
                                     </span>
                                 );
                             } else if (currentIndex > -1 && currentIndex === this.rowData.$y_table_level - 1
@@ -375,7 +396,7 @@ export default {
                                 || (this.rowData.children && this.rowData.children.length))) {
                                 icon = (
                                     <span>
-                                        { this.multiple ? transverseCheckbox : ''}
+                                        { this.multiple ? transverseCheckbox(currentIndex) : ''}
                                     </span>
                                 );
                             } else {

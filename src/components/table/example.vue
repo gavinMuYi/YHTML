@@ -1,7 +1,7 @@
 <template>
     <div class="y-table_example">
         <y-table :multiple="true" :options="tableListArea" title="TABLE EXAMPLE 3"
-                 :stripe="true" :colspanKeys="[['area', 'p', 'r']]" basicIndex="all"
+                 :stripe="true" :colspanKeys="[['area', 'p', 'r']]" basicIndex="r"
                  transverseTreeTable :transverseTreeTableColumns="['area', 'p', 'r']" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
             <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />

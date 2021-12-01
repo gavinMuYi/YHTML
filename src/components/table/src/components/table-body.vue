@@ -147,7 +147,7 @@ export default {
     render(h) {
         this.$refs.tr = [];
         let trs = [];
-        let flat = (arr, pre, position, checkBoxStatus) => {
+        let flat = (arr, pre, position, checkBoxStatus, allCheckBoxStatus) => {
             arr.forEach((row, rindex) => {
                 let rowPosition = clone(position);
                 rowPosition.push(rindex);
@@ -158,6 +158,7 @@ export default {
                     setRowClass={this.setRowClass} colspanKeys={this.colspanKeys}
                     checkBoxStatus={this.basicIndex && checkBoxStatus[rowData[this.basicIndex]]
                         ? checkBoxStatus[rowData[this.basicIndex]].tracked : ''}
+                    allCheckBoxStatus={allCheckBoxStatus}
                     multiple={this.multiple} widthLeft={this.widthLeft}
                     position={rowPosition} currentHoverRow={this.currentHoverRow}
                     rowData={rowData} columns={this.columns} allSelected={this.allSelected}
@@ -186,12 +187,13 @@ export default {
                     flat(row.children, pre + '-' + rindex, rowPosition,
                         this.basicIndex && checkBoxStatus[rowData[this.basicIndex]]
                             ? (checkBoxStatus[rowData[this.basicIndex]].children || {})
-                            : {}
+                            : {},
+                        this.checkBoxStatus
                     );
                 }
             });
         };
-        flat(this.tableList, '0', [], this.checkBoxStatus);
+        flat(this.tableList, '0', [], this.checkBoxStatus, this.checkBoxStatus);
         return <tbody class={['y-table-body', this.stripe ? 'y-table-stripe_body' : '']}>
             { trs }
         </tbody>;
