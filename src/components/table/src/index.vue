@@ -10,9 +10,9 @@
                         :width="column.width" :label="column.label"
                         :fixed="column.fixed" />
                 </slot>
-                <y-tree v-if="multiple && basicIndex && !transverseTreeTable" :options="tableList" :multiple="true"
+                <y-tree v-if="multiple && basicIndex" :options="tableList" :multiple="true"
                         ref="treeManger" :value="currentSelect" @change="handleMultiple"
-                        :maps="treeMangerMap" :key="treeRefresh" />
+                        :maps="treeMangerMap" :key="treeRefresh" :highlightFilter="false" />
                 <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList"
                               :currentSort="currentSort" :async="!Boolean(options)" :defaultSort="defaultSort" />
@@ -723,7 +723,7 @@ export default {
                 if (this.headerFix) {
                     this.handleFixedResize()();
                 }
-                if (this.multiple && this.basicIndex && !this.transverseTreeTable) {
+                if (this.multiple && this.basicIndex) {
                     this.getCheckBoxStatus();
                 }
                 this.updateHeaderCheckBox();

@@ -51,6 +51,7 @@
                 :track="track"
                 :count="count"
                 :highlight="highlight"
+                :highlightFilter="highlightFilter"
                 :treeSize="treeSize"
                 :multiple="multiple"
                 :fatherStatus="tracked"
