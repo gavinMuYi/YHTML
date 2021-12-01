@@ -249,11 +249,10 @@ export default {
                                 class="y-table-row_icon"
                                 on-click={() => { this.handleOpen() }} />;
                             } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
-                                icon = <y-icon name={this.rowData.loading
-                                    ? 'loading'
-                                    : 'arrow-minus'}
-                                class="y-table-row_icon"
-                                on-click={() => { this.handleClose(currentIndex) }} />;
+                                icon = <y-icon
+                                    name="arrow-minus"
+                                    class="y-table-row_icon"
+                                    on-click={() => { this.handleClose(currentIndex) }} />;
                             } else {
                                 icon = '';
                             }
@@ -322,10 +321,9 @@ export default {
                                 on-click={() => { this.handleOpen() }}
                                 on-click={() => { this.handleClose(currentIndex) }} />;
                             } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
-                                icon = <y-icon name={this.rowData.loading
-                                    ? 'loading'
-                                    : 'arrow-minus'}
-                                class="y-table-row_icon" />;
+                                icon = <y-icon
+                                    name="arrow-minus"
+                                    class="y-table-row_icon" />;
                             } else {
                                 icon = '';
                             }
