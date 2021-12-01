@@ -120,7 +120,7 @@
                     </div>
                     <div class="y-table-box" ref="tableMain"
                          :style="{
-                             width: `calc(100% - ${Boolean(multiple && basicIndex)
+                             width: `calc(100% - ${Boolean(multiple && basicIndex && !transverseTreeTable)
                              ? 20 * maxExtendLevel + 60 + 'px' : 0}`
                     }">
                         <div class="y-table-left"
