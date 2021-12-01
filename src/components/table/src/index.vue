@@ -27,7 +27,9 @@
                                         :rowHeight="rowHeight.header" :selfRowHeight="[]"
                                         :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')"
                                         @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
-                                        @allSelectToast="allSelectToast = true" />
+                                        @allSelectToast="allSelectToast = true"
+                                        :transverseTreeTable="transverseTreeTable"
+                                        :transverseTreeTableColumns="transverseTreeTableColumns" />
                     </table>
                 </div>
                 <div class="y-table-left"
@@ -41,7 +43,13 @@
                                         ref="leftFixedHeader" @columnSort="columnSort($event, 'left')"
                                         @newExtendStatus="newExtendStatus($event, 'left')"
                                         :currentSort="currentSort" name="left" :defaultSort="defaultSort"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                                        :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header"
+                                        @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
+                                        :allSelected="Boolean(currentSelect.length
+                                        && currentSelect[0] === 'all')"
+                                        @allSelectToast="allSelectToast = true"
+                                        :transverseTreeTable="transverseTreeTable"
+                                        :transverseTreeTableColumns="transverseTreeTableColumns" />
                     </table>
                 </div>
                 <div class="y-table-center" :style="{height: centerFixHeaderHeight + 'px'}">
@@ -52,7 +60,13 @@
                                         ref="centerFixedHeader" @columnSort="columnSort($event, 'center')"
                                         @newExtendStatus="newExtendStatus($event, 'center')"
                                         :currentSort="currentSort" name="center" :defaultSort="defaultSort"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
+                                        :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header"
+                                        @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
+                                        :allSelected="Boolean(currentSelect.length
+                                        && currentSelect[0] === 'all')"
+                                        @allSelectToast="allSelectToast = true"
+                                        :transverseTreeTable="transverseTreeTable"
+                                        :transverseTreeTableColumns="transverseTreeTableColumns" />
                     </table>
                 </div>
                 <div class="y-table-right"
@@ -66,7 +80,13 @@
                                         ref="rightFixedHeader" @columnSort="columnSort($event, 'right')"
                                         @newExtendStatus="newExtendStatus($event, 'right')"
                                         :currentSort="currentSort" name="right" :defaultSort="defaultSort"
-                                        :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
+                                        :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header"
+                                        @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
+                                        :allSelected="Boolean(currentSelect.length
+                                        && currentSelect[0] === 'all')"
+                                        @allSelectToast="allSelectToast = true"
+                                        :transverseTreeTable="transverseTreeTable"
+                                        :transverseTreeTableColumns="transverseTreeTableColumns" />
                     </table>
                 </div>
             </div>
@@ -103,7 +123,9 @@
                                             :checkBoxStatus="headerCheckBoxStatus"
                                             :allSelected="Boolean(currentSelect.length
                                             && currentSelect[0] === 'all')"
-                                            @allSelectToast="allSelectToast = true" />
+                                            @allSelectToast="allSelectToast = true"
+                                            :transverseTreeTable="transverseTreeTable"
+                                            :transverseTreeTableColumns="transverseTreeTableColumns" />
                             <y-table-body :columns="[]" :rowHeight="rowHeight.body" :actionTable="true"
                                           :selfRowHeight="[]" :tableList="tableList" :rows="rows" :maps="maps"
                                           :transverseHeightMaps="transverseHeightMaps"
@@ -135,7 +157,13 @@
                                                 :defaultSort="defaultSort"
                                                 @columnSort="columnSort($event, 'left')" :currentSort="currentSort"
                                                 @newExtendStatus="newExtendStatus($event, 'left')"
-                                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header" />
+                                                :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header"
+                                                @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
+                                                :allSelected="Boolean(currentSelect.length
+                                                && currentSelect[0] === 'all')"
+                                                @allSelectToast="allSelectToast = true"
+                                                :transverseTreeTable="transverseTreeTable"
+                                                :transverseTreeTableColumns="transverseTreeTableColumns" />
                                 <y-table-body :columns="rowColumn.rowColumnLeft" ref="leftBody"
                                               :rowHeight="rowHeight.body" :stripe="stripe" :setRowClass="setRowClass"
                                               :selfRowHeight="leftTable.body" :tableList="tableList" name="left"
@@ -160,7 +188,13 @@
                                                 :level="headerDeep" @columnSort="columnSort($event, 'center')"
                                                 @newExtendStatus="newExtendStatus($event, 'center')"
                                                 :currentSort="currentSort" name="center" :defaultSort="defaultSort"
-                                                :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header" />
+                                                :rowHeight="rowHeight.header" :selfRowHeight="centerTable.header"
+                                                @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
+                                                :allSelected="Boolean(currentSelect.length
+                                                && currentSelect[0] === 'all')"
+                                                :transverseTreeTable="transverseTreeTable"
+                                                :transverseTreeTableColumns="transverseTreeTableColumns"
+                                                @allSelectToast="allSelectToast = true" />
                                 <y-table-body :columns="rowColumn.rowColumn" ref="centerBody"
                                               :transverseTreeTable="transverseTreeTable" :basicIndex="basicIndex"
                                               :transverseTreeTableColumns="transverseTreeTableColumns"
@@ -189,7 +223,13 @@
                                                 :defaultSort="defaultSort"
                                                 @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
                                                 @newExtendStatus="newExtendStatus($event, 'right')"
-                                                :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header" />
+                                                :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header"
+                                                @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
+                                                :allSelected="Boolean(currentSelect.length
+                                                && currentSelect[0] === 'all')"
+                                                :transverseTreeTable="transverseTreeTable"
+                                                :transverseTreeTableColumns="transverseTreeTableColumns"
+                                                @allSelectToast="allSelectToast = true" />
                                 <y-table-body :columns="rowColumn.rowColumnRight" ref="rightBody" :stripe="stripe"
                                               :rowHeight="rowHeight.body" :multiple="Boolean(multiple && basicIndex)"
                                               :selfRowHeight="rightTable.body" :tableList="tableList" name="right"

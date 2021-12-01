@@ -5,6 +5,8 @@
             v-for="(row, rindex) in level" :key="'row-' + rindex" :rindex="rindex"
             :residue="level - rindex" :actionTable="actionTable" :level="level"
             :rowData="columns[rindex]" :style="rowStyle(rindex)" :name="name"
+            :transverseTreeTable="transverseTreeTable"
+            :transverseTreeTableColumns="transverseTreeTableColumns"
             @allSelectToast="allSelectToast"
             @select="handleSelect" :checkBoxStatus="checkBoxStatus" :allSelected="allSelected"
             @columnSort="columnSort" :currentSort="nowSort" @newExtendStatus="newExtendStatus($event, rindex)" />
@@ -68,6 +70,16 @@ export default {
         checkBoxStatus: {
             type: String,
             default: ''
+        },
+        transverseTreeTable: {
+            type: Boolean,
+            default: false
+        },
+        transverseTreeTableColumns: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     computed: {

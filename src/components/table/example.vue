@@ -93,7 +93,7 @@
         </y-table>
         <y-table :multiple="true" :options="tableListArea" title="TABLE EXAMPLE 3"
                  :stripe="true" :colspanKeys="[['area', 'p', 'r']]" basicIndex="r"
-                 :pageBatchSelect="true"
+                 :pageBatchSelect="true" @multipleSelect="areaselect"
                  transverseTreeTable :transverseTreeTableColumns="['area', 'p', 'r']" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
             <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />
@@ -368,6 +368,9 @@ export default {
         };
     },
     methods: {
+        areaselect(val) {
+            console.log(val);
+        },
         setRowClass(rowData, index) {
             if (index === 2) {
                 return 'customer-row-warning';

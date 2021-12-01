@@ -55,6 +55,16 @@ export default {
         checkBoxStatus: {
             type: String,
             default: ''
+        },
+        transverseTreeTable: {
+            type: Boolean,
+            default: false
+        },
+        transverseTreeTableColumns: {
+            type: Array,
+            default: () => {
+                return [];
+            }
         }
     },
     data() {
@@ -174,6 +184,17 @@ export default {
                 colspan={th.colSpan} rowspan={th.rowSpan}
                 class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
                 <div class={['y-table-cell', `y-table-cell_${th.align}`]}>
+                    {
+                        this.transverseTreeTable && th.columnKey === this.transverseTreeTableColumns[0]
+                            ? (<span class={ ['y-table_trans_checkbox', this.allSelected ? 'allselect-disable' : ''] }
+                                on-click={($event) => { $event.stopPropagation(); this.allSelectToast() }}>
+                                <span on-click={($event) => { $event.stopPropagation() }}>
+                                    <y-checkbox
+                                        status={ this.allSelected ? 'all' : this.checkBoxStatus }
+                                        on-change={(e) => { this.handleSelect(e) }}/>
+                                </span>
+                            </span>) : ''
+                    }
                     { th.withChildren ? extendIcon : '' }
                     { th.headRender.call(this, h, th.label, th) }
                     { th.sortable ? sort : '' }
@@ -209,6 +230,12 @@ export default {
                 width: 2px;
                 background: @fontHighLightOpacity;
             }
+        }
+        .y-table_trans_checkbox {
+            display: inline-block;
+            margin-right: 5px;
+            position: relative;
+            top: 2px;
         }
         th {
             border-bottom: 1px solid @white;
