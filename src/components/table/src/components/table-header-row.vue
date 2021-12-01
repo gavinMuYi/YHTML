@@ -56,6 +56,10 @@ export default {
             type: String,
             default: ''
         },
+        multiple: {
+            type: Boolean,
+            default: false
+        },
         transverseTreeTable: {
             type: Boolean,
             default: false
@@ -185,7 +189,7 @@ export default {
                 class={[th.fixed ? `y-table-cell_fixed-${th.fixed}` : '']}>
                 <div class={['y-table-cell', `y-table-cell_${th.align}`]}>
                     {
-                        this.transverseTreeTable && th.columnKey === this.transverseTreeTableColumns[0]
+                        this.multiple && this.transverseTreeTable && th.columnKey === this.transverseTreeTableColumns[0]
                             ? (<span class={ ['y-table_trans_checkbox', this.allSelected ? 'allselect-disable' : ''] }
                                 on-click={($event) => { $event.stopPropagation(); this.allSelectToast() }}>
                                 <span on-click={($event) => { $event.stopPropagation() }}>

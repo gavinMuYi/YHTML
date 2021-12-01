@@ -28,6 +28,7 @@
                                         :allSelected="Boolean(currentSelect.length && currentSelect[0] === 'all')"
                                         @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
                                         @allSelectToast="allSelectToast = true"
+                                        :multiple="Boolean(multiple && basicIndex)"
                                         :transverseTreeTable="transverseTreeTable"
                                         :transverseTreeTableColumns="transverseTreeTableColumns" />
                     </table>
@@ -47,6 +48,7 @@
                                         @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
                                         :allSelected="Boolean(currentSelect.length
                                         && currentSelect[0] === 'all')"
+                                        :multiple="Boolean(multiple && basicIndex)"
                                         @allSelectToast="allSelectToast = true"
                                         :transverseTreeTable="transverseTreeTable"
                                         :transverseTreeTableColumns="transverseTreeTableColumns" />
@@ -64,6 +66,7 @@
                                         @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
                                         :allSelected="Boolean(currentSelect.length
                                         && currentSelect[0] === 'all')"
+                                        :multiple="Boolean(multiple && basicIndex)"
                                         @allSelectToast="allSelectToast = true"
                                         :transverseTreeTable="transverseTreeTable"
                                         :transverseTreeTableColumns="transverseTreeTableColumns" />
@@ -84,6 +87,7 @@
                                         @select="handleSelect" :checkBoxStatus="headerCheckBoxStatus"
                                         :allSelected="Boolean(currentSelect.length
                                         && currentSelect[0] === 'all')"
+                                        :multiple="Boolean(multiple && basicIndex)"
                                         @allSelectToast="allSelectToast = true"
                                         :transverseTreeTable="transverseTreeTable"
                                         :transverseTreeTableColumns="transverseTreeTableColumns" />
@@ -123,6 +127,7 @@
                                             :checkBoxStatus="headerCheckBoxStatus"
                                             :allSelected="Boolean(currentSelect.length
                                             && currentSelect[0] === 'all')"
+                                            :multiple="Boolean(multiple && basicIndex)"
                                             @allSelectToast="allSelectToast = true"
                                             :transverseTreeTable="transverseTreeTable"
                                             :transverseTreeTableColumns="transverseTreeTableColumns" />
@@ -155,6 +160,7 @@
                                 <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnLeft"
                                                 ref="leftHeader" :level="headerDeep" name="left"
                                                 :defaultSort="defaultSort"
+                                                :multiple="Boolean(multiple && basicIndex)"
                                                 @columnSort="columnSort($event, 'left')" :currentSort="currentSort"
                                                 @newExtendStatus="newExtendStatus($event, 'left')"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="leftTable.header"
@@ -185,6 +191,7 @@
                                 <y-table-colgroup :colgroup="rowColumn.rowColumn" ref="centerColgroup" />
                                 <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumn"
                                                 ref="centerHeader"
+                                                :multiple="Boolean(multiple && basicIndex)"
                                                 :level="headerDeep" @columnSort="columnSort($event, 'center')"
                                                 @newExtendStatus="newExtendStatus($event, 'center')"
                                                 :currentSort="currentSort" name="center" :defaultSort="defaultSort"
@@ -221,6 +228,7 @@
                                 <y-table-header v-if="!headerFix" :columns="headerColumn.headerColumnRight"
                                                 ref="rightHeader" :level="headerDeep" name="right"
                                                 :defaultSort="defaultSort"
+                                                :multiple="Boolean(multiple && basicIndex)"
                                                 @columnSort="columnSort($event, 'right')" :currentSort="currentSort"
                                                 @newExtendStatus="newExtendStatus($event, 'right')"
                                                 :rowHeight="rowHeight.header" :selfRowHeight="rightTable.header"

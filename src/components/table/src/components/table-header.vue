@@ -7,7 +7,7 @@
             :rowData="columns[rindex]" :style="rowStyle(rindex)" :name="name"
             :transverseTreeTable="transverseTreeTable"
             :transverseTreeTableColumns="transverseTreeTableColumns"
-            @allSelectToast="allSelectToast"
+            @allSelectToast="allSelectToast" :multiple="multiple"
             @select="handleSelect" :checkBoxStatus="checkBoxStatus" :allSelected="allSelected"
             @columnSort="columnSort" :currentSort="nowSort" @newExtendStatus="newExtendStatus($event, rindex)" />
     </thead>
@@ -70,6 +70,10 @@ export default {
         checkBoxStatus: {
             type: String,
             default: ''
+        },
+        multiple: {
+            type: Boolean,
+            default: false
         },
         transverseTreeTable: {
             type: Boolean,
