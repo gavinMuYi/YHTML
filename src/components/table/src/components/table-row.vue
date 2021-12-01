@@ -169,11 +169,10 @@ export default {
                 $y_table_position: this.position
             });
         },
-        handleTransSelect() {
-            this.$emit('select', {
-                ...this.rowData,
-                $y_table_position: this.position
-            });
+        handleTransSelect(currentIndex) {
+            let position = clone(this.position);
+            position.length = currentIndex + 1;
+            this.$emit('transSelect', position);
         },
         allSelectToast() {
             this.$emit('allSelectToast');
@@ -232,7 +231,7 @@ export default {
                 this.allSelected ? 'allselect-disable' : ''
             ] }
             on-click={($event) => { $event.stopPropagation(); this.allSelectToast() }} >
-                <span on-click={($event) => { $event.stopPropagation(); this.handleTransSelect() }}>
+                <span on-click={($event) => { $event.stopPropagation(); this.handleTransSelect(currentIndex) }}>
                     <y-checkbox status={ status }/>
                 </span>
             </span>);

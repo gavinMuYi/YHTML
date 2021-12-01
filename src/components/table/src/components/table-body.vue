@@ -140,6 +140,22 @@ export default {
         handleSelect(rowData) {
             this.$emit('select', rowData);
         },
+        handleTransSelect(position) {
+            let data = clone(this.tableList);
+            position.forEach((i, index) => {
+                if (!index) {
+                    data = data[i];
+                } else {
+                    data = data.children[i];
+                }
+            });
+            data = {
+                ...data,
+                $y_table_level: position.length,
+                $y_table_position: position
+            };
+            this.$emit('select', data);
+        },
         allSelectToast() {
             this.$emit('allSelectToast');
         }
@@ -173,7 +189,8 @@ export default {
                     on-rowClick={($event) => { this.handleClick($event) }}
                     on-rowOpen={($event) => { this.handleOpen($event) }}
                     on-allSelectToast={() => { this.allSelectToast() }}
-                    on-select={($event) => { this.handleSelect($event) }} />;
+                    on-select={($event) => { this.handleSelect($event) }}
+                    on-transSelect={($event) => { this.handleTransSelect($event) }} />;
                 if (this.transverseTreeTable) {
                     if (!(row.children && row.children.length && row.extend)) {
                         this.$refs.tr.push(trDom);
