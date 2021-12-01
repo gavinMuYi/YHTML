@@ -92,7 +92,7 @@
             <y-table-column label="keyLabelCenter" columnKey="key" width="550px" dragable/>
         </y-table>
         <y-table :multiple="true" :options="tableListArea" title="TABLE EXAMPLE 3"
-                 :stripe="true" :colspanKeys="[['area', 'p', 'r']]"
+                 :stripe="true" :colspanKeys="[['area', 'p', 'r']]" basicIndex="r"
                  transverseTreeTable :transverseTreeTableColumns="['area', 'p', 'r']" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
             <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />
@@ -100,7 +100,7 @@
             <y-table-column label="利润" columnKey="m" dragable/>
             <y-table-column label="销售额" columnKey="all" dragable />
         </y-table>
-        <y-table :multiple="true" :lazyLoad="lazyLoadArea" title="TABLE EXAMPLE 3 LAZY"
+        <y-table :lazyLoad="lazyLoadArea" title="TABLE EXAMPLE 3 LAZY"
                  :stripe="true" :colspanKeys="[['area', 'p', 'r']]"
                  transverseTreeTable :transverseTreeTableColumns="['area', 'p', 'r']" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
@@ -109,7 +109,7 @@
             <y-table-column label="利润" columnKey="m" dragable/>
             <y-table-column label="销售额" columnKey="all" dragable />
         </y-table>
-        <y-table :multiple="true" :contentMaxHeight="250" :options="tableListArea" title="TABLE EXAMPLE 4"
+        <y-table :contentMaxHeight="250" :options="tableListArea" title="TABLE EXAMPLE 4"
                  :headerFix="true" tableHeight="500px" :stripe="true" :colspanKeys="[['area', 'p', 'r']]" >
             <y-table-column label="区域" columnKey="area" dragable fixed="left" rowspan />
             <y-table-column label="省" columnKey="p" dragable fixed="left" rowspan />

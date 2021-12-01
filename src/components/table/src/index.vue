@@ -10,8 +10,9 @@
                         :width="column.width" :label="column.label"
                         :fixed="column.fixed" />
                 </slot>
-                <y-tree v-if="multiple && basicIndex" :options="tableList" :multiple="true" ref="treeManger"
-                        :value="currentSelect" @change="handleMultiple" :maps="treeMangerMap" :key="treeRefresh" />
+                <y-tree v-if="multiple && basicIndex && !transverseTreeTable" :options="tableList" :multiple="true"
+                        ref="treeManger" :value="currentSelect" @change="handleMultiple"
+                        :maps="treeMangerMap" :key="treeRefresh" />
                 <y-table-data ref="dataTable" :lazyLoad="fetchFunc" :index="index" :count="count"
                               @updateTotal="updateTotal" @updateTableList="updateTableList"
                               :currentSort="currentSort" :async="!Boolean(options)" :defaultSort="defaultSort" />
@@ -20,7 +21,7 @@
             <div class="y-table-box-headerFixed" v-if="headerFix" key="headerFixBox"
                  ref="headerFixedBox">
                 <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 60 + 'px' }"
-                     v-if="Boolean(multiple && basicIndex)">
+                     v-if="Boolean(multiple && basicIndex && !transverseTreeTable)">
                     <table class="header-fix" v-if="headerFix" ref="actionFixHeader" style="width: 100%">
                         <y-table-header :columns="[]" :level="headerDeep" :actionTable="true"
                                         :rowHeight="rowHeight.header" :selfRowHeight="[]"
@@ -95,7 +96,7 @@
                          width: scorlling ? `calc(100% + ${scrollingWidth}px)` : '100%'
                 }">
                     <div class="y-table-actions" :style="{ width: 20 * maxExtendLevel + 60 + 'px' }"
-                         v-if="Boolean(multiple && basicIndex)">
+                         v-if="Boolean(multiple && basicIndex && !transverseTreeTable)">
                         <table>
                             <y-table-header v-if="!headerFix" :columns="[]" :level="headerDeep" :actionTable="true"
                                             :rowHeight="rowHeight.header" :selfRowHeight="[]" @select="handleSelect"
@@ -722,7 +723,7 @@ export default {
                 if (this.headerFix) {
                     this.handleFixedResize()();
                 }
-                if (this.multiple && this.basicIndex) {
+                if (this.multiple && this.basicIndex && !this.transverseTreeTable) {
                     this.getCheckBoxStatus();
                 }
                 this.updateHeaderCheckBox();

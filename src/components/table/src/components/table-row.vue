@@ -201,6 +201,15 @@ export default {
                 </div>
             </td>
         );
+        let transverseCheckbox = (<span class={ [
+            'y-table_checkbox_transverse',
+            this.allSelected ? 'allselect-disable' : ''
+        ] }
+        on-click={($event) => { $event.stopPropagation(); this.allSelectToast() }} >
+            <span on-click={($event) => { $event.stopPropagation(); this.handleSelect() }}>
+                <y-checkbox status={ this.allSelected ? 'all' : this.checkBoxStatus }/>
+            </span>
+        </span>);
         if (!this.actionTable) {
             if (rowSlot) {
                 tds.push(<td colspan={this.columns.length}>
@@ -243,16 +252,35 @@ export default {
                             let currentIndex = this.transverseTreeTableColumns.indexOf(td.columnKey);
                             if (currentIndex > -1 && currentIndex === this.rowData.$y_table_level - 1
                             && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))) {
-                                icon = <y-icon name={this.rowData.loading
-                                    ? 'loading'
-                                    : 'arrow-add'}
-                                class="y-table-row_icon"
-                                on-click={() => { this.handleOpen() }} />;
+                                icon = (
+                                    <span>
+                                        <y-icon name={this.rowData.loading
+                                            ? 'loading'
+                                            : 'arrow-add'}
+                                        class="y-table-row_icon"
+                                        on-click={() => { this.handleOpen() }} />
+                                        { this.multiple ? transverseCheckbox : ''}
+                                    </span>
+                                );
                             } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
-                                icon = <y-icon
-                                    name="arrow-minus"
-                                    class="y-table-row_icon"
-                                    on-click={() => { this.handleClose(currentIndex) }} />;
+                                icon = (
+                                    <span>
+                                        <y-icon
+                                            name="arrow-minus"
+                                            class="y-table-row_icon"
+                                            on-click={() => { this.handleClose(currentIndex) }} />
+                                        { this.multiple ? transverseCheckbox : ''}
+                                    </span>
+                                );
+                            } else if (currentIndex > -1 && currentIndex === this.rowData.$y_table_level - 1
+                                && this.multiple
+                                && !(this.rowData.hasChildren
+                                || (this.rowData.children && this.rowData.children.length))) {
+                                icon = (
+                                    <span>
+                                        { this.multiple ? transverseCheckbox : ''}
+                                    </span>
+                                );
                             } else {
                                 icon = '';
                             }
@@ -315,16 +343,35 @@ export default {
                             let currentIndex = this.transverseTreeTableColumns.indexOf(td.columnKey);
                             if (currentIndex > -1 && currentIndex === this.rowData.$y_table_level - 1
                             && (this.rowData.hasChildren || (this.rowData.children && this.rowData.children.length))) {
-                                icon = <y-icon name={this.rowData.loading
-                                    ? 'loading'
-                                    : 'arrow-add'}
-                                class="y-table-row_icon"
-                                on-click={() => { this.handleOpen() }}
-                                on-click={() => { this.handleClose(currentIndex) }} />;
+                                icon = (
+                                    <span>
+                                        <y-icon name={this.rowData.loading
+                                            ? 'loading'
+                                            : 'arrow-add'}
+                                        class="y-table-row_icon"
+                                        on-click={() => { this.handleOpen() }}
+                                        on-click={() => { this.handleClose(currentIndex) }} />
+                                        { this.multiple ? transverseCheckbox : ''}
+                                    </span>
+                                );
                             } else if (currentIndex > -1 && currentIndex < this.rowData.$y_table_level - 1) {
-                                icon = <y-icon
-                                    name="arrow-minus"
-                                    class="y-table-row_icon" />;
+                                icon = (
+                                    <span>
+                                        <y-icon
+                                            name="arrow-minus"
+                                            class="y-table-row_icon" />
+                                        { this.multiple ? transverseCheckbox : ''}
+                                    </span>
+                                );
+                            } else if (currentIndex > -1 && currentIndex === this.rowData.$y_table_level - 1
+                                && this.multiple
+                                && !(this.rowData.hasChildren
+                                || (this.rowData.children && this.rowData.children.length))) {
+                                icon = (
+                                    <span>
+                                        { this.multiple ? transverseCheckbox : ''}
+                                    </span>
+                                );
                             } else {
                                 icon = '';
                             }
@@ -383,6 +430,24 @@ export default {
             }
             .y-table-cell_content {
                 flex: 1;
+            }
+            .y-table_checkbox_transverse {
+                display: inline-block;
+                position: relative;
+                top: 2px;
+                margin-right: 5px;
+            }
+            .y-table-row_icon {
+                position: relative;
+                top: 1px;
+            }
+        }
+    }
+    .y-table-action-cell {
+        .y-table-row_icon-box {
+            .y-table-row_icon {
+                position: relative;
+                top: 0px;
             }
         }
     }
