@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import ComponentsIndex from '@/pages/components-index';
+import Mdbutton from '../examples/button.md';
 
 Vue.use(Router);
 const examples = require.context('@/components', true, /example$/);
@@ -13,6 +14,12 @@ for (const key of examples.keys()) {
         component: examples(key).default
     });
 }
+
+exampleRouters.push({
+    path: 'mdbutton',
+    name: 'Mdbutton',
+    component: Mdbutton
+});
 
 export default new Router({
     routes: [{
