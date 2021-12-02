@@ -5,7 +5,7 @@
         @mouseenter="hovering = true"
         @mouseleave="hovering = false">
         <slot name="source"></slot>
-        <div class="meta" ref="meta">
+        <div :class="['meta', {'extend-meta': isExpanded}]" ref="meta">
             <div class="description" v-if="$slots.default">
                 <slot></slot>
             </div>
@@ -54,6 +54,10 @@
       height: 0;
       transition: height .2s;
     }
+    .extend-meta {
+      padding: 18px 24px;
+      box-sizing: border-box;
+    }
 
     .description {
       padding: 20px;
@@ -90,16 +94,25 @@
         margin: 0;
       }
 
-      code.hljs {
-        margin: 0;
-        border: none;
-        max-height: none;
-        border-radius: 0;
-
-        &::before {
-          content: none;
+        code.hljs {
+            margin: 0;
+            border: none;
+            max-height: none;
+            border-radius: 0;
+            font-size: 12px;
+            .hljs-name {
+                color: #e06c75;
+            }
+            .hljs-attr {
+                color: #d19a66;
+            }
+            .hljs-string {
+                color: #98c379;
+            }
+            &::before {
+                content: none;
+            }
         }
-      }
     }
 
     .demo-block-control {
@@ -211,7 +224,7 @@ export default {
     },
     watch: {
         isExpanded(val) {
-            this.codeArea.style.height = val ? `${this.codeAreaHeight + 1}px` : '0';
+            this.codeArea.style.height = val ? `${this.codeAreaHeight + 37}px` : '0';
             if (!val) {
                 this.fixedControl = false;
                 this.$refs.control.style.left = '0';
