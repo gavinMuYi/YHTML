@@ -17,7 +17,7 @@
 ::: demo
 ```html
 <template>
-    <div @click="ddd">ddd<div>
+    <div @click="ddd"><y-button>asdas</y-button><div>
 </template>
 <script>
     export default {

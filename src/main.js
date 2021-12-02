@@ -3,13 +3,14 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import createPopperDirective from '@/components/popper/src/createPopperDirective';
 // 引入demo-block
 import DemoBlock from './basicComponents/demoBlock';
 Vue.component('demo-block', DemoBlock);
 
-Vue.directive('ypop', createPopperDirective());
-Vue.directive('ypopmenu', createPopperDirective(['pop']));
+const examples = require.context('@/components', true, /index.js$/);
+for (const key of examples.keys()) {
+    Vue.use(examples(key).default);
+}
 
 Vue.config.productionTip = false;
 
