@@ -7,9 +7,9 @@ import router from './router';
 import DemoBlock from './basicComponents/demoBlock';
 Vue.component('demo-block', DemoBlock);
 
-const examples = require.context('@/components', true, /index.js$/);
-for (const key of examples.keys()) {
-    Vue.use(examples(key).default);
+const comps = require.context('@/components', true, /index.js$/);
+for (const key of comps.keys()) {
+    Vue.use(comps(key).default);
 }
 
 Vue.config.productionTip = false;
