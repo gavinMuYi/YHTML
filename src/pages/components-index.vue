@@ -3,10 +3,15 @@
         <div class="components-page-title">YUI - 网站快速成型组件库</div>
         <div class="components-page-body">
             <div class="components-page-menu">
-                <router-link v-for="name in routes" :key="name" :to="'/components/' + name"
+                <router-link v-for="name in (viewDoc ? docs : routes)" :key="name" :to="'/components/' + name"
                              :class="{'selected': name === pageName}">
-                    {{ name }}
+                    {{ name.replace('.md', '') }}
                 </router-link>
+                <div class="change-mode" @click="modeChange">
+                    <y-icon name="double-arrow-right" class="first-arrow" />
+                    <y-icon name="double-arrow-right" />
+                    {{ viewDoc ? '开发调试' : '查看文档' }}
+                </div>
             </div>
             <div class="components-page-content"><router-view></router-view></div>
         </div>
@@ -15,18 +20,29 @@
 
 <script>
 const req = require.context('../components', true, /index.js$/);
+const docsReq = require.context('../docs', true, /.md$/);
 export default {
     name: 'ComponentsIndex',
     data() {
         return {
+            viewDoc: true,
             routes: req.keys().map(item => {
                 return item.replace('./', '').replace('/index.js', '');
+            }),
+            docs: docsReq.keys().map(item => {
+                return item.replace('./', '');
             })
         };
     },
     computed: {
         pageName() {
             return this.$route.path.replace('/components/', '');
+        }
+    },
+    methods: {
+        modeChange() {
+            this.viewDoc = !this.viewDoc;
+            this.$router.push({ name: this.viewDoc ? this.docs[0] : this.routes[0] });
         }
     }
 };
@@ -63,6 +79,31 @@ export default {
                 padding-top: 30px;
                 border-right: 1px solid @gray;
                 box-shadow: -1px -2px 8px @backgroundGreen;
+                position: relative;
+                .change-mode {
+                    position: absolute;
+                    bottom: 10px;
+                    font-size: 12px;
+                    right: 20px;
+                    display: inline-block;
+                    cursor: pointer;
+                    .first-arrow {
+                        left: 7px;
+                    }
+                    .y-icon {
+                        width: 12px;
+                        height: 12px;
+                        position: relative;
+                        fill: @font;
+                        top: 2px;
+                    }
+                    &:hover {
+                        color: @fontHighLight;
+                        .y-icon {
+                            fill: @fontHighLight;
+                        }
+                    }
+                }
                 a {
                     display: flex;
                     height: 40px;
