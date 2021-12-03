@@ -3,7 +3,8 @@
         'y-button',
         `y-button_${status}`,
         `y-button_${size}`,
-        { 'y-button_disable': disable }
+        { 'y-button_disable': disable },
+        { 'y-button_loading': loading }
     ]" @click="click">
         <div class="btn-loading" v-if="loading">
             <y-icon name="loading" />
@@ -73,6 +74,9 @@ export default {
     }
     .y-button_disable {
         opacity: 0.5;
+        pointer-events: none;
+    }
+    .y-button_loading {
         pointer-events: none;
     }
     .y-button_default {
