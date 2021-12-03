@@ -26,6 +26,27 @@
 </template>
 
 <style lang="less">
+    .table {
+        width: 100%;
+        border-spacing: 0px;
+        thead {
+            background-color: @greenGray;
+            height: 45px;
+            font-size: 14px;
+            th {
+                text-align: left;
+            }
+        }
+        tr {
+            height: 30px;
+        }
+        td {
+            font-size: 14px;
+        }
+        th,td {
+            padding-left: 10px;
+        }
+    }
   .demo-block {
     border: solid 1px #ebebeb;
     border-radius: 3px;

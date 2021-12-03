@@ -127,7 +127,7 @@ export default {
                 overflow: auto;
                 flex: 1;
                 box-sizing: border-box;
-                padding:  120px 150px 120px 100px;
+                padding:  40px 150px 120px 100px;
             }
         }
     }
