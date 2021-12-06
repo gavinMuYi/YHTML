@@ -4,7 +4,9 @@
             <y-icon name="check" v-show="currentStatus === 'all'" />
             <div class="half" v-show="currentStatus === 'half'"></div>
         </div>
-        <div v-if="label" class="label">{{ label }}</div>
+        <slot>
+            <div v-if="label" class="label">{{ label }}</div>
+        </slot>
     </span>
 </template>
 

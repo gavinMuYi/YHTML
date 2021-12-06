@@ -113,6 +113,7 @@
       box-sizing: border-box;
       pre {
         margin: 0;
+        overflow: auto;
       }
 
         code.hljs {
