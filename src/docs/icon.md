@@ -58,7 +58,7 @@
 <template>
     <div>
         <div class="md-box">
-            <y-icon name="#icon-a-anquandai2" remote />
+            <y-icon name="#icon-a-anquandai2" remote :style="{width: '20px',height: '20px'}" />
         </div>
     </div>
 </template>
