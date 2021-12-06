@@ -84,7 +84,7 @@
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
 | name   | icon名称，项目内的svg-icon文件名，项目需要使用svg-sprite-loader | string    | - | '' |
-| remote  | 是否使用外链symbol图标，remote: true时，name为完整的外链icon名称 | boolean   | - | false |
+| remote  | 是否使用外链symbol图标，remote: true时，在模板html中引入外链，name为完整的外链icon名称 | boolean   | - | false |
 
 ### 事件
 
