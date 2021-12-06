@@ -1,9 +1,3 @@
-<template>
-    <svg aria-hidden="true" class="y-icon" @click="handleClick">
-        <use :xlink:href="`#icon-${name}`" style="pointer-events:none" />
-    </svg>
-</template>
-
 <script>
 const requireAll = requireContext => requireContext.keys().map(requireContext);
 const req = require.context('./assets/icons', true, /\.svg$/);
@@ -11,16 +5,20 @@ requireAll(req);
 
 export default {
     name: 'YIcon',
+    functional: true,
     props: {
         name: {
             type: String,
             default: ''
         }
     },
-    methods: {
-        handleClick(e) {
-            this.$emit('click', e);
-        }
+    render(h, context) {
+        return <svg aria-hidden="true" class={(context.data.staticClass || '') + ' y-icon'}
+            style={context.data.style || {}} {...{
+                on: context.data.on
+            }}>
+            <use xlinkHref={`#icon-${context.props.name}`} style="pointer-events:none" />
+        </svg>;
     }
 };
 </script>
