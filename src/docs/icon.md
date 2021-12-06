@@ -2,12 +2,11 @@
     export default {
         data() {
             return {
-                status: ['empty', 'all', 'half']
             };
         },
         methods: {
-            handleChange(nStatus, index) {
-                this.$set(this.status, index, nStatus);
+            handleClick() {
+                alert('YIcon 透传所有原生事件');
             }
         }
     }
@@ -20,7 +19,7 @@
     margin-bottom: 0px;
 }
 </style>
-## Checkbox
+## Icon
 
 ### 基本用法
 
@@ -29,35 +28,37 @@
 <template>
     <div>
         <div class="md-box">
-            <y-checkbox label="label checkbox" />
+            <y-icon name="arrow-up" @click="handleClick" />
         </div>
         <div class="md-box">
-            <y-checkbox>
-                <div class="label">slot checkbox</div>
-            </y-checkbox>
+            <y-icon name="arrow-down" @click="handleClick" />
         </div>
     </div>
 </template>
+<script>
+    export default {
+        data() {
+            return {
+            };
+        },
+        methods: {
+            handleClick() {
+                alert('YIcon 透传所有原生事件');
+            }
+        }
+    }
+</script>
 ```
 :::
 
-### 状态控制
+### 使用外链symbol图标
 
 ::: demo
 ```html
 <template>
     <div>
         <div class="md-box">
-            <y-checkbox :label="status[0] + ' selected'" :status="status[0]" @change="handleChange($event, 0)"/>
-        </div>
-        <div class="md-box">
-            <y-checkbox :label="status[1] + ' selected'" :status="status[1]" @change="handleChange($event, 1)" />
-        </div>
-        <div class="md-box">
-            <y-checkbox :label="status[2] + ' selected'" :status="status[2]" @change="handleChange($event, 2)" />
-        </div>
-        <div class="md-box">
-            <y-checkbox label="disable all selected" status="all" disable />
+            <y-icon name="#icon-a-anquandai2" remote />
         </div>
     </div>
 </template>
@@ -82,18 +83,11 @@
 
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
-| label   | 文案 | string    | - | '' |
-| status     | 状态                        | string   | empty, half, all | empty |
-| disable  | 是否禁用    | boolean   | -           | false |
-
-### Slot
-
-| Slot名称  | 说明                             |
-| -------- | -------------------------------- |
-| default  | 默认的slot，作为多选的内容，优先级高于label |
+| name   | icon名称，项目内的svg-icon文件名，项目需要使用svg-sprite-loader | string    | - | '' |
+| remote  | 是否使用外链symbol图标，remote: true时，name为完整的外链icon名称 | boolean   | - | false |
 
 ### 事件
 
 | 事件名称  | 说明                              | 事件参数  |
 | -------- | -------------------------------- | -------- |
-| change    | 选中状态改变事件 | newStatus（empty, half, all） |
+| nativeEvent    | YIcon 透传所有原生事件 | Event |

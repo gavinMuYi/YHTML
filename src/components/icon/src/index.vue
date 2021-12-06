@@ -10,6 +10,10 @@ export default {
         name: {
             type: String,
             default: ''
+        },
+        remote: {
+            type: Boolean,
+            default: false
         }
     },
     render(h, context) {
@@ -17,7 +21,8 @@ export default {
             style={context.data.style || {}} {...{
                 on: context.data.on
             }}>
-            <use xlinkHref={`#icon-${context.props.name}`} style="pointer-events:none" />
+            <use xlinkHref={context.props.remote
+                ? context.props.name : `#icon-${context.props.name}`} style="pointer-events:none" />
         </svg>;
     }
 };
