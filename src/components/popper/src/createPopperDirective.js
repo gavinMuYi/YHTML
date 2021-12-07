@@ -58,7 +58,8 @@ function getPosition(dom, { target, el, moniter, containChange, X, Y, second }) 
         if (dom === domPel) {
             iTop += dom.offsetTop;
             iLeft += dom.offsetLeft;
-            dom = dom.offsetParent;
+            // parentElement兼容markdown-it
+            dom = dom.offsetParent || dom.parentElement;
             domPel = domPel.parentElement;
         } else {
             iTop -= domPel.scrollTop;
