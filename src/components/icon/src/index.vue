@@ -17,7 +17,9 @@ export default {
         }
     },
     render(h, context) {
-        return <svg aria-hidden="true" class={(context.data.staticClass || '') + ' y-icon'}
+        let svgClass = (context.data.class || []);
+        let svgClassName = typeof svgClass === 'string' ? svgClass : svgClass.join(' ');
+        return <svg aria-hidden="true" class={(context.data.staticClass || '') + svgClassName + ' y-icon'}
             style={context.data.style || {}} {...{
                 on: context.data.on
             }}>
