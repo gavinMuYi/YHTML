@@ -4,7 +4,7 @@
         </y-icon>
         <y-icon name="clear" v-if="quickClear" class="right-icon" @click="clear">
         </y-icon>
-        <input ref="input" :type="type" v-model="currentValue"
+        <input ref="input" :type="type" v-model="currentValue" :autofocus="autofocus"
                @blur="handleBlur" @focus="handleFocus"
                @change="handleChange" />
     </div>
@@ -35,14 +35,6 @@ export default {
             type: Boolean,
             default: false
         },
-        search: {
-            type: Boolean,
-            default: false
-        },
-        showClose: {
-            type: Boolean,
-            default: false
-        },
         size: {
             type: String,
             default: 'medium' // min,medium,max
@@ -54,14 +46,17 @@ export default {
         quickClear: {
             type: Boolean,
             default: false
+        },
+        disable: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
         return {
             currentValue: this.value,
             tempValue: this.value,
-            regCheckedValue: this.value,
-            currentFocus: this.autofocus
+            regCheckedValue: this.value
         };
     },
     computed: {
@@ -70,7 +65,8 @@ export default {
                 'y-input',
                 `y-input_${this.size}`,
                 { 'y-input_withLeftIcon': this.leftIcon },
-                { 'y-input_withRightIcon': this.quickClear }
+                { 'y-input_withRightIcon': this.quickClear },
+                { 'y-input_disable': this.disable }
             ];
         }
     },
@@ -97,7 +93,7 @@ export default {
     },
     methods: {
         isRegExp(v) {
-            return _toString.call(v) === '[object RegExp]';
+            return toString.call(v) === '[object RegExp]';
         },
         handleFocus(e) {
             this.$emit('focus', e, this.currentValue);
@@ -244,5 +240,9 @@ export default {
                 padding: 14px;
             }
         }
+    }
+    .y-input_disable {
+        opacity: 0.5;
+        pointer-events: none;
     }
 </style>

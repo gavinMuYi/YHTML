@@ -95,8 +95,8 @@
 
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
-| status   | 按钮的样式类型 | string    | default,primary,warning,error | default |
-| size     | 按钮的大小                        | string   | min,medium,max | medium |
+| status   | 按钮的样式类型 | string    | default, primary, warning, error | default |
+| size     | 按钮的大小                        | string   | min, medium, max | medium |
 | loading  | 是否处于loading状态    | boolean   | -           | false |
 | disable | 是否处于disabled状态   | boolean   | -           | false |
 
