@@ -34,5 +34,6 @@ export default {
     .y-icon {
         width: 14px;
         height: 14px;
+        fill: @font;
     }
 </style>

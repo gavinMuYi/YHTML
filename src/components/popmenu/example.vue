@@ -1,6 +1,6 @@
 <template>
     <div class="y-popmenu_example">
-        <YPopmenu ref="menu" :options="[{key: 'sd', label: 'fsdf'}]" />
+        <y-popmenu ref="menu" :options="[{key: 'sd', label: 'fsdf'}]" />
         <div v-ypopmenu:menu.click style="display: inline-block">trigger</div>
     </div>
 </template>
