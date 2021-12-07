@@ -3,8 +3,6 @@
         data() {
             return {
             };
-        },
-        methods: {
         }
     }
 </script>
@@ -16,7 +14,7 @@
     margin-bottom: 0px;
 }
 </style>
-## Input
+## Pagination
 
 ### 基本用法
 
@@ -32,23 +30,29 @@
 ```
 :::
 
-### 类型与大小
+### 自定义配置
 
 ::: demo
 ```html
 <template>
     <div>
         <div class="md-box">
-            <y-input size="min" value="min input" />
+            自定义项数：
         </div>
         <div class="md-box">
-            <y-input size="medium" value="medium input" />
+            <y-pagination :total="120" :index="2" :count-options="[50, 100]" />
         </div>
         <div class="md-box">
-            <y-input size="max" value="max input" />
+            自定义页数上限：
         </div>
         <div class="md-box">
-            <y-input type="password" value="password" />
+            <y-pagination :total="120" :index="1" :visible-page-count="3" />
+        </div>
+        <div class="md-box">
+            默认项数：
+        </div>
+        <div class="md-box">
+            <y-pagination :total="120" :index="1" :count="30" />
         </div>
     </div>
 </template>
@@ -59,20 +63,14 @@
 
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
-| value   | 绑定值 | string    | - | '' |
-| size     | 输入框的大小                        | string   | min, medium, max | medium |
-| type  | 输入框类型    | string   | text, password           | text |
-| autofocus | 自动聚焦   | boolean   | -           | false |
-| reg | 自定义校验规则   | RegExp   | -           | - |
-| leftIcon | 左侧图标   | string   | -           | '' |
-| quickClear | 快速清空   | boolean   | -           | false |
-| disable | 是否处于disabled状态   | boolean   | -           | false |
+| total   | 项数 | number    | - | 0 |
+| index     | 当前页码  | number   | - | 1 |
+| countOptions  | 页码选项    | array   | -  | [15, 30, 50, 100] |
+| count | 当前项数   | number   | -           | 0 |
+| visiblePageCount | 显示页码数上限   | number   | -           | 5 |
 
 ### 事件
 
 | 事件名称  | 说明                              | 事件参数  |
 | -------- | -------------------------------- | -------- |
-| input    | 输入事件 | value |
-| focus    | 获取焦点事件 | Event, value |
-| input    | 失去焦点事件 | Event, value |
-| change    | 绑定值变化事件 | value |
+| change    | 页码 or 项数变化事件 | newValue（count, index） |

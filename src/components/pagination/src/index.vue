@@ -2,7 +2,7 @@
     <div class="y-pagination">
         <div class="total-count">共 {{ total }} 项，每页显示
             <YPopmenu ref="count" :options="countMenus" :showSelect="true" clazz="y-pagination_count-popmenu"
-                      placement="bottom-start" @change="val => { currentCount = val.value }" />
+                      :selected="currentCount" placement="bottom-start" @change="val => { currentCount = val.value }" />
             <span class="count-change" v-ypopmenu:count.click> {{ currentCount }} <y-icon name="arrow-down" /> </span>
         </div>
         <div class="page-nums">
@@ -10,38 +10,39 @@
                  @click="currentIndex = 1"><y-icon name="goto-start" /></div>
             <div :class="['arrow', {'disable': currentIndex === 1}]"
                  @click="currentIndex--"><y-icon name="arrow-left" /></div>
-            <div v-if="limit > max && currentIndex > limit - max + 2"
+            <div v-if="limit > visiblePageCount && currentIndex > limit - visiblePageCount + 2"
                  :class="['nums', {'selected': currentIndex === 1}]"
                  @click="currentIndex = 1">
                 1
             </div>
             <div v-else style="display: flex">
-                <div v-for="num in limit > max ? max - 1: limit" :key="'left' + num"
+                <div v-for="num in limit > visiblePageCount ? visiblePageCount - 1: limit" :key="'left' + num"
                      :class="['nums', {
-                         'selected': currentIndex === (limit > max
-                             ? (currentIndex >= max - 1 ? currentIndex + num - 2 : num)
+                         'selected': currentIndex === (limit > visiblePageCount
+                             ? (currentIndex >= visiblePageCount - 1 ? currentIndex + num - 2 : num)
                              : num)
                      }]"
-                     @click="currentIndex = (limit > max
-                         ? (currentIndex >= max - 1 ? currentIndex + num - 2 : num)
+                     @click="currentIndex = (limit > visiblePageCount
+                         ? (currentIndex >= visiblePageCount - 1 ? currentIndex + num - 2 : num)
                          : num)
                      ">
-                    {{ limit > max ? (currentIndex >= max - 1 ? currentIndex + num - 2 : num) : num }}
+                    {{ limit > visiblePageCount
+                    ? (currentIndex >= visiblePageCount - 1 ? currentIndex + num - 2 : num) : num }}
                 </div>
             </div>
-            <div v-if="limit > max" class="ellipsis">
+            <div v-if="limit > visiblePageCount" class="ellipsis">
                 ...
             </div>
-            <div v-if="limit > max && currentIndex > limit - max + 2" style="display: flex">
-                <div v-for="num in max - 1" :key="'right' + num"
+            <div v-if="limit > visiblePageCount && currentIndex > limit - visiblePageCount + 2" style="display: flex">
+                <div v-for="num in visiblePageCount - 1" :key="'right' + num"
                      :class="['nums', {
-                         'selected': limit - max + num + 1 === currentIndex
+                         'selected': limit - visiblePageCount + num + 1 === currentIndex
                      }]"
-                     @click="currentIndex = limit - max + num + 1">
-                    {{ limit - max + num + 1 }}
+                     @click="currentIndex = limit - visiblePageCount + num + 1">
+                    {{ limit - visiblePageCount + num + 1 }}
                 </div>
             </div>
-            <div v-else-if="limit > max && currentIndex <= limit - max + 2"
+            <div v-else-if="limit > visiblePageCount && currentIndex <= limit - visiblePageCount + 2"
                  :class="['nums', {'selected': limit === currentIndex}]"
                  @click="currentIndex = limit">
                 {{ limit }}
@@ -79,7 +80,11 @@ export default {
                 return [15, 30, 50, 100];
             }
         },
-        max: {
+        count: {
+            type: Number,
+            default: 0
+        },
+        visiblePageCount: {
             type: Number,
             default: 5
         }
@@ -87,7 +92,7 @@ export default {
     data() {
         return {
             currentIndex: this.index,
-            currentCount: this.countOptions[0] || 15
+            currentCount: this.count || this.countOptions[0] || 15
         };
     },
     computed: {
@@ -97,7 +102,7 @@ export default {
         countMenus() {
             return this.countOptions.map(i => {
                 return {
-                    key: 'key' + i,
+                    key: i,
                     label: i,
                     value: i
                 };

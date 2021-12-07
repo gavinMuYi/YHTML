@@ -42,7 +42,7 @@ export default {
             }
         },
         selected: {
-            type: String,
+            type: String | Number,
             default: null
         },
         options: {
