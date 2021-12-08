@@ -3,10 +3,21 @@
         <div class="components-page-title">YUI - 网站快速成型组件库</div>
         <div class="components-page-body">
             <div class="components-page-menu">
-                <router-link v-for="name in (viewDoc ? docs : routes)" :key="name" :to="'/components/' + name"
-                             :class="{'selected': name === pageName}">
-                    {{ name.replace('.md', '') }}
-                </router-link>
+                <div v-if="viewDoc">
+                    <div v-for="block in docs" :key="block.title">
+                        <div class="block-title">{{ block.title }}</div>
+                        <router-link v-for="name in block.children" :key="name" :to="'/components/' + name + '.md'"
+                                     :class="{'selected': name + '.md' === pageName}">
+                            {{ name }}
+                        </router-link>
+                    </div>
+                </div>
+                <div v-else>
+                    <router-link v-for="name in routes" :key="name" :to="'/components/' + name"
+                                 :class="{'selected': name === pageName}">
+                        {{ name.replace('.md', '') }}
+                    </router-link>
+                </div>
                 <div class="change-mode" @click="modeChange">
                     <y-icon name="double-arrow-right" class="first-arrow" />
                     <y-icon name="double-arrow-right" />
@@ -20,7 +31,6 @@
 
 <script>
 const req = require.context('../components', true, /index.js$/);
-const docsReq = require.context('../docs', true, /.md$/);
 export default {
     name: 'ComponentsIndex',
     data() {
@@ -29,9 +39,28 @@ export default {
             routes: req.keys().map(item => {
                 return item.replace('./', '').replace('/index.js', '');
             }),
-            docs: docsReq.keys().map(item => {
-                return item.replace('./', '');
-            })
+            docs: [{
+                title: 'Basic',
+                children: ['button', 'cell', 'icon']
+            }, {
+                title: 'Form',
+                children: ['checkbox', 'input']
+            }, {
+                title: 'Select',
+                children: ['select']
+            }, {
+                title: 'Tree',
+                children: ['tree']
+            }, {
+                title: 'Navigation',
+                children: ['pagination']
+            }, {
+                title: 'Pop',
+                children: ['popper', 'popmenu']
+            }, {
+                title: 'Data Display',
+                children: ['table']
+            }]
         };
     },
     computed: {
@@ -42,7 +71,7 @@ export default {
     methods: {
         modeChange() {
             this.viewDoc = !this.viewDoc;
-            this.$router.push({ name: this.viewDoc ? this.docs[0] : this.routes[0] });
+            this.$router.push({ name: this.viewDoc ? (this.docs[0].children[0] + '.md') : this.routes[0] });
         }
     }
 };
@@ -81,6 +110,11 @@ export default {
                 border-right: 1px solid @gray;
                 box-shadow: -1px -2px 8px @backgroundGreen;
                 position: relative;
+                .block-title {
+                    padding: 10px 30px;
+                    font-size: 12px;
+                    color: @fontGray;
+                }
                 .change-mode {
                     position: absolute;
                     bottom: 10px;
@@ -110,7 +144,7 @@ export default {
                     height: 40px;
                     color: @font;
                     align-items: center;
-                    padding-left: 40px;
+                    padding-left: 50px;
                     &:hover {
                         color: @fontHighLight;
                         cursor: pointer;

@@ -49,7 +49,6 @@
                     :highlightFilter="highlightFilter"
                     :multiple="multiple"
                     :track="track"
-                    :selected="selected"
                     :fatherStatus="fatherStatus"
                     @change="handleChange"
                     @loaded="handleLoaded">
@@ -214,12 +213,6 @@ export default {
         track: { // 还原整个用户选择轨迹
             type: Boolean,
             default: true
-        },
-        selected: {
-            type: Object,
-            default: () => {
-                return {};
-            }
         },
         fatherStatus: {
             type: String,
