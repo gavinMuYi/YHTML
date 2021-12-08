@@ -163,7 +163,7 @@
 | -------- | -------------------------------- | -------- | ----------- | ----- |
 | clazz   | 弹窗自定义类名 | string    | - | '' |
 | placement     | 弹窗位置  | string   | 见popper | bottom-middle |
-| priority  | 弹窗位置优先级  | array   | 见popper  | [] |
+| priority  | 弹窗位置适配优先级  | array   | 见popper  | [] |
 | selected | 选中项，值同option.key   | number, string   | -           | - |
 | options | 选项   | array   | -           | [] |
 | maps | 选项映射关系   | object   | -           | {key, label, disable} |

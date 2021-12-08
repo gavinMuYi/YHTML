@@ -134,18 +134,6 @@
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
 | clazz   | 弹窗自定义类名 | string    | - | '' |
-| placement     | 弹窗位置  | string   | 见popper | bottom-middle |
-| priority  | 弹窗位置优先级  | array   | 见popper  | [] |
-| selected | 选中项，值同option.key   | number, string   | -           | - |
-| options | 选项   | array   | -           | [] |
-| maps | 选项映射关系   | object   | -           | {key, label, disable} |
-| highlight | 高亮字段   | string   | -           | '' |
-| highlightCaseConvert | 高亮模糊匹配大小写   | boolean   | -           | false |
-| highlightColor | 高亮颜色   | string   | -       | #00cc26 |
-| showSelect | 选中项回显   | boolean   | -       | false |
-
-### 事件
-
-| 事件名称  | 说明                              | 事件参数  |
-| -------- | -------------------------------- | -------- |
-| change    | 选中事件 | optionItem |
+| placement     | 弹窗位置  | string   | left-start, left-middle, left-end, right-start, right-middle, right-end, top-start, top-middle, top-end, bottom-start, bottom-middle, bottom-end | bottom-middle |
+| priority  | 弹窗位置适配优先级  | array   | 同placement  | [] |
+| inline | 弹框的DOM是否需要移动到body上，true表示不移动   | boolean   | -       | false |
