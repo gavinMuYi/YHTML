@@ -7,6 +7,7 @@
                     <div class="trigger-num" v-if="!currentAsyncSelectAll && multiple && triggerTexts.length > 1">
                         等 {{ triggerTexts.length }} 项
                     </div>
+                    <y-icon name="arrow-down" class="trigger-arrow" />
                 </div>
             </slot>
         </span>
@@ -339,18 +340,26 @@ export default {
                 border-radius: 3px;
                 box-sizing: border-box;
                 padding: 4px 10px;
+                position: relative;
                 .y-cell {
                     width: 100%;
+                }
+                .trigger-arrow {
+                    position: absolute;
+                    right: 10px;
+                    top: 8px;
+                    width: 12px;
+                    height: 12px;
                 }
             }
             .y-select-trigger_muti {
                 position: relative;
                 .y-cell {
-                    width: ~'calc(100% - 50px)';
+                    width: ~'calc(100% - 70px)';
                 }
                 .trigger-num {
                     position: absolute;
-                    right: 10px;
+                    right: 30px;
                     top: 4px;
                     font-size: 14px;
                 }

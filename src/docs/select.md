@@ -11,11 +11,17 @@
                         resolve();
                     }, 1000);
                 }).then(() => {
-                    return [{
+                    let res = [{
+                        label: 'item-selected',
+                        key: 'selected',
+                        hasChildren: true
+                    }];
+                    res.push({
                         label: 'item' + Math.floor(Math.random() * 1000),
                         key: 'item' + Math.floor(Math.random() * 1000),
                         hasChildren: true
-                    }];
+                    });
+                    return res;
                 });
             },
         }
