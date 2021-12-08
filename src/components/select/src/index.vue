@@ -105,6 +105,18 @@ export default {
             type: String,
             default: '请选择'
         },
+        quickSelectAll: {
+            type: Boolean,
+            default: false
+        },
+        allSelected: {
+            type: Boolean,
+            default: false
+        },
+        asyncSelectMode: {
+            type: Boolean,
+            default: true
+        },
         // tree props
         fatherDisableStatue: {
             type: Boolean,
@@ -119,10 +131,6 @@ export default {
             default: ''
         },
         accordion: {
-            type: Boolean,
-            default: false
-        },
-        quickSelectAll: {
             type: Boolean,
             default: false
         },
@@ -206,10 +214,6 @@ export default {
             type: Boolean,
             default: true
         },
-        allSelected: {
-            type: Boolean,
-            default: false
-        },
         selected: {
             type: Object,
             default: () => {
@@ -219,10 +223,6 @@ export default {
         fatherStatus: {
             type: String,
             default: ''
-        },
-        asyncSelectMode: {
-            type: Boolean,
-            default: true
         }
     },
     data() {
@@ -270,7 +270,6 @@ export default {
                 });
             };
             flatValue(this.currentValue);
-            console.log(labels);
             return labels;
         }
     },
