@@ -75,6 +75,7 @@ export default {
             .components-page-menu {
                 overflow: auto;
                 width: 200px;
+                min-width: 200px;
                 box-sizing: border-box;
                 padding-top: 30px;
                 border-right: 1px solid @gray;
@@ -128,6 +129,7 @@ export default {
                 flex: 1;
                 box-sizing: border-box;
                 padding:  40px 150px 120px 100px;
+                min-width: 800px;
             }
         }
     }

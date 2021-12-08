@@ -323,7 +323,7 @@ function doBind(el, binding, vnode, path, listener) {
                 oldReSize && oldReSize.call(window);
             };
         }
-        if (binding.modifiers.rightClick) {
+        if (binding.modifiers.rightClick || binding.modifiers.rightclick) {
             el.addEventListener('contextmenu', function (e) {
                 rightClick(target, e, el);
             });
