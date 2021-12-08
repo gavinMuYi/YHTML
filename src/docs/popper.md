@@ -71,7 +71,7 @@
             <y-popper ref="rclicktip">right click pop</y-popper>
         </div>
         <div class="md-box">
-            <y-button @click="trigger">trigger</y-button>
+            <y-button @click="trigger" status="primary">trigger</y-button>
             <span v-ypop:manual.manual class="md-pop-trigger">manual</span>
             <y-popper ref="manual">manual pop</y-popper>
         </div>
