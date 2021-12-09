@@ -245,7 +245,8 @@ export default {
                     boxSizing: 'border-box',
                     borderRadius: '3px 3px 0px 0px',
                     border: '1px solid #e3f0ef',
-                    borderBottom: 'none'
+                    borderBottom: 'none',
+                    boxShadow: '2px 4px 10px 0 rgba(30, 35, 48, 0.08)'
                 };
             } else {
                 return [];
@@ -256,14 +257,16 @@ export default {
                 return {
                     width: `${this.treeSize ? (this.treeSize[0] || 300) : 300}px`,
                     height: '50px',
-                    float: 'right',
+                    position: 'absolute',
+                    right: 0,
                     background: '#ffffff',
                     marginTop: '0px',
                     padding: '10px 10px',
                     boxSizing: 'border-box',
                     borderRadius: '0px 0px 3px 3px',
                     border: '1px solid #e3f0ef',
-                    borderTop: 'none'
+                    borderTop: 'none',
+                    boxShadow: '2px 4px 10px 0 rgba(30, 35, 48, 0.08)'
                 };
             } else {
                 return [];
@@ -458,6 +461,7 @@ export default {
             .y-tree-children_group {
                 background: #ffffff;
                 border-radius: 3px;
+                box-shadow: 2px 4px 10px 0 rgba(30, 35, 48, 0.08);
             }
         }
     }
