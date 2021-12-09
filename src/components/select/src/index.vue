@@ -15,7 +15,7 @@
             ref="ySelectPop"
             :clazz="`y-select-pop ${cascadeMode ? 'y-select-pop-cascade' : 'y-select-pop-common'} ${cascadeRelative
             ? 'y-select-cascade-relative-pop' : ''}`"
-            :placement="placement">
+            :placement="placement" @click.native="handleSelectTreeClick">
             <div class="y-select-pop_search-bar" v-if="searchPlaceholder" @click.stop="() => {}"
                  :style="cascadeRelativeSearchStyle">
                 <y-input size="min" class="y-select_input" leftIcon="search" quickClear @change="handleSearch"
@@ -319,7 +319,9 @@ export default {
             this.$set(this, 'tempValue', []);
         },
         handleSelectTreeClick() {
-            this.$refs.ySelectPop.closePop();
+            if (this.cascadeRelative) {
+                this.$refs.ySelectPop.closePop();
+            }
         }
     }
 };
