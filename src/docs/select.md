@@ -268,3 +268,23 @@
 | quickSelectAll | 快速全选,异步时需配合allSelected，asyncSelectMode使用，异步全选抛出值为all，且不支持手动逐项取消  | boolean   | -           | false |
 | allSelected | 是否已全选，异步数据时使用，true表示全部选择，value传[]   | boolean   | -           | false |
 | asyncSelectMode | 异步选择模式配合quickSelectAll使用，true表示全选后抛出'all'   | boolean   | -           | true |
+| value | 选中值，推荐保留树结构以应对异步数据回显   | array   | -   | [] |
+| options | 同步数据，树结构   | array   | -   | - |
+| lazyLoad | 异步请求数据   | function   | -   | (index, count, searchKey, leaf) => {return new Promise(resolve, reject) => {resolve();}).then(() => {return [];});} |
+| maps | 数据映射   | object   | -   | {key, label, children, hasChildren, disable, extend, cascade} |
+| count | 单次请求数量 | number | - | -1 |
+| highlightFilter | 同步数据搜索过滤 | boolean | - | true |
+| multiple | 是否多选 | boolean | - | false |
+| track | 是否还原整个用户选择轨迹, true表示抛出树结构数据 | boolean | - | true |
+
+### Slot
+
+| Slot名称  | 说明                             |
+| -------- | -------------------------------- |
+| trigger  | 默认的slot，作为按钮的内容 |
+
+### 事件
+
+| 事件名称  | 说明                              | 事件参数  |
+| -------- | -------------------------------- | -------- |
+| confirm    | 提交选择事件 | 'all' or [树结构] |
