@@ -47,7 +47,7 @@ export default {
                 children: ['checkbox', 'input']
             }, {
                 title: 'Select',
-                children: ['select', 'cascadeSelect', 'accordionSelect']
+                children: ['select', 'cascadeSelect']
             }, {
                 title: 'Tree',
                 children: ['tree']

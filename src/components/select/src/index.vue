@@ -36,8 +36,7 @@
                     :key="highlight"
                     :cascadeBottom="cascadeBottom"
                     :cascadeMode="cascadeMode"
-                    :accordion="accordion"
-                    :treeSize="treeSize || [300, 400]"
+                    :treeSize="treeSize || (cascadeMode ? [300, 400] : null)"
                     :value="tempValue"
                     :options="options"
                     :lazyLoad="lazyLoad"
@@ -124,10 +123,6 @@ export default {
             default: ''
         },
         cascadeRelative: {
-            type: Boolean,
-            default: false
-        },
-        accordion: {
             type: Boolean,
             default: false
         },

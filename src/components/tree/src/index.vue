@@ -43,7 +43,6 @@
             <y-tree
                 v-for="(child, cIndex) in dataList" :key="child[_maps.key] + cIndex + '-' + level"
                 ref="leaf"
-                :accordion="accordion"
                 :options="child[_maps.children]"
                 :lazyLoad="lazyLoad"
                 :level="level + 1"
@@ -148,10 +147,6 @@ export default {
         cascadeMode: {
             type: String,
             default: ''
-        },
-        accordion: {
-            type: Boolean,
-            default: false
         },
         beforeCascadeLevel: {
             type: Number,
@@ -507,13 +502,6 @@ export default {
                     });
                 };
                 parent.$refs.leaf && cascadeLoop(parent.$refs.leaf);
-            }
-            if (this.accordion) {
-                this.$parent.$refs.leaf && this.$parent.$refs.leaf.forEach(leaf => {
-                    if (leaf._uid !== this._uid) {
-                        leaf.$refs.leaf && loop(leaf.$refs.leaf);
-                    }
-                });
             }
         },
         extendCascade(close) {
