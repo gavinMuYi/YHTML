@@ -6,7 +6,7 @@
         </y-icon>
         <input ref="input" :type="type" v-model="currentValue" :autofocus="autofocus"
                @blur="handleBlur" @focus="handleFocus"
-               @change="handleChange" />
+               @change="handleChange" :placeholder="placeholder" />
     </div>
 </template>
 
@@ -50,6 +50,10 @@ export default {
         disable: {
             type: Boolean,
             default: false
+        },
+        placeholder: {
+            type: String,
+            default: ''
         }
     },
     data() {

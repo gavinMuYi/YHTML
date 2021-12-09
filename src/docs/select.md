@@ -87,6 +87,9 @@
         <div class="md-box">
             <y-select :lazy-load="lazyLoad" multiple quick-select-all async-select-mode :value="selected" />
         </div>
+        <div class="md-box">
+            <y-select :lazy-load="lazyLoad" multiple quick-select-all async-select-mode :value="selected" search-placeholder="请搜索" />
+        </div>
     </div>
 </template>
 <script>

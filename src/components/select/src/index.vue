@@ -16,7 +16,8 @@
             :clazz="`y-select-pop ${cascadeMode ? 'y-select-pop-cascade' : 'y-select-pop-common'}`"
             :placement="placement">
             <div class="y-select-pop_search-bar" v-if="searchPlaceholder" @click.stop="() => {}">
-                <y-input size="min" class="y-select_input" leftIcon="search" quickClear @change="handleSearch" />
+                <y-input size="min" class="y-select_input" leftIcon="search" quickClear @change="handleSearch"
+                         :placeholder="searchPlaceholder" />
             </div>
             <div :class="['y-select-pop_tree', {'y-tree_selectall': asyncSelectAll}]"
                  @click.stop="() => {}">
@@ -95,7 +96,7 @@ export default {
     props: {
         searchPlaceholder: {
             type: String,
-            default: '请搜索'
+            default: ''
         },
         placement: {
             type: String,

@@ -47,7 +47,7 @@ export default {
                 children: ['checkbox', 'input']
             }, {
                 title: 'Select',
-                children: ['select']
+                children: ['select', 'cascadeSelect', 'accordionSelect']
             }, {
                 title: 'Tree',
                 children: ['tree']
@@ -111,7 +111,7 @@ export default {
                 box-shadow: -1px -2px 8px @backgroundGreen;
                 position: relative;
                 .block-title {
-                    padding: 10px 30px;
+                    padding: 10px 20px;
                     font-size: 12px;
                     color: @fontGray;
                 }
@@ -144,7 +144,7 @@ export default {
                     height: 40px;
                     color: @font;
                     align-items: center;
-                    padding-left: 50px;
+                    padding-left: 40px;
                     &:hover {
                         color: @fontHighLight;
                         cursor: pointer;

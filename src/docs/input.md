@@ -164,6 +164,7 @@
 | value   | 绑定值 | string    | - | '' |
 | size     | 输入框的大小                        | string   | min, medium, max | medium |
 | type  | 输入框类型    | string   | text, password           | text |
+| placeholder | 输入框占位符    | string   | -           | '' |
 | autofocus | 自动聚焦   | boolean   | -           | false |
 | reg | 自定义校验规则   | RegExp   | -           | - |
 | leftIcon | 左侧图标   | string   | -           | '' |
