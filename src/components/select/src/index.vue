@@ -21,7 +21,8 @@
                 <y-input size="min" class="y-select_input" leftIcon="search" quickClear @change="handleSearch"
                          :placeholder="searchPlaceholder" />
             </div>
-            <div :class="['y-select-pop_tree', {'y-tree_selectall': asyncSelectAll}]"
+            <div :class="['y-select-pop_tree', {'y-select-pop_tree-border': cascadeMode},
+                          {'y-tree_selectall': asyncSelectAll}]"
                  @click.stop="handleSelectTreeClick">
                 <div class="tree-loading" v-if="!options && loading">
                     <y-icon name="loading" />
@@ -31,12 +32,12 @@
                 </div>
                 <y-tree
                     ref="tree"
-                    :withBorder="cascadeRelative"
+                    withBorder
                     :key="highlight"
                     :cascadeBottom="cascadeBottom"
                     :cascadeMode="cascadeMode"
                     :accordion="accordion"
-                    :treeSize="treeSize"
+                    :treeSize="treeSize || [300, 400]"
                     :value="tempValue"
                     :options="options"
                     :lazyLoad="lazyLoad"
@@ -383,6 +384,9 @@ export default {
                     height: 24px;
                 }
             }
+        }
+        .y-select-pop_tree-border {
+            border: none;
         }
         .y-tree_selectall {
             opacity: 0.5;
