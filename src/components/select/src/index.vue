@@ -33,23 +33,16 @@
                     :cascadeBottom="cascadeBottom"
                     :cascadeMode="cascadeMode"
                     :accordion="accordion"
-                    :beforeCascadeLevel="beforeCascadeLevel"
-                    :fatherID="fatherID"
                     :treeSize="treeSize"
-                    :cascadeLevel="cascadeLevel"
                     :value="tempValue"
-                    :tracklessData="tracklessData"
                     :options="options"
                     :lazyLoad="lazyLoad"
-                    :level="level"
-                    :self="self"
                     :maps="maps"
                     :count="count"
                     :highlight="highlight"
                     :highlightFilter="highlightFilter"
                     :multiple="multiple"
                     :track="track"
-                    :fatherStatus="fatherStatus"
                     @change="handleChange"
                     @loaded="handleLoaded">
                     <template slot="item" slot-scope="props">
@@ -130,29 +123,11 @@ export default {
             type: Boolean,
             default: false
         },
-        beforeCascadeLevel: {
-            type: Number,
-            default: 0
-        },
-        fatherID: {
-            type: String,
-            default: null
-        },
         treeSize: {
             type: Array,
             default: null
         },
-        cascadeLevel: {
-            type: Number,
-            default: 0
-        },
         value: {
-            type: Array,
-            default: () => {
-                return [];
-            }
-        },
-        tracklessData: {
             type: Array,
             default: () => {
                 return [];
@@ -171,14 +146,6 @@ export default {
                     return [];
                 });
             }
-        },
-        level: {
-            type: Number,
-            default: 0
-        },
-        self: {
-            type: Object,
-            default: null
         },
         maps: {
             type: Object,
@@ -209,10 +176,6 @@ export default {
         track: { // 还原整个用户选择轨迹
             type: Boolean,
             default: true
-        },
-        fatherStatus: {
-            type: String,
-            default: ''
         }
     },
     data() {
