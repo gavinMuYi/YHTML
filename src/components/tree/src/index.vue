@@ -420,7 +420,8 @@ export default {
                 if (item[this._maps.children]) {
                     item[this._maps.children] = this.flatFilter(item[this._maps.children]);
                 }
-                return item[this._maps.label].indexOf(this.highlight) > -1;
+                return item[this._maps.label].indexOf(this.highlight) > -1
+                || (item[this._maps.children] && item[this._maps.children].length);
             });
             return newarr;
         },
