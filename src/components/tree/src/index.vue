@@ -38,7 +38,8 @@
         </slot>
         <div :class="['y-tree-children_group', {'cascade-fixed': self && self[_maps.cascade] === 'fixed'}]"
              v-show="extendStatus" ref="childrenContent" :style="{ ...leafGroupStyle, ...topStyle }"
-             :extendStatus="extendStatus" :cascadeRelative="self && self[_maps.cascade] === 'relative'">
+             :extendStatus="extendStatus" :cascadeRelative="self && self[_maps.cascade] === 'relative'"
+             @click="e => {e.preventDefault();e.stopPropagation();}">
             <y-tree
                 v-for="(child, cIndex) in dataList" :key="child[_maps.key] + cIndex + '-' + level"
                 ref="leaf"

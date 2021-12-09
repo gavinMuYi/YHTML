@@ -13,14 +13,16 @@
         </span>
         <y-popper
             ref="ySelectPop"
-            :clazz="`y-select-pop ${cascadeMode ? 'y-select-pop-cascade' : 'y-select-pop-common'}`"
+            :clazz="`y-select-pop ${cascadeMode ? 'y-select-pop-cascade' : 'y-select-pop-common'} ${cascadeRelative
+            ? 'y-select-cascade-relative-pop' : ''}`"
             :placement="placement">
-            <div class="y-select-pop_search-bar" v-if="searchPlaceholder" @click.stop="() => {}">
+            <div class="y-select-pop_search-bar" v-if="searchPlaceholder" @click.stop="() => {}"
+                 :style="cascadeRelativeSearchStyle">
                 <y-input size="min" class="y-select_input" leftIcon="search" quickClear @change="handleSearch"
                          :placeholder="searchPlaceholder" />
             </div>
             <div :class="['y-select-pop_tree', {'y-tree_selectall': asyncSelectAll}]"
-                 @click.stop="() => {}">
+                 @click.stop="handleSelectTreeClick">
                 <div class="tree-loading" v-if="!options && loading">
                     <y-icon name="loading" />
                 </div>
@@ -29,6 +31,7 @@
                 </div>
                 <y-tree
                     ref="tree"
+                    :withBorder="cascadeRelative"
                     :key="highlight"
                     :cascadeBottom="cascadeBottom"
                     :cascadeMode="cascadeMode"
@@ -52,7 +55,7 @@
                     </template>
                 </y-tree>
             </div>
-            <div class="y-select-pop_action-bar" @click.stop="() => {}">
+            <div class="y-select-pop_action-bar" @click.stop="() => {}" :style="cascadeRelativeBarStyle">
                 <div class="y-select-pop_tree_actions" v-if="multiple && quickSelectAll">
                     <span @click="selectAll">全选</span>
                     <span @click="clearAll">清空</span>
@@ -118,6 +121,10 @@ export default {
         cascadeMode: {
             type: String,
             default: ''
+        },
+        cascadeRelative: {
+            type: Boolean,
+            default: false
         },
         accordion: {
             type: Boolean,
@@ -224,6 +231,42 @@ export default {
             };
             flatValue(this.currentValue);
             return labels;
+        },
+        cascadeRelativeSearchStyle() {
+            if (this.cascadeRelative) {
+                return {
+                    width: `${this.treeSize ? (this.treeSize[0] || 300) : 300}px`,
+                    height: '50px',
+                    display: 'inline-block',
+                    background: '#ffffff',
+                    padding: '10px 10px',
+                    marginBottom: '0',
+                    boxSizing: 'border-box',
+                    borderRadius: '3px 3px 0px 0px',
+                    border: '1px solid #e3f0ef',
+                    borderBottom: 'none'
+                };
+            } else {
+                return [];
+            }
+        },
+        cascadeRelativeBarStyle() {
+            if (this.cascadeRelative) {
+                return {
+                    width: `${this.treeSize ? (this.treeSize[0] || 300) : 300}px`,
+                    height: '50px',
+                    float: 'right',
+                    background: '#ffffff',
+                    marginTop: '0px',
+                    padding: '10px 10px',
+                    boxSizing: 'border-box',
+                    borderRadius: '0px 0px 3px 3px',
+                    border: '1px solid #e3f0ef',
+                    borderTop: 'none'
+                };
+            } else {
+                return [];
+            }
         }
     },
     watch: {
@@ -274,6 +317,9 @@ export default {
         clearAll() {
             this.asyncSelectAll = false;
             this.$set(this, 'tempValue', []);
+        },
+        handleSelectTreeClick() {
+            this.$refs.ySelectPop.closePop();
         }
     }
 };
@@ -393,6 +439,20 @@ export default {
         .y-select-pop_tree {
             overflow: auto;
             height: 400px;
+        }
+    }
+    .y-select-cascade-relative-pop {
+        padding: 0!important;
+        background: #ffffff00!important;
+        border: none!important;
+        box-shadow: none!important;
+        margin-top: 4px!important;
+        .y-select-pop_tree {
+            border: none!important;
+            .y-tree-children_group {
+                background: #ffffff;
+                border-radius: 3px;
+            }
         }
     }
 </style>

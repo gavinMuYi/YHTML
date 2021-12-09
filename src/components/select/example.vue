@@ -1,8 +1,8 @@
 <template>
     <div class="y-select_example">
         <y-select
-            :treeSize="[300, 400]" :multiple="true" cascadeMode="hover" quickSelectAll
-            :options="options1" @confirm="handleValue" :value="singleValue" />
+            :treeSize="[300, 400]" :multiple="true" cascadeMode="hover" quickSelectAll searchPlaceholder="search"
+            :options="options1" @confirm="handleValue" :value="singleValue" cascadeRelative />
         <y-select :lazyLoad="lazyLoad" @confirm="handleValue" :value="singleValue" multiple quickSelectAll
                   :asyncSelectMode="true" />
     </div>
@@ -122,14 +122,14 @@ export default {
                 label: 'sd',
                 key: 'asd',
                 extend: false,
-                cascade: 'fixed',
+                cascade: 'relative',
                 children: [{
                     key: 'we',
                     label: 'sdaf',
                     children: [{
                         key: 'wasdffe',
                         label: 'sgdafgfddaf',
-                        cascade: 'fixed',
+                        cascade: 'relative',
                         children: [{
                             key: 'we21',
                             label: 'sd32af'
@@ -281,7 +281,7 @@ export default {
                 }, {
                     key: 'wasdf223fe',
                     label: 'sgdaf232343gfddaf',
-                    cascade: 'fixed',
+                    cascade: 'relative',
                     children: [{
                         key: 'we232321',
                         label: 'sd3434342af'
