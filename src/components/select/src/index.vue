@@ -30,7 +30,6 @@
                 <y-tree
                     ref="tree"
                     :key="highlight"
-                    :fatherDisableStatue="fatherDisableStatue"
                     :cascadeBottom="cascadeBottom"
                     :cascadeMode="cascadeMode"
                     :accordion="accordion"
@@ -119,10 +118,6 @@ export default {
             default: true
         },
         // tree props
-        fatherDisableStatue: {
-            type: Boolean,
-            default: false
-        },
         cascadeBottom: {
             type: Number,
             default: 32
