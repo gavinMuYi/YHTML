@@ -281,7 +281,8 @@
 
 | Slot名称  | 说明                             |
 | -------- | -------------------------------- |
-| trigger  | 默认的slot，作为按钮的内容 |
+| trigger  | 通过scope slot自定义trigger的显示，props返回选中的项的数据 |
+| item  | 通过scope slot自定义选项的显示，props返回该项的数据&层级 |
 
 ### 事件
 
