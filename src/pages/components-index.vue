@@ -49,9 +49,6 @@ export default {
                 title: 'Select',
                 children: ['select', 'cascadeSelect']
             }, {
-                title: 'Tree',
-                children: ['tree']
-            }, {
                 title: 'Navigation',
                 children: ['pagination']
             }, {
@@ -59,7 +56,7 @@ export default {
                 children: ['popper', 'popmenu']
             }, {
                 title: 'Data Display',
-                children: ['table']
+                children: ['tree', 'table']
             }]
         };
     },
