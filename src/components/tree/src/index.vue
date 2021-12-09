@@ -50,6 +50,7 @@
                 :maps="_maps"
                 :track="track"
                 :count="count"
+                :withBorder="withBorder"
                 :highlight="highlight"
                 :highlightFilter="highlightFilter"
                 :treeSize="treeSize"
@@ -244,6 +245,10 @@ export default {
         fatherStatus: {
             type: String,
             default: ''
+        },
+        withBorder: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -330,7 +335,9 @@ export default {
                 if (!this.level) {
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
-                    style.border = '1px solid @gray';
+                    if (this.withBorder) {
+                        style.border = '1px solid #e3f0ef';
+                    }
                     style.boxSizing = 'border-box';
                 }
                 if (this.self && this.self[this._maps.cascade]) {
@@ -340,7 +347,9 @@ export default {
                         * (this.cascadeLevel + ((this.self && this.self[this._maps.cascade]) ? 1 : 0)) + 'px';
                     style.height = this.treeSize[1] + 'px';
                     style.overflow = 'auto';
-                    style.border = '1px solid @gray';
+                    if (this.withBorder) {
+                        style.border = '1px solid #e3f0ef';
+                    }
                     style.boxSizing = 'border-box';
                 }
             }
