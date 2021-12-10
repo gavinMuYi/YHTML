@@ -75,7 +75,7 @@
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
                         resolve();
-                    }, 1000);
+                    }, 200);
                 }).then(() => {
                     let res = leaf ? [] : [{
                         label: 'item-selected',
@@ -96,7 +96,7 @@
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
                         resolve();
-                    }, 1000);
+                    }, 200);
                 }).then(() => {
                     let res = leaf ? [] : [{
                         label: 'item-selected',
@@ -152,7 +152,7 @@
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
                         resolve();
-                    }, 1000);
+                    }, 200);
                 }).then(() => {
                     let res = leaf ? [] : [{
                         label: 'item-selected',
@@ -210,7 +210,7 @@
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
                         resolve();
-                    }, 1000);
+                    }, 200);
                 }).then(() => {
                     let res = leaf ? [] : [{
                         label: 'item-selected',
@@ -231,7 +231,7 @@
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
                         resolve();
-                    }, 1000);
+                    }, 200);
                 }).then(() => {
                     let res = leaf ? [] : [{
                         label: 'item-selected',
