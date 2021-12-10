@@ -67,6 +67,77 @@
                     label: 'item-14',
                     key: '4343',
                     disable: true
+                }],
+                optionsc: [{
+                    label: 'item-selected',
+                    key: 'selected',
+                }, {
+                    label: 'item-12',
+                    key: '32',
+                    cascade: 'fixed',
+                    children: [{
+                        label: 'item-414',
+                        key: '943'
+                    }]
+                }, {
+                    label: 'item-14',
+                    key: '4343'
+                }],
+                optionsr: [{
+                    label: 'item-selected',
+                    key: 'selected',
+                }, {
+                    label: 'item-12',
+                    key: '32',
+                    cascade: 'relative',
+                    children: [{
+                        label: 'item-414',
+                        key: '943'
+                    }, {
+                        label: 'item-44',
+                        key: '43',
+                        cascade: 'relative',
+                        children: [{
+                        label: 'item-74',
+                        key: '213'
+                        }]
+                    }]
+                }, {
+                    label: 'item-14',
+                    key: '4343'
+                }, {
+                    label: 'item-15',
+                    key: '4sv3'
+                }, {
+                    label: 'item-14w',
+                    key: '434vsrw3'
+                }, {
+                    label: 'item-1y4',
+                    key: '43rw43'
+                }, {
+                    label: 'item-n14',
+                    key: '434gf3'
+                }, {
+                    label: 'item-1t4',
+                    key: '43nj43'
+                }, {
+                    label: 'item-14ht',
+                    key: '434y3'
+                }, {
+                    label: 'item-1net4',
+                    key: '43yh43'
+                }, {
+                    label: 'item-1ed4',
+                    key: '43gn43'
+                }, {
+                    label: 'item-1je4',
+                    key: '434n3'
+                }, {
+                    label: 'item-1ed04',
+                    key: '43gni43'
+                }, {
+                    label: 'item-71je4',
+                    key: '4348n3'
                 }]
             };
         },
@@ -455,24 +526,145 @@
 ```
 :::
 
+### 级联树
+
+::: demo
+```html
+<template>
+    <div>
+        <div class="md-box">
+            <y-tree
+                :multiple="true" cascade-mode="hover" :tree-size="[300, 400]"
+                :options="optionsc" with-border />
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                optionsc: [{
+                    label: 'item-selected',
+                    key: 'selected',
+                }, {
+                    label: 'item-12',
+                    key: '32',
+                    cascade: 'fixed',
+                    children: [{
+                        label: 'item-414',
+                        key: '943'
+                    }]
+                }, {
+                    label: 'item-14',
+                    key: '4343'
+                }]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 级联跟随树
+
+::: demo
+```html
+<template>
+    <div>
+        <div class="md-box">
+            <y-tree
+                :multiple="true" cascade-mode="hover" :tree-size="[300, 400]"
+                :options="optionsr" cascade-relative with-border />
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                optionsr: [{
+                    label: 'item-selected',
+                    key: 'selected',
+                }, {
+                    label: 'item-12',
+                    key: '32',
+                    cascade: 'relative',
+                    children: [{
+                        label: 'item-414',
+                        key: '943'
+                    }, {
+                        label: 'item-44',
+                        key: '43',
+                        cascade: 'relative',
+                        children: [{
+                        label: 'item-74',
+                        key: '213'
+                        }]
+                    }]
+                }, {
+                    label: 'item-14',
+                    key: '4343'
+                }, {
+                    label: 'item-15',
+                    key: '4sv3'
+                }, {
+                    label: 'item-14w',
+                    key: '434vsrw3'
+                }, {
+                    label: 'item-1y4',
+                    key: '43rw43'
+                }, {
+                    label: 'item-n14',
+                    key: '434gf3'
+                }, {
+                    label: 'item-1t4',
+                    key: '43nj43'
+                }, {
+                    label: 'item-14ht',
+                    key: '434y3'
+                }, {
+                    label: 'item-1net4',
+                    key: '43yh43'
+                }, {
+                    label: 'item-1ed4',
+                    key: '43gn43'
+                }, {
+                    label: 'item-1je4',
+                    key: '434n3'
+                }, {
+                    label: 'item-1ed04',
+                    key: '43gni43'
+                }, {
+                    label: 'item-71je4',
+                    key: '4348n3'
+                }]
+            };
+        }
+    }
+</script>
+```
+:::
+
 ### 属性
 
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
-| searchPlaceholder   | 搜索框文案，有值时展示搜索框 | string    | - | '' |
-| placement     | 下拉框位置  | string   | left-start, left-middle, left-end, right-start, right-middle, right-end, top-start, top-middle, top-end, bottom-start, bottom-middle, bottom-end | bottom-start |
-| placeholder  | 选择框默认文案    | string   | -           | 请选择 |
-| quickSelectAll | 快速全选,异步时需配合allSelected，asyncSelectMode使用，异步全选抛出值为all，且不支持手动逐项取消  | boolean   | -           | false |
-| allSelected | 是否已全选，异步数据时使用，true表示全部选择，value传[]   | boolean   | -           | false |
-| asyncSelectMode | 异步选择模式配合quickSelectAll使用，true表示全选后抛出'all'   | boolean   | -           | true |
+| cascadeMode   | 级联触发模式,必填 | string    | hover, click | '' |
+| item.cascade   | 每项数据若子级需级联则需包含该字段 | string    | fixed, relative | '' |
+| cascadeRelative   | 子级级联树是否跟随，item.cascade为relative时需置为true | boolean    | - | false |
+| cascadeBottom   | 子级级联树跟随时距底部的标准差，与treeSize适配使用 | number    | - | 32 |
+| treeSize   | 单个级联子树的大小,必填，兜底宽度300，推荐[300, 400],必填 | array    | - | [] |
 | value | 选中值，推荐保留树结构以应对异步数据回显   | array   | -   | [] |
 | options | 同步数据，树结构   | array   | -   | - |
 | lazyLoad | 异步请求数据   | function   | -   | (index, count, searchKey, leaf) => {return new Promise(resolve, reject) => {resolve();}).then(() => {return [];});} |
 | maps | 数据映射   | object   | -   | {key, label, children, hasChildren, disable, extend, cascade} |
 | count | 单次请求数量 | number | - | -1 |
 | highlightFilter | 同步数据搜索过滤 | boolean | - | true |
+| highlight | 根据值过滤同步数据并高亮 | string | - | '' |
 | multiple | 是否多选 | boolean | - | false |
 | track | 是否还原整个用户选择轨迹, true表示抛出树结构数据 | boolean | - | true |
+| accordion | 手风琴模式，同级别只能展开一项 | boolean | - | false |
+| withBorder | 树是否显示边框 | boolean | - | false |
 
 ### Slot
 

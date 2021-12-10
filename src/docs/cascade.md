@@ -85,7 +85,7 @@
     margin-bottom: 0px;
 }
 </style>
-## CascadeSelect
+## Cascade
 
 ### 基本用法
 
@@ -229,6 +229,7 @@
 | highlightFilter | 同步数据搜索过滤 | boolean | - | true |
 | multiple | 是否多选 | boolean | - | false |
 | track | 是否还原整个用户选择轨迹, true表示抛出树结构数据 | boolean | - | true |
+| accordion | 手风琴模式，同级别只能展开一项 | boolean | - | false |
 
 ### Slot
 

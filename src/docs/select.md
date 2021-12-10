@@ -17,6 +17,13 @@
                         key: '943'
                     }]
                 }, {
+                    label: 'item-11',
+                    key: '2',
+                    children: [{
+                        label: 'item-4',
+                        key: '93'
+                    }]
+                }, {
                     label: 'item-14',
                     key: '4343'
                 }]
@@ -85,10 +92,19 @@
 <template>
     <div>
         <div class="md-box">
-            <y-select :lazy-load="lazyLoad" multiple quick-select-all async-select-mode :value="selected" />
+            <y-select :options="options" :value="selected" />
         </div>
         <div class="md-box">
-            <y-select :lazy-load="lazyLoad" multiple quick-select-all async-select-mode :value="selected" search-placeholder="请搜索" />
+            搜索框
+        </div>
+        <div class="md-box">
+            <y-select :options="options" :value="selected" search-placeholder="请搜索" />
+        </div>
+        <div class="md-box">
+            手风琴模式
+        </div>
+        <div class="md-box">
+            <y-select :options="options" :value="selected" accordion />
         </div>
     </div>
 </template>
@@ -99,31 +115,29 @@
                 selected: [{
                     label: 'item-selected',
                     key: 'selected'
+                }],
+                options: [{
+                    label: 'item-selected',
+                    key: 'selected',
+                }, {
+                    label: 'item-12',
+                    key: '32',
+                    children: [{
+                        label: 'item-414',
+                        key: '943'
+                    }]
+                }, {
+                    label: 'item-11',
+                    key: '2',
+                    children: [{
+                        label: 'item-4',
+                        key: '93'
+                    }]
+                }, {
+                    label: 'item-14',
+                    key: '4343'
                 }]
             };
-        },
-        methods: {
-            lazyLoad(index, count, highlight, leaf) {
-                return new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                        resolve();
-                    }, 1000);
-                }).then(() => {
-                    let res = leaf ? [] : [{
-                        label: 'item-selected',
-                        key: 'selected',
-                        hasChildren: true
-                    }];
-                    for (let i = 0; i < 10; i++) {
-                        res.push({
-                            label: 'item' + Math.floor(Math.random() * 1000),
-                            key: 'item' + Math.floor(Math.random() * 1000),
-                            hasChildren: true
-                        });
-                    }
-                    return res;
-                });
-            },
         }
     }
 </script>
@@ -248,6 +262,13 @@
                         key: '943'
                     }]
                 }, {
+                    label: 'item-11',
+                    key: '2',
+                    children: [{
+                        label: 'item-4',
+                        key: '93'
+                    }]
+                }, {
                     label: 'item-14',
                     key: '4343'
                 }]
@@ -276,6 +297,7 @@
 | highlightFilter | 同步数据搜索过滤 | boolean | - | true |
 | multiple | 是否多选 | boolean | - | false |
 | track | 是否还原整个用户选择轨迹, true表示抛出树结构数据 | boolean | - | true |
+| accordion | 手风琴模式，同级别只能展开一项 | boolean | - | false |
 
 ### Slot
 

@@ -34,6 +34,7 @@
                     ref="tree"
                     withBorder
                     :key="highlight"
+                    :accordion="accordion"
                     :cascadeBottom="cascadeBottom"
                     :cascadeMode="cascadeMode"
                     :treeSize="treeSize || (cascadeMode ? [300, 400] : null)"
@@ -114,6 +115,10 @@ export default {
             default: true
         },
         // tree props
+        accordion: {
+            type: Boolean,
+            default: false
+        },
         cascadeBottom: {
             type: Number,
             default: 32

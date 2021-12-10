@@ -47,7 +47,7 @@ export default {
                 children: ['checkbox', 'input']
             }, {
                 title: 'Picker',
-                children: ['select', 'cascadeSelect']
+                children: ['select', 'cascade']
             }, {
                 title: 'Navigation',
                 children: ['pagination']
