@@ -50,6 +50,7 @@
                 :maps="_maps"
                 :track="track"
                 :count="count"
+                :accordion="accordion"
                 :withBorder="withBorder"
                 :highlight="highlight"
                 :highlightFilter="highlightFilter"
@@ -137,6 +138,10 @@ export default {
     },
     props: {
         fatherDisableStatue: {
+            type: Boolean,
+            default: false
+        },
+        accordion: {
             type: Boolean,
             default: false
         },
@@ -503,6 +508,15 @@ export default {
                     });
                 };
                 parent.$refs.leaf && cascadeLoop(parent.$refs.leaf);
+            }
+            if (this.accordion) {
+                this.$parent.$refs.leaf && this.$parent.$refs.leaf.forEach(leaf => {
+                    if (leaf._uid !== this._uid) {
+                        leaf.$refs.leavesShow && leaf.$refs.leavesShow.click();
+                        leaf.$refs.cascadeLeavesShow && leaf.$refs.cascadeLeavesShow.click();
+                        // leaf.$refs.leaf && loop(leaf.$refs.leaf);
+                    }
+                });
             }
         },
         extendCascade(close) {

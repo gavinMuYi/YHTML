@@ -39,7 +39,7 @@
         <div class="box-out">
             <div class="title">同步单选无轨迹</div>
             <div class="box">
-                <y-tree :options="options" :track="false">
+                <y-tree :options="options" :track="false" accordion>
                     <div slot="item" slot-scope="props">{{ props.level }}{{ props.data.label }}</div>
                 </y-tree>
             </div>
