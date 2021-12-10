@@ -20,6 +20,24 @@
                     label: 'item-14',
                     key: '4343'
                 }],
+                optionsa: [{
+                    label: 'item-selected',
+                    key: 'selected',
+                }, {
+                    label: 'item-12',
+                    key: '32',
+                    children: [{
+                        label: 'item-414',
+                        key: '943'
+                    }]
+                }, {
+                    label: 'item-5',
+                    key: '3334',
+                    children: [{
+                        label: 'item-4',
+                        key: '94313'
+                    }]
+                }],
                 optionse: [{
                     label: 'item-selected',
                     key: 'selected',
@@ -385,6 +403,50 @@
                 }, {
                     label: 'item-14',
                     key: '4343'
+                }]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 手风琴模式
+
+::: demo
+```html
+<template>
+    <div>
+        <div class="md-box">
+            <y-tree :options="optionsa" accordion />
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                selected: [{
+                    label: 'item-selected',
+                    key: 'selected'
+                }],
+                optionsa: [{
+                    label: 'item-selected',
+                    key: 'selected',
+                }, {
+                    label: 'item-12',
+                    key: '32',
+                    children: [{
+                        label: 'item-414',
+                        key: '943'
+                    }]
+                }, {
+                    label: 'item-5',
+                    key: '3334',
+                    children: [{
+                        label: 'item-4',
+                        key: '94313'
+                    }]
                 }]
             };
         }
