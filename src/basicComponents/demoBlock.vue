@@ -48,7 +48,7 @@
             padding-left: 10px;
         }
     }
-    .language-txt {
+    .language-info {
         width: 100%;
         display: block;
         word-break: break-all;
