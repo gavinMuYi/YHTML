@@ -8,7 +8,9 @@
                         v-for="(column, index) in columnConfig" :key="column.key + index"
                         :highlight="highlight" :columnKey="column.key"
                         :width="column.width" :label="column.label"
-                        :fixed="column.fixed" />
+                        :fixed="column.fixed" :rowspan="column.rowspan"
+                        :dragable="column.dragable" :sortable="column.sortable"
+                        :extend="column.extend" :compare="column.compare" :align="column.align" />
                 </slot>
                 <y-tree v-if="multiple && basicIndex" :options="tableList" :multiple="true"
                         ref="treeManger" :value="currentSelect" @change="handleMultiple"

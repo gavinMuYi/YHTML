@@ -2,6 +2,16 @@
     export default {
         data() {
             return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
                 options: [{
                     area: '东北',
                     p: '东北',
@@ -488,6 +498,7 @@
 ::: demo
 ```html
 <template>
+    <y-table title="TABLE EXAMPLE 0" :options="options" :column-config="columnConfig" />
 </template>
 <script>
     export default {

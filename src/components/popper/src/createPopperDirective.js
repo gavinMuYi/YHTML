@@ -1,4 +1,5 @@
 import { EleResize } from '@/utils/dom.js';
+const POPFUNCHOOK = 'YUI-POPFUNCHOOK';
 
 function checkScroll(dom) {
     const nodeName = dom.nodeName.toLowerCase();
@@ -300,8 +301,13 @@ function handleClick(target, el) {
 function doBind(el, binding, vnode, path, listener) {
     // 就近取pop
     setTimeout(() => {
-        let item = vnode.context.$refs[binding.arg] || window.pops[binding.arg];
-        let target = vnode.context.$refs[binding.arg] || window.pops[binding.arg];
+        el[POPFUNCHOOK] = {};
+        if (binding.value && binding.value.disable) {
+            return;
+        }
+        let triggerName = binding.arg || (binding.value && binding.value.triggerName);
+        let item = vnode.context.$refs[triggerName] || window.pops[triggerName];
+        let target = vnode.context.$refs[triggerName] || window.pops[triggerName];
         if (path && path.length) {
             path.forEach(name => {
                 target = target && target.$refs[name];
@@ -324,24 +330,32 @@ function doBind(el, binding, vnode, path, listener) {
             };
         }
         if (binding.modifiers.rightClick || binding.modifiers.rightclick) {
-            el.addEventListener('contextmenu', function (e) {
+            let contextmenuHandler = function (e) {
                 rightClick(target, e, el);
-            });
+            };
+            el[POPFUNCHOOK].contextmenu = contextmenuHandler;
+            el.addEventListener('contextmenu', contextmenuHandler);
         }
         if (binding.modifiers.hover) {
-            el.addEventListener('mouseenter', function () {
+            let mouseenterHandler = function () {
                 handleHover(target, el, true, binding.modifiers.delay);
-            });
-            el.addEventListener('mouseleave', function () {
+            };
+            let mouseleaveHandler = function () {
                 handleHover(target, el, false, binding.modifiers.delay);
-            });
+            };
+            el[POPFUNCHOOK].mouseenter = mouseenterHandler;
+            el[POPFUNCHOOK].mouseleave = mouseleaveHandler;
+            el.addEventListener('mouseenter', mouseenterHandler);
+            el.addEventListener('mouseleave', mouseleaveHandler);
         }
         if (binding.modifiers.click) {
-            el.addEventListener('click', function (e) {
+            let clickHandler = function (e) {
                 handleClick(target, el);
                 e.preventDefault();
                 e.stopPropagation();
-            });
+            };
+            el[POPFUNCHOOK].click = clickHandler;
+            el.addEventListener('click', clickHandler);
         }
         if (binding.modifiers.show) {
             handleClick(target, el);
@@ -359,15 +373,22 @@ function doBind(el, binding, vnode, path, listener) {
     });
 }
 
+function unBind(el) {
+    ['contextmenu', 'mouseenter', 'mouseleave', 'click'].forEach(action => {
+        el[POPFUNCHOOK][action] && el.removeEventListener(action, el[POPFUNCHOOK][action]);
+    });
+}
+
 export default function createPopperDirective(path) {
     return {
         bind: function (el, binding, vnode) {
             doBind(el, binding, vnode, path, true);
         },
         update: function (el, binding, vnode) {
-            if (binding.oldValue === binding.value) {
+            if (JSON.stringify(binding.oldValue) === JSON.stringify(binding.value)) {
                 return;
             }
+            unBind(el);
             doBind(el, binding, vnode, path);
         }
     };

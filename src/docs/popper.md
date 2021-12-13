@@ -2,6 +2,7 @@
     export default {
         data() {
             return {
+                disable: false,
                 popStatus: false,
                 popContent: '请输入改变pop内容长度，查看边界碰撞情况'
             };
@@ -59,7 +60,10 @@
             <y-popper ref="hovertip">hover pop</y-popper>
         </div>
         <div class="md-box">
-            <span v-ypop:hoverdtip.hover.delay class="md-pop-trigger">hover delay</span>
+            <y-button @click="disable = !disable">
+                {{ disable ? '启用' : '禁用' }}tip
+            </y-button>
+            <span v-ypop.hover.delay="{triggerName: 'hoverdtip', disable: disable}" class="md-pop-trigger">hover delay</span>
             <y-popper ref="hoverdtip">hover delay pop</y-popper>
         </div>
         <div class="md-box">
@@ -85,6 +89,7 @@
     export default {
         data() {
             return {
+                disable: false,
                 popStatus: false
             };
         },
