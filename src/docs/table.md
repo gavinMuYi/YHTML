@@ -2,6 +2,10 @@
     export default {
         data() {
             return {
+                unit: {
+                    m: ' 万元',
+                    all: ' 千斤'
+                },
                 columnConfig: [{
                     key: 'r',
                     label: '区域'
@@ -499,6 +503,11 @@
             }
         },
         methods: {
+            setRowClass(rowData, index) {
+                if (rowData.m < 400) {
+                    return 'customer-row-warning';
+                }
+            }
         }
     }
 </script>
@@ -508,6 +517,9 @@
 }
 .md-box:last-child {
     margin-bottom: 0px;
+}
+.md-box .customer-row-warning {
+    background: #fb9f9f;
 }
 </style>
 ## Table
@@ -542,6 +554,164 @@
                     m: 41354,
                     all: 4334434,
                     id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 带斑马纹表格
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfig" stripe />
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 设置单行状态表格
+
+::: demo 
+```html
+<template>
+    <div class="md-box">
+        <y-table title="中国各地区粮食产量指标完成进度表" :options="flatOptions" :column-config="columnConfig"  :set-row-class="setRowClass" />
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        },
+        methods: {
+            setRowClass(rowData, index) {
+                if (rowData.m < 400) {
+                    return 'customer-row-warning';
+                }
+            }
+        }
+    }
+</script>
+```
+:::
+
+### 自定义单元格表格
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfig">
+        <y-table-column
+            v-for="column in columnConfig"
+            :key="column.id" :label="column.label" :column-key="column.key">
+            <div slot-scope="props" slot="cell">
+                {{ props[column.key] + (unit[column.key] || '') }}
+            </div>
+        </y-table-column>
+    </y-table>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                unit: {
+                    m: ' 万元',
+                    all: ' 千斤'
+                },
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 树形table
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="options" :column-config="columnConfig" />
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286,
+                    children: [...]
                 }...]
             };
         }
