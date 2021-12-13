@@ -512,9 +512,13 @@
 </style>
 ## Table
 
+```txt
+固定table列时，table组件只在各表中渲染需要显示的列，通过在各table下的挂载object对象并监听其resize事件，实现时时同步各表行高。从而做到在解决业界常见的各表各行高度不一致问题的基础上提升渲染性能。在大数据渲染的场景下同比业界常见table渲染性能提升65%-70%，内存消耗减少55%-65%。
+```
+
 ### 基本用法
 
-::: demo
+::: demo 
 ```html
 <template>
     <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfig" />

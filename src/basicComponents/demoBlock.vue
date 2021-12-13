@@ -48,6 +48,16 @@
             padding-left: 10px;
         }
     }
+    .language-txt {
+        width: 100%;
+        display: block;
+        word-break: break-all;
+        white-space: normal;
+        font-size: 14px;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: @greenGray;
+    }
   .demo-block {
     border: solid 1px #ebebeb;
     border-radius: 3px;
