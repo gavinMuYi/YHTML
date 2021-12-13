@@ -812,7 +812,7 @@ export default {
         initLoad() {
             return this.options
                 ? (leaf, index, count, sortFunc) => {
-                    let ops = sortFunc ? sortFunc(this.options) : this.options;
+                    let ops = sortFunc ? sortFunc(clone(this.options)) : clone(this.options);
                     return new Promise((resolve, reject) => {
                         resolve();
                     }).then(() => {

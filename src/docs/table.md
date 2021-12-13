@@ -6,6 +6,44 @@
                     m: ' 万元',
                     all: ' 千斤'
                 },
+                columnConfigSort: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    sortable: true
+                }],
+                columnConfigFix: [{
+                    key: 'r',
+                    label: '区域',
+                    fixed: 'left',
+                    width: '200px'
+                }, {
+                    key: 'area',
+                    label: '所属地区',
+                    width: '300px'
+                }, {
+                    key: 'p',
+                    label: '所属省份',
+                    width: '300px'
+                }, {
+                    key: 'm',
+                    label: '利润',
+                    width: '300px'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    width: '300px'
+                }, {
+                    key: 'id',
+                    label: '区域编号',
+                    fixed: 'right',
+                    width: '200px'
+                }],
                 columnConfig: [{
                     key: 'r',
                     label: '区域'
@@ -503,9 +541,58 @@
             }
         },
         methods: {
+            compare(a, b) {
+                return (a.m / a.all) > (b.m / b.all) ? 1 : -1;
+            },
             setRowClass(rowData, index) {
                 if (rowData.m < 400) {
                     return 'customer-row-warning';
+                }
+            },
+            lazyLoad(leaf, index, count, sort) {
+                let getItem = (arr, item) => {
+                    let answer = null;
+                    arr.forEach(i => {
+                        if (i.all === item.all) {
+                            answer = i.children.map(k => {
+                                let { children, ...les } = k;
+                                if (children) {
+                                    les.hasChildren = true;
+                                }
+                                return les;
+                            });
+                        } else {
+                            if (i.children) {
+                                !answer && (answer = getItem(i.children, item, answer));
+                            }
+                        }
+                    });
+                    return answer;
+                };
+                if (leaf) {
+                    let answer = getItem(this.options, leaf);
+                    return new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            resolve();
+                        }, 1000);
+                    }).then(() => {
+                        return answer;
+                    });
+                } else {
+                    return new Promise((resolve, reject) => {
+                        resolve();
+                    }).then(() => {
+                        return {
+                            options: this.options.map(item => {
+                                let { children, ...les } = item;
+                                if (children) {
+                                    les.hasChildren = true;
+                                }
+                                return les;
+                            }),
+                            total: 1
+                        };
+                    });
                 }
             }
         }
@@ -685,7 +772,348 @@
 ```
 :::
 
-### 树形table
+### 固定表头
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfig"  :header-fix="true" table-height="150px" />
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 固定列
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfigFix" />
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfigFix: [{
+                    key: 'r',
+                    label: '区域',
+                    fixed: 'left',
+                    width: '200px'
+                }, {
+                    key: 'area',
+                    label: '所属地区',
+                    width: '300px'
+                }, {
+                    key: 'p',
+                    label: '所属省份',
+                    width: '300px'
+                }, {
+                    key: 'm',
+                    label: '利润',
+                    width: '300px'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    width: '300px'
+                }, {
+                    key: 'id',
+                    label: '区域编号',
+                    fixed: 'right',
+                    width: '200px'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 固定列和表头
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfigFix"  :header-fix="true" table-height="150px" />
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfigFix: [{
+                    key: 'r',
+                    label: '区域',
+                    fixed: 'left',
+                    width: '200px'
+                }, {
+                    key: 'area',
+                    label: '所属地区',
+                    width: '300px'
+                }, {
+                    key: 'p',
+                    label: '所属省份',
+                    width: '300px'
+                }, {
+                    key: 'm',
+                    label: '利润',
+                    width: '300px'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    width: '300px'
+                }, {
+                    key: 'id',
+                    label: '区域编号',
+                    fixed: 'right',
+                    width: '200px'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 嵌套表头
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" />
+        <y-table-column label="地区信息" column-key="id" fixed="left">
+            <y-table-column label="区域编号" column-key="id" width="100px">
+            </y-table-column>
+            <y-table-column label="地区层级" column-key="area">
+                <y-table-column label="地区" column-key="area" width="100px">
+                </y-table-column>
+                <y-table-column label="省份" column-key="p" width="100px">
+                </y-table-column>
+                <y-table-column label="区域" column-key="r" width="100px">
+                </y-table-column>
+            </y-table-column>
+        </y-table-column>
+        <y-table-column label="利润" column-key="m" width="300px">
+        </y-table-column>
+        <y-table-column label="产量" column-key="all" width="300px">
+        </y-table-column>
+    </y-table>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfigFix: [{
+                    key: 'r',
+                    label: '区域',
+                    fixed: 'left',
+                    width: '200px'
+                }, {
+                    key: 'area',
+                    label: '所属地区',
+                    width: '300px'
+                }, {
+                    key: 'p',
+                    label: '所属省份',
+                    width: '300px'
+                }, {
+                    key: 'm',
+                    label: '利润',
+                    width: '300px'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    width: '300px'
+                }, {
+                    key: 'id',
+                    label: '区域编号',
+                    fixed: 'right',
+                    width: '200px'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 自定义表头单元格
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" />
+        <y-table-column label="地区信息" column-key="id" fixed="left">
+            <y-table-column label="区域编号" column-key="id" width="100px">
+                <div slot="header">区域编号(id)</div>
+            </y-table-column>
+            <y-table-column label="地区层级" column-key="area">
+                <y-table-column label="地区" column-key="area" width="100px">
+                </y-table-column>
+                <y-table-column label="省份" column-key="p" width="100px">
+                </y-table-column>
+                <y-table-column label="区域" column-key="r" width="100px">
+                </y-table-column>
+            </y-table-column>
+        </y-table-column>
+        <y-table-column label="利润" column-key="m" width="300px">
+        </y-table-column>
+        <y-table-column label="产量" column-key="all" width="300px">
+        </y-table-column>
+    </y-table>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfigFix: [{
+                    key: 'r',
+                    label: '区域',
+                    fixed: 'left',
+                    width: '200px'
+                }, {
+                    key: 'area',
+                    label: '所属地区',
+                    width: '300px'
+                }, {
+                    key: 'p',
+                    label: '所属省份',
+                    width: '300px'
+                }, {
+                    key: 'm',
+                    label: '利润',
+                    width: '300px'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    width: '300px'
+                }, {
+                    key: 'id',
+                    label: '区域编号',
+                    fixed: 'right',
+                    width: '200px'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 表头宽度拖动
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" />
+        <y-table-column label="地区信息" column-key="id" fixed="left">
+            <y-table-column label="区域编号" column-key="id" width="100px">
+            </y-table-column>
+            <y-table-column label="地区层级" column-key="area" dragable>
+                <y-table-column label="地区" column-key="area" width="100px" dragable>
+                </y-table-column>
+                <y-table-column label="省份" column-key="p" width="100px" dragable>
+                </y-table-column>
+                <y-table-column label="区域" column-key="r" width="100px" dragable>
+                </y-table-column>
+            </y-table-column>
+        </y-table-column>
+        <y-table-column label="利润" column-key="m" width="300px">
+        </y-table-column>
+        <y-table-column label="产量" column-key="all" width="300px">
+        </y-table-column>
+    </y-table>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfigFix: [{
+                    key: 'r',
+                    label: '区域',
+                    fixed: 'left',
+                    width: '200px'
+                }, {
+                    key: 'area',
+                    label: '所属地区',
+                    width: '300px'
+                }, {
+                    key: 'p',
+                    label: '所属省份',
+                    width: '300px'
+                }, {
+                    key: 'm',
+                    label: '利润',
+                    width: '300px'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    width: '300px'
+                }, {
+                    key: 'id',
+                    label: '区域编号',
+                    fixed: 'right',
+                    width: '200px'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 树形表格
 
 ::: demo 
 ```html
@@ -706,7 +1134,7 @@
                     key: 'all',
                     label: '产量'
                 }],
-                flatOptions: [{
+                options: [{
                     r: '东北',
                     m: 41354,
                     all: 4334434,
@@ -714,6 +1142,228 @@
                     children: [...]
                 }...]
             };
+        }
+    }
+</script>
+```
+:::
+
+### 懒加载
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :lazy-load="lazyLoad" :column-config="columnConfig" />
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }]
+            };
+        },
+        methods: {
+            lazyLoad(leaf, index, count, sort) {
+                return new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            resolve();
+                        }, 500);
+                    }).then(() => {
+                        return [...];
+                    });
+            }
+        }
+    }
+</script>
+```
+:::
+
+### 多选
+
+::: demo 
+```html
+<template>
+    <div class="md-box">
+        <y-table title="中国各地区粮食产量表" :options="options" :column-config="columnConfig" multiple basic-index="id" />
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                options: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286,
+                    children: [...]
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 跨页多选
+
+::: demo 
+```html
+<template>
+    <div class="md-box">
+        <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfig" multiple basic-index="id" page-batch-select />
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 排序
+
+::: demo 
+```html
+<template>
+    <div class="md-box">
+        <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfigSort" :default-sort="{key: 'all', order: 'desc'}" />
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfigSort: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    sortable: true
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 自定义排序
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" />
+        <y-table-column label="地区信息" column-key="id" fixed="left">
+            <y-table-column label="区域编号" column-key="id" width="100px">
+            </y-table-column>
+            <y-table-column label="地区层级 自定义排序(利润/产量)" column-key="area" sortable :compare="compare">
+                <y-table-column label="地区" column-key="area" width="100px" sortable>
+                </y-table-column>
+                <y-table-column label="省份" column-key="p" width="100px" sortable>
+                </y-table-column>
+                <y-table-column label="区域" column-key="r" width="100px" sortable>
+                </y-table-column>
+            </y-table-column>
+        </y-table-column>
+        <y-table-column label="利润" column-key="m" width="300px" sortable>
+        </y-table-column>
+        <y-table-column label="产量" column-key="all" width="300px" sortable>
+        </y-table-column>
+    </y-table>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfigFix: [{
+                    key: 'r',
+                    label: '区域',
+                    fixed: 'left',
+                    width: '200px'
+                }, {
+                    key: 'area',
+                    label: '所属地区',
+                    width: '300px'
+                }, {
+                    key: 'p',
+                    label: '所属省份',
+                    width: '300px'
+                }, {
+                    key: 'm',
+                    label: '利润',
+                    width: '300px'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    width: '300px'
+                }, {
+                    key: 'id',
+                    label: '区域编号',
+                    fixed: 'right',
+                    width: '200px'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        },
+        methods: {
+            compare(a, b) {
+                return (a.m / a.all) > (b.m / b.all) ? 1 : -1;
+            }
         }
     }
 </script>
