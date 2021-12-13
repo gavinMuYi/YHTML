@@ -479,6 +479,25 @@
                 }]
             };
         },
+        computed: {
+            flatOptions() {
+                let flat = (arr) => {
+                    let res = [];
+                    arr.forEach(item => {
+                        let {children, ...orgs} = item;
+                        res.push(children ? orgs : {
+                            ...orgs,
+                            r: orgs.p + '-' + orgs.r
+                        });
+                        if (children && children.length) {
+                            res = res.concat(flat(children));
+                        }
+                    });
+                    return res;
+                };
+                return flat(this.options);
+            }
+        },
         methods: {
         }
     }
@@ -498,14 +517,29 @@
 ::: demo
 ```html
 <template>
-    <y-table title="TABLE EXAMPLE 0" :options="options" :column-config="columnConfig" />
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" :column-config="columnConfig" />
 </template>
 <script>
     export default {
         data() {
-            return {};
-        },
-        methods: {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
         }
     }
 </script>
