@@ -19,10 +19,6 @@ export default {
             type: String,
             default: ''
         },
-        highlight: {
-            type: String,
-            default: ''
-        },
         width: {
             type: String,
             default: null
@@ -67,9 +63,6 @@ export default {
             this.setParentColumn();
         },
         columnKey() {
-            this.setParentColumn();
-        },
-        highlight() {
             this.setParentColumn();
         },
         width() {

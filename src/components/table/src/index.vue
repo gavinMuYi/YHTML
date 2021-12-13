@@ -6,7 +6,7 @@
                 <slot>
                     <y-table-column
                         v-for="(column, index) in columnConfig" :key="column.key + index"
-                        :highlight="highlight" :columnKey="column.key"
+                        :columnKey="column.key"
                         :width="column.width" :label="column.label"
                         :fixed="column.fixed" :rowspan="column.rowspan"
                         :dragable="column.dragable" :sortable="column.sortable"
@@ -321,10 +321,6 @@ export default {
             }
         },
         title: {
-            type: String,
-            default: ''
-        },
-        highlight: {
             type: String,
             default: ''
         },
