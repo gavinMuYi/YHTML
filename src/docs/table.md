@@ -1469,3 +1469,62 @@
 </script>
 ```
 :::
+
+### table属性
+
+| 参数      | 说明                             | 类型      | 可选值       | 默认值 |
+| -------- | -------------------------------- | -------- | ----------- | ----- |
+| options   | 同步数据 | array    | - | null |
+| lazyLoad     | 异步获取数据函数    | function   | - | (leaf, index, count, sortData) => {return new Promise((resolve, reject) => {resolve();}).then(() => {return {options: [],total: 0};});} |
+| columnConfig  | 列配置  | array   | -           | [] |
+| title | 表名   | string   | -           | '' |
+| countOptions | 每页展示数量选项   | array   | -           | [15, 30, 50, 100] |
+| headerFix | 是否固定表头   | boolean   | -           | false |
+| tableHeight | 固定表头时表体高度   | string   | -           | - |
+| defaultSort | 默认排序列及方式   | object   | -           | {} |
+| pageBatchSelect | 是否跨页多选   | boolean   | -           | false |
+| basicIndex | 多选基准字段   | string   | -           | '' |
+| selected | 多选选中项   | array   | -           | [] |
+| stripe | 是否展示斑马纹   | boolean   | -           | false |
+| setRowClass | 为行设置类名，入参行数据   | function   | -           | null |
+| colspanKeys | 合并列   | array   | -           | [] |
+| transverseTreeTable | 是否展示为交叉表   | boolean   | -           | false |
+| transverseTreeTableColumns | 交叉表侧表头层级，由左至右   | array   | -           | [] |
+
+### table-column属性
+
+| 参数      | 说明                             | 类型      | 可选值       | 默认值 |
+| -------- | -------------------------------- | -------- | ----------- | ----- |
+| label   | 列名 | string    | - | '' |
+| columnKey     | 列数据的key值   | string   | - | '' |
+| width  | 列宽    | string   | -           | null |
+| fixed | 列固定 (默认''表示center)   | string   | left, right    | '' |
+| rowspan | 该列合并行   | boolean   | -           | false |
+| dragable | 该列是否可拖拽改变宽度   | boolean   | -           | false |
+| sortable | 该列是否可拖拽排序   | boolean   | -           | false |
+| extend | 该表头是否展开子表头   | boolean   | -           | true |
+| compare | 该列的自定义排序方法   | function   | -           | - |
+| align | 该列内容对齐方式   | string   | left, center, right  | left |
+
+### table Slot
+
+| Slot名称  | 说明                             |
+| -------- | -------------------------------- |
+| default  | 配置table-column |
+| 'row' + rowData.$y_table_level  | 自定义行内容 |
+
+
+### table-column Slot
+
+| Slot名称  | 说明                             |
+| -------- | -------------------------------- |
+| default  | 嵌套表头table-column |
+| header  | scoped slot自定义表头单元格 |
+| cell  | scoped slot自定义表格内容单元格 |
+
+### table事件
+
+| 事件名称  | 说明                              | 事件参数  |
+| -------- | -------------------------------- | -------- |
+| rowClick    | 行点击事件 | rowData |
+| multipleSelect    | 多选事件 | selected array or 'all' |

@@ -351,12 +351,6 @@ export default {
                 return {};
             }
         },
-        colspanColumns: {
-            type: Array,
-            default: () => {
-                return [];
-            }
-        },
         basicIndex: {
             type: String,
             default: ''
