@@ -608,6 +608,9 @@
 .md-box .customer-row-warning {
     background: #fb9f9f;
 }
+.customer-row3 {
+    padding: 20px;
+}
 </style>
 ## Table
 
@@ -764,6 +767,58 @@
                     m: 41354,
                     all: 4334434,
                     id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 自定义表格行
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="options" :column-config="columnConfig">
+        <y-table-column
+            v-for="column in columnConfig"
+            :key="column.id" :label="column.label" :column-key="column.key">
+        </y-table-column>
+        <div slot-scope="props" slot="row3">
+            <div class="customer-row3">
+                <div>{{ props.rowData.p }}下辖区域的具体情况：</div>
+                <div>区名：{{props.rowData.r }}</div>
+                <div>利润：{{props.rowData.m }}</div>
+                <div>产量：{{props.rowData.all }}</div>
+            </div>
+        </div>
+    </y-table>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                unit: {
+                    m: ' 万元',
+                    all: ' 千斤'
+                },
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                options: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286,
+                    children: [...]
                 }...]
             };
         }

@@ -246,7 +246,8 @@ export default {
                 tds.push(<td colspan={this.columns.length}>
                     <div class="y-table-cell">
                         { rowSlot({
-                            name: this.name
+                            name: this.name,
+                            rowData: this.rowData
                         }) }
                     </div>
                 </td>
