@@ -332,10 +332,6 @@ export default {
             type: Boolean,
             default: false
         },
-        contentMaxHeight: {
-            type: Number,
-            default: null
-        },
         countOptions: {
             type: Array,
             default: () => {
