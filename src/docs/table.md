@@ -1369,3 +1369,103 @@
 </script>
 ```
 :::
+
+### 合并行或列
+
+::: demo 
+```html
+<template>
+    <div class="md-box">
+        <y-table :options="options" title="中国各地区粮食产量表" :content-max-height="250"
+                 header-fix table-height="500px" stripe :colspan-keys="[['area', 'p', 'r']]" >
+            <y-table-column label="区域" column-key="area" dragable fixed="left" rowspan width="200px">
+            </y-table-column>
+            <y-table-column label="省" column-key="p" dragable fixed="left" rowspan width="200px">
+            </y-table-column>
+            <y-table-column label="区" column-key="r" dragable fixed="left" width="200px">
+            </y-table-column>
+            <y-table-column label="利润" column-key="m" dragable>
+            </y-table-column>
+            <y-table-column label="销售额" column-key="all" dragable>
+            </y-table-column>
+        </y-table>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                options: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286,
+                    children: [...]
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 交叉表
+
+::: demo 
+```html
+<template>
+    <div class="md-box">
+        <y-table multiple :options="options" title="中国各地区粮食产量表" :content-max-height="250"
+                 header-fix table-height="500px" stripe :colspan-keys="[['area', 'p', 'r']]"
+                 basic-index="r" page-batch-select transverse-tree-table
+                 :transverse-tree-table-columns="['area', 'p', 'r']">
+            <y-table-column label="区域" column-key="area" dragable fixed="left" rowspan width="200px">
+            </y-table-column>
+            <y-table-column label="省" column-key="p" dragable fixed="left" rowspan width="200px">
+            </y-table-column>
+            <y-table-column label="区" column-key="r" dragable fixed="left" rowspan width="200px">
+            </y-table-column>
+            <y-table-column label="利润" column-key="m" dragable>
+            </y-table-column>
+            <y-table-column label="销售额" column-key="all" dragable>
+            </y-table-column>
+        </y-table>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfig: [{
+                    key: 'r',
+                    label: '区域'
+                }, {
+                    key: 'm',
+                    label: '利润'
+                }, {
+                    key: 'all',
+                    label: '产量'
+                }],
+                options: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286,
+                    children: [...]
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
