@@ -53,7 +53,7 @@ export default {
                 children: ['pagination']
             }, {
                 title: 'Pop',
-                children: ['popper', 'popmenu']
+                children: ['popper', 'popmenu', 'tip']
             }, {
                 title: 'Data Display',
                 children: ['tree', 'table', 'chart', 'dashboard']
