@@ -43,6 +43,10 @@ export default {
             type: Boolean,
             default: true
         },
+        extendable: {
+            type: Boolean,
+            default: true
+        },
         compare: {
             type: Function
         },
@@ -87,6 +91,9 @@ export default {
             this.setParentColumn();
         },
         align() {
+            this.setParentColumn();
+        },
+        extendable() {
             this.setParentColumn();
         }
     },
@@ -135,6 +142,7 @@ export default {
                     sortable: this.sortable,
                     extend: this.extend,
                     compare: this.compare,
+                    extendable: this.extendable,
                     align: this.align
                 };
                 let that = this;

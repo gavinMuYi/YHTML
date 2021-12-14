@@ -969,7 +969,7 @@
 ```html
 <template>
     <y-table title="中国各地区粮食产量表" :options="flatOptions" />
-        <y-table-column label="地区信息" column-key="id" fixed="left">
+        <y-table-column label="地区信息" column-key="r" fixed="left">
             <y-table-column label="区域编号" column-key="id" width="100px">
             </y-table-column>
             <y-table-column label="地区层级" column-key="area">
@@ -1037,11 +1037,80 @@
 ```html
 <template>
     <y-table title="中国各地区粮食产量表" :options="flatOptions" />
-        <y-table-column label="地区信息" column-key="id" fixed="left">
+        <y-table-column label="地区信息" column-key="r" fixed="left">
             <y-table-column label="区域编号" column-key="id" width="100px">
                 <div slot="header">区域编号(id)</div>
             </y-table-column>
             <y-table-column label="地区层级" column-key="area">
+                <y-table-column label="地区" column-key="area" width="100px">
+                </y-table-column>
+                <y-table-column label="省份" column-key="p" width="100px">
+                </y-table-column>
+                <y-table-column label="区域" column-key="r" width="100px">
+                </y-table-column>
+            </y-table-column>
+        </y-table-column>
+        <y-table-column label="利润" column-key="m" width="300px">
+        </y-table-column>
+        <y-table-column label="产量" column-key="all" width="300px">
+        </y-table-column>
+    </y-table>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                columnConfigFix: [{
+                    key: 'r',
+                    label: '区域',
+                    fixed: 'left',
+                    width: '200px'
+                }, {
+                    key: 'area',
+                    label: '所属地区',
+                    width: '300px'
+                }, {
+                    key: 'p',
+                    label: '所属省份',
+                    width: '300px'
+                }, {
+                    key: 'm',
+                    label: '利润',
+                    width: '300px'
+                }, {
+                    key: 'all',
+                    label: '产量',
+                    width: '300px'
+                }, {
+                    key: 'id',
+                    label: '区域编号',
+                    fixed: 'right',
+                    width: '200px'
+                }],
+                flatOptions: [{
+                    r: '东北',
+                    m: 41354,
+                    all: 4334434,
+                    id: 3286
+                }...]
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 禁止表头收起
+
+::: demo 
+```html
+<template>
+    <y-table title="中国各地区粮食产量表" :options="flatOptions" />
+        <y-table-column label="地区信息" column-key="r" fixed="left">
+            <y-table-column label="区域编号" column-key="id" width="100px">
+                <div slot="header">区域编号(id)</div>
+            </y-table-column>
+            <y-table-column label="地区层级" column-key="area" :extendable="false">
                 <y-table-column label="地区" column-key="area" width="100px">
                 </y-table-column>
                 <y-table-column label="省份" column-key="p" width="100px">
@@ -1106,7 +1175,7 @@
 ```html
 <template>
     <y-table title="中国各地区粮食产量表" :options="flatOptions" />
-        <y-table-column label="地区信息" column-key="id" fixed="left">
+        <y-table-column label="地区信息" column-key="r" fixed="left">
             <y-table-column label="区域编号" column-key="id" width="100px">
             </y-table-column>
             <y-table-column label="地区层级" column-key="area" dragable>
@@ -1358,7 +1427,7 @@
 ```html
 <template>
     <y-table title="中国各地区粮食产量表" :options="flatOptions" />
-        <y-table-column label="地区信息" column-key="id" fixed="left">
+        <y-table-column label="地区信息" column-key="r" fixed="left">
             <y-table-column label="区域编号" column-key="id" width="100px">
             </y-table-column>
             <y-table-column label="地区层级 自定义排序(利润/产量)" column-key="area" sortable :compare="compare">
@@ -1558,6 +1627,7 @@
 | dragable | 该列是否可拖拽改变宽度   | boolean   | -           | false |
 | sortable | 该列是否可拖拽排序   | boolean   | -           | false |
 | extend | 该表头是否展开子表头   | boolean   | -           | true |
+| extendable | 该表头是否可以展开子表头   | boolean   | -           | true |
 | compare | 该列的自定义排序方法   | function   | -           | - |
 | align | 该列内容对齐方式   | string   | left, center, right  | left |
 

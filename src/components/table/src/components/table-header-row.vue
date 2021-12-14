@@ -199,7 +199,7 @@ export default {
                                 </span>
                             </span>) : ''
                     }
-                    { th.withChildren ? extendIcon : '' }
+                    { th.withChildren && th.extendable ? extendIcon : '' }
                     { th.headRender.call(this, h, th.label, th) }
                     { th.sortable ? sort : '' }
                     {
