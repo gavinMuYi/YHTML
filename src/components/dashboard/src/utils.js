@@ -1,5 +1,4 @@
 exports.moreFunc = function (options) {
-    console.log(options);
     let res = [];
     options.forEach((item, index) => {
         res.push({

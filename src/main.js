@@ -4,6 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import axios from 'axios';
+import './mock';
 // 引入demo-block
 import DemoBlock from './basicComponents/demoBlock';
 Vue.component('demo-block', DemoBlock);
@@ -20,17 +21,15 @@ const ajax = axios.create({
 });
 Vue.prototype.$ajax = axios;
 Vue.prototype.$ajax.post = function (url, options) {
-    if (url[0] === '/') {
-        url = '/db' + url;
-    }
     options = qs.stringify({ data: JSON.stringify(options) });
-    return ajax.post(url, options).then(res => Promise.resolve(res.data));
+    return new Promise((resolve) => {
+        ajax.post(url, options).then(res => resolve(res.data.body));
+    });
 };
 Vue.prototype.$ajax.get = function (url, options) {
-    if (url[0] === '/' && url.indexOf('/translate') === -1 && url.indexOf('/txtdata') === -1) {
-        url = '/db' + url;
-    }
-    return ajax.get(url, options).then(res => Promise.resolve(res.data));
+    return new Promise((resolve) => {
+        ajax.get(url, options).then(res => resolve(res.data.body));
+    });
 };
 
 /* eslint-disable no-new */

@@ -45,7 +45,7 @@
                                 <y-icon name="question" v-if="field.info.length" class="info-tip"
                                         v-ytip:fieldInfoTip.hover.delay="{data: field.info}" />
                                 <y-icon name="double-arrow-up" v-ytip:fieldlevelTip.hover.delay="{data: field.child}"
-                                        v-if="field.child" />
+                                        v-if="field.child" class="arrow-down-tip" />
                             </div>
                             <div class="value">
                                 <span v-if="field.kind" :style="{'color': computeField(field) > 0
@@ -214,6 +214,10 @@ export default {
                             width: 55%;
                             overflow: hidden;
                             height: 14px;
+                            .arrow-down-tip {
+                                position: relative;
+                                top: -2px;
+                            }
                             .label {
                                 font-size: 13px;
                                 box-sizing: border-box;
