@@ -51,5 +51,7 @@ export default {
         background: @blackGreen!important;
         padding: 5px!important;
         font-size: 12px;
+        font-weight: 300;
+        color: @white;
     }
 </style>
