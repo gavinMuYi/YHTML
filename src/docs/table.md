@@ -1582,4 +1582,4 @@
 | 事件名称  | 说明                              | 事件参数  |
 | -------- | -------------------------------- | -------- |
 | rowClick    | 行点击事件 | rowData |
-| multipleSelect    | 多选事件 | selected array or 'all' |
+| multipleSelect    | 多选事件 | selected array or ['all'] |

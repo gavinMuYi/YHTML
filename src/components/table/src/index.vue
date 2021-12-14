@@ -744,6 +744,9 @@ export default {
         selected(nval) {
             this.$set(this, 'currentSelect', clone(nval));
         },
+        currentSelect(nval) {
+            this.$emit('multipleSelect', nval);
+        },
         rowHeight(nval) {
             if ((nval.header.length && !this.leftTable.header.length)
                 || (nval.body.length && !this.leftTable.body.length)
@@ -849,7 +852,6 @@ export default {
         },
         handleMultiple(val) {
             this.$set(this, 'currentSelect', val);
-            this.$emit('multipleSelect', val);
             this.getCheckBoxStatus();
         },
         getCheckBoxStatus() {
