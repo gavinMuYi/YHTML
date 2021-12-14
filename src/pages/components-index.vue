@@ -56,7 +56,7 @@ export default {
                 children: ['popper', 'popmenu']
             }, {
                 title: 'Data Display',
-                children: ['tree', 'table', 'dashboard']
+                children: ['tree', 'table', 'chart', 'dashboard']
             }]
         };
     },
