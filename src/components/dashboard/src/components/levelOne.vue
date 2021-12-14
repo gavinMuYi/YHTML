@@ -23,7 +23,7 @@
             </div>
             <div class="more-func" v-if="moreFunction.length" v-ypopmenu:more.click><y-icon name="more" /></div>
             <y-popmenu v-if="moreFunction.length" ref="more" placement="bottom-start"
-                       :options="moreFunc(moreFunction)" @select="handleMore($event, moreFunction)" />
+                       :options="moreFunc(moreFunction)" @change="handleMore($event, moreFunction)" />
         </div>
         <div class="level-one-values">
             <div

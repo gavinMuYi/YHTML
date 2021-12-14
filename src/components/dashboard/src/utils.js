@@ -1,17 +1,18 @@
 exports.moreFunc = function (options) {
+    console.log(options);
     let res = [];
     options.forEach((item, index) => {
         res.push({
-            text: item.label,
-            value: index
+            label: item.label,
+            key: index
         });
     });
     return res;
 };
 
 exports.handleMore = function (val, options) {
-    options[val.index].goto && window.open(options[val.index].goto);
-    options[val.index].eventName && this.$emit(options[val.index].eventName);
+    options[val.key].goto && window.open(options[val.key].goto);
+    options[val.key].eventName && this.$emit(options[val.key].eventName);
 };
 
 exports.defaultColors

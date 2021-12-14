@@ -227,7 +227,7 @@ export default {
                             .y-icon-content {
                                 display: inline-block;
                                 position: relative;
-                                top: -2px;
+                                top: 0px;
                             }
                             .y-icon {
                                 display: inline-block;
