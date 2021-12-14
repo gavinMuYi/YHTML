@@ -25,7 +25,7 @@ export default {
 </style> -->
 <template>
     <div class="key-index-example">
-        <!-- <div>
+        <div>
             <key-index :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
         </div>
         <div>
@@ -39,7 +39,7 @@ export default {
         </div>
         <div style="height: 300px;">
             <key-index :options="l_options" v-if="l_options.name" @eventEmit="eventEmit" />
-        </div> -->
+        </div>
         <div>
             <key-index :options="e_options" v-if="e_options.name" @eventEmit="eventEmit" />
         </div>
