@@ -49,6 +49,22 @@
 ```
 :::
 
+### 复用popper
+
+::: demo
+```html
+<template>
+    <div>
+        <div class="md-box">
+            <span v-ypop:fp.hover="{data: 'a'}" class="md-pop-trigger">a hover</span>
+            <span v-ypop:fp.hover="{data: 'b'}" class="md-pop-trigger">b hover</span>
+            <y-popper ref="fp"><div slot-scope="props">{{ props.data }}</div></y-popper>
+        </div>
+    </div>
+</template>
+```
+:::
+
 ### 触发方式
 
 ::: demo

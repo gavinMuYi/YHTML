@@ -68,6 +68,22 @@
 ```
 :::
 
+### 复用tip
+
+::: demo
+```html
+<template>
+    <div>
+        <div class="md-box">
+            <span v-ytip:fp.hover="{data: 'a'}" class="md-tip-trigger">a hover</span>
+            <span v-ytip:fp.hover="{data: 'b'}" class="md-tip-trigger">b hover</span>
+            <y-tip ref="fp"><div slot-scope="props">{{ props.data }}</div></y-tip>
+        </div>
+    </div>
+</template>
+```
+:::
+
 ### 触发方式
 
 ::: demo

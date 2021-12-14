@@ -331,6 +331,9 @@ function doBind(el, binding, vnode, path, listener) {
         }
         if (binding.modifiers.rightClick || binding.modifiers.rightclick) {
             let contextmenuHandler = function (e) {
+                if (binding.value && binding.value.data) {
+                    target.setData(binding.value.data);
+                }
                 rightClick(target, e, el);
             };
             el[POPFUNCHOOK].contextmenu = contextmenuHandler;
@@ -338,9 +341,15 @@ function doBind(el, binding, vnode, path, listener) {
         }
         if (binding.modifiers.hover) {
             let mouseenterHandler = function () {
+                if (binding.value && binding.value.data) {
+                    target.setData(binding.value.data);
+                }
                 handleHover(target, el, true, binding.modifiers.delay);
             };
             let mouseleaveHandler = function () {
+                if (binding.value && binding.value.data) {
+                    target.setData(binding.value.data);
+                }
                 handleHover(target, el, false, binding.modifiers.delay);
             };
             el[POPFUNCHOOK].mouseenter = mouseenterHandler;
@@ -350,6 +359,9 @@ function doBind(el, binding, vnode, path, listener) {
         }
         if (binding.modifiers.click) {
             let clickHandler = function (e) {
+                if (binding.value && binding.value.data) {
+                    target.setData(binding.value.data);
+                }
                 handleClick(target, el);
                 e.preventDefault();
                 e.stopPropagation();

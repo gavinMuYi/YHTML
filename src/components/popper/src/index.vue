@@ -5,10 +5,11 @@
         ref="selfPop"
         @mouseenter.stop="hover = true"
         @mouseleave.stop="hover = false">
-        <slot></slot>
+        <slot :data="contentData"></slot>
     </div>
 </template>
 <script>
+import clone from 'clone';
 
 export default {
     name: 'YPopper',
@@ -38,7 +39,8 @@ export default {
             show: false,
             hover: false,
             waitToClose: false,
-            cantCloseByOthers: false
+            cantCloseByOthers: false,
+            contentData: null
         };
     },
     watch: {
@@ -80,6 +82,9 @@ export default {
     methods: {
         closePop() {
             this.show = false;
+        },
+        setData(data) {
+            this.$set(this, 'contentData', clone(data));
         }
     }
 };
