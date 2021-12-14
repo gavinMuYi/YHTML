@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "clone": "^2.1.2",
+    "moment": "^2.29.1",
     "sass-resources-loader": "^2.2.4",
     "svg-sprite-loader": "^6.0.9",
     "vue": "^2.5.2",

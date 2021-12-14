@@ -145,6 +145,8 @@ module.exports = {
         "arrow-spacing": [1, {"before": true, "after": true}],
         "brace-style": 0,
         "comma-dangle": 0,
+        "camelcase": [1, {"properties": "never"}],
+        "camelcase": "off",
         "comma-spacing": [1, {"before": false, "after": true}],
         "comma-style": [1, "last"],
         "computed-property-spacing": [1, "never"],
@@ -160,7 +162,7 @@ module.exports = {
         "key-spacing": [1, {"beforeColon": false, "afterColon": true, "mode": "strict"}],
         "keyword-spacing": [1, {"before": true, "after": true}],
         "max-depth": [1, 5],
-        "max-len": [1, 120, 4, {    // codecc中关闭
+        "max-len": [1, 300, 4, {    // codecc中关闭
             "ignoreUrls": true,
             "ignoreComments": true,
             "ignorePattern": "\\+ [\\w\\W]+>'"
