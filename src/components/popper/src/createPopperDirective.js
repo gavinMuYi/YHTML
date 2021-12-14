@@ -231,10 +231,10 @@ function rightClick(target, ev, el) {
         target.show = false;
         target.$nextTick(() => {
             target.opacity = true;
-            target.show = true;
             target.$lastevX = ev.offsetX;
             target.$lastevY = ev.offsetY;
             setTimeout(() => {
+                target.show = true;
                 parsePosition(target, el, false, false, ev.offsetX, ev.offsetY);
                 target.opacity = false;
             });
@@ -250,8 +250,8 @@ function handleHover(target, el, mos, delay) {
         target.$nextTick(() => {
             target.$lastel = el;
             target.opacity = true;
-            target.show = true;
             setTimeout(() => {
+                target.show = true;
                 parsePosition(target, el);
                 target.opacity = false;
             });
@@ -276,8 +276,8 @@ function handleClick(target, el) {
         target.$nextTick(() => {
             target.$lastel = el;
             target.opacity = true;
-            target.show = true;
             setTimeout(() => {
+                target.show = true;
                 parsePosition(target, el);
                 target.opacity = false;
             });

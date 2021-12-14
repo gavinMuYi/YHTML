@@ -18,14 +18,17 @@ export default {
     },
     render(h, context) {
         let svgClass = (context.data.class || []);
+        let directives = context.data.directives || [];
         let svgClassName = typeof svgClass === 'string' ? svgClass : svgClass.join(' ');
-        return <svg aria-hidden="true" class={(context.data.staticClass || '') + svgClassName + ' y-icon'}
-            style={context.data.style || {}} {...{
-                on: context.data.on
-            }}>
-            <use xlinkHref={context.props.remote
-                ? context.props.name : `#icon-${context.props.name}`} style="pointer-events:none" />
-        </svg>;
+        return <span {...{ directives }} class="y-icon-content">
+            <svg aria-hidden="true" class={(context.data.staticClass || '') + svgClassName + ' y-icon'}
+                style={context.data.style || {}} {...{
+                    on: context.data.on
+                }}>
+                <use xlinkHref={context.props.remote
+                    ? context.props.name : `#icon-${context.props.name}`} style="pointer-events:none" />
+            </svg>
+        </span>;
     }
 };
 </script>

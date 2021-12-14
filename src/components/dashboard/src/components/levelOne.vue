@@ -22,7 +22,7 @@
                         v-ytip:fieldInfoTip.hover.delay="{data: field.info}" />&nbsp;
             </div>
             <div class="more-func" v-if="moreFunction.length" v-ypopmenu:more.click><y-icon name="more" /></div>
-            <y-popmenu v-if="moreFunction.length" ref="more" placement="bottom-end"
+            <y-popmenu v-if="moreFunction.length" ref="more" placement="bottom-start"
                        :options="moreFunc(moreFunction)" @select="handleMore($event, moreFunction)" />
         </div>
         <div class="level-one-values">
@@ -131,14 +131,17 @@ export default {
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
-            .y-icon {
-                vertical-align: top;
-                display: inline-block;
-                width: 15px;
-                height: 15px;
+            .y-icon-content {
                 position: absolute;
                 right: 5px;
                 top: 0;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .y-icon {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
                 color: #C5CCDB;
             }
         }

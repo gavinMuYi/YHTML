@@ -224,12 +224,15 @@ export default {
                                 text-overflow: ellipsis;
                                 white-space: nowrap;
                             }
+                            .y-icon-content {
+                                display: inline-block;
+                                position: relative;
+                                top: -2px;
+                            }
                             .y-icon {
                                 display: inline-block;
                                 width: 10px;
                                 height: 10px;
-                                position: relative;
-                                top: -2px;
                                 color: #C5CCDB;
                             }
                             .info-tip {

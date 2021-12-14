@@ -192,12 +192,15 @@ export default {
             white-space: nowrap;
             vertical-align: top;
         }
+        .y-icon-content {
+            position: relative;
+            top: 0px;
+            display: inline-block;
+        }
         .y-icon {
             display: inline-block;
             width: 13px;
             height: 13px;
-            position: relative;
-            top: 0px;
             color: #C5CCDB;
         }
         .level-three-fields {

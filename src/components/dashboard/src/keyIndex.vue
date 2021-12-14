@@ -15,7 +15,7 @@
             <div class="more-func" v-if="options.moreFunctions.length"
                  v-ypopmenu:more.click><y-icon name="more" /></div>
             <y-popmenu v-if="options.moreFunctions.length" ref="more"
-                       placement="bottom-end" :options="moreFunc(options.moreFunctions)"
+                       placement="bottom-start" :options="moreFunc(options.moreFunctions)"
                        @select="handleMore($event, options.moreFunctions)" />
         </div>
         <key-index-body ref="key-index-body" :key="tabChange" :options="currentBodyOptions"
