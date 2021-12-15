@@ -26,6 +26,18 @@ export default {
 <template>
     <div class="key-index-example">
         <div>
+            <key-index :options="goptions" v-if="goptions.name" @eventEmit="eventEmit" />
+        </div>
+        <div>
+            <key-index :options="gopptions" v-if="gopptions.name" @eventEmit="eventEmit" />
+        </div>
+        <div>
+            <key-index :options="golptions" v-if="golptions.name" @eventEmit="eventEmit" />
+        </div>
+        <div>
+            <key-index :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
+        </div>
+        <div>
             <key-index :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
         </div>
         <div>
@@ -49,7 +61,7 @@ export default {
 <script>
 /* eslint-disable */
 import KeyIndex from './index';
-import { options, e_options, i_options, l_options, m_options } from './mock';
+import { options, e_options, i_options, l_options, m_options, goptions, golptions, gopptions } from './mock';
 import clone from 'clone';
 
 export default {
@@ -76,7 +88,10 @@ export default {
             e_options: e_options,
             i_options: i_options,
             l_options: l_options,
-            m_options: m_options
+            m_options: m_options,
+            goptions: goptions,
+            golptions: golptions,
+            gopptions: gopptions
         };
     },
     methods: {

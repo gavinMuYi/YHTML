@@ -1,8 +1,11 @@
 <template>
-    <div :class="['key-index-body', separateWidth ? 'separate-key-index-body' : 'default-key-index-body']">
-        <div :class="[options.mainPart ? 'main-part' : 'part-part', 'body-content']" ref="totalHeight">
-            <div class="tab" v-for="(tab, index) in options.tabs" :key="'tab' + index"
-                 :style="separateStyle(index)"
+    <div :class="['key-index-body', columns ? ''
+    : separateWidth ? 'separate-key-index-body' : 'default-key-index-body']">
+        <div :class="[columns ? '' : options.mainPart ? 'main-part' : 'part-part', 'body-content']" ref="totalHeight">
+            <div :class="['tab', {'column-tab': columns},
+                          {'column-tab-line': columns && index >= columns}]"
+                 v-for="(tab, index) in options.tabs" :key="'tab' + index"
+                 :style="columns ? {width: 100 / columns + '%'} : separateStyle(index)"
                  ref="tabContent" >
                 <key-index-tab :options="tab" @innerEmit="handleInnerEmit" @stepHeight="computeHeight" ref="tabs" />
             </div>
@@ -32,6 +35,10 @@ export default {
         simpler: {
             type: Boolean,
             default: false
+        },
+        columns: {
+            type: Number,
+            default: 0
         }
     },
     data() {
@@ -72,11 +79,13 @@ export default {
                     tab.$refs.levelTwo.$refs.levelTwoContent.style['bottom'] = '0px';
                     tab.$refs.levelTwo.$refs.levelTwoContent.style['position'] = 'absolute';
                 });
-                this.$nextTick(() => {
-                    this.$refs.tabContent.forEach(item => {
-                        item.style['min-height'] = this.$refs.totalHeight.offsetHeight + 'px';
+                if (!this.columns) {
+                    this.$nextTick(() => {
+                        this.$refs.tabContent.forEach(item => {
+                            item.style['min-height'] = this.$refs.totalHeight.offsetHeight + 'px';
+                        });
                     });
-                });
+                }
             }
         },
         handleInnerEmit(val) {
@@ -97,6 +106,9 @@ export default {
             display: inline-block;
             vertical-align: top;
             height: 100%;
+        }
+        .column-tab-line {
+            margin-top: 30px;
         }
     }
 }

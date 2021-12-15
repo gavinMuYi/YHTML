@@ -20,7 +20,8 @@
         </div>
         <key-index-body ref="key-index-body" :key="tabChange" :options="currentBodyOptions"
                         :separateWidth="options.separateWidth" @innerEmit="doEmit"
-                        :simpler="!Boolean(options.tabGroup[0].tabTitle)"/>
+                        :simpler="!Boolean(options.tabGroup[0].tabTitle)"
+                        :columns="currentBodyOptions.columns" />
     </div>
 </template>
 
