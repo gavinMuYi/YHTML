@@ -24,49 +24,49 @@ export default {
     }
 </style> -->
 <template>
-    <div class="key-index-example">
+    <div class="dashboard-example">
         <div>
-            <key-index :options="goptions" v-if="goptions.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="goptions" v-if="goptions.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <key-index :options="gopptions" v-if="gopptions.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="gopptions" v-if="gopptions.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <key-index :options="golptions" v-if="golptions.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="golptions" v-if="golptions.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <key-index :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <key-index :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <key-index :options="m_options" v-if="m_options.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="m_options" v-if="m_options.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <key-index :options="s_options" v-if="s_options.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="s_options" v-if="s_options.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <key-index :options="options" v-if="options.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="options" v-if="options.name" @eventEmit="eventEmit" />
         </div>
         <div style="height: 300px;">
-            <key-index :options="l_options" v-if="l_options.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="l_options" v-if="l_options.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <key-index :options="e_options" v-if="e_options.name" @eventEmit="eventEmit" />
+            <y-dashboard :options="e_options" v-if="e_options.name" @eventEmit="eventEmit" />
         </div>
     </div>
 </template>
 
 <script>
 /* eslint-disable */
-import KeyIndex from './index';
+import YDashboard from './index';
 import { options, e_options, i_options, l_options, m_options, goptions, golptions, gopptions } from './mock';
 import clone from 'clone';
 
 export default {
     components: {
-        KeyIndex
+        YDashboard
     },
     provide() {
         return {
@@ -103,7 +103,7 @@ export default {
 </script>
 
 <style lang="less">
-.key-index-example {
+.dashboard-example {
     width: 100%;
     background-color: #ffffff;
     .component-title {

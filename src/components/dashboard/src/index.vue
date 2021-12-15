@@ -1,6 +1,6 @@
 <template>
-    <div :class="['component-key-index', options.separate
-    ? 'key-index-separate' : 'key-index-default', options.tabGroup[0].tabTitle ? 'has-title' : '']">
+    <div :class="['component-dashboard', options.separate
+    ? 'dashboard-separate' : 'dashboard-default', options.tabGroup[0].tabTitle ? 'has-title' : '']">
         <div class="tab-title-group" v-if="options.tabGroup[0].tabTitle">
             <div
                 :class="['tab-title',
@@ -18,7 +18,7 @@
                        placement="bottom-start" :options="moreFunc(options.moreFunctions)"
                        @change="handleMore($event, options.moreFunctions)" />
         </div>
-        <key-index-body ref="key-index-body" :key="tabChange" :options="currentBodyOptions"
+        <dashboard-body ref="dashboard-body" :key="tabChange" :options="currentBodyOptions"
                         :separateWidth="options.separateWidth" @innerEmit="doEmit"
                         :simpler="!Boolean(options.tabGroup[0].tabTitle)"
                         :columns="currentBodyOptions.columns" />
@@ -29,12 +29,12 @@
 import equal from 'fast-deep-equal';
 import { assembleUrlGroup } from './processData';
 import { moreFunc, handleMore } from './utils';
-import KeyIndexBody from './keyIndexBody';
+import DashboardBody from './dashboardBody';
 
 export default {
-    name: 'KeyIndex',
+    name: 'YDashboard',
     components: {
-        KeyIndexBody
+        DashboardBody
     },
     provide() {
         return {
@@ -106,14 +106,14 @@ export default {
             });
         },
         doEmit(val) {
-            this.$emit(val.eventName, Object.assign(val.payload, { keyIndex: this }));
+            this.$emit(val.eventName, Object.assign(val.payload, { dashboard: this }));
         }
     }
 };
 </script>
 
 <style lang="less">
-.component-key-index {
+.component-dashboard {
     box-sizing: border-box;
     min-height: 140px;
     height: 100%;
@@ -150,16 +150,16 @@ export default {
             color: #4A70FF;
         }
     }
-    .key-index-body {
+    .dashboard-body {
         height: 100%;
     }
 }
 .has-title {
-    .key-index-body {
+    .dashboard-body {
         height: ~'calc(100% - 40px)';
     }
 }
-.key-index-default {
+.dashboard-default {
     box-shadow: 2px 4px 10px 0 rgba(30, 35, 48, 0.08);
     border-radius: 6px;
     border: solid 1px #E1E6F0;
@@ -168,7 +168,7 @@ export default {
         padding: 0 24px;
     }
 }
-.key-index-separate {
+.dashboard-separate {
     .tab {
         flex: 1;
         min-height: 140px;

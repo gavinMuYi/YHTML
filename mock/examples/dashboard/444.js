@@ -1,7 +1,7 @@
 module.exports = function (params) {
     let obj = {};
     for (let i = 1; i < 100; i++) {
-        obj['keyindex' + i] = i;
+        obj['dashboard' + i] = i;
     }
     return {
         statusCode: 200,

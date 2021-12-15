@@ -1,5 +1,5 @@
 <template>
-    <div :class="['key-index-tab', {'with-tab-title': options.tabTitle}]">
+    <div :class="['dashboard-tab', {'with-tab-title': options.tabTitle}]">
         <div class="tab-title" v-if="options.tabTitle">{{ options.tabTitle }}</div>
         <level-one ref="levelOne" :options="options.levelOne" :moreFunction="options.moreFunctions"
                    @innerEmit="handleInnerEmit" />
@@ -17,7 +17,7 @@ import LevelTwo from './components/levelTwo';
 import LevelThree from './components/LevelThree';
 
 export default {
-    name: 'KeyIndexTab',
+    name: 'DashboardTab',
     components: {
         LevelOne,
         LevelTwo,
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="less">
-.key-index-tab {
+.dashboard-tab {
     padding: 0 24px;
     box-sizing: border-box;
     height: 100%;

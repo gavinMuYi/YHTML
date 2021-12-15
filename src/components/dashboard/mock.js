@@ -1,6 +1,6 @@
 /* eslint-disable */
 exports.gopptions = {
-    name: 'keyIndex',
+    name: 'dashboard',
     separate: false,
     separateWidth: 0,
     moreFunctions: [],
@@ -12,36 +12,36 @@ exports.gopptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: []
             }],
             levelTwoColumns: [{
                 columnTitle: '',
                 fields: [{
-                    key: 'keyindex8',
+                    key: 'dashboard8',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: '/examples/keyIndex/555?tb=tb',
+                    url: '/examples/dashboard/555?tb=tb',
                     info: []
                 }, {
-                    key: 'keyindex9',
+                    key: 'dashboard9',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: '/examples/keyIndex/555?hb=hb',
+                    url: '/examples/dashboard/555?hb=hb',
                     info: []
                 }]
             }],
@@ -53,13 +53,13 @@ exports.gopptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -71,36 +71,36 @@ exports.gopptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '',
                 fields: [{
-                    key: 'keyindex8',
+                    key: 'dashboard8',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: '/examples/keyIndex/555?tb=tb',
+                    url: '/examples/dashboard/555?tb=tb',
                     info: []
                 }, {
-                    key: 'keyindex9',
+                    key: 'dashboard9',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: '/examples/keyIndex/555?hb=hb',
+                    url: '/examples/dashboard/555?hb=hb',
                     info: []
                 }]
             }],
@@ -112,13 +112,13 @@ exports.gopptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -130,36 +130,36 @@ exports.gopptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '',
                 fields: [{
-                    key: 'keyindex8',
+                    key: 'dashboard8',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: '/examples/keyIndex/555?tb=tb',
+                    url: '/examples/dashboard/555?tb=tb',
                     info: []
                 }, {
-                    key: 'keyindex9',
+                    key: 'dashboard9',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: '/examples/keyIndex/555?hb=hb',
+                    url: '/examples/dashboard/555?hb=hb',
                     info: []
                 }]
             }],
@@ -171,13 +171,13 @@ exports.gopptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -189,7 +189,7 @@ exports.gopptions = {
     }]
 };
 exports.goptions = {
-    name: 'keyIndex',
+    name: 'dashboard',
     separate: false,
     separateWidth: 0,
     moreFunctions: [],
@@ -201,13 +201,13 @@ exports.goptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: []
             }],
             levelTwoColumns: [],
@@ -219,13 +219,13 @@ exports.goptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -237,13 +237,13 @@ exports.goptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -255,13 +255,13 @@ exports.goptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -273,13 +273,13 @@ exports.goptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -291,13 +291,13 @@ exports.goptions = {
             tabTitle: 'TAB标题',
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -309,7 +309,7 @@ exports.goptions = {
     }]
 };
 exports.golptions = {
-    name: 'keyIndex',
+    name: 'dashboard',
     separate: false,
     separateWidth: 0,
     moreFunctions: [{
@@ -333,13 +333,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -351,26 +351,26 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
             }, {
-                key: 'keyindex2',
+                key: 'dashboard2',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '万元',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex3',
+                    key: 'dashboard3',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '%',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -380,13 +380,13 @@ exports.golptions = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex4',
+                            key: 'dashboard4',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -395,13 +395,13 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex5',
+                                key: 'dashboard5',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -411,13 +411,13 @@ exports.golptions = {
                                 }],
                             }]
                         }, {
-                            key: 'keyindex6',
+                            key: 'dashboard6',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '万元',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -426,13 +426,13 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex7',
+                                key: 'dashboard7',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '¥',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -444,10 +444,10 @@ exports.golptions = {
                         }],
                         levelThreeChart: [{
                             type: 'cycle',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -455,34 +455,34 @@ exports.golptions = {
             }, {
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex8',
+                    key: 'dashboard8',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?tb=tb",
+                    url: "/examples/dashboard/555?tb=tb",
                     info: []
                 }, {
-                    key: 'keyindex9',
+                    key: 'dashboard9',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?hb=hb",
+                    url: "/examples/dashboard/555?hb=hb",
                     info: [],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex10',
+                            key: 'dashboard10',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -491,13 +491,13 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex11',
+                                key: 'dashboard11',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -509,10 +509,10 @@ exports.golptions = {
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -520,20 +520,20 @@ exports.golptions = {
             }],
             levelTwoChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }],
             levelTwoChartFields: [{
-                key: 'keyindex12',
+                key: 'dashboard12',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -542,13 +542,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex13',
+                    key: 'dashboard13',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -558,13 +558,13 @@ exports.golptions = {
                     }],
                 }]
             }, {
-                key: 'keyindex14',
+                key: 'dashboard14',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -573,13 +573,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex15',
+                    key: 'dashboard15',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -590,13 +590,13 @@ exports.golptions = {
                 }]
             }],
             levelThree: [{
-                key: 'keyindex16',
+                key: 'dashboard16',
                 label: '字段sdcascsc',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -605,23 +605,23 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex17',
+                    key: 'dashboard17',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '$',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex18',
+                key: 'dashboard18',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -630,13 +630,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex19',
+                    key: 'dashboard19',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -648,10 +648,10 @@ exports.golptions = {
             }],
             levelThreeChart: [{
                 type: 'cycle',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -662,13 +662,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex20',
+                key: 'dashboard20',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -680,14 +680,14 @@ exports.golptions = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -697,13 +697,13 @@ exports.golptions = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -712,22 +712,22 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -735,20 +735,20 @@ exports.golptions = {
             }],
             levelTwoChart: [{
                 type: 'line',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: true,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex2', label: 'keyindex2'}, {key: 'keyindex15', label: 'keyindex15'}, {key: 'keyindex32', label: 'keyindex32'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex24',
+                key: 'dashboard24',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -757,13 +757,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex25',
+                    key: 'dashboard25',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -775,10 +775,10 @@ exports.golptions = {
             }],
             levelThreeChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -789,13 +789,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex20',
+                key: 'dashboard20',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -807,14 +807,14 @@ exports.golptions = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -824,13 +824,13 @@ exports.golptions = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -839,22 +839,22 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -862,20 +862,20 @@ exports.golptions = {
             }],
             levelTwoChart: [{
                 type: 'line',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: true,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex2', label: 'keyindex2'}, {key: 'keyindex15', label: 'keyindex15'}, {key: 'keyindex32', label: 'keyindex32'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex24',
+                key: 'dashboard24',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -884,13 +884,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex25',
+                    key: 'dashboard25',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -902,10 +902,10 @@ exports.golptions = {
             }],
             levelThreeChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -916,13 +916,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex20',
+                key: 'dashboard20',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -934,14 +934,14 @@ exports.golptions = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -951,13 +951,13 @@ exports.golptions = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -966,22 +966,22 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -989,20 +989,20 @@ exports.golptions = {
             }],
             levelTwoChart: [{
                 type: 'line',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: true,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex2', label: 'keyindex2'}, {key: 'keyindex15', label: 'keyindex15'}, {key: 'keyindex32', label: 'keyindex32'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex24',
+                key: 'dashboard24',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1011,13 +1011,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex25',
+                    key: 'dashboard25',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1029,10 +1029,10 @@ exports.golptions = {
             }],
             levelThreeChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -1043,13 +1043,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex20',
+                key: 'dashboard20',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1061,14 +1061,14 @@ exports.golptions = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1078,13 +1078,13 @@ exports.golptions = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -1093,22 +1093,22 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -1116,20 +1116,20 @@ exports.golptions = {
             }],
             levelTwoChart: [{
                 type: 'line',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: true,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex2', label: 'keyindex2'}, {key: 'keyindex15', label: 'keyindex15'}, {key: 'keyindex32', label: 'keyindex32'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex24',
+                key: 'dashboard24',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1138,13 +1138,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex25',
+                    key: 'dashboard25',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1156,10 +1156,10 @@ exports.golptions = {
             }],
             levelThreeChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -1170,13 +1170,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex20',
+                key: 'dashboard20',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1188,14 +1188,14 @@ exports.golptions = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1205,13 +1205,13 @@ exports.golptions = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -1220,22 +1220,22 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -1243,20 +1243,20 @@ exports.golptions = {
             }],
             levelTwoChart: [{
                 type: 'line',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: true,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex2', label: 'keyindex2'}, {key: 'keyindex15', label: 'keyindex15'}, {key: 'keyindex32', label: 'keyindex32'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex24',
+                key: 'dashboard24',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1265,13 +1265,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex25',
+                    key: 'dashboard25',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1283,10 +1283,10 @@ exports.golptions = {
             }],
             levelThreeChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }]
@@ -1300,13 +1300,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1318,14 +1318,14 @@ exports.golptions = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex27',
+                    key: 'dashboard27',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1335,13 +1335,13 @@ exports.golptions = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex28',
+                            key: 'dashboard28',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -1350,22 +1350,22 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex29',
+                                key: 'dashboard29',
                                 label: '字段Labelrqwerqwer',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -1374,19 +1374,19 @@ exports.golptions = {
             levelTwoChart: [{
                 type: 'line',
                 tooltip: true,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex12', label: 'keyindex12'}, {key: 'keyindex32', label: 'keyindex32'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard12', label: 'dashboard12'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex30',
+                key: 'dashboard30',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1395,22 +1395,22 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex31',
+                    key: 'dashboard31',
                     label: '字段Labeleqwrqwerwerwqer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
             levelThreeChart: [{
                 type: 'pie',
                 tooltip: false,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -1420,13 +1420,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex32',
+                key: 'dashboard32',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1438,14 +1438,14 @@ exports.golptions = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex33',
+                    key: 'dashboard33',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?hb=hb",
+                    url: "/examples/dashboard/555?hb=hb",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1458,38 +1458,38 @@ exports.golptions = {
             levelTwoChart: [{
                 type: 'pie',
                 tooltip: true,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex34',
+                key: 'dashboard34',
                 label: '字段Labelrtdrftftf',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex35',
+                    key: 'dashboard35',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex36',
+                key: 'dashboard36',
                 label: '字段Labelrtdrftftf',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1498,13 +1498,13 @@ exports.golptions = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex37',
+                    key: 'dashboard37',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
@@ -1516,13 +1516,13 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex38',
+                key: 'dashboard38',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1534,24 +1534,24 @@ exports.golptions = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex39',
+                    key: 'dashboard39',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?tb=tb",
+                    url: "/examples/dashboard/555?tb=tb",
                     info: [],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex40',
+                            key: 'dashboard40',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -1560,13 +1560,13 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex41',
+                                key: 'dashboard41',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1576,13 +1576,13 @@ exports.golptions = {
                                 }],
                             }]
                         }, {
-                            key: 'keyindex42',
+                            key: 'dashboard42',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -1591,13 +1591,13 @@ exports.golptions = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex43',
+                                key: 'dashboard43',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1614,63 +1614,63 @@ exports.golptions = {
             levelTwoChart: [{
                 type: 'column',
                 tooltip: true,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex10', label: 'keyindex10'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard10', label: 'dashboard10'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex44',
+                key: 'dashboard44',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex45',
+                    key: 'dashboard45',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex46',
+                key: 'dashboard46',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex47',
+                    key: 'dashboard47',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
             levelThreeChart: [{
                 type: 'cycle',
                 tooltip: false,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }]
     }]
 }
 exports.options = {
-    name: 'keyIndex',
+    name: 'dashboard',
     separate: false,
     separateWidth: 0,
     moreFunctions: [{
@@ -1693,13 +1693,13 @@ exports.options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1711,26 +1711,26 @@ exports.options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
             }, {
-                key: 'keyindex2',
+                key: 'dashboard2',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '万元',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex3',
+                    key: 'dashboard3',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '%',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1740,13 +1740,13 @@ exports.options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex4',
+                            key: 'dashboard4',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -1755,13 +1755,13 @@ exports.options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex5',
+                                key: 'dashboard5',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1771,13 +1771,13 @@ exports.options = {
                                 }],
                             }]
                         }, {
-                            key: 'keyindex6',
+                            key: 'dashboard6',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '万元',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -1786,13 +1786,13 @@ exports.options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex7',
+                                key: 'dashboard7',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '¥',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1804,10 +1804,10 @@ exports.options = {
                         }],
                         levelThreeChart: [{
                             type: 'cycle',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -1815,34 +1815,34 @@ exports.options = {
             }, {
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex8',
+                    key: 'dashboard8',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?tb=tb",
+                    url: "/examples/dashboard/555?tb=tb",
                     info: []
                 }, {
-                    key: 'keyindex9',
+                    key: 'dashboard9',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?hb=hb",
+                    url: "/examples/dashboard/555?hb=hb",
                     info: [],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex10',
+                            key: 'dashboard10',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -1851,13 +1851,13 @@ exports.options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex11',
+                                key: 'dashboard11',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1869,10 +1869,10 @@ exports.options = {
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -1880,20 +1880,20 @@ exports.options = {
             }],
             levelTwoChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }],
             levelTwoChartFields: [{
-                key: 'keyindex12',
+                key: 'dashboard12',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1902,13 +1902,13 @@ exports.options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex13',
+                    key: 'dashboard13',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1918,13 +1918,13 @@ exports.options = {
                     }],
                 }]
             }, {
-                key: 'keyindex14',
+                key: 'dashboard14',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1933,13 +1933,13 @@ exports.options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex15',
+                    key: 'dashboard15',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -1950,13 +1950,13 @@ exports.options = {
                 }]
             }],
             levelThree: [{
-                key: 'keyindex16',
+                key: 'dashboard16',
                 label: '字段sdcascsc',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1965,23 +1965,23 @@ exports.options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex17',
+                    key: 'dashboard17',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '$',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex18',
+                key: 'dashboard18',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -1990,13 +1990,13 @@ exports.options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex19',
+                    key: 'dashboard19',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -2008,10 +2008,10 @@ exports.options = {
             }],
             levelThreeChart: [{
                 type: 'cycle',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -2021,13 +2021,13 @@ exports.options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex20',
+                key: 'dashboard20',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2039,14 +2039,14 @@ exports.options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -2056,13 +2056,13 @@ exports.options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2071,22 +2071,22 @@ exports.options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -2094,20 +2094,20 @@ exports.options = {
             }],
             levelTwoChart: [{
                 type: 'line',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: true,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex2', label: 'keyindex2'}, {key: 'keyindex15', label: 'keyindex15'}, {key: 'keyindex32', label: 'keyindex32'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex24',
+                key: 'dashboard24',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2116,13 +2116,13 @@ exports.options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex25',
+                    key: 'dashboard25',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -2134,10 +2134,10 @@ exports.options = {
             }],
             levelThreeChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }]
@@ -2151,13 +2151,13 @@ exports.options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2169,14 +2169,14 @@ exports.options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex27',
+                    key: 'dashboard27',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -2186,13 +2186,13 @@ exports.options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex28',
+                            key: 'dashboard28',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2201,22 +2201,22 @@ exports.options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex29',
+                                key: 'dashboard29',
                                 label: '字段Labelrqwerqwer',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -2225,19 +2225,19 @@ exports.options = {
             levelTwoChart: [{
                 type: 'line',
                 tooltip: true,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex12', label: 'keyindex12'}, {key: 'keyindex32', label: 'keyindex32'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard12', label: 'dashboard12'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex30',
+                key: 'dashboard30',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2246,22 +2246,22 @@ exports.options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex31',
+                    key: 'dashboard31',
                     label: '字段Labeleqwrqwerwerwqer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
             levelThreeChart: [{
                 type: 'pie',
                 tooltip: false,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -2271,13 +2271,13 @@ exports.options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex32',
+                key: 'dashboard32',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2289,14 +2289,14 @@ exports.options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex33',
+                    key: 'dashboard33',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?hb=hb",
+                    url: "/examples/dashboard/555?hb=hb",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -2309,38 +2309,38 @@ exports.options = {
             levelTwoChart: [{
                 type: 'pie',
                 tooltip: true,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex34',
+                key: 'dashboard34',
                 label: '字段Labelrtdrftftf',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex35',
+                    key: 'dashboard35',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex36',
+                key: 'dashboard36',
                 label: '字段Labelrtdrftftf',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2349,13 +2349,13 @@ exports.options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex37',
+                    key: 'dashboard37',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
@@ -2367,13 +2367,13 @@ exports.options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex38',
+                key: 'dashboard38',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2385,24 +2385,24 @@ exports.options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex39',
+                    key: 'dashboard39',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?tb=tb",
+                    url: "/examples/dashboard/555?tb=tb",
                     info: [],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex40',
+                            key: 'dashboard40',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2411,13 +2411,13 @@ exports.options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex41',
+                                key: 'dashboard41',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2427,13 +2427,13 @@ exports.options = {
                                 }],
                             }]
                         }, {
-                            key: 'keyindex42',
+                            key: 'dashboard42',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2442,13 +2442,13 @@ exports.options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex43',
+                                key: 'dashboard43',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2465,56 +2465,56 @@ exports.options = {
             levelTwoChart: [{
                 type: 'column',
                 tooltip: true,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex10', label: 'keyindex10'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard10', label: 'dashboard10'}],
                 colors: []
             }],
             levelThree: [{
-                key: 'keyindex44',
+                key: 'dashboard44',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex45',
+                    key: 'dashboard45',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex46',
+                key: 'dashboard46',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex47',
+                    key: 'dashboard47',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
             levelThreeChart: [{
                 type: 'cycle',
                 tooltip: false,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }]
@@ -2522,7 +2522,7 @@ exports.options = {
 }
 
 exports.e_options = {
-    name: 'keyIndex',
+    name: 'dashboard',
     separate: true,
     separateWidth: 20,
     moreFunctions: [{
@@ -2544,13 +2544,13 @@ exports.e_options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2562,14 +2562,14 @@ exports.e_options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex27',
+                    key: 'dashboard27',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -2579,13 +2579,13 @@ exports.e_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex28',
+                            key: 'dashboard28',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2594,22 +2594,22 @@ exports.e_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex29',
+                                key: 'dashboard29',
                                 label: '字段Labelrqwerqwer',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -2617,13 +2617,13 @@ exports.e_options = {
             }],
             levelTwoChart: [],
             levelThree: [{
-                key: 'keyindex30',
+                key: 'dashboard30',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2632,22 +2632,22 @@ exports.e_options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex31',
+                    key: 'dashboard31',
                     label: '字段Labeleqwrqwerwerwqer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
             levelThreeChart: [{
                 type: 'pie',
                 tooltip: false,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -2657,13 +2657,13 @@ exports.e_options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex32',
+                key: 'dashboard32',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2675,14 +2675,14 @@ exports.e_options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex33',
+                    key: 'dashboard33',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?hb=hb",
+                    url: "/examples/dashboard/555?hb=hb",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -2694,32 +2694,32 @@ exports.e_options = {
             }],
             levelTwoChart: [],
             levelThree: [{
-                key: 'keyindex34',
+                key: 'dashboard34',
                 label: '字段Labelrtdrftftf',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex35',
+                    key: 'dashboard35',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex36',
+                key: 'dashboard36',
                 label: '字段Labelrtdrftftf',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2728,13 +2728,13 @@ exports.e_options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex37',
+                    key: 'dashboard37',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
@@ -2746,13 +2746,13 @@ exports.e_options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex38',
+                key: 'dashboard38',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2764,24 +2764,24 @@ exports.e_options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex39',
+                    key: 'dashboard39',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?tb=tb",
+                    url: "/examples/dashboard/555?tb=tb",
                     info: [],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex40',
+                            key: 'dashboard40',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2790,13 +2790,13 @@ exports.e_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex41',
+                                key: 'dashboard41',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2806,13 +2806,13 @@ exports.e_options = {
                                 }],
                             }]
                         }, {
-                            key: 'keyindex42',
+                            key: 'dashboard42',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2821,13 +2821,13 @@ exports.e_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex43',
+                                key: 'dashboard43',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2843,50 +2843,50 @@ exports.e_options = {
             }],
             levelTwoChart: [],
             levelThree: [{
-                key: 'keyindex44',
+                key: 'dashboard44',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex45',
+                    key: 'dashboard45',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex46',
+                key: 'dashboard46',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
                 levelFour: [{
-                    key: 'keyindex47',
+                    key: 'dashboard47',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }],
             levelThreeChart: [{
                 type: 'cycle',
                 tooltip: false,
-                url: "/examples/keyIndex/444",
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                url: "/examples/dashboard/444",
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }]
@@ -2900,13 +2900,13 @@ exports.e_options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2918,26 +2918,26 @@ exports.e_options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
             }, {
-                key: 'keyindex2',
+                key: 'dashboard2',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '万元',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex3',
+                    key: 'dashboard3',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '%',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -2947,13 +2947,13 @@ exports.e_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex4',
+                            key: 'dashboard4',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2962,13 +2962,13 @@ exports.e_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex5',
+                                key: 'dashboard5',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -2978,13 +2978,13 @@ exports.e_options = {
                                 }],
                             }]
                         }, {
-                            key: 'keyindex6',
+                            key: 'dashboard6',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '万元',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -2993,13 +2993,13 @@ exports.e_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex7',
+                                key: 'dashboard7',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '¥',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3011,10 +3011,10 @@ exports.e_options = {
                         }],
                         levelThreeChart: [{
                             type: 'cycle',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -3022,34 +3022,34 @@ exports.e_options = {
             }, {
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex8',
+                    key: 'dashboard8',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?tb=tb",
+                    url: "/examples/dashboard/555?tb=tb",
                     info: []
                 }, {
-                    key: 'keyindex9',
+                    key: 'dashboard9',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?hb=hb",
+                    url: "/examples/dashboard/555?hb=hb",
                     info: [],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex10',
+                            key: 'dashboard10',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3058,13 +3058,13 @@ exports.e_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex11',
+                                key: 'dashboard11',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3076,10 +3076,10 @@ exports.e_options = {
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -3088,13 +3088,13 @@ exports.e_options = {
             levelTwoChart: [],
             levelTwoChartFields: [],
             levelThree: [{
-                key: 'keyindex16',
+                key: 'dashboard16',
                 label: '字段sdcascsc',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3103,23 +3103,23 @@ exports.e_options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex17',
+                    key: 'dashboard17',
                     label: '字段Label',
                     color: '',
                     format: 'Default',
                     unit: '$',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [],
                 }]
             }, {
-                key: 'keyindex18',
+                key: 'dashboard18',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3128,13 +3128,13 @@ exports.e_options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex19',
+                    key: 'dashboard19',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3146,10 +3146,10 @@ exports.e_options = {
             }],
             levelThreeChart: [{
                 type: 'cycle',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }, {
@@ -3159,13 +3159,13 @@ exports.e_options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex20',
+                key: 'dashboard20',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3177,14 +3177,14 @@ exports.e_options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3194,13 +3194,13 @@ exports.e_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3209,22 +3209,22 @@ exports.e_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -3232,13 +3232,13 @@ exports.e_options = {
             }],
             levelTwoChart: [],
             levelThree: [{
-                key: 'keyindex24',
+                key: 'dashboard24',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3247,13 +3247,13 @@ exports.e_options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
                 levelFour: [{
-                    key: 'keyindex25',
+                    key: 'dashboard25',
                     label: '字段Labelrwerwerwer',
                     color: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3265,10 +3265,10 @@ exports.e_options = {
             }],
             levelThreeChart: [{
                 type: 'pie',
-                url: "/examples/keyIndex/444",
+                url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
         }]
@@ -3276,7 +3276,7 @@ exports.e_options = {
 }
 
 exports.i_options = {
-    name: 'keyIndex',
+    name: 'dashboard',
     separate: true,
     separateWidth: 20,
     moreFunctions: [],
@@ -3286,13 +3286,13 @@ exports.i_options = {
         tabs: [{
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '万元',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -3302,13 +3302,13 @@ exports.i_options = {
         }, {
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -3318,13 +3318,13 @@ exports.i_options = {
         }, {
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -3334,13 +3334,13 @@ exports.i_options = {
         }, {
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -3350,13 +3350,13 @@ exports.i_options = {
         }, {
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -3366,13 +3366,13 @@ exports.i_options = {
         }, {
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -3384,7 +3384,7 @@ exports.i_options = {
 }
 
 exports.l_options = {
-    name: 'keyIndex',
+    name: 'dashboard',
     separate: true,
     separateWidth: 20,
     moreFunctions: [],
@@ -3398,13 +3398,13 @@ exports.l_options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex1',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3416,26 +3416,26 @@ exports.l_options = {
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
             }, {
-                key: 'keyindex2',
+                key: 'dashboard2',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '万元',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex3',
+                    key: 'dashboard3',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '%',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3445,13 +3445,13 @@ exports.l_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex4',
+                            key: 'dashboard4',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3460,13 +3460,13 @@ exports.l_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex5',
+                                key: 'dashboard5',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3476,13 +3476,13 @@ exports.l_options = {
                                 }],
                             }]
                         }, {
-                            key: 'keyindex6',
+                            key: 'dashboard6',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '万元',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3491,13 +3491,13 @@ exports.l_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex7',
+                                key: 'dashboard7',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '¥',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3509,10 +3509,10 @@ exports.l_options = {
                         }],
                         levelThreeChart: [{
                             type: 'cycle',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -3520,34 +3520,34 @@ exports.l_options = {
             }, {
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex8',
+                    key: 'dashboard8',
                     label: '字段Label',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?tb=tb",
+                    url: "/examples/dashboard/555?tb=tb",
                     info: []
                 }, {
-                    key: 'keyindex9',
+                    key: 'dashboard9',
                     label: '字段Label',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/555?hb=hb",
+                    url: "/examples/dashboard/555?hb=hb",
                     info: [],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex10',
+                            key: 'dashboard10',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3556,13 +3556,13 @@ exports.l_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex11',
+                                key: 'dashboard11',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [{
                                     type: 'text',
                                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3574,10 +3574,10 @@ exports.l_options = {
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -3594,13 +3594,13 @@ exports.l_options = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'keyindex20',
+                key: 'dashboard20',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
@@ -3612,14 +3612,14 @@ exports.l_options = {
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3629,13 +3629,13 @@ exports.l_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3644,22 +3644,22 @@ exports.l_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -3673,7 +3673,7 @@ exports.l_options = {
 }
 
 exports.m_options = {
-    name: 'keyIndex',
+    name: 'dashboard',
     separate: false,
     separateWidth: 0,
     moreFunctions: [],
@@ -3683,26 +3683,26 @@ exports.m_options = {
         tabs: [{
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3712,13 +3712,13 @@ exports.m_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3727,34 +3727,34 @@ exports.m_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
                 }, {
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3764,13 +3764,13 @@ exports.m_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3779,34 +3779,34 @@ exports.m_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
                 }, {
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3816,13 +3816,13 @@ exports.m_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3831,22 +3831,22 @@ exports.m_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -3858,26 +3858,26 @@ exports.m_options = {
         }, {
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3887,13 +3887,13 @@ exports.m_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3902,22 +3902,22 @@ exports.m_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
@@ -3929,13 +3929,13 @@ exports.m_options = {
         }, {
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [],
@@ -3945,26 +3945,26 @@ exports.m_options = {
         }, {
             moreFunctions: [],
             levelOne: [{
-                key: 'keyindex26',
+                key: 'dashboard26',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '',
                 formatter: '',
-                url: "/examples/keyIndex/333",
+                url: "/examples/dashboard/333",
                 info: [],
             }],
             levelTwoColumns: [{
                 columnTitle: '列标题',
                 fields: [{
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -3974,13 +3974,13 @@ exports.m_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -3989,34 +3989,34 @@ exports.m_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }
                 }, {
-                    key: 'keyindex21',
+                    key: 'dashboard21',
                     label: '字段Label',
                     color: '',
                     kind: '',
                     format: 'Default',
                     unit: '',
                     formatter: '',
-                    url: "/examples/keyIndex/333",
+                    url: "/examples/dashboard/333",
                     info: [{
                         type: 'text',
                         value: '关键指标说明：这是一个非常关键的指标。'
@@ -4026,13 +4026,13 @@ exports.m_options = {
                     }],
                     child: {
                         levelThreeFields: [{
-                            key: 'keyindex22',
+                            key: 'dashboard22',
                             label: '字段Label',
                             color: '',
                             format: 'Default',
                             unit: '',
                             formatter: '',
-                            url: "/examples/keyIndex/333",
+                            url: "/examples/dashboard/333",
                             info: [{
                                 type: 'text',
                                 value: '关键指标说明：这是一个非常关键的指标。'
@@ -4041,22 +4041,22 @@ exports.m_options = {
                                 value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                             }],
                             levelFour: [{
-                                key: 'keyindex23',
+                                key: 'dashboard23',
                                 label: '字段Label',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
                                 formatter: '',
-                                url: "/examples/keyIndex/333",
+                                url: "/examples/dashboard/333",
                                 info: [],
                             }]
                         }],
                         levelThreeChart: [{
                             type: 'pie',
-                            url: "/examples/keyIndex/444",
+                            url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'keyindex32', label: 'keyindex32'}],
-                            index: [{key: 'keyindex32', label: 'keyindex32'}, {key: 'keyindex15', label: 'keyindex15'}],
+                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
                     }

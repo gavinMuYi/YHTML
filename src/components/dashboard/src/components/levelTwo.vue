@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="level-two-chart" ref="levelTwoChart">
-                <key-index-chart :options="chartOptions[0]" :chartStyle="chartStyle"
+                <dashboard-chart :options="chartOptions[0]" :chartStyle="chartStyle"
                                  v-if="getSpace && chartOptions.length" />
                 <div class="level-two-chart-field" v-if="chartFields.length" ref="levelTwoChartFields">
                     <level-three ref="levelThree" :options="chartFields" :levelHight="levelHight"
@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import KeyIndexChart from './keyIndexChart';
+import DashboardChart from './dashboardChart';
 import LevelThree from './LevelThree';
 import InfoContent from './infoContent';
 import { valueFormatter, computeData } from '../processData';
@@ -104,7 +104,7 @@ import { valueFormatter, computeData } from '../processData';
 export default {
     name: 'LevelTwo',
     components: {
-        KeyIndexChart,
+        DashboardChart,
         LevelThree,
         InfoContent
     },

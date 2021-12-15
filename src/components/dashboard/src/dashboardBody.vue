@@ -1,25 +1,25 @@
 <template>
-    <div :class="['key-index-body', columns ? ''
-    : separateWidth ? 'separate-key-index-body' : 'default-key-index-body']">
+    <div :class="['dashboard-body', columns ? ''
+    : separateWidth ? 'separate-dashboard-body' : 'default-dashboard-body']">
         <div :class="[columns ? '' : options.mainPart ? 'main-part' : 'part-part', 'body-content']" ref="totalHeight">
             <div :class="['tab', {'column-tab': columns},
                           {'column-tab-line': columns && index >= columns}]"
                  v-for="(tab, index) in options.tabs" :key="'tab' + index"
                  :style="columns ? {width: 100 / columns + '%'} : separateStyle(index)"
                  ref="tabContent" >
-                <key-index-tab :options="tab" @innerEmit="handleInnerEmit" @stepHeight="computeHeight" ref="tabs" />
+                <dashboard-tab :options="tab" @innerEmit="handleInnerEmit" @stepHeight="computeHeight" ref="tabs" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import KeyIndexTab from './keyIndexTab';
+import DashboardTab from './dashboardTab';
 
 export default {
-    name: 'KeyIndexBody',
+    name: 'DashboardBody',
     components: {
-        KeyIndexTab
+        DashboardTab
     },
     props: {
         options: {
@@ -96,7 +96,7 @@ export default {
 </script>
 
 <style lang="less">
-.key-index-body {
+.dashboard-body {
     width: 100%;
     .body-content {
         height: 100%;
@@ -112,7 +112,7 @@ export default {
         }
     }
 }
-.default-key-index-body {
+.default-dashboard-body {
     .body-content {
         .tab {
             border-left: 1px solid rgba(30, 35, 48, 0.06);
@@ -144,7 +144,7 @@ export default {
         }
     }
 }
-.separate-key-index-body {
+.separate-dashboard-body {
     .tab {
         box-shadow: 2px 4px 10px 0 rgba(30, 35, 48, 0.08);
         border-radius: 6px;

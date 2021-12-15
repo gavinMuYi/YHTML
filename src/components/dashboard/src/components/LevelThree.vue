@@ -13,7 +13,7 @@
             </div>
         </y-tip>
         <div v-if="chartOptions.length" class="left-side-chart">
-            <key-index-chart :options="chartOptions[0]" :chartStyle="chartStyle" />
+            <dashboard-chart :options="chartOptions[0]" :chartStyle="chartStyle" />
         </div>
         <div class="field-content" ref="fieldContent">
             <div class="level-three-fields">
@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import KeyIndexChart from './keyIndexChart';
+import DashboardChart from './dashboardChart';
 import InfoContent from './infoContent';
 import { defaultColors } from '../utils';
 import { valueFormatter } from '../processData';
@@ -102,7 +102,7 @@ import { valueFormatter } from '../processData';
 export default {
     name: 'LevelThree',
     components: {
-        KeyIndexChart,
+        DashboardChart,
         InfoContent
     },
     inject: ['_cache'],

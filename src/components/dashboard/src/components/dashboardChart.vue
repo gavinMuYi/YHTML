@@ -1,5 +1,5 @@
 <template>
-    <div class="key-index-chart"
+    <div class="dashboard-chart"
          :style="`height: ${chartStyle.height === 65 ? 45 : chartStyle.height}px;width: ${chartStyle.width}px`">
         <!-- <v-chart :kind="kind" :series="series" :options="style">
         </v-chart> -->
@@ -11,7 +11,7 @@
 import { defaultColors } from '../utils';
 
 export default {
-    name: 'KeyIndexChart',
+    name: 'DashboardChart',
     inject: ['_cache'],
     props: {
         options: {
@@ -114,7 +114,7 @@ export default {
 </script>
 
 <style lang="less">
-.key-index-chart {
+.dashboard-chart {
     width: 100%;
     overflow: hidden;
     text-align: center;
