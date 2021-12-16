@@ -235,8 +235,10 @@ function rightClick(target, ev, el) {
             target.$lastevY = ev.offsetY;
             setTimeout(() => {
                 target.show = true;
-                parsePosition(target, el, false, false, ev.offsetX, ev.offsetY);
                 target.opacity = false;
+                setTimeout(() => {
+                    parsePosition(target, el, false, false, ev.offsetX, ev.offsetY);
+                });
             });
         });
     }
@@ -253,8 +255,10 @@ function handleHover(target, el, mos, delay, data) {
             target.opacity = true;
             setTimeout(() => {
                 target.show = true;
-                parsePosition(target, el);
                 target.opacity = false;
+                setTimeout(() => {
+                    parsePosition(target, el);
+                });
             });
         });
     } else {
@@ -281,8 +285,10 @@ function handleClick(target, el) {
             target.opacity = true;
             setTimeout(() => {
                 target.show = true;
-                parsePosition(target, el);
                 target.opacity = false;
+                setTimeout(() => {
+                    parsePosition(target, el);
+                });
             });
         });
     } else {
@@ -322,13 +328,25 @@ function doBind(el, binding, vnode, path) {
         let listener = target.resizeable;
         if (listener) {
             EleResize.on(target.$el,
-                parsePosition.bind(window, target, target.$lastel || el, true, false, target.$lastevX, target.$lastevY),
+                () => {
+                    let checkVal = 0;
+                    if (target.$lastel) {
+                        let check = target.$lastel.getBoundingClientRect();
+                        checkVal = check.x + check.y;
+                    }
+                    parsePosition.bind(window, target, checkVal ? target.$lastel : el, true, false, target.$lastevX, target.$lastevY)();
+                },
                 window
             );
             let oldReSize = window.onresize;
             window.onresize = function () {
                 if (target.show) {
-                    parsePosition(target, target.$lastel || el, true, true, target.$lastevX, target.$lastevY);
+                    let checkVal = 0;
+                    if (target.$lastel) {
+                        let check = target.$lastel.getBoundingClientRect();
+                        checkVal = check.x + check.y;
+                    }
+                    parsePosition(target, checkVal ? target.$lastel : el, true, true, target.$lastevX, target.$lastevY);
                 }
                 oldReSize && oldReSize.call(window);
             };
