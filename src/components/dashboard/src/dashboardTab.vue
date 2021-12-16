@@ -63,7 +63,7 @@ export default {
         font-size: 16px;
         line-height: 16px;
         height: 16px;
-        color: #000000;
+        color: @blackGreen;
         margin-bottom: 18px;
         width: ~'calc(100% - 20px)';
         overflow: hidden;

@@ -201,7 +201,7 @@ export default {
             display: inline-block;
             width: 13px;
             height: 13px;
-            color: #C5CCDB;
+            color: @fontGray;
         }
         .level-three-fields {
             width: 100%;
@@ -215,7 +215,7 @@ export default {
                         font-size: 13px;
                         box-sizing: border-box;
                         padding-right: 6px;
-                        color: #78849E;
+                        color: @fontGray;
                         display: inline-block;
                         width: 50%;
                         overflow: hidden;
@@ -266,7 +266,7 @@ export default {
                             font-size: 13px;
                             box-sizing: border-box;
                             padding-right: 6px;
-                            color: #78849E;
+                            color: @fontGray;
                             display: inline-block;
                             width: 50%;
                             overflow: hidden;

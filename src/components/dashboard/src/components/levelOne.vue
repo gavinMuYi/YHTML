@@ -142,7 +142,7 @@ export default {
                 display: inline-block;
                 width: 15px;
                 height: 15px;
-                color: #C5CCDB;
+                color: @fontGray;
             }
         }
         .more-func {

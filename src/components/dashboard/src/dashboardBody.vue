@@ -132,7 +132,7 @@ export default {
                 right: -8px;
                 width: 12px;
                 height: 12px;
-                background: #FFFFFF;
+                background: @white;
                 border-right: 1px solid rgba(30,35,48,0.06);
                 border-top: 1px solid rgba(30,35,48,0.06);
                 transform: rotate(45deg);
@@ -148,7 +148,7 @@ export default {
     .tab {
         box-shadow: 2px 4px 10px 0 rgba(30, 35, 48, 0.08);
         border-radius: 6px;
-        border: solid 1px #E1E6F0;
+        border: solid 1px @gray;
         padding-top: 24px;
         padding-bottom: 24px;
         box-sizing: border-box;

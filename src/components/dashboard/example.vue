@@ -105,7 +105,7 @@ export default {
 <style lang="less">
 .dashboard-example {
     width: 100%;
-    background-color: #ffffff;
+    background-color: @white;
     .component-title {
         font-size: 45px;
     }

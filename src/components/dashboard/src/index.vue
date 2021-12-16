@@ -147,7 +147,7 @@ export default {
             }
         }
         .selected-tab-title {
-            color: #4A70FF;
+            color: @title;
         }
     }
     .dashboard-body {
@@ -162,7 +162,7 @@ export default {
 .dashboard-default {
     box-shadow: 2px 4px 10px 0 rgba(30, 35, 48, 0.08);
     border-radius: 6px;
-    border: solid 1px #E1E6F0;
+    border: solid 1px @gray;
     padding: 24px 0;
     .tab-title-group {
         padding: 0 24px;
@@ -175,6 +175,6 @@ export default {
     }
 }
 .field-info-tip {
-    background: #F8FAFB;
+    background: @lightGray;
 }
 </style>

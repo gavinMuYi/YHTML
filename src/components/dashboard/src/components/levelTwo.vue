@@ -48,8 +48,7 @@
                                         v-if="field.child" class="arrow-down-tip" />
                             </div>
                             <div class="value">
-                                <span v-if="field.kind" :style="{'color': computeField(field) > 0
-                                ? '#F75559' : (computeField(field) < 0 ? '#00D48A' : '#1E2330')}">
+                                <span v-if="field.kind">
                                     <span :style="{'padding-right': '13px'}" :title="Math.abs(computeField(field))"
                                           class="value-text">
                                         <span :style="bindStyle(field)">
@@ -57,7 +56,7 @@
                                             {{ Math.abs(computeField(field)) || '-' }}
                                         </span>
                                     </span>
-                                    <span class="value-unit" :style="{'width': '13px'}">%</span>
+                                    <span class="value-unit" :style="{...bindStyle(field), 'width': '13px'}">%</span>
                                 </span>
                                 <span v-else>
                                     <span :style="{'padding-right': field.unit ? (field.unit.length * 13 + 'px') : '0'}"
@@ -168,8 +167,13 @@ export default {
                 return;
             }
             let _baseStyle = { 'color': field.color };
+            let fontColor = {};
+            if (field.kind) {
+                fontColor = {'color': this.computeField(field) > 0
+                                ? '#F75559' : (this.computeField(field) < 0 ? '#00D48A' : '#1E2330')};
+            }
 
-            return _baseStyle;
+            return { ..._baseStyle, ...fontColor };
         }
     }
 };
@@ -192,7 +196,7 @@ export default {
                     font-size: 13px;
                     height: 13px;
                     line-height: 14px;
-                    color: #A1ABC2;
+                    color: @fontGray;
                     margin-bottom: 8px;
                     max-width: 100%;
                     overflow: hidden;
@@ -221,7 +225,7 @@ export default {
                             .label {
                                 font-size: 13px;
                                 box-sizing: border-box;
-                                color: #78849E;
+                                color: @fontGray;
                                 display: inline-block;
                                 max-width: 100%;
                                 overflow: hidden;
@@ -237,7 +241,7 @@ export default {
                                 display: inline-block;
                                 width: 10px;
                                 height: 10px;
-                                color: #C5CCDB;
+                                color: @fontGray;
                             }
                             .info-tip {
                                 top: -1px;
@@ -288,7 +292,7 @@ export default {
 }
 .field-level-tip {
     width: 300px;
-    background: #F8FAFB;
+    background: @lightGray;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-weight: 200;
     .level-three {
