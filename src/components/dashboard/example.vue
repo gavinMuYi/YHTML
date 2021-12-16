@@ -38,9 +38,6 @@ export default {
             <y-dashboard :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
         </div>
         <div>
-            <y-dashboard :options="i_options" v-if="i_options.name" @eventEmit="eventEmit" />
-        </div>
-        <div>
             <y-dashboard :options="m_options" v-if="m_options.name" @eventEmit="eventEmit" />
         </div>
         <div>

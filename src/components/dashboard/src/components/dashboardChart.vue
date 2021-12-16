@@ -1,18 +1,22 @@
 <template>
     <div class="dashboard-chart"
          :style="`height: ${chartStyle.height === 65 ? 45 : chartStyle.height}px;width: ${chartStyle.width}px`">
-        <!-- <v-chart :kind="kind" :series="series" :options="style">
-        </v-chart> -->
-        {{ series }}
+        <y-echart :options="currentOptions">
+        </y-echart>
+        {{ currentOptions }}
     </div>
 </template>
 
 <script>
 import { defaultColors } from '../utils';
+import YEchart from '@/components/echart';
 
 export default {
     name: 'DashboardChart',
     inject: ['_cache'],
+    components: {
+        YEchart
+    },
     props: {
         options: {
             type: Object,
@@ -29,27 +33,33 @@ export default {
     },
     data() {
         let style = {
-            colors: defaultColors,
-            chart: {
-                spacing: [0, 0, 0, 0],
-                ...this.chartStyle
+            color: defaultColors,
+            legend: {
+                padding: [0, 0, 0, 0],
+                bottom: 10,
+                ...this.chartStyle,
+                type: 'scroll'
+            },
+            grid: {
+                top: 10
             },
             tooltip: {
-                enabled: this.options.tooltip
+                show: this.options.tooltip
             }
         };
-        this.options.type === 'cycle' && (
-            style.plotOptions = {
-                pie: {
-                    innerSize: '80%'
-                }
-            }
-        );
         return {
             series: [],
             style: style,
             kind: this.options.type === 'cycle' ? 'pie' : this.options.type
         };
+    },
+    computed: {
+        currentOptions() {
+            return {
+                series: this.series,
+                ...this.style
+            };
+        }
     },
     watch: {
         '_cache.dataSource': {
@@ -70,22 +80,27 @@ export default {
                 case 'cycle': {
                     this.series = [];
                     this.series.push({
+                        type: 'pie',
                         data: [],
-                        showInLegend: false
+                        label: {
+                            show: false
+                        }
                     });
+                    this.style.legend.show = false;
+                    this.options.type === 'cycle' && this.$set(this.series[0], 'radius', ['50%', '80%']);
                     this.options.index.forEach(index => {
                         /* eslint-disable */
                         for (let key in data[0]) {
                             index.key === key && this.series[0].data.push({
                                 name: index.label,
-                                y: data[0][key]
+                                value: data[0][key]
                             });
                         }
                     });
                     break;
                 }
                 case 'line':
-                case 'column': {
+                case 'bar': {
                     this.series = [];
                     this.options.index.forEach(index => {
                         let vals = [];
@@ -94,7 +109,8 @@ export default {
                         });
                         this.series.push({
                             name: index.label,
-                            data: vals
+                            data: vals,
+                            type: this.options.type
                         });
                     });
                     let categories = [];
@@ -102,9 +118,10 @@ export default {
                         categories.push(item[this.options.dimension[0].key]);
                     });
                     this.$set(this.style, 'xAxis', {
-                        categories: categories
+                        data: categories
                     });
-                    this.style.chart.spacing = [20, 0, 5, 0];
+                    this.$set(this.style, 'yAxis', {});
+                    this.style.legend.padding = [0, 0, 0, 0];
                     break;
                 }
             }

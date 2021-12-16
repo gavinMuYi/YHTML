@@ -360,238 +360,21 @@ exports.golptions = {
                 url: "/examples/dashboard/333",
                 info: [],
             }],
-            levelTwoColumns: [{
-                columnTitle: '列标题',
-                fields: [{
-                    key: 'dashboard3',
-                    label: '字段Label',
-                    color: '',
-                    kind: '',
-                    format: 'Default',
-                    unit: '%',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                    child: {
-                        levelThreeFields: [{
-                            key: 'dashboard4',
-                            label: '字段Label',
-                            color: '',
-                            format: 'Default',
-                            unit: '',
-                            formatter: '',
-                            url: "/examples/dashboard/333",
-                            info: [{
-                                type: 'text',
-                                value: '关键指标说明：这是一个非常关键的指标。'
-                            }, {
-                                type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                            }],
-                            levelFour: [{
-                                key: 'dashboard5',
-                                label: '字段Label',
-                                color: '',
-                                format: 'Default',
-                                unit: '',
-                                formatter: '',
-                                url: "/examples/dashboard/333",
-                                info: [{
-                                    type: 'text',
-                                    value: '关键指标说明：这是一个非常关键的指标。'
-                                }, {
-                                    type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                                }],
-                            }]
-                        }, {
-                            key: 'dashboard6',
-                            label: '字段Label',
-                            color: '',
-                            format: 'Default',
-                            unit: '万元',
-                            formatter: '',
-                            url: "/examples/dashboard/333",
-                            info: [{
-                                type: 'text',
-                                value: '关键指标说明：这是一个非常关键的指标。'
-                            }, {
-                                type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                            }],
-                            levelFour: [{
-                                key: 'dashboard7',
-                                label: '字段Label',
-                                color: '',
-                                format: 'Default',
-                                unit: '¥',
-                                formatter: '',
-                                url: "/examples/dashboard/333",
-                                info: [{
-                                    type: 'text',
-                                    value: '关键指标说明：这是一个非常关键的指标。'
-                                }, {
-                                    type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                                }],
-                            }]
-                        }],
-                        levelThreeChart: [{
-                            type: 'cycle',
-                            url: "/examples/dashboard/444",
-                            tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                            colors: []
-                        }]
-                    }
-                }]
-            }, {
-                columnTitle: '列标题',
-                fields: [{
-                    key: 'dashboard8',
-                    label: '字段Label',
-                    color: '',
-                    kind: 'tb',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/555?tb=tb",
-                    info: []
-                }, {
-                    key: 'dashboard9',
-                    label: '字段Label',
-                    color: '',
-                    kind: 'hb',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/555?hb=hb",
-                    info: [],
-                    child: {
-                        levelThreeFields: [{
-                            key: 'dashboard10',
-                            label: '字段Label',
-                            color: '',
-                            format: 'Default',
-                            unit: '',
-                            formatter: '',
-                            url: "/examples/dashboard/333",
-                            info: [{
-                                type: 'text',
-                                value: '关键指标说明：这是一个非常关键的指标。'
-                            }, {
-                                type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                            }],
-                            levelFour: [{
-                                key: 'dashboard11',
-                                label: '字段Label',
-                                color: '',
-                                format: 'Default',
-                                unit: '',
-                                formatter: '',
-                                url: "/examples/dashboard/333",
-                                info: [{
-                                    type: 'text',
-                                    value: '关键指标说明：这是一个非常关键的指标。'
-                                }, {
-                                    type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                                }],
-                            }]
-                        }],
-                        levelThreeChart: [{
-                            type: 'pie',
-                            url: "/examples/dashboard/444",
-                            tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                            colors: []
-                        }]
-                    }
-                }]
-            }],
-            levelTwoChart: [{
-                type: 'pie',
-                url: "/examples/dashboard/444",
-                tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                colors: []
-            }],
-            levelTwoChartFields: [{
-                key: 'dashboard12',
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
+        }, {
+            tabTitle: 'TAB标题',
+            moreFunctions: [{
                 label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                }],
-                levelFour: [{
-                    key: 'dashboard13',
-                    label: '字段Label',
-                    color: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                }]
-            }, {
-                key: 'dashboard14',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                }],
-                levelFour: [{
-                    key: 'dashboard15',
-                    label: '字段Label',
-                    color: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                }]
+                eventName: 'eventEmit',
+                goto: ''
             }],
-            levelThree: [{
-                key: 'dashboard16',
-                label: '字段sdcascsc',
+            levelOne: [{
+                key: 'dashboard1',
+                label: '字段Label',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -601,694 +384,227 @@ exports.golptions = {
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
+                    type: 'text',
+                    value: '关键指标说明：这是一个非常关键的指标。'
+                }, {
                     type: 'image',
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
-                levelFour: [{
-                    key: 'dashboard17',
-                    label: '字段Label',
-                    color: '',
-                    format: 'Default',
-                    unit: '$',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [],
-                }]
             }, {
-                key: 'dashboard18',
+                key: 'dashboard2',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
-                unit: '',
+                unit: '万元',
                 formatter: '',
                 url: "/examples/dashboard/333",
-                info: [{
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                }],
-                levelFour: [{
-                    key: 'dashboard19',
-                    label: '字段Labelrwerwerwer',
-                    color: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                }]
+                info: [],
             }],
-            levelThreeChart: [{
-                type: 'cycle',
-                url: "/examples/dashboard/444",
-                tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                colors: []
-            }]
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
         }, {
             tabTitle: 'TAB标题',
             moreFunctions: [{
                 label: '字段Label',
-                eventName: '',
+                eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
-                key: 'dashboard20',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
-                unit: '',
+                unit: '%',
                 formatter: '',
                 url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
-                    type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                }],
-            }],
-            levelTwoColumns: [{
-                columnTitle: '列标题',
-                fields: [{
-                    key: 'dashboard21',
-                    label: '字段Label',
-                    color: '',
-                    kind: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                    child: {
-                        levelThreeFields: [{
-                            key: 'dashboard22',
-                            label: '字段Label',
-                            color: '',
-                            format: 'Default',
-                            unit: '',
-                            formatter: '',
-                            url: "/examples/dashboard/333",
-                            info: [{
-                                type: 'text',
-                                value: '关键指标说明：这是一个非常关键的指标。'
-                            }, {
-                                type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                            }],
-                            levelFour: [{
-                                key: 'dashboard23',
-                                label: '字段Label',
-                                color: '',
-                                format: 'Default',
-                                unit: '',
-                                formatter: '',
-                                url: "/examples/dashboard/333",
-                                info: [],
-                            }]
-                        }],
-                        levelThreeChart: [{
-                            type: 'pie',
-                            url: "/examples/dashboard/444",
-                            tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                            colors: []
-                        }]
-                    }
-                }]
-            }],
-            levelTwoChart: [{
-                type: 'line',
-                url: "/examples/dashboard/444",
-                tooltip: true,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
-                colors: []
-            }],
-            levelThree: [{
-                key: 'dashboard24',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
-                levelFour: [{
-                    key: 'dashboard25',
-                    label: '字段Labelrwerwerwer',
-                    color: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                }]
+            }, {
+                key: 'dashboard2',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '万元',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
             }],
-            levelThreeChart: [{
-                type: 'pie',
-                url: "/examples/dashboard/444",
-                tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                colors: []
-            }]
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
         }, {
             tabTitle: 'TAB标题',
             moreFunctions: [{
                 label: '字段Label',
-                eventName: '',
+                eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
-                key: 'dashboard20',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
-                unit: '',
+                unit: '%',
                 formatter: '',
                 url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
-                    type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                }],
-            }],
-            levelTwoColumns: [{
-                columnTitle: '列标题',
-                fields: [{
-                    key: 'dashboard21',
-                    label: '字段Label',
-                    color: '',
-                    kind: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                    child: {
-                        levelThreeFields: [{
-                            key: 'dashboard22',
-                            label: '字段Label',
-                            color: '',
-                            format: 'Default',
-                            unit: '',
-                            formatter: '',
-                            url: "/examples/dashboard/333",
-                            info: [{
-                                type: 'text',
-                                value: '关键指标说明：这是一个非常关键的指标。'
-                            }, {
-                                type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                            }],
-                            levelFour: [{
-                                key: 'dashboard23',
-                                label: '字段Label',
-                                color: '',
-                                format: 'Default',
-                                unit: '',
-                                formatter: '',
-                                url: "/examples/dashboard/333",
-                                info: [],
-                            }]
-                        }],
-                        levelThreeChart: [{
-                            type: 'pie',
-                            url: "/examples/dashboard/444",
-                            tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                            colors: []
-                        }]
-                    }
-                }]
-            }],
-            levelTwoChart: [{
-                type: 'line',
-                url: "/examples/dashboard/444",
-                tooltip: true,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
-                colors: []
-            }],
-            levelThree: [{
-                key: 'dashboard24',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
-                levelFour: [{
-                    key: 'dashboard25',
-                    label: '字段Labelrwerwerwer',
-                    color: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                }]
+            }, {
+                key: 'dashboard2',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '万元',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
             }],
-            levelThreeChart: [{
-                type: 'pie',
-                url: "/examples/dashboard/444",
-                tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                colors: []
-            }]
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
         }, {
             tabTitle: 'TAB标题',
             moreFunctions: [{
                 label: '字段Label',
-                eventName: '',
+                eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
-                key: 'dashboard20',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
-                unit: '',
+                unit: '%',
                 formatter: '',
                 url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
-                    type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                }],
-            }],
-            levelTwoColumns: [{
-                columnTitle: '列标题',
-                fields: [{
-                    key: 'dashboard21',
-                    label: '字段Label',
-                    color: '',
-                    kind: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                    child: {
-                        levelThreeFields: [{
-                            key: 'dashboard22',
-                            label: '字段Label',
-                            color: '',
-                            format: 'Default',
-                            unit: '',
-                            formatter: '',
-                            url: "/examples/dashboard/333",
-                            info: [{
-                                type: 'text',
-                                value: '关键指标说明：这是一个非常关键的指标。'
-                            }, {
-                                type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                            }],
-                            levelFour: [{
-                                key: 'dashboard23',
-                                label: '字段Label',
-                                color: '',
-                                format: 'Default',
-                                unit: '',
-                                formatter: '',
-                                url: "/examples/dashboard/333",
-                                info: [],
-                            }]
-                        }],
-                        levelThreeChart: [{
-                            type: 'pie',
-                            url: "/examples/dashboard/444",
-                            tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                            colors: []
-                        }]
-                    }
-                }]
-            }],
-            levelTwoChart: [{
-                type: 'line',
-                url: "/examples/dashboard/444",
-                tooltip: true,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
-                colors: []
-            }],
-            levelThree: [{
-                key: 'dashboard24',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
-                levelFour: [{
-                    key: 'dashboard25',
-                    label: '字段Labelrwerwerwer',
-                    color: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                }]
+            }, {
+                key: 'dashboard2',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '万元',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
             }],
-            levelThreeChart: [{
-                type: 'pie',
-                url: "/examples/dashboard/444",
-                tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                colors: []
-            }]
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
         }, {
             tabTitle: 'TAB标题',
             moreFunctions: [{
                 label: '字段Label',
-                eventName: '',
+                eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
-                key: 'dashboard20',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
-                unit: '',
+                unit: '%',
                 formatter: '',
                 url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
-                    type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                }],
-            }],
-            levelTwoColumns: [{
-                columnTitle: '列标题',
-                fields: [{
-                    key: 'dashboard21',
-                    label: '字段Label',
-                    color: '',
-                    kind: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                    child: {
-                        levelThreeFields: [{
-                            key: 'dashboard22',
-                            label: '字段Label',
-                            color: '',
-                            format: 'Default',
-                            unit: '',
-                            formatter: '',
-                            url: "/examples/dashboard/333",
-                            info: [{
-                                type: 'text',
-                                value: '关键指标说明：这是一个非常关键的指标。'
-                            }, {
-                                type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                            }],
-                            levelFour: [{
-                                key: 'dashboard23',
-                                label: '字段Label',
-                                color: '',
-                                format: 'Default',
-                                unit: '',
-                                formatter: '',
-                                url: "/examples/dashboard/333",
-                                info: [],
-                            }]
-                        }],
-                        levelThreeChart: [{
-                            type: 'pie',
-                            url: "/examples/dashboard/444",
-                            tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                            colors: []
-                        }]
-                    }
-                }]
-            }],
-            levelTwoChart: [{
-                type: 'line',
-                url: "/examples/dashboard/444",
-                tooltip: true,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
-                colors: []
-            }],
-            levelThree: [{
-                key: 'dashboard24',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
-                levelFour: [{
-                    key: 'dashboard25',
-                    label: '字段Labelrwerwerwer',
-                    color: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                }]
+            }, {
+                key: 'dashboard2',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '万元',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
             }],
-            levelThreeChart: [{
-                type: 'pie',
-                url: "/examples/dashboard/444",
-                tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                colors: []
-            }]
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
         }, {
             tabTitle: 'TAB标题',
             moreFunctions: [{
                 label: '字段Label',
-                eventName: '',
+                eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
-                key: 'dashboard20',
+                key: 'dashboard1',
                 label: '字段Label',
                 color: '',
                 format: 'Default',
-                unit: '',
+                unit: '%',
                 formatter: '',
                 url: "/examples/dashboard/333",
                 info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
-                    type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                }],
-            }],
-            levelTwoColumns: [{
-                columnTitle: '列标题',
-                fields: [{
-                    key: 'dashboard21',
-                    label: '字段Label',
-                    color: '',
-                    kind: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                    child: {
-                        levelThreeFields: [{
-                            key: 'dashboard22',
-                            label: '字段Label',
-                            color: '',
-                            format: 'Default',
-                            unit: '',
-                            formatter: '',
-                            url: "/examples/dashboard/333",
-                            info: [{
-                                type: 'text',
-                                value: '关键指标说明：这是一个非常关键的指标。'
-                            }, {
-                                type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                            }],
-                            levelFour: [{
-                                key: 'dashboard23',
-                                label: '字段Label',
-                                color: '',
-                                format: 'Default',
-                                unit: '',
-                                formatter: '',
-                                url: "/examples/dashboard/333",
-                                info: [],
-                            }]
-                        }],
-                        levelThreeChart: [{
-                            type: 'pie',
-                            url: "/examples/dashboard/444",
-                            tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                            index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                            colors: []
-                        }]
-                    }
-                }]
-            }],
-            levelTwoChart: [{
-                type: 'line',
-                url: "/examples/dashboard/444",
-                tooltip: true,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
-                colors: []
-            }],
-            levelThree: [{
-                key: 'dashboard24',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
                     type: 'text',
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
                     value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
                 }],
-                levelFour: [{
-                    key: 'dashboard25',
-                    label: '字段Labelrwerwerwer',
-                    color: '',
-                    format: 'Default',
-                    unit: '',
-                    formatter: '',
-                    url: "/examples/dashboard/333",
-                    info: [{
-                        type: 'text',
-                        value: '关键指标说明：这是一个非常关键的指标。'
-                    }, {
-                        type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
-                    }],
-                }]
+            }, {
+                key: 'dashboard2',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '万元',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
             }],
-            levelThreeChart: [{
-                type: 'pie',
-                url: "/examples/dashboard/444",
-                tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
-                index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
-                colors: []
-            }]
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
         }]
     }, {
         tabTitle: '标题qqq',
