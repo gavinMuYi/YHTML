@@ -17,6 +17,11 @@ export default {
                 return [];
             }
         }
+    },
+    watch: {
+        info(nval) {
+            console.log('update', JSON.stringify(nval));
+        }
     }
 };
 </script>

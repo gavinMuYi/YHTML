@@ -1,6 +1,6 @@
 <template>
     <div class="level-one">
-        <y-tip ref="fieldInfoTip" kind="large" clazz="field-info-tip">
+        <y-tip ref="fieldInfoTip" kind="large" clazz="field-info-tip" placement="bottom-middle">
             <div slot-scope="props">
                 <div v-if="props.data">
                     <info-content :info="props.data" />
@@ -91,9 +91,9 @@ export default {
     },
     methods: {
         handleMore(val, options) {
-            options[val.index].goto && window.open(options[val.index].goto);
-            options[val.index].eventName && this.$emit('innerEmit', {
-                eventName: options[val.index].eventName,
+            options[val.key].goto && window.open(options[val.key].goto);
+            options[val.key].eventName && this.$emit('innerEmit', {
+                eventName: options[val.key].eventName,
                 payload: {
                     levelOne: this
                 }

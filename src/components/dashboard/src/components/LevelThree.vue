@@ -5,7 +5,7 @@
         'border-top': levelHight || inTip ? 'none': '1px solid #EBEDF2',
         'margin-bottom': inTip || !levelHight ? '-10px' : '0'
     }">
-        <y-tip ref="fieldInfoTip" kind="large" clazz="field-info-tip">
+        <y-tip ref="fieldInfoTip" kind="large" clazz="field-info-tip" placement="bottom-middle">
             <div slot-scope="props">
                 <div v-if="props.data">
                     <info-content :info="props.data" />

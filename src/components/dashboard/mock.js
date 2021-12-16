@@ -348,7 +348,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -388,7 +388,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -428,7 +428,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -468,7 +468,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -508,7 +508,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -548,7 +548,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -588,7 +588,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -628,7 +628,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -647,7 +647,7 @@ exports.golptions = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -663,7 +663,7 @@ exports.golptions = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard29',
@@ -708,7 +708,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard31',
@@ -748,7 +748,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -767,7 +767,7 @@ exports.golptions = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }]
                 }]
             }],
@@ -811,7 +811,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard37',
@@ -844,7 +844,7 @@ exports.golptions = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -873,7 +873,7 @@ exports.golptions = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard41',
@@ -888,7 +888,7 @@ exports.golptions = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }, {
@@ -904,7 +904,7 @@ exports.golptions = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard43',
@@ -919,7 +919,7 @@ exports.golptions = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -1024,7 +1024,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -1052,7 +1052,7 @@ exports.options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -1068,7 +1068,7 @@ exports.options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard5',
@@ -1083,7 +1083,7 @@ exports.options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }, {
@@ -1099,7 +1099,7 @@ exports.options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard7',
@@ -1114,7 +1114,7 @@ exports.options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -1164,7 +1164,7 @@ exports.options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard11',
@@ -1179,7 +1179,7 @@ exports.options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -1215,7 +1215,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard13',
@@ -1230,7 +1230,7 @@ exports.options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                 }]
             }, {
@@ -1246,7 +1246,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard15',
@@ -1261,7 +1261,7 @@ exports.options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                 }]
             }],
@@ -1278,7 +1278,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard17',
@@ -1303,7 +1303,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard19',
@@ -1318,7 +1318,7 @@ exports.options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                 }]
             }],
@@ -1349,7 +1349,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -1368,7 +1368,7 @@ exports.options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -1384,7 +1384,7 @@ exports.options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
@@ -1429,7 +1429,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard25',
@@ -1444,7 +1444,7 @@ exports.options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                 }]
             }],
@@ -1479,7 +1479,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -1498,7 +1498,7 @@ exports.options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -1514,7 +1514,7 @@ exports.options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard29',
@@ -1559,7 +1559,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard31',
@@ -1599,7 +1599,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -1618,7 +1618,7 @@ exports.options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }]
                 }]
             }],
@@ -1662,7 +1662,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard37',
@@ -1695,7 +1695,7 @@ exports.options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -1724,7 +1724,7 @@ exports.options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard41',
@@ -1739,7 +1739,7 @@ exports.options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }, {
@@ -1755,7 +1755,7 @@ exports.options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard43',
@@ -1770,7 +1770,7 @@ exports.options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -1872,7 +1872,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -1891,7 +1891,7 @@ exports.e_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -1907,7 +1907,7 @@ exports.e_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard29',
@@ -1945,7 +1945,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard31',
@@ -1985,7 +1985,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -2004,7 +2004,7 @@ exports.e_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }]
                 }]
             }],
@@ -2041,7 +2041,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard37',
@@ -2074,7 +2074,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -2103,7 +2103,7 @@ exports.e_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard41',
@@ -2118,7 +2118,7 @@ exports.e_options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }, {
@@ -2134,7 +2134,7 @@ exports.e_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard43',
@@ -2149,7 +2149,7 @@ exports.e_options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -2231,7 +2231,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -2259,7 +2259,7 @@ exports.e_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -2275,7 +2275,7 @@ exports.e_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard5',
@@ -2290,7 +2290,7 @@ exports.e_options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }, {
@@ -2306,7 +2306,7 @@ exports.e_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard7',
@@ -2321,7 +2321,7 @@ exports.e_options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -2371,7 +2371,7 @@ exports.e_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard11',
@@ -2386,7 +2386,7 @@ exports.e_options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -2416,7 +2416,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard17',
@@ -2441,7 +2441,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard19',
@@ -2456,7 +2456,7 @@ exports.e_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                 }]
             }],
@@ -2487,7 +2487,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -2506,7 +2506,7 @@ exports.e_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -2522,7 +2522,7 @@ exports.e_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
@@ -2560,7 +2560,7 @@ exports.e_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
                 levelFour: [{
                     key: 'dashboard25',
@@ -2575,7 +2575,7 @@ exports.e_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                 }]
             }],
@@ -2729,7 +2729,7 @@ exports.l_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }, {
                 key: 'dashboard2',
@@ -2757,7 +2757,7 @@ exports.l_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -2773,7 +2773,7 @@ exports.l_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard5',
@@ -2788,7 +2788,7 @@ exports.l_options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }, {
@@ -2804,7 +2804,7 @@ exports.l_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard7',
@@ -2819,7 +2819,7 @@ exports.l_options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -2869,7 +2869,7 @@ exports.l_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard11',
@@ -2884,7 +2884,7 @@ exports.l_options = {
                                     value: '关键指标说明：这是一个非常关键的指标。'
                                 }, {
                                     type: 'image',
-                                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                    value: 'https://cn.vuejs.org/images/logo.svg'
                                 }],
                             }]
                         }],
@@ -2922,7 +2922,7 @@ exports.l_options = {
                     value: '关键指标说明：这是一个非常关键的指标。'
                 }, {
                     type: 'image',
-                    value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                    value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
             }],
             levelTwoColumns: [{
@@ -2941,7 +2941,7 @@ exports.l_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -2957,7 +2957,7 @@ exports.l_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
@@ -3024,7 +3024,7 @@ exports.m_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -3040,7 +3040,7 @@ exports.m_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
@@ -3076,7 +3076,7 @@ exports.m_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -3092,7 +3092,7 @@ exports.m_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
@@ -3128,7 +3128,7 @@ exports.m_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -3144,7 +3144,7 @@ exports.m_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
@@ -3199,7 +3199,7 @@ exports.m_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -3215,7 +3215,7 @@ exports.m_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
@@ -3286,7 +3286,7 @@ exports.m_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -3302,7 +3302,7 @@ exports.m_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
@@ -3338,7 +3338,7 @@ exports.m_options = {
                         value: '关键指标说明：这是一个非常关键的指标。'
                     }, {
                         type: 'image',
-                        value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                        value: 'https://cn.vuejs.org/images/logo.svg'
                     }],
                     child: {
                         levelThreeFields: [{
@@ -3354,7 +3354,7 @@ exports.m_options = {
                                 value: '关键指标说明：这是一个非常关键的指标。'
                             }, {
                                 type: 'image',
-                                value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606129925809&di=3ecf3bc4772710c4b3a77289325dfe8b&imgtype=0&src=http%3A%2F%2Fpic.vjshi.com%2F2017-08-08%2F82e785b0027d631d174905b381b1691b%2F00002.jpg%3Fx-oss-process%3Dstyle%2Fwatermark'
+                                value: 'https://cn.vuejs.org/images/logo.svg'
                             }],
                             levelFour: [{
                                 key: 'dashboard23',

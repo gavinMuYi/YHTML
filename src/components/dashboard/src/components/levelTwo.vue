@@ -1,13 +1,13 @@
 <template>
     <div class="level-two">
-        <y-tip ref="fieldInfoTip" kind="large" clazz="field-info-tip">
+        <y-tip ref="fieldInfoTip" kind="large" clazz="field-info-tip" placement="bottom-middle">
             <div slot-scope="props">
                 <div v-if="props.data">
                     <info-content :info="props.data" />
                 </div>
             </div>
         </y-tip>
-        <y-tip ref="fieldlevelTip" kind="large" clazz="field-level-tip">
+        <y-tip ref="fieldlevelTip" kind="large" clazz="field-level-tip" placement="bottom-middle">
             <div slot-scope="props">
                 <div v-if="props.data">
                     <level-three

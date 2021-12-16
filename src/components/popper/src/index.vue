@@ -31,6 +31,10 @@ export default {
         inline: {
             type: Boolean,
             default: false
+        },
+        resizeable: {
+            type: Boolean,
+            default: true
         }
     },
     data() {

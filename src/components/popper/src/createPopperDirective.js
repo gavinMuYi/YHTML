@@ -244,8 +244,9 @@ function rightClick(target, ev, el) {
     return false;
 }
 
-function handleHover(target, el, mos, delay) {
+function handleHover(target, el, mos, delay, data) {
     if (mos) {
+        target.setData(data);
         target.show = false;
         target.$nextTick(() => {
             target.$lastel = el;
@@ -262,10 +263,12 @@ function handleHover(target, el, mos, delay) {
                 if (target.hover) {
                     target.waitToClose = true;
                 } else {
+                    target.setData(data);
                     target.closePop();
                 }
             }, 200);
         } else {
+            target.setData(data);
             target.closePop();
         }
     }
@@ -298,7 +301,7 @@ function handleClick(target, el) {
     }
 }
 
-function doBind(el, binding, vnode, path, listener) {
+function doBind(el, binding, vnode, path) {
     // 就近取pop
     setTimeout(() => {
         el[POPFUNCHOOK] = {};
@@ -316,15 +319,22 @@ function doBind(el, binding, vnode, path, listener) {
         if (!target) {
             return;
         }
+        let listener = target.resizeable;
         if (listener) {
             EleResize.on(target.$el,
-                parsePosition.bind(window, target, target.$lastel || el, true, false, target.$lastevX, target.$lastevY),
+                () => {
+                    setTimeout(() => {
+                        parsePosition.bind(window, target, target.$lastel || el, true, false, target.$lastevX, target.$lastevY);
+                    });
+                },
                 window
             );
             let oldReSize = window.onresize;
             window.onresize = function () {
                 if (target.show) {
-                    parsePosition(target, target.$lastel || el, true, true, target.$lastevX, target.$lastevY);
+                    setTimeout(() => {
+                        parsePosition(target, target.$lastel || el, true, true, target.$lastevX, target.$lastevY);
+                    });
                 }
                 oldReSize && oldReSize.call(window);
             };
@@ -341,16 +351,10 @@ function doBind(el, binding, vnode, path, listener) {
         }
         if (binding.modifiers.hover) {
             let mouseenterHandler = function () {
-                if (binding.value && binding.value.data) {
-                    target.setData(binding.value.data);
-                }
-                handleHover(target, el, true, binding.modifiers.delay);
+                handleHover(target, el, true, binding.modifiers.delay, binding.value && binding.value.data);
             };
             let mouseleaveHandler = function () {
-                if (binding.value && binding.value.data) {
-                    target.setData(binding.value.data);
-                }
-                handleHover(target, el, false, binding.modifiers.delay);
+                handleHover(target, el, false, binding.modifiers.delay, binding.value && binding.value.data);
             };
             el[POPFUNCHOOK].mouseenter = mouseenterHandler;
             el[POPFUNCHOOK].mouseleave = mouseleaveHandler;
@@ -394,7 +398,7 @@ function unBind(el) {
 export default function createPopperDirective(path) {
     return {
         bind: function (el, binding, vnode) {
-            doBind(el, binding, vnode, path, true);
+            doBind(el, binding, vnode, path);
         },
         update: function (el, binding, vnode) {
             if (JSON.stringify(binding.oldValue) === JSON.stringify(binding.value)) {
