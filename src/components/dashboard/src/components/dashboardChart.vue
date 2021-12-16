@@ -1,9 +1,11 @@
 <template>
     <div class="dashboard-chart"
-         :style="`height: ${chartStyle.height === 65 ? 45 : chartStyle.height}px;width: ${chartStyle.width}px`">
-        <y-echart :options="currentOptions">
+         :style="`height: ${localStyle.height || 45}px;width: ${localStyle.width || 45}px`">
+        <y-echart
+            :wait="100"
+            :options="currentOptions"
+            :style="`height: ${localStyle.height || 45}px;width: ${localStyle.width || 45}px`">
         </y-echart>
-        {{ currentOptions }}
     </div>
 </template>
 
@@ -32,12 +34,21 @@ export default {
         }
     },
     data() {
+        let localStyle = {
+            height: this.chartStyle.height,
+            width: this.chartStyle.width,
+        };
+        if (this.chartStyle.height === 65) {
+            localStyle.height = 45;
+            localStyle.width = 45;
+        }
         let style = {
             color: defaultColors,
             legend: {
                 padding: [0, 0, 0, 0],
                 bottom: 10,
                 ...this.chartStyle,
+                ...localStyle,
                 type: 'scroll'
             },
             grid: {
@@ -50,6 +61,7 @@ export default {
         return {
             series: [],
             style: style,
+            localStyle: localStyle,
             kind: this.options.type === 'cycle' ? 'pie' : this.options.type
         };
     },

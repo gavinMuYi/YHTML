@@ -322,19 +322,13 @@ function doBind(el, binding, vnode, path) {
         let listener = target.resizeable;
         if (listener) {
             EleResize.on(target.$el,
-                () => {
-                    setTimeout(() => {
-                        parsePosition.bind(window, target, target.$lastel || el, true, false, target.$lastevX, target.$lastevY);
-                    });
-                },
+                parsePosition.bind(window, target, target.$lastel || el, true, false, target.$lastevX, target.$lastevY),
                 window
             );
             let oldReSize = window.onresize;
             window.onresize = function () {
                 if (target.show) {
-                    setTimeout(() => {
-                        parsePosition(target, target.$lastel || el, true, true, target.$lastevX, target.$lastevY);
-                    });
+                    parsePosition(target, target.$lastel || el, true, true, target.$lastevX, target.$lastevY);
                 }
                 oldReSize && oldReSize.call(window);
             };

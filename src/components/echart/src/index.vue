@@ -11,6 +11,10 @@ export default {
         options: {
             type: Object,
             default: {}
+        },
+        wait: {
+            type: Number,
+            default: 0
         }
     },
     data() {
@@ -20,16 +24,27 @@ export default {
     },
     watch: {
         options(nval) {
-            this.echartsInstanse && this.echartsInstanse.clear();
-            this.echartsInstanse.setOption(nval);
-            this.echartsInstanse.resize();
+            if (this.echartsInstanse) {
+                this.echartsInstanse && this.echartsInstanse.clear();
+                this.echartsInstanse.setOption(nval);
+                this.echartsInstanse.resize();
+            } else {
+                this.init();
+            }
         }
     },
     mounted() {
-        this.echartsInstanse = echarts.init(this.$refs.eChart);
-        this.echartsInstanse.setOption(this.options);
+        setTimeout(() => {
+            this.init();
+        }, this.wait);
     },
     methods: {
+        init() {
+            if (this.$refs.eChart.clientHeight && this.$refs.eChart.clientWidth) {
+                this.echartsInstanse = echarts.init(this.$refs.eChart);
+                this.echartsInstanse.setOption(this.options);
+            }
+        }
     }
 };
 </script>

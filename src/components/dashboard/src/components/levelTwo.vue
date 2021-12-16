@@ -44,7 +44,7 @@
                                 </div>
                                 <y-icon name="question" v-if="field.info.length" class="info-tip"
                                         v-ytip:fieldInfoTip.hover.delay="{data: field.info}" />
-                                <y-icon name="double-arrow-up" v-ytip:fieldlevelTip.hover.delay="{data: field.child}"
+                                <y-icon name="double-arrow-up" v-ytip:fieldlevelTip.click="{data: field.child}"
                                         v-if="field.child" class="arrow-down-tip" />
                             </div>
                             <div class="value">
