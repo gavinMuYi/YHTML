@@ -1,10 +1,10 @@
 <template>
     <div class="dashboard-chart"
-         :style="`height: ${localStyle.height || 45}px;width: ${localStyle.width || 45}px`">
+         :style="`height: ${localStyle.height || 45}px;width: ${localStyle.width}px`">
         <y-echart
             :wait="100"
             :options="currentOptions"
-            :style="`height: ${localStyle.height || 45}px;width: ${localStyle.width || 45}px`">
+            :style="`height: ${localStyle.height || 45}px;width: ${localStyle.width}px`">
         </y-echart>
     </div>
 </template>
