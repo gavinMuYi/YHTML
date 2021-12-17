@@ -186,7 +186,7 @@ function parsePosition(target, el, moniter, containChange, X, Y, second) {
                 }
             }
         }
-        if (startLeft + startTop === 0) {
+        if (startLeft + startTop === 0 || startLeft < 0 || startTop < 0) {
             return;
         }
         if (rightOver) {
