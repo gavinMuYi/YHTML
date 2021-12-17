@@ -155,10 +155,10 @@ function parsePosition(target, el, moniter, containChange, X, Y, second) {
         }
     }
     if (target.$refs.selfPop) {
-        target.$refs.selfPop.style.left = 'auto';
-        target.$refs.selfPop.style.right = 'auto';
-        target.$refs.selfPop.style.top = 'auto';
-        target.$refs.selfPop.style.bottom = 'auto';
+        // target.$refs.selfPop.style.left = 'auto';
+        // target.$refs.selfPop.style.right = 'auto';
+        // target.$refs.selfPop.style.top = 'auto';
+        // target.$refs.selfPop.style.bottom = 'auto';
         const position = getPosition(el, { target, el, moniter, containChange, X, Y, second });
         const box = el.getBoundingClientRect();
         const popWidth = target.$refs.selfPop.getBoundingClientRect().width;
@@ -189,6 +189,11 @@ function parsePosition(target, el, moniter, containChange, X, Y, second) {
         if (startLeft + startTop === 0 || startLeft < 0 || startTop < 0) {
             return;
         }
+        // 变更重置时机
+        target.$refs.selfPop.style.left = 'auto';
+        target.$refs.selfPop.style.right = 'auto';
+        target.$refs.selfPop.style.top = 'auto';
+        target.$refs.selfPop.style.bottom = 'auto';
         if (rightOver) {
             if (inline) {
                 target.$refs.selfPop.style.left = `${windowWidth - popWidth - inlineParentPosition.x}px`;
