@@ -4,6 +4,7 @@
 
 <script>
 import * as echarts from 'echarts';
+import { EleResize } from '@/utils/dom.js';
 
 export default {
     name: 'YEchart',
@@ -15,6 +16,10 @@ export default {
         wait: {
             type: Number,
             default: 0
+        },
+        autoResize: {
+            type: Boolean,
+            default: true
         }
     },
     data() {
@@ -27,7 +32,7 @@ export default {
             if (this.echartsInstanse) {
                 this.echartsInstanse && this.echartsInstanse.clear();
                 this.echartsInstanse.setOption(nval);
-                this.echartsInstanse.resize();
+                this.resize();
             } else {
                 this.init();
             }
@@ -36,6 +41,12 @@ export default {
     mounted() {
         setTimeout(() => {
             this.init();
+            this.autoResize && EleResize.on(this.$refs.eChart,
+                () => {
+                    this.resize();
+                },
+                this
+            );
         }, this.wait);
     },
     methods: {
@@ -43,6 +54,11 @@ export default {
             if (this.$refs.eChart.clientHeight && this.$refs.eChart.clientWidth) {
                 this.echartsInstanse = echarts.init(this.$refs.eChart);
                 this.echartsInstanse.setOption(this.options);
+            }
+        },
+        resize() {
+            if (this.echartsInstanse) {
+                this.echartsInstanse.resize();
             }
         }
     }
