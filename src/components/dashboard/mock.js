@@ -350,7 +350,73 @@ exports.golptions = {
                     type: 'image',
                     value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
+            }],
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
+        }, {
+            tabTitle: 'TAB标题',
+            moreFunctions: [{
+                label: '字段Label',
+                eventName: 'eventEmit',
+                goto: ''
+            }],
+            levelOne: [{
+                key: 'dashboard2',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '万元',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
+            }],
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
+        }, {
+            tabTitle: 'TAB标题',
+            moreFunctions: [{
+                label: '字段Label',
+                eventName: 'eventEmit',
+                goto: ''
+            }],
+            levelOne: [{
+                key: 'dashboard1',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '%',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
             }, {
+                key: 'dashboard2',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '万元',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
+            }],
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
+        }, {
+            tabTitle: 'TAB标题',
+            moreFunctions: [{
+                label: '字段Label',
+                eventName: 'eventEmit',
+                goto: ''
+            }],
+            levelOne: [{
                 key: 'dashboard2',
                 label: '字段Label',
                 color: '',
@@ -390,6 +456,28 @@ exports.golptions = {
                     type: 'image',
                     value: 'https://cn.vuejs.org/images/logo.svg'
                 }],
+            }],
+            levelTwoColumns: [],
+            levelTwoChart: [],
+            levelTwoChartFields: [],
+            levelThree: [],
+            levelThreeChart: []
+        }, {
+            tabTitle: 'TAB标题',
+            moreFunctions: [{
+                label: '字段Label',
+                eventName: 'eventEmit',
+                goto: ''
+            }],
+            levelOne: [{
+                key: 'dashboard1',
+                label: '字段Label',
+                color: '',
+                format: 'Default',
+                unit: '%',
+                formatter: '',
+                url: "/examples/dashboard/333",
+                info: [],
             }, {
                 key: 'dashboard2',
                 label: '字段Label',
@@ -413,184 +501,6 @@ exports.golptions = {
                 goto: ''
             }],
             levelOne: [{
-                key: 'dashboard1',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '%',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'image',
-                    value: 'https://cn.vuejs.org/images/logo.svg'
-                }],
-            }, {
-                key: 'dashboard2',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '万元',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [],
-            }],
-            levelTwoColumns: [],
-            levelTwoChart: [],
-            levelTwoChartFields: [],
-            levelThree: [],
-            levelThreeChart: []
-        }, {
-            tabTitle: 'TAB标题',
-            moreFunctions: [{
-                label: '字段Label',
-                eventName: 'eventEmit',
-                goto: ''
-            }],
-            levelOne: [{
-                key: 'dashboard1',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '%',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'image',
-                    value: 'https://cn.vuejs.org/images/logo.svg'
-                }],
-            }, {
-                key: 'dashboard2',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '万元',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [],
-            }],
-            levelTwoColumns: [],
-            levelTwoChart: [],
-            levelTwoChartFields: [],
-            levelThree: [],
-            levelThreeChart: []
-        }, {
-            tabTitle: 'TAB标题',
-            moreFunctions: [{
-                label: '字段Label',
-                eventName: 'eventEmit',
-                goto: ''
-            }],
-            levelOne: [{
-                key: 'dashboard1',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '%',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'image',
-                    value: 'https://cn.vuejs.org/images/logo.svg'
-                }],
-            }, {
-                key: 'dashboard2',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '万元',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [],
-            }],
-            levelTwoColumns: [],
-            levelTwoChart: [],
-            levelTwoChartFields: [],
-            levelThree: [],
-            levelThreeChart: []
-        }, {
-            tabTitle: 'TAB标题',
-            moreFunctions: [{
-                label: '字段Label',
-                eventName: 'eventEmit',
-                goto: ''
-            }],
-            levelOne: [{
-                key: 'dashboard1',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '%',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'image',
-                    value: 'https://cn.vuejs.org/images/logo.svg'
-                }],
-            }, {
-                key: 'dashboard2',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '万元',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [],
-            }],
-            levelTwoColumns: [],
-            levelTwoChart: [],
-            levelTwoChartFields: [],
-            levelThree: [],
-            levelThreeChart: []
-        }, {
-            tabTitle: 'TAB标题',
-            moreFunctions: [{
-                label: '字段Label',
-                eventName: 'eventEmit',
-                goto: ''
-            }],
-            levelOne: [{
-                key: 'dashboard1',
-                label: '字段Label',
-                color: '',
-                format: 'Default',
-                unit: '%',
-                formatter: '',
-                url: "/examples/dashboard/333",
-                info: [{
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'text',
-                    value: '关键指标说明：这是一个非常关键的指标。'
-                }, {
-                    type: 'image',
-                    value: 'https://cn.vuejs.org/images/logo.svg'
-                }],
-            }, {
                 key: 'dashboard2',
                 label: '字段Label',
                 color: '',
