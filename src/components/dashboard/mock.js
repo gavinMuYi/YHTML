@@ -9,11 +9,11 @@ exports.gopptions = {
         mainPart: false,
         columns: 4,
         tabs: [{
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -25,7 +25,7 @@ exports.gopptions = {
                 columnTitle: '',
                 fields: [{
                     key: 'dashboard8',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -35,7 +35,7 @@ exports.gopptions = {
                     info: []
                 }, {
                     key: 'dashboard9',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -50,11 +50,11 @@ exports.gopptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -68,11 +68,11 @@ exports.gopptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -84,7 +84,7 @@ exports.gopptions = {
                 columnTitle: '',
                 fields: [{
                     key: 'dashboard8',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -94,7 +94,7 @@ exports.gopptions = {
                     info: []
                 }, {
                     key: 'dashboard9',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -109,11 +109,11 @@ exports.gopptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -127,11 +127,11 @@ exports.gopptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -143,7 +143,7 @@ exports.gopptions = {
                 columnTitle: '',
                 fields: [{
                     key: 'dashboard8',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -153,7 +153,7 @@ exports.gopptions = {
                     info: []
                 }, {
                     key: 'dashboard9',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -168,11 +168,11 @@ exports.gopptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -198,11 +198,11 @@ exports.goptions = {
         mainPart: false,
         columns: 4,
         tabs: [{
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -216,11 +216,11 @@ exports.goptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -234,11 +234,11 @@ exports.goptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -252,11 +252,11 @@ exports.goptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -270,11 +270,11 @@ exports.goptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -288,11 +288,11 @@ exports.goptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -317,24 +317,24 @@ exports.golptions = {
         eventName: '',
         goto: 'http://www.baidu.com'
     }, {
-        label: '字段Emit',
+        label: '指标Emit',
         eventName: 'eventEmit',
         goto: ''
     }],
     tabGroup: [{
-        tabTitle: '标题qaa',
+        tabTitle: '标题2',
         mainPart: false,
         columns: 4,
         tabs: [{
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -357,15 +357,15 @@ exports.golptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard2',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -379,15 +379,15 @@ exports.golptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -396,7 +396,7 @@ exports.golptions = {
                 info: [],
             }, {
                 key: 'dashboard2',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -410,15 +410,15 @@ exports.golptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard2',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -432,15 +432,15 @@ exports.golptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -463,15 +463,15 @@ exports.golptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -480,7 +480,7 @@ exports.golptions = {
                 info: [],
             }, {
                 key: 'dashboard2',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -494,15 +494,15 @@ exports.golptions = {
             levelThree: [],
             levelThreeChart: []
         }, {
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard2',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -517,17 +517,17 @@ exports.golptions = {
             levelThreeChart: []
         }]
     }, {
-        tabTitle: '标题qqq',
+        tabTitle: '标题1',
         mainPart: false,
         tabs: [{
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -542,10 +542,10 @@ exports.golptions = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard27',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -562,7 +562,7 @@ exports.golptions = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard28',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -577,7 +577,7 @@ exports.golptions = {
                             }],
                             levelFour: [{
                                 key: 'dashboard29',
-                                label: '字段Labelrqwerqwer',
+                                label: '指标rqwerqwer',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -607,7 +607,7 @@ exports.golptions = {
             }],
             levelThree: [{
                 key: 'dashboard30',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -622,7 +622,7 @@ exports.golptions = {
                 }],
                 levelFour: [{
                     key: 'dashboard31',
-                    label: '字段Labeleqwrqwerwerwqer',
+                    label: '指标4',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -641,13 +641,13 @@ exports.golptions = {
             }]
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard32',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -662,10 +662,10 @@ exports.golptions = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard33',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -691,7 +691,7 @@ exports.golptions = {
             }],
             levelThree: [{
                 key: 'dashboard34',
-                label: '字段Labelrtdrftftf',
+                label: '指标3',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -700,7 +700,7 @@ exports.golptions = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard35',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -710,7 +710,7 @@ exports.golptions = {
                 }]
             }, {
                 key: 'dashboard36',
-                label: '字段Labelrtdrftftf',
+                label: '指标3',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -725,7 +725,7 @@ exports.golptions = {
                 }],
                 levelFour: [{
                     key: 'dashboard37',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -737,13 +737,13 @@ exports.golptions = {
             levelThreeChart: []
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard38',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -758,10 +758,10 @@ exports.golptions = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard39',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -772,7 +772,7 @@ exports.golptions = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard40',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -787,7 +787,7 @@ exports.golptions = {
                             }],
                             levelFour: [{
                                 key: 'dashboard41',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -803,7 +803,7 @@ exports.golptions = {
                             }]
                         }, {
                             key: 'dashboard42',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -818,7 +818,7 @@ exports.golptions = {
                             }],
                             levelFour: [{
                                 key: 'dashboard43',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -847,7 +847,7 @@ exports.golptions = {
             }],
             levelThree: [{
                 key: 'dashboard44',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -856,7 +856,7 @@ exports.golptions = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard45',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -866,7 +866,7 @@ exports.golptions = {
                 }]
             }, {
                 key: 'dashboard46',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -875,7 +875,7 @@ exports.golptions = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard47',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -904,23 +904,23 @@ exports.options = {
         eventName: '',
         goto: 'http://www.baidu.com'
     }, {
-        label: '字段Emit',
+        label: '指标Emit',
         eventName: 'eventEmit',
         goto: ''
     }],
     tabGroup: [{
-        tabTitle: '标题qaa',
+        tabTitle: '标题2',
         mainPart: false,
         tabs: [{
-            tabTitle: 'TAB标题',
+            tabTitle: '单元A',
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -938,7 +938,7 @@ exports.options = {
                 }],
             }, {
                 key: 'dashboard2',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -947,10 +947,10 @@ exports.options = {
                 info: [],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard3',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -967,7 +967,7 @@ exports.options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard4',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -982,7 +982,7 @@ exports.options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard5',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -998,7 +998,7 @@ exports.options = {
                             }]
                         }, {
                             key: 'dashboard6',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '万元',
@@ -1013,7 +1013,7 @@ exports.options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard7',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '¥',
@@ -1039,10 +1039,10 @@ exports.options = {
                     }
                 }]
             }, {
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard8',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -1052,7 +1052,7 @@ exports.options = {
                     info: []
                 }, {
                     key: 'dashboard9',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -1063,7 +1063,7 @@ exports.options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard10',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -1078,7 +1078,7 @@ exports.options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard11',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -1114,7 +1114,7 @@ exports.options = {
             }],
             levelTwoChartFields: [{
                 key: 'dashboard12',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1129,7 +1129,7 @@ exports.options = {
                 }],
                 levelFour: [{
                     key: 'dashboard13',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1145,7 +1145,7 @@ exports.options = {
                 }]
             }, {
                 key: 'dashboard14',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1160,7 +1160,7 @@ exports.options = {
                 }],
                 levelFour: [{
                     key: 'dashboard15',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1177,7 +1177,7 @@ exports.options = {
             }],
             levelThree: [{
                 key: 'dashboard16',
-                label: '字段sdcascsc',
+                label: '指标1',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -1192,7 +1192,7 @@ exports.options = {
                 }],
                 levelFour: [{
                     key: 'dashboard17',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '$',
@@ -1202,7 +1202,7 @@ exports.options = {
                 }]
             }, {
                 key: 'dashboard18',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1217,7 +1217,7 @@ exports.options = {
                 }],
                 levelFour: [{
                     key: 'dashboard19',
-                    label: '字段Labelrwerwerwer',
+                    label: '指标2',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1242,13 +1242,13 @@ exports.options = {
             }]
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard20',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1263,10 +1263,10 @@ exports.options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -1283,7 +1283,7 @@ exports.options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -1298,7 +1298,7 @@ exports.options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -1328,7 +1328,7 @@ exports.options = {
             }],
             levelThree: [{
                 key: 'dashboard24',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1343,7 +1343,7 @@ exports.options = {
                 }],
                 levelFour: [{
                     key: 'dashboard25',
-                    label: '字段Labelrwerwerwer',
+                    label: '指标2',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1368,17 +1368,17 @@ exports.options = {
             }]
         }]
     }, {
-        tabTitle: '标题qqq',
+        tabTitle: '标题1',
         mainPart: false,
         tabs: [{
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1393,10 +1393,10 @@ exports.options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard27',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -1413,7 +1413,7 @@ exports.options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard28',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -1428,7 +1428,7 @@ exports.options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard29',
-                                label: '字段Labelrqwerqwer',
+                                label: '指标rqwerqwer',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -1458,7 +1458,7 @@ exports.options = {
             }],
             levelThree: [{
                 key: 'dashboard30',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1473,7 +1473,7 @@ exports.options = {
                 }],
                 levelFour: [{
                     key: 'dashboard31',
-                    label: '字段Labeleqwrqwerwerwqer',
+                    label: '指标4',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1492,13 +1492,13 @@ exports.options = {
             }]
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard32',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1513,10 +1513,10 @@ exports.options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard33',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -1542,7 +1542,7 @@ exports.options = {
             }],
             levelThree: [{
                 key: 'dashboard34',
-                label: '字段Labelrtdrftftf',
+                label: '指标3',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1551,7 +1551,7 @@ exports.options = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard35',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1561,7 +1561,7 @@ exports.options = {
                 }]
             }, {
                 key: 'dashboard36',
-                label: '字段Labelrtdrftftf',
+                label: '指标3',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1576,7 +1576,7 @@ exports.options = {
                 }],
                 levelFour: [{
                     key: 'dashboard37',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1588,13 +1588,13 @@ exports.options = {
             levelThreeChart: []
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard38',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1609,10 +1609,10 @@ exports.options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard39',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -1623,7 +1623,7 @@ exports.options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard40',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -1638,7 +1638,7 @@ exports.options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard41',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -1654,7 +1654,7 @@ exports.options = {
                             }]
                         }, {
                             key: 'dashboard42',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -1669,7 +1669,7 @@ exports.options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard43',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -1698,7 +1698,7 @@ exports.options = {
             }],
             levelThree: [{
                 key: 'dashboard44',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1707,7 +1707,7 @@ exports.options = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard45',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1717,7 +1717,7 @@ exports.options = {
                 }]
             }, {
                 key: 'dashboard46',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1726,7 +1726,7 @@ exports.options = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard47',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1756,22 +1756,22 @@ exports.e_options = {
         eventName: '',
         goto: 'http://www.baidu.com'
     }, {
-        label: '字段Emit',
+        label: '指标Emit',
         eventName: 'eventEmit',
         goto: ''
     }],
     tabGroup: [{
-        tabTitle: '标题qqq',
+        tabTitle: '标题1',
         mainPart: false,
         tabs: [{
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1786,10 +1786,10 @@ exports.e_options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard27',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -1806,7 +1806,7 @@ exports.e_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard28',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -1821,7 +1821,7 @@ exports.e_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard29',
-                                label: '字段Labelrqwerqwer',
+                                label: '指标rqwerqwer',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -1844,7 +1844,7 @@ exports.e_options = {
             levelTwoChart: [],
             levelThree: [{
                 key: 'dashboard30',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1859,7 +1859,7 @@ exports.e_options = {
                 }],
                 levelFour: [{
                     key: 'dashboard31',
-                    label: '字段Labeleqwrqwerwerwqer',
+                    label: '指标4',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1878,13 +1878,13 @@ exports.e_options = {
             }]
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard32',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1899,10 +1899,10 @@ exports.e_options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard33',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -1921,7 +1921,7 @@ exports.e_options = {
             levelTwoChart: [],
             levelThree: [{
                 key: 'dashboard34',
-                label: '字段Labelrtdrftftf',
+                label: '指标3',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1930,7 +1930,7 @@ exports.e_options = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard35',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1940,7 +1940,7 @@ exports.e_options = {
                 }]
             }, {
                 key: 'dashboard36',
-                label: '字段Labelrtdrftftf',
+                label: '指标3',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1955,7 +1955,7 @@ exports.e_options = {
                 }],
                 levelFour: [{
                     key: 'dashboard37',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -1967,13 +1967,13 @@ exports.e_options = {
             levelThreeChart: []
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard38',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -1988,10 +1988,10 @@ exports.e_options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard39',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -2002,7 +2002,7 @@ exports.e_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard40',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2017,7 +2017,7 @@ exports.e_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard41',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2033,7 +2033,7 @@ exports.e_options = {
                             }]
                         }, {
                             key: 'dashboard42',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2048,7 +2048,7 @@ exports.e_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard43',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2070,7 +2070,7 @@ exports.e_options = {
             levelTwoChart: [],
             levelThree: [{
                 key: 'dashboard44',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2079,7 +2079,7 @@ exports.e_options = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard45',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -2089,7 +2089,7 @@ exports.e_options = {
                 }]
             }, {
                 key: 'dashboard46',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2098,7 +2098,7 @@ exports.e_options = {
                 info: [],
                 levelFour: [{
                     key: 'dashboard47',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -2117,17 +2117,17 @@ exports.e_options = {
             }]
         }]
     }, {
-        tabTitle: '标题qaad',
+        tabTitle: '标题2',
         mainPart: false,
         tabs: [{
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -2145,7 +2145,7 @@ exports.e_options = {
                 }],
             }, {
                 key: 'dashboard2',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -2154,10 +2154,10 @@ exports.e_options = {
                 info: [],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard3',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -2174,7 +2174,7 @@ exports.e_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard4',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2189,7 +2189,7 @@ exports.e_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard5',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2205,7 +2205,7 @@ exports.e_options = {
                             }]
                         }, {
                             key: 'dashboard6',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '万元',
@@ -2220,7 +2220,7 @@ exports.e_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard7',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '¥',
@@ -2246,10 +2246,10 @@ exports.e_options = {
                     }
                 }]
             }, {
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard8',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -2259,7 +2259,7 @@ exports.e_options = {
                     info: []
                 }, {
                     key: 'dashboard9',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -2270,7 +2270,7 @@ exports.e_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard10',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2285,7 +2285,7 @@ exports.e_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard11',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2315,7 +2315,7 @@ exports.e_options = {
             levelTwoChartFields: [],
             levelThree: [{
                 key: 'dashboard16',
-                label: '字段sdcascsc',
+                label: '指标1',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -2330,7 +2330,7 @@ exports.e_options = {
                 }],
                 levelFour: [{
                     key: 'dashboard17',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     format: 'Default',
                     unit: '$',
@@ -2340,7 +2340,7 @@ exports.e_options = {
                 }]
             }, {
                 key: 'dashboard18',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2355,7 +2355,7 @@ exports.e_options = {
                 }],
                 levelFour: [{
                     key: 'dashboard19',
-                    label: '字段Labelrwerwerwer',
+                    label: '指标2',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -2380,13 +2380,13 @@ exports.e_options = {
             }]
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard20',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2401,10 +2401,10 @@ exports.e_options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -2421,7 +2421,7 @@ exports.e_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2436,7 +2436,7 @@ exports.e_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2459,7 +2459,7 @@ exports.e_options = {
             levelTwoChart: [],
             levelThree: [{
                 key: 'dashboard24',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2474,7 +2474,7 @@ exports.e_options = {
                 }],
                 levelFour: [{
                     key: 'dashboard25',
-                    label: '字段Labelrwerwerwer',
+                    label: '指标2',
                     color: '',
                     format: 'Default',
                     unit: '',
@@ -2513,7 +2513,7 @@ exports.i_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -2529,7 +2529,7 @@ exports.i_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -2545,7 +2545,7 @@ exports.i_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2561,7 +2561,7 @@ exports.i_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2577,7 +2577,7 @@ exports.i_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2593,7 +2593,7 @@ exports.i_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2619,13 +2619,13 @@ exports.l_options = {
         mainPart: false,
         tabs: [{
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: 'eventEmit',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard1',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '%',
@@ -2643,7 +2643,7 @@ exports.l_options = {
                 }],
             }, {
                 key: 'dashboard2',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '万元',
@@ -2652,10 +2652,10 @@ exports.l_options = {
                 info: [],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard3',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -2672,7 +2672,7 @@ exports.l_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard4',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2687,7 +2687,7 @@ exports.l_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard5',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2703,7 +2703,7 @@ exports.l_options = {
                             }]
                         }, {
                             key: 'dashboard6',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '万元',
@@ -2718,7 +2718,7 @@ exports.l_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard7',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '¥',
@@ -2744,10 +2744,10 @@ exports.l_options = {
                     }
                 }]
             }, {
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard8',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'tb',
                     format: 'Default',
@@ -2757,7 +2757,7 @@ exports.l_options = {
                     info: []
                 }, {
                     key: 'dashboard9',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: 'hb',
                     format: 'Default',
@@ -2768,7 +2768,7 @@ exports.l_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard10',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2783,7 +2783,7 @@ exports.l_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard11',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2815,13 +2815,13 @@ exports.l_options = {
             levelThreeChart: []
         }, {
             moreFunctions: [{
-                label: '字段Label',
+                label: '指标',
                 eventName: '',
                 goto: ''
             }],
             levelOne: [{
                 key: 'dashboard20',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2836,10 +2836,10 @@ exports.l_options = {
                 }],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -2856,7 +2856,7 @@ exports.l_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2871,7 +2871,7 @@ exports.l_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2910,7 +2910,7 @@ exports.m_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -2919,10 +2919,10 @@ exports.m_options = {
                 info: [],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -2939,7 +2939,7 @@ exports.m_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -2954,7 +2954,7 @@ exports.m_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -2974,7 +2974,7 @@ exports.m_options = {
                     }
                 }, {
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -2991,7 +2991,7 @@ exports.m_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -3006,7 +3006,7 @@ exports.m_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -3026,7 +3026,7 @@ exports.m_options = {
                     }
                 }, {
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -3043,7 +3043,7 @@ exports.m_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -3058,7 +3058,7 @@ exports.m_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -3085,7 +3085,7 @@ exports.m_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -3094,10 +3094,10 @@ exports.m_options = {
                 info: [],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -3114,7 +3114,7 @@ exports.m_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -3129,7 +3129,7 @@ exports.m_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -3156,7 +3156,7 @@ exports.m_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -3172,7 +3172,7 @@ exports.m_options = {
             moreFunctions: [],
             levelOne: [{
                 key: 'dashboard26',
-                label: '字段Label',
+                label: '指标',
                 color: '',
                 format: 'Default',
                 unit: '',
@@ -3181,10 +3181,10 @@ exports.m_options = {
                 info: [],
             }],
             levelTwoColumns: [{
-                columnTitle: '列标题',
+                columnTitle: '指标组',
                 fields: [{
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -3201,7 +3201,7 @@ exports.m_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -3216,7 +3216,7 @@ exports.m_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
@@ -3236,7 +3236,7 @@ exports.m_options = {
                     }
                 }, {
                     key: 'dashboard21',
-                    label: '字段Label',
+                    label: '指标',
                     color: '',
                     kind: '',
                     format: 'Default',
@@ -3253,7 +3253,7 @@ exports.m_options = {
                     child: {
                         levelThreeFields: [{
                             key: 'dashboard22',
-                            label: '字段Label',
+                            label: '指标',
                             color: '',
                             format: 'Default',
                             unit: '',
@@ -3268,7 +3268,7 @@ exports.m_options = {
                             }],
                             levelFour: [{
                                 key: 'dashboard23',
-                                label: '字段Label',
+                                label: '指标',
                                 color: '',
                                 format: 'Default',
                                 unit: '',
