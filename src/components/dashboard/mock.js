@@ -590,7 +590,7 @@ exports.golptions = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -601,7 +601,7 @@ exports.golptions = {
                 type: 'line',
                 tooltip: true,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard12', label: 'dashboard12'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
@@ -635,7 +635,7 @@ exports.golptions = {
                 type: 'pie',
                 tooltip: false,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -685,7 +685,7 @@ exports.golptions = {
                 type: 'pie',
                 tooltip: true,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }],
@@ -841,7 +841,7 @@ exports.golptions = {
                 type: 'column',
                 tooltip: true,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard10', label: 'dashboard10'}],
                 colors: []
             }],
@@ -888,7 +888,7 @@ exports.golptions = {
                 type: 'cycle',
                 tooltip: false,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -1032,7 +1032,7 @@ exports.options = {
                             type: 'cycle',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -1097,7 +1097,7 @@ exports.options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -1108,7 +1108,7 @@ exports.options = {
                 type: 'pie',
                 url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }],
@@ -1236,7 +1236,7 @@ exports.options = {
                 type: 'cycle',
                 url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -1311,7 +1311,7 @@ exports.options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -1322,7 +1322,7 @@ exports.options = {
                 type: 'line',
                 url: "/examples/dashboard/444",
                 tooltip: true,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard2', label: 'dashboard2'}, {key: 'dashboard15', label: 'dashboard15'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
@@ -1362,7 +1362,7 @@ exports.options = {
                 type: 'pie',
                 url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -1441,7 +1441,7 @@ exports.options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -1452,7 +1452,7 @@ exports.options = {
                 type: 'line',
                 tooltip: true,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard12', label: 'dashboard12'}, {key: 'dashboard32', label: 'dashboard32'}],
                 colors: []
             }],
@@ -1486,7 +1486,7 @@ exports.options = {
                 type: 'pie',
                 tooltip: false,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -1536,7 +1536,7 @@ exports.options = {
                 type: 'pie',
                 tooltip: true,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }],
@@ -1692,7 +1692,7 @@ exports.options = {
                 type: 'column',
                 tooltip: true,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard10', label: 'dashboard10'}],
                 colors: []
             }],
@@ -1739,7 +1739,7 @@ exports.options = {
                 type: 'cycle',
                 tooltip: false,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -1834,7 +1834,7 @@ exports.e_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -1872,7 +1872,7 @@ exports.e_options = {
                 type: 'pie',
                 tooltip: false,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -2111,7 +2111,7 @@ exports.e_options = {
                 type: 'cycle',
                 tooltip: false,
                 url: "/examples/dashboard/444",
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -2239,7 +2239,7 @@ exports.e_options = {
                             type: 'cycle',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -2304,7 +2304,7 @@ exports.e_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -2374,7 +2374,7 @@ exports.e_options = {
                 type: 'cycle',
                 url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -2449,7 +2449,7 @@ exports.e_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -2493,7 +2493,7 @@ exports.e_options = {
                 type: 'pie',
                 url: "/examples/dashboard/444",
                 tooltip: false,
-                dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                dimension: [{key: 'dashboard', label: 'dashboard'}],
                 index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                 colors: []
             }]
@@ -2737,7 +2737,7 @@ exports.l_options = {
                             type: 'cycle',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -2802,7 +2802,7 @@ exports.l_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -2884,7 +2884,7 @@ exports.l_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -2967,7 +2967,7 @@ exports.m_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -3019,7 +3019,7 @@ exports.m_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -3071,7 +3071,7 @@ exports.m_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -3142,7 +3142,7 @@ exports.m_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -3229,7 +3229,7 @@ exports.m_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]
@@ -3281,7 +3281,7 @@ exports.m_options = {
                             type: 'pie',
                             url: "/examples/dashboard/444",
                             tooltip: false,
-                            dimension: [{key: 'dashboard32', label: 'dashboard32'}],
+                            dimension: [{key: 'dashboard', label: 'dashboard'}],
                             index: [{key: 'dashboard32', label: 'dashboard32'}, {key: 'dashboard15', label: 'dashboard15'}],
                             colors: []
                         }]

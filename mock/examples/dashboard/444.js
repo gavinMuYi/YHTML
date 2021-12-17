@@ -2,6 +2,7 @@ module.exports = function (params) {
     let obj = {};
     for (let i = 1; i < 100; i++) {
         obj['dashboard' + i] = i;
+        obj['dashboard'] = `01-1`;
     }
     return {
         statusCode: 200,
