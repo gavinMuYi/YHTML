@@ -322,7 +322,7 @@ exports.golptions = {
         goto: ''
     }],
     tabGroup: [{
-        tabTitle: '标题2',
+        tabTitle: '标题1',
         mainPart: false,
         columns: 4,
         tabs: [{
@@ -517,7 +517,7 @@ exports.golptions = {
             levelThreeChart: []
         }]
     }, {
-        tabTitle: '标题1',
+        tabTitle: '标题2',
         mainPart: false,
         tabs: [{
             moreFunctions: [{
@@ -909,7 +909,7 @@ exports.options = {
         goto: ''
     }],
     tabGroup: [{
-        tabTitle: '标题2',
+        tabTitle: '标题1',
         mainPart: false,
         tabs: [{
             tabTitle: '单元A',
@@ -1368,7 +1368,7 @@ exports.options = {
             }]
         }]
     }, {
-        tabTitle: '标题1',
+        tabTitle: '标题2',
         mainPart: false,
         tabs: [{
             moreFunctions: [{
