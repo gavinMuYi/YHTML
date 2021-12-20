@@ -46,13 +46,55 @@
 ::: demo
 ```html
 <template>
-    <div>
-    </div>
+    <y-dashboard :options="i_options" />
 </template>
 <script>
     export default {
         data() {
             return {
+                i_options: {
+                    name: 'dashboard',
+                    separate: true,
+                    separateWidth: 20,
+                    moreFunctions: [],
+                    tabGroup: [{
+                        tabTitle: '',
+                        mainPart: false,
+                        tabs: [{
+                            moreFunctions: [],
+                            levelOne: [{
+                                key: 'dashboard26',
+                                label: '指标',
+                                color: '',
+                                format: 'Default',
+                                unit: '万元',
+                                formatter: '',
+                                url: "/examples/dashboard/333",
+                                info: [],
+                            }],
+                            levelTwoColumns: [],
+                            levelTwoChart: [],
+                            levelThree: [],
+                            levelThreeChart: []
+                        }, {
+                            moreFunctions: [],
+                            levelOne: [{
+                                key: 'dashboard26',
+                                label: '指标',
+                                color: '',
+                                format: 'Default',
+                                unit: '%',
+                                formatter: '',
+                                url: "/examples/dashboard/333",
+                                info: [],
+                            }],
+                            levelTwoColumns: [],
+                            levelTwoChart: [],
+                            levelThree: [],
+                            levelThreeChart: []
+                        }...]
+                    }]
+                }
             };
         }
     }

@@ -57,6 +57,9 @@ export default {
             }, {
                 title: 'Data Display',
                 children: ['tree', 'table', 'echart', 'dashboard']
+            }, {
+                title: 'Util',
+                children: ['message']
             }]
         };
     },
@@ -113,14 +116,13 @@ export default {
                     color: @fontGray;
                 }
                 .change-mode {
-                    position: absolute;
-                    bottom: 10px;
+                    display: flex;
+                    justify-content: end;
+                    margin: 20px;
                     font-size: 12px;
-                    right: 20px;
-                    display: inline-block;
                     cursor: pointer;
                     .first-arrow {
-                        left: 7px;
+                        left: 3px;
                     }
                     .y-icon {
                         width: 12px;
