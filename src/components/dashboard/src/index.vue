@@ -41,9 +41,14 @@ export default {
             _cache: this.cache
         };
     },
-    inject: ['data__'],
     props: {
         options: {
+            type: Object,
+            default: () => {
+                return {};
+            }
+        },
+        params: {
             type: Object,
             default: () => {
                 return {};
@@ -64,7 +69,7 @@ export default {
         };
     },
     watch: {
-        'data__.params': {
+        params: {
             handler: function (newValue, oldValue) {
                 if (!equal(newValue, oldValue)) {
                     this.setCacheData();
@@ -92,7 +97,7 @@ export default {
         getData(url) {
             return this.$ajax.get(url, {
                 params: {
-                    ...this.data__.params
+                    ...this.params
                 }
             }).then(res => {
                 if (res.code === 0) {
