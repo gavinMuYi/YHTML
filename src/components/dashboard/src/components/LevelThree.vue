@@ -26,7 +26,7 @@
                             <span class="label-text" :style="`max-width: calc(100% - ${chartOptions.length || levelHight ? 17 : 0}px - ${field.info.length ? 18 : 0}px);`">
                                 {{ field.label }}
                             </span>
-                            <y-icon name="question" v-if="field.info.length" class="info-tip"
+                            <y-icon name="info" v-if="field.info.length" class="info-tip"
                                     v-ytip:fieldInfoTip.hover.delay="{data: field.info}" />
                         </div>
                         <div class="value">
@@ -60,7 +60,7 @@
                                       :style="`max-width: calc(100%  - ${field.info.length ? 17 : 0}px);`">
                                     {{ field.label }}
                                 </span>
-                                <y-icon name="question" v-if="field.info.length" class="info-tip"
+                                <y-icon name="info" v-if="field.info.length" class="info-tip"
                                         v-ytip:fieldInfoTip.hover.delay="{data: field.info}" />
                             </div>
                             <div class="value">

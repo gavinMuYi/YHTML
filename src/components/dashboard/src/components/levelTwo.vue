@@ -42,7 +42,7 @@
                                      :style="`max-width: calc(100% - ${field.child ? 15 : 0}px - ${field.info.length ? 20 : 0}px)`">
                                     {{ field.label }}
                                 </div>
-                                <y-icon name="question" v-if="field.info.length" class="info-tip"
+                                <y-icon name="info" v-if="field.info.length" class="info-tip"
                                         v-ytip:fieldInfoTip.hover.delay="{data: field.info}" />
                                 <y-icon name="double-arrow-up" v-ytip:fieldlevelTip.hover.delay="{data: field.child}"
                                         v-if="field.child" class="arrow-down-tip" />

@@ -18,7 +18,7 @@
                     'padding-right': field.info.length ? '15px' : '0',
                     'width': index ? 'calc(100% - 12px)' :'100%'
                 }">{{ field.label }}</span>
-                <y-icon name="question" v-if="field.info.length" class="info-tip"
+                <y-icon name="info" v-if="field.info.length" class="info-tip"
                         v-ytip:fieldInfoTip.hover.delay="{data: field.info}" />&nbsp;
             </div>
             <div class="more-func" v-if="moreFunction.length" v-ypopmenu:more.click><y-icon name="more" /></div>
