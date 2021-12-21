@@ -59,7 +59,7 @@ export default {
                 children: ['tree', 'table', 'echart', 'dashboard']
             }, {
                 title: 'Util',
-                children: ['message']
+                children: ['message', 'toast']
             }]
         };
     },
