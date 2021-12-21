@@ -3,17 +3,11 @@
 </template>
 
 <script>
-import YMessage from './src/index';
 export default {
     name: 'YMessageExample',
-    components: {
-        YMessage
-    },
-    data() {
-        return {
-        };
-    },
-    methods: {
+    mounted() {
+        this.$message.success('232');
+        console.log(this.$message);
     }
 };
 </script>
