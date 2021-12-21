@@ -55,7 +55,109 @@
 </style>
 ## Dashboard
 
-### 基本用法 - 分割布局
+### 基本用法
+
+::: demo
+```html
+<template>
+    <y-dashboard :options="i_options" />
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                options: {
+                    separate: true,
+                    separateWidth: 20,
+                    moreFunctions: [],
+                    tabGroup: [{
+                        tabTitle: '',
+                        mainPart: false,
+                        tabs: [{
+                            moreFunctions: [],
+                            levelOne: [{
+                                key: 'dashboard26',
+                                label: '指标',
+                                color: '',
+                                format: 'Default',
+                                unit: '万元',
+                                formatter: '',
+                                url: "/examples/dashboard/333",
+                                info: [],
+                            }],
+                            levelTwoColumns: [],
+                            levelTwoChart: [],
+                            levelThree: [],
+                            levelThreeChart: []
+                        }, {
+                            moreFunctions: [],
+                            levelOne: [{
+                                key: 'dashboard26',
+                                label: '指标',
+                                color: '',
+                                format: 'Default',
+                                unit: '%',
+                                formatter: '',
+                                url: "/examples/dashboard/333",
+                                info: [],
+                            }],
+                            levelTwoColumns: [],
+                            levelTwoChart: [],
+                            levelThree: [],
+                            levelThreeChart: []
+                        }...]
+                    }]
+                }
+            };
+        }
+    }
+</script>
+```
+:::
+
+###  TAB切换
+
+::: demo
+```html
+<template>
+    <div>
+        <div class="md-box">
+            <y-dashboard :options="e_options" />
+        </div>
+        <div class="md-box">
+            <y-dashboard :options="golptions" />
+        </div>
+        <div class="md-box">
+            <y-dashboard :options="options" />
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                options: {
+                    separate: true,
+                    separateWidth: 20,
+                    moreFunctions: [],
+                    tabGroup: [{  // 多个tab切换
+                        tabTitle: '',
+                        mainPart: false,
+                        tabs: [...]
+                    }, {
+                        tabTitle: '',
+                        mainPart: false,
+                        tabs: [...]
+                    }]
+                }
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 布局方式 - 分割布局
 
 ::: demo
 ```html
@@ -179,48 +281,6 @@
                         tabTitle: '',
                         mainPart: false,
                         columns: 4, // 分为4列
-                        tabs: [...]
-                    }]
-                }
-            };
-        }
-    }
-</script>
-```
-:::
-
-###  TAB切换
-
-::: demo
-```html
-<template>
-    <div>
-        <div class="md-box">
-            <y-dashboard :options="e_options" />
-        </div>
-        <div class="md-box">
-            <y-dashboard :options="golptions" />
-        </div>
-        <div class="md-box">
-            <y-dashboard :options="options" />
-        </div>
-    </div>
-</template>
-<script>
-    export default {
-        data() {
-            return {
-                options: {
-                    separate: true,
-                    separateWidth: 20,
-                    moreFunctions: [],
-                    tabGroup: [{  // 多个tab切换
-                        tabTitle: '',
-                        mainPart: false,
-                        tabs: [...]
-                    }, {
-                        tabTitle: '',
-                        mainPart: false,
                         tabs: [...]
                     }]
                 }
