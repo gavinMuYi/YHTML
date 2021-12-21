@@ -94,10 +94,10 @@ export default {
             background: @greenLight;
         }
         &-warning {
-            background: @warning;
+            background: @warningBackground;
         }
         &-error {
-            background: @errorDeep;
+            background: @errorBackground;
         }
         &-normal {
             background: @gray;
