@@ -10,6 +10,7 @@
         data() {
             let options_copy = clone(options);
             options_copy.tabGroup.reverse();
+            golptions.tabGroup.reverse();
             options.moreFunctions = [];
             return {
                 options: options,
