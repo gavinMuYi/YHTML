@@ -93,6 +93,18 @@ export default {
         &-success {
             background: @greenLight;
         }
+        &-warning {
+            background: @warning;
+        }
+        &-error {
+            background: @errorDeep;
+        }
+        &-normal {
+            background: @gray;
+            .y-message-content {
+                color: @font;
+            }
+        }
     }
     .y-message-status-enter,
     .y-message-status-leave-active {
