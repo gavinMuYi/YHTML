@@ -10,7 +10,12 @@
 <script>
 import YIcon from '@/components/icon';
 
-const ICON_MAP = {};
+const ICON_MAP = {
+    success: 'ok',
+    error: 'close',
+    warning: 'info',
+    normal: 'question'
+};
 
 export default {
     name: 'YMessage',
@@ -90,6 +95,14 @@ export default {
             word-wrap: break-word;
             color: @white;
         }
+        .y-icon-content {
+            margin-right: 5px;
+            display: flex;
+            align-items: center;
+            .y-icon {
+                fill: @white;
+            }
+        }
         &-success {
             background: @greenLight;
         }
@@ -103,6 +116,11 @@ export default {
             background: @gray;
             .y-message-content {
                 color: @font;
+            }
+            .y-icon-content {
+                .y-icon {
+                    fill: @font;
+                }
             }
         }
     }
