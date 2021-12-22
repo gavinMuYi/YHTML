@@ -2,23 +2,9 @@
     export default {
         data() {
             return {
-                options: [
-                    {key: 'first', label: '第一项'},
-                    {key: 'second', label: '第二项'},
-                    {key: 'third', label: '第三项'}
-                ],
-                options1: [
-                    {key: 'first', label: '第一项'},
-                    {key: 'second', label: '第二项'},
-                    {key: 'third', label: '第三项', disable: true}
-                ],
-                triggerText: '第二项',
             };
         },
         methods: {
-            handleChange(item) {
-                this.triggerText = item.label;
-            }
         }
     }
 </script>
@@ -30,7 +16,7 @@
     margin-bottom: 0px;
 }
 </style>
-## Popmenu
+## Popconfirm
 
 ### 基本用法
 
@@ -39,40 +25,18 @@
 <template>
     <div>
         <div class="md-box">
-            <div v-ypopmenu:menu.click style="display: inline-block">
-                trigger<y-icon name="bell" />
-            </div>
-            <y-popconfirm ref="menu" />
+            <y-button v-ypopconfirm:pop.click>
+                trigger
+            </y-button>
+            <y-popconfirm ref="pop" content="这是一个基础确认框，确认关闭？" />
         </div>
-    </div>
-</template>
-<script>
-    export default {
-        data() {
-            return {
-                options: [
-                    {key: 'first', label: '第一项'},
-                    {key: 'second', label: '第二项'},
-                    {key: 'third', label: '第三项'}
-                ]
-            };
-        }
-    }
-</script>
-```
-:::
-
-### 回显
-
-::: demo
-```html
-<template>
-    <div>
         <div class="md-box">
-            <div v-ypopmenu:menu2.click style="display: inline-block">
-                {{ triggerText }}<y-icon name="bell" />
-            </div>
-            <y-popmenu ref="menu2" :options="options" show-select @change="handleChange" selected="second" />
+            <y-button v-ypopconfirm:pop2.click>
+                slot trigger
+            </y-button>
+            <y-popconfirm ref="pop2">
+                这是一个基础确认框Slot，确认关闭？
+            </y-popconfirm>
         </div>
     </div>
 </template>
@@ -80,47 +44,6 @@
     export default {
         data() {
             return {
-                options: [
-                    {key: 'first', label: '第一项'},
-                    {key: 'second', label: '第二项'},
-                    {key: 'third', label: '第三项'}
-                ],
-                triggerText: '第二项'
-            };
-        },
-        methods: {
-            handleChange(item) {
-                this.triggerText = item.label;
-            }
-        }
-    }
-</script>
-```
-:::
-
-### 高亮
-
-::: demo
-```html
-<template>
-    <div>
-        <div class="md-box">
-            <div v-ypopmenu:menu3.click style="display: inline-block">
-                trigger<y-icon name="bell" />
-            </div>
-            <y-popmenu ref="menu3" :options="options" show-select @change="handleChange" highlight="项" />
-        </div>
-    </div>
-</template>
-<script>
-    export default {
-        data() {
-            return {
-                options: [
-                    {key: 'first', label: '第一项'},
-                    {key: 'second', label: '第二项'},
-                    {key: 'third', label: '第三项'}
-                ]
             };
         }
     }
@@ -128,35 +51,6 @@
 ```
 :::
 
-### 禁选
-
-::: demo
-```html
-<template>
-    <div>
-        <div class="md-box">
-            <div v-ypopmenu:menu4.click style="display: inline-block">
-                trigger<y-icon name="bell" />
-            </div>
-            <y-popmenu ref="menu4" :options="options1" show-select @change="handleChange" />
-        </div>
-    </div>
-</template>
-<script>
-    export default {
-        data() {
-            return {
-                options1: [
-                    {key: 'first', label: '第一项'},
-                    {key: 'second', label: '第二项'},
-                    {key: 'third', label: '第三项', disable: true}
-                ]
-            };
-        }
-    }
-</script>
-```
-:::
 ### 属性
 
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
