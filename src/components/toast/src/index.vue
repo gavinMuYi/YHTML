@@ -9,22 +9,20 @@
         <div class="y-toast-close" v-if="withClose">
             <y-icon name="close" @click="close" />
         </div>
-        <slot>
-            <div class="y-toast-content">
-                <div class="y-toast-icon" v-if="iconName">
-                    <y-icon :name="iconName" />
-                </div>
-                <div class="y-toast-title" v-if="title">
-                    {{ title }}
-                </div>
-                <div class="y-toast-detail" v-if="detail">
-                    {{ detail }}
-                </div>
+        <div class="y-toast-content">
+            <div class="y-toast-icon" v-if="iconName">
+                <y-icon :name="iconName" />
             </div>
-            <div class="y-toast-btn" v-if="comfirmText">
-                <y-button @click="close" size="min" :status="btnStatus">{{ comfirmText }}</y-button>
+            <div class="y-toast-title" v-if="title">
+                {{ title }}
             </div>
-        </slot>
+            <div class="y-toast-detail" v-if="detail">
+                {{ detail }}
+            </div>
+        </div>
+        <div class="y-toast-btn" v-if="comfirmText">
+            <y-button @click="close" size="min" :status="btnStatus">{{ comfirmText }}</y-button>
+        </div>
     </div>
 </template>
 
