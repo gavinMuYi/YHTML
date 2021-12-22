@@ -1,19 +1,17 @@
 <template>
-    <div class="y-popmenu">
-        <y-popper ref="pop" :clazz="`y-popmenu ${clazz}`" :placement="placement" :priority="priority">
-            <div v-if="!options.length" class="no-data">暂无数据</div>
-            <div v-else>
-                <div v-for="(item, index) in options" :key="item[_maps.key] + '-' + index"
-                     :class="['y-popmenu_item', {'disable': item[_maps.disable]},
-                              {'selected': showSelect && currentSelect === item[_maps.key]}]"
-                     @click="select(item)">
-                    <y-cell :label="String(item[_maps.label])" :highlight="highlight"
-                            :highlightCaseConvert="highlightCaseConvert"
-                            :highlightColor="highlightColor" />
-                </div>
+    <y-popper ref="pop" :clazz="`y-popmenu ${clazz}`" :placement="placement" :priority="priority">
+        <div v-if="!options.length" class="no-data" @click.stop>暂无数据</div>
+        <div v-else @click.stop>
+            <div v-for="(item, index) in options" :key="item[_maps.key] + '-' + index"
+                 :class="['y-popmenu_item', {'disable': item[_maps.disable]},
+                          {'selected': showSelect && currentSelect === item[_maps.key]}]"
+                 @click="select(item)">
+                <y-cell :label="String(item[_maps.label])" :highlight="highlight"
+                        :highlightCaseConvert="highlightCaseConvert"
+                        :highlightColor="highlightColor" />
             </div>
-        </y-popper>
-    </div>
+        </div>
+    </y-popper>
 </template>
 
 <script>

@@ -1,12 +1,10 @@
 <template>
-    <div class="y-tip">
-        <y-popper ref="pop" :clazz="`y-tip y-tip-${kind} ${clazz}`" :placement="placement" :priority="priority">
-            <template slot-scope="props">
-                <slot :data="props.data">
-                </slot>
-            </template>
-        </y-popper>
-    </div>
+    <y-popper ref="pop" :clazz="`y-tip y-tip-${kind} ${clazz}`" :placement="placement" :priority="priority">
+        <template slot-scope="props">
+            <slot :data="props.data">
+            </slot>
+        </template>
+    </y-popper>
 </template>
 
 <script>
