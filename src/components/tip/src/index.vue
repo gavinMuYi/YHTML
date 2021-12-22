@@ -48,7 +48,6 @@ export default {
 
 <style lang="less">
     .y-tip {
-
     }
     .y-tip-tiny {
         background: @blackGreen!important;
@@ -56,5 +55,8 @@ export default {
         font-size: 12px;
         font-weight: 300;
         color: @white;
+        * {
+            color: @white;
+        }
     }
 </style>
