@@ -98,7 +98,7 @@ export default {
         -ms-transform: translateX(-50%);
         transform: translateX(-50%);
         width: 500px;
-        min-height: 150px;
+        min-height: 50px;
         padding: 20px;
         box-sizing: border-box;
         background: @white;
