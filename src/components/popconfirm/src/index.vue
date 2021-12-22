@@ -1,19 +1,21 @@
 <template>
     <y-popper ref="pop" :clazz="`y-popconfirm ${clazz}`" :placement="placement" :priority="priority">
-        <div :class="['y-popconfirm-content', {'y-popconfirm-content-withclose': withClose}]">
-            <div class="y-popconfirm-close" v-if="withClose">
-                <y-icon name="close" @click="close" />
+        <template slot-scope="props">
+            <div :class="['y-popconfirm-content', {'y-popconfirm-content-withclose': withClose}]" @click.stop>
+                <div class="y-popconfirm-close" v-if="withClose">
+                    <y-icon name="close" @click="close" />
+                </div>
+                <div class="y-popconfirm-detail">
+                    <slot :data="props.data">
+                        {{ content }}
+                    </slot>
+                </div>
+                <div class="y-popconfirm-btn">
+                    <y-button @click="confirm" size="min" :status="status">{{ confirmText }}</y-button>
+                    <y-button @click="cancel" size="min" status="default">{{ cancelText }}</y-button>
+                </div>
             </div>
-            <div class="y-popconfirm-detail">
-                <slot>
-                    {{ content }}
-                </slot>
-            </div>
-            <div class="y-popconfirm-btn">
-                <y-button @click="confirm" size="min" :status="status">{{ comfirmText }}</y-button>
-                <y-button @click="cancel" size="min" status="default">{{ cancelText }}</y-button>
-            </div>
-        </div>
+        </template>
     </y-popper>
 </template>
 
@@ -52,7 +54,7 @@ export default {
             type: String,
             default: ''
         },
-        comfirmText: {
+        confirmText: {
             type: String,
             default: '确定'
         },
@@ -85,7 +87,7 @@ export default {
     .y-popconfirm {
         .y-popconfirm-content {
             width: 400px;
-            min-height: 100px;
+            min-height: 70px;
             position: relative;
             .y-popconfirm-close {
                 position: absolute;
@@ -99,7 +101,7 @@ export default {
                 }
             }
             .y-popconfirm-detail {
-                padding: 0px 10px 40px;
+                padding: 10px 10px 40px;
             }
             .y-popconfirm-btn {
                 position: absolute;

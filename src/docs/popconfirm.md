@@ -51,23 +51,92 @@
 ```
 :::
 
+### 状态
+
+::: demo
+```html
+<template>
+    <div>
+        <div class="md-box">
+            <y-button v-ypopconfirm:pop3.click>
+                删除trigger
+            </y-button>
+            <y-popconfirm ref="pop3" content="警告，继续执行删除？" :with-close="false" status="error" confirm-text="我已知晓"  cancel-text="算了" />
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+            };
+        }
+    }
+</script>
+```
+:::
+
+### 复用
+
+::: demo
+```html
+<template>
+    <div>
+        <div class="md-box">
+            <y-button v-ypopconfirm:pop4.click>
+                trigger A
+            </y-button>
+            <y-button v-ypopconfirm:pop4.click>
+                trigger B
+            </y-button>
+            <y-popconfirm ref="pop4" content="这是一个公用确认框" :with-close="false" confirm-text="我已知晓" />
+        </div>
+        <div class="md-box">
+            <y-button v-ypopconfirm:pop5.click="{data: 'C'}">
+                trigger C
+            </y-button>
+            <y-button v-ypopconfirm:pop5.click="{data: 'D'}">
+                trigger D
+            </y-button>
+            <y-popconfirm ref="pop5" :with-close="false" confirm-text="我已知晓">
+                <div slot-scope="props">这是一个公用确认框, 但是展示不同的来源, 来源: {{ props.data }}</div>
+            </y-popconfirm>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+            };
+        }
+    }
+</script>
+```
+:::
+
 ### 属性
 
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
 | clazz   | 弹窗自定义类名 | string    | - | '' |
-| placement     | 弹窗位置  | string   | 见popper | bottom-middle |
+| placement     | 弹窗位置  | string   | 见popper | bottom-start |
 | priority  | 弹窗位置适配优先级  | array   | 见popper  | [] |
-| selected | 选中项，值同option.key   | number, string   | -           | - |
-| options | 选项   | array   | -           | [] |
-| maps | 选项映射关系   | object   | -           | {key, label, disable} |
-| highlight | 高亮字段   | string   | -           | '' |
-| highlightCaseConvert | 高亮模糊匹配大小写   | boolean   | -           | false |
-| highlightColor | 高亮颜色   | string   | -       | #00cc26 |
-| showSelect | 选中项回显   | boolean   | -       | false |
+| status | 确认按钮状态   | string   | default, primary, warning, error  | primary |
+| withClose | 是否展示叉   | boolean   | -           | true |
+| content | 确认内容   | string   | -           | '' |
+| confirmText | 确认按钮文案   | string   | -           | 确定 |
+| cancelText | 取消按钮文案   | string   | -           | 取消 |
+
+### Slot
+
+| Slot名称  | 说明                             |
+| -------- | -------------------------------- |
+| default  | scope slot，默认的slot，作为确认框的内容，参数来源于指令 |
 
 ### 事件
 
 | 事件名称  | 说明                              | 事件参数  |
 | -------- | -------------------------------- | -------- |
-| change    | 选中事件 | optionItem |
+| confirm    | 确认事件 | - |
+| cancel    | 取消事件 | - |
