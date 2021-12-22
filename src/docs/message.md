@@ -51,4 +51,4 @@
 
 | 方法名      | 说明                             | 参数 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
-| this.$message[status]   | status可选success, error, warning, normal |content（string） |
+| this.$message\[status\]('message')   | status可选success, error, warning, normal |content（string） |

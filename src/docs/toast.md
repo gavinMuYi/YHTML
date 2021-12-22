@@ -191,4 +191,4 @@
 
 | 方法名      | 说明                             | 参数 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
-| this.$message[status]   | status可选success, error, warning, normal |content（string） |
+| this.$toast(options)   | 需要手动确认的消息提示 |options: { title, detail, iconName, comfirmText, placement, status } |
