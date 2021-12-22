@@ -6,7 +6,12 @@
         methods: {
             handleClick(status) {
                 this.$toast({
-                    detail: '132'
+                    title: 'ewew',
+                    detail: '132',
+                    iconName: 'info',
+                    comfirmText: '知道了',
+                    placement: 'center',
+                    status: 'normal'
                 })
             }
         }
