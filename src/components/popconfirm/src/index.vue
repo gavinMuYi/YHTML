@@ -1,18 +1,26 @@
 <template>
     <y-popper ref="pop" :clazz="`y-popconfirm ${clazz}`" :placement="placement" :priority="priority">
         <template slot-scope="props">
-            <div :class="['y-popconfirm-content', {'y-popconfirm-content-withclose': withClose}]" @click.stop>
-                <div class="y-popconfirm-close" v-if="withClose">
+            <div :class="[
+                     'y-popconfirm-content',
+                     {'y-popconfirm-content-withclose': (props.data && props.data.withClose) || withClose}
+                 ]"
+                 @click.stop>
+                <div class="y-popconfirm-close" v-if="(props.data && props.data.withClose) || withClose">
                     <y-icon name="close" @click="close" />
                 </div>
                 <div class="y-popconfirm-detail">
                     <slot :data="props.data">
-                        {{ content }}
+                        {{ (props.data && props.data.content) || content }}
                     </slot>
                 </div>
                 <div class="y-popconfirm-btn">
-                    <y-button @click="confirm" size="min" :status="status">{{ confirmText }}</y-button>
-                    <y-button @click="cancel" size="min" status="default">{{ cancelText }}</y-button>
+                    <y-button @click="confirm" size="min" :status="(props.data && props.data.status) || status">
+                        {{ (props.data && props.data.confirmText) || confirmText }}
+                    </y-button>
+                    <y-button @click="cancel" size="min" status="default">
+                        {{ (props.data && props.data.cancelText) || cancelText }}
+                    </y-button>
                 </div>
             </div>
         </template>

@@ -3,6 +3,7 @@
         :class="['y-popper', clazz, {'y-nosee-popper': opacity}]"
         v-show="show"
         ref="selfPop"
+        @click.stop
         @mouseenter.stop="hover = true"
         @mouseleave.stop="hover = false">
         <slot :data="contentData"></slot>
@@ -44,7 +45,7 @@ export default {
             hover: false,
             waitToClose: false,
             cantCloseByOthers: false,
-            contentData: null
+            contentData: {}
         };
     },
     watch: {
