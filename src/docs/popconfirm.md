@@ -99,7 +99,7 @@
                 trigger D
             </y-button>
             <y-popconfirm ref="pop5" :with-close="false" confirm-text="我已知晓">
-                <div slot-scope="props">这是一个CD公用确认框, 但是展示不同的来源, 当前数据来源: {{ props.data.msg }}</div>
+                <div slot-scope="props">这是一个CD公用确认框, 但是展示不同的来源, 当前数据来源: {{ props.data && props.data.msg }}</div>
             </y-popconfirm>
         </div>
     </div>

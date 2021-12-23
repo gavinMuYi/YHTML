@@ -45,7 +45,7 @@ export default {
             hover: false,
             waitToClose: false,
             cantCloseByOthers: false,
-            contentData: {}
+            contentData: null
         };
     },
     watch: {
