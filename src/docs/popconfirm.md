@@ -89,7 +89,7 @@
             <y-button v-ypopconfirm:pop4.click>
                 trigger B
             </y-button>
-            <y-popconfirm ref="pop4" content="这是一个公用确认框" :with-close="false" confirm-text="我已知晓" />
+            <y-popconfirm ref="pop4" content="这是一个AB公用确认框" :with-close="false" confirm-text="我已知晓" />
         </div>
         <div class="md-box">
             <y-button v-ypopconfirm:pop5.click="{data: {msg: 'C', withClose: true, confirmText: '同意'}}">
@@ -99,7 +99,7 @@
                 trigger D
             </y-button>
             <y-popconfirm ref="pop5" :with-close="false" confirm-text="我已知晓">
-                <div slot-scope="props">这是一个公用确认框, 但是展示不同的来源, 来源: {{ props.data.msg }}</div>
+                <div slot-scope="props">这是一个CD公用确认框, 但是展示不同的来源, 来源: {{ props.data.msg }}</div>
             </y-popconfirm>
         </div>
     </div>
