@@ -1,6 +1,7 @@
 <template>
-    <div class="y-panel" v-if="show" @click="close">
-        <div :class="'y-panel-content_' + position" @click.stop>
+    <div class="y-dialog" v-if="show">
+        <div class="y-dialog-content">
+            <y-icon name="close" class="y-dialog-close" @click="close" />
             <slot></slot>
         </div>
     </div>
@@ -8,7 +9,7 @@
 
 <script>
 export default {
-    name: 'YPanel',
+    name: 'YDialog',
     props: {
         visible: {
             type: Boolean,
@@ -17,10 +18,6 @@ export default {
         value: {
             type: Boolean,
             default: false
-        },
-        position: {
-            type: String,
-            default: 'right'
         }
     },
     data() {
@@ -62,7 +59,7 @@ export default {
 </script>
 
 <style lang="less">
-    .y-panel {
+    .y-dialog {
         position: fixed;
         left: 0;
         top: 0;
@@ -70,36 +67,26 @@ export default {
         height: 100%;
         background: @backgroundDeepGreenHoverOpacity;
         z-index: 100000000000;
-        .y-panel-content_left,
-        .y-panel-content_right {
+        .y-dialog-content {
             position: absolute;
-            width: 800px;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            min-height: 200px;
+            min-width: 200px;
             background: @white;
-        }
-        .y-panel-content_left {
-            left: 0;
-            border-right: solid 1px @gray;
-        }
-        .y-panel-content_right {
-            right: 0;
-            border-left: solid 1px @gray;
-        }
-        .y-panel-content_top,
-        .y-panel-content_bottom {
-            left: 0;
-            position: absolute;
-            width: 100%;
-            height: 500px;
-            background: @white;
-        }
-        .y-panel-content_top {
-            top: 0;
-            border-bottom: solid 1px @gray;
-        }
-        .y-panel-content_bottom {
-            bottom: 0;
-            border-top: solid 1px @gray;
+            .y-dialog-close {
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                &:hover {
+                    cursor: pointer;
+                    fill: @fontHighLight;
+                }
+            }
         }
     }
 </style>

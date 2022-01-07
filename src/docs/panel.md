@@ -88,6 +88,7 @@
 | -------- | -------------------------------- | -------- | ----------- | ----- |
 | position   | 弹窗位置 | string    | left, right, top, bottom | right |
 | visible   | 弹窗显示状态 | boolean    | - | false |
+| value   | 弹窗显示状态,v-model | boolean    | - | false |
 
 ### Slot
 
