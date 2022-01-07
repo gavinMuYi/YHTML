@@ -40,6 +40,9 @@ export default {
                 return item.replace('./', '').replace('/index.js', '');
             }),
             docs: [{
+                title: 'Layout',
+                children: ['layout']
+            }, {
                 title: 'Basic',
                 children: ['button', 'cell', 'icon']
             }, {
