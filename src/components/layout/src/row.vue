@@ -1,5 +1,5 @@
 <template>
-    <div class="y-row">
+    <div class="y-row" :style="alignStyle">
         <slot></slot>
     </div>
 </template>
@@ -11,6 +11,17 @@ export default {
         gutter: {
             type: Number,
             default: 0
+        },
+        alignItems: {
+            type: String,
+            default: 'center'
+        }
+    },
+    computed: {
+        alignStyle() {
+            return {
+                'align-items': this.alignItems
+            };
         }
     },
     watch: {
@@ -28,5 +39,6 @@ export default {
 <style lang="less">
     .y-row {
         display: flex;
+        height: 100%;
     }
 </style>
