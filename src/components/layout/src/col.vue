@@ -1,5 +1,5 @@
 <template>
-    <div class="y-col" :style="selfStyle">
+    <div class="y-col" :style="{...selfStyle, ...gutterStyle}">
         <slot></slot>
     </div>
 </template>
@@ -25,6 +25,7 @@ export default {
         return {
             left: null,
             right: null,
+            gutterStyle: {}
         };
     },
     computed: {
@@ -55,6 +56,14 @@ export default {
         if (this.leftSpan) {
             this.setSpan('left', this.leftSpan);
         }
+        this.$nextTick(() => {
+            let gutter = this.$parent._props.gutter;
+            if (this.$parent.$children[this.$parent.$children.length - 1]._uid === this._uid) {
+                this.$set(this, 'gutterStyle', { 'margin-right': '0px' });
+            } else {
+                this.$set(this, 'gutterStyle', { 'margin-right': gutter + 'px' });
+            }
+        });
     },
     methods: {
         setSpan(position, span) {
@@ -68,6 +77,7 @@ export default {
             } else {
                 let parent = this.$el.parentNode;
                 this[position] = window.document.createElement('div');
+                this[position].className = 'y-layout-col__' + position;
                 if (span) {
                     this[position].style.flex = span;
                     this[position].style.display = 'block';

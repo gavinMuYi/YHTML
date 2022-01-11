@@ -20,6 +20,10 @@
     height: 50px;
     border: 1px solid;
 }
+.md-s-content {
+    height: 20px;
+    border: 1px solid red;
+}
 </style>
 ## Layout
 
@@ -29,7 +33,7 @@
 ```html
 <template>
     <y-button @click="rightSpan++">add</y-button>
-    <y-row>
+    <y-row :gutter="10">
         <y-col :span="5" :left-span="5">
             <div class="md-content"></div>
         </y-col>
@@ -37,7 +41,17 @@
             <div class="md-content"></div>
         </y-col>
         <y-col :span="20" :left-span="2" :right-span="5">
-            <div class="md-content"></div>
+            <y-row :gutter="5">
+                <y-col :span="5" :left-span="5">
+                    <div class="md-s-content"></div>
+                </y-col>
+                <y-col :span="7" :right-span="rightSpan">
+                    <div class="md-s-content"></div>
+                </y-col>
+                <y-col :span="20" :left-span="2" :right-span="5">
+                    <div class="md-s-content"></div>
+                </y-col>
+            </y-row>
         </y-col>
     </y-row>
 </template>
