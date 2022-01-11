@@ -2,7 +2,8 @@
     export default {
         data() {
             return {
-                rightSpan: 3
+                rightSpan: 3,
+                gutter: 10
             };
         },
         methods: {
@@ -33,7 +34,8 @@
 ```html
 <template>
     <y-button @click="rightSpan++">add</y-button>
-    <y-row :gutter="10">
+    <y-button @click="gutter++">add gutter</y-button>
+    <y-row :gutter="gutter">
         <y-col :span="5" :left-span="5">
             <div class="md-content"></div>
         </y-col>

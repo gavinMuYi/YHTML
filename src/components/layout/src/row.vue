@@ -12,6 +12,15 @@ export default {
             type: Number,
             default: 0
         }
+    },
+    watch: {
+        gutter() {
+            this.$children.forEach(comp => {
+                if (comp.setGutter) {
+                    comp.setGutter();
+                }
+            });
+        }
     }
 };
 </script>

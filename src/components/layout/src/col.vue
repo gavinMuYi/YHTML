@@ -56,16 +56,19 @@ export default {
         if (this.leftSpan) {
             this.setSpan('left', this.leftSpan);
         }
-        this.$nextTick(() => {
-            let gutter = this.$parent._props.gutter;
-            if (this.$parent.$children[this.$parent.$children.length - 1]._uid === this._uid) {
-                this.$set(this, 'gutterStyle', { 'margin-right': '0px' });
-            } else {
-                this.$set(this, 'gutterStyle', { 'margin-right': gutter + 'px' });
-            }
-        });
+        this.setGutter();
     },
     methods: {
+        setGutter() {
+            this.$nextTick(() => {
+                let gutter = this.$parent._props.gutter;
+                if (this.$parent.$children[this.$parent.$children.length - 1]._uid === this._uid) {
+                    this.$set(this, 'gutterStyle', { 'margin-right': '0px' });
+                } else {
+                    this.$set(this, 'gutterStyle', { 'margin-right': gutter + 'px' });
+                }
+            });
+        },
         setSpan(position, span) {
             if (this[position]) {
                 if (span) {
