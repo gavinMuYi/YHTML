@@ -50,7 +50,7 @@ export default {
                 children: ['checkbox', 'input']
             }, {
                 title: 'Picker',
-                children: ['select', 'cascade']
+                children: ['select', 'cascade', 'colorPicker']
             }, {
                 title: 'Navigation',
                 children: ['pagination']
