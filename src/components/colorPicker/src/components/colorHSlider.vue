@@ -10,17 +10,86 @@
 
 <script>
 import { throttle } from '@/utils/tools.js';
+const GAP = 100 / 6;
 
 export default {
     name: 'YColorHSlider',
     props: {
+        value: {
+            type: Array,
+            default: () => {
+                return [255, 0, 0];
+            }
+        }
     },
     data() {
         return {
             range: 0,
             start: 0,
             left: 0,
+            // colorMap: {
+            //     '255 0 0': [0, 17],
+            //     '255 255 0': [17, 33],
+            //     '0 255 0': [33, 50],
+            //     '0 255 255': [50, 67],
+            //     '0 0 255': [67, 83],
+            //     '255 0 255': [83, 100],
+            //     '255 0 0': [100]
+            // }
         };
+    },
+    computed: {
+        percent() {
+            return 100 * this.left / this.range;
+        },
+        r() {
+            if (this.percent >= 0 && this.percent <= GAP) {
+                return 255;
+            } else if (this.percent > GAP && this.percent <= 2 * GAP) {
+                return (1 - ((this.percent - GAP) / GAP)) * 255;
+            } else if (this.percent > 2 * GAP && this.percent <= 3 * GAP) {
+                return 0;
+            } else if (this.percent > 3 * GAP && this.percent <= 4 * GAP) {
+                return 0;
+            } else if (this.percent > 4 * GAP && this.percent <= 5 * GAP) {
+                return ((this.percent - (4 * GAP)) / GAP) * 255;
+            } else if (this.percent > 5 * GAP && this.percent <= 6 * GAP) {
+                return 255;
+            }
+        },
+        g() {
+            if (this.percent >= 0 && this.percent <= GAP) {
+                return (this.percent / GAP) * 255;
+            } else if (this.percent > GAP && this.percent <= 2 * GAP) {
+                return 255;
+            } else if (this.percent > 2 * GAP && this.percent <= 3 * GAP) {
+                return 255;
+            } else if (this.percent > 3 * GAP && this.percent <= 4 * GAP) {
+                return (1 - ((this.percent - (3 * GAP)) / GAP)) * 255;
+            } else if (this.percent > 4 * GAP && this.percent <= 5 * GAP) {
+                return 0;
+            } else if (this.percent > 5 * GAP && this.percent <= 6 * GAP) {
+                return 0;
+            }
+        },
+        b() {
+            if (this.percent >= 0 && this.percent <= GAP) {
+                return 0;
+            } else if (this.percent > GAP && this.percent <= 2 * GAP) {
+                return 0;
+            } else if (this.percent > 2 * GAP && this.percent <= 3 * GAP) {
+                return ((this.percent - (2 * GAP)) / GAP) * 255;
+            } else if (this.percent > 3 * GAP && this.percent <= 4 * GAP) {
+                return 255;
+            } else if (this.percent > 4 * GAP && this.percent <= 5 * GAP) {
+                return 255;
+            } else if (this.percent > 5 * GAP && this.percent <= 6 * GAP) {
+                return (1 - ((this.percent - (5 * GAP)) / GAP)) * 255;
+            }
+        },
+        color() {
+            return [Math.abs(Math.round(this.r)), Math.abs(Math.round(this.g)), Math.abs(Math.round(this.b))];
+        }
     },
     mounted() {
         this.getRange();
@@ -28,19 +97,52 @@ export default {
     },
     methods: {
         getRange() {
+            // resize
             this.range = Number(window.getComputedStyle(this.$refs.slider).width.replace('px', '')) - 6;
         },
         initLeft() {
-            //
+            // value change
+            let startPercent = 0;
+            let value = this.value;
+            if (value[0] === 255) {
+                if (value[2] === 0) {
+                    // 0-17
+                    startPercent = (value[1] / 255) * GAP;
+                } else {
+                    // 83-100
+                    startPercent = 5 * GAP + (1 - (value[2] / 255)) * GAP;
+                }
+            } else if (value[0] === 0) {
+                // 33-67
+                if (value[1] === 255) {
+                    // 33-50
+                    startPercent = 2 * GAP + (value[2] / 255) * GAP;
+                } else {
+                    // 50-67
+                    startPercent = 3 * GAP + (1 - (value[1] / 255)) * GAP;
+                }
+            } else {
+                // 17-33 67-83
+                if (value[1] === 255) {
+                    // 17-33
+                    startPercent = GAP + (1 - (value[0] / 255)) * GAP;
+                } else {
+                    // 67-83
+                    startPercent = 4 * GAP + (value[0] / 255) * GAP;
+                }
+            }
+            this.left = (startPercent / 100) * this.range;
         },
         handleClick(e) {
             let res = e.clientX - this.$refs.slider.getBoundingClientRect().left;
             this.left = Math.max(0, Math.min(res, this.range));
+            console.log(this.color);
         },
         handleMouseMove(e) {
             return (e) => {
                 let res = e.clientX - this.start;
                 this.left = Math.max(0, Math.min(res, this.range));
+                console.log(this.color);
             };
         },
         handleMouseDown(e, tindex, th) {
