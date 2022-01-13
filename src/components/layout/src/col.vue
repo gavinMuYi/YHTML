@@ -23,7 +23,15 @@ export default {
         fixedWidth: {
             type: Number,
             default: null
-        }
+        },
+        fixedLeftWidth: {
+            type: Number,
+            default: 0
+        },
+        fixedRightWidth: {
+            type: Number,
+            default: 0
+        },
     },
     data() {
         return {
@@ -57,6 +65,12 @@ export default {
         },
         leftSpan(nval) {
             this.setSpan('left', nval);
+        },
+        fixedRightWidth(nval) {
+            this.setWidth('right', nval);
+        },
+        fixedLeftWidth(nval) {
+            this.setWidth('left', nval);
         }
     },
     mounted() {
@@ -65,6 +79,12 @@ export default {
         }
         if (this.leftSpan) {
             this.setSpan('left', this.leftSpan);
+        }
+        if (this.fixedRightWidth) {
+            this.setWidth('right', this.fixedRightWidth);
+        }
+        if (this.fixedLeftWidth) {
+            this.setWidth('left', this.fixedLeftWidth);
         }
         this.setGutter();
     },
@@ -93,6 +113,35 @@ export default {
                 this[position].className = 'y-layout-col__' + position;
                 if (span) {
                     this[position].style.flex = span;
+                    this[position].style.display = 'block';
+                } else {
+                    this[position].style.display = 'none';
+                }
+                if (position === 'right') {
+                    if (parent.lastChild === this.$el) {
+                        parent.appendChild(this[position]);
+                    } else {
+                        parent.insertBefore(this[position], this.$el.nextSibling);
+                    }
+                } else {
+                    parent.insertBefore(this[position], this.$el);
+                }
+            }
+        },
+        setWidth(position, width) {
+            if (this[position]) {
+                if (width) {
+                    this[position].style.width = width + 'px';
+                    this[position].style.display = 'block';
+                } else {
+                    this[position].style.display = 'none';
+                }
+            } else {
+                let parent = this.$el.parentNode;
+                this[position] = window.document.createElement('div');
+                this[position].className = 'y-layout-col__' + position;
+                if (width) {
+                    this[position].style.width = width + 'px';
                     this[position].style.display = 'block';
                 } else {
                     this[position].style.display = 'none';

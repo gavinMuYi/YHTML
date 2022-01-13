@@ -139,6 +139,29 @@
 ```
 :::
 
+### 定宽偏移量
+
+::: demo
+```html
+<template>
+    <y-row>
+        <y-col :span="2" :fixed-left-width="20">
+            <div class="md-content-1">2</div>
+        </y-col>
+        <y-col :span="4">
+            <div class="md-content-2">4</div>
+        </y-col>
+        <y-col :span="1" :fixed-left-width="100" :fixed-right-width="50">
+            <div class="md-content-1">1</div>
+        </y-col>
+        <y-col :span="3" :fixed-right-width="50">
+            <div class="md-content-2">3</div>
+        </y-col>
+    </y-row>
+</template>
+```
+:::
+
 ### 嵌套布局
 
 ::: demo
@@ -213,6 +236,8 @@
 | leftSpan     | 左偏移比例  | number    | - | 0 |
 | rightSpan  | 右偏移比例  | number    | - | 0 |
 | fixedWidth   | 宽度(px) | number    | - | null |
+| fixedLeftWidth     | 左偏移(px) | number    | - | 0 |
+| fixedRightWidth  | 右偏移(px)  | number    | - | 0 |
 
 ### Slot
 
