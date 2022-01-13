@@ -19,6 +19,10 @@ export default {
         rightSpan: {
             type: Number,
             default: 0
+        },
+        fixedWidth: {
+            type: Number,
+            default: null
         }
     },
     data() {
@@ -30,6 +34,12 @@ export default {
     },
     computed: {
         selfStyle() {
+            if (this.fixedWidth !== null) {
+                return {
+                    display: 'block',
+                    width: this.fixedWidth + 'px'
+                };
+            }
             if (!this.span) {
                 return {
                     display: 'none'

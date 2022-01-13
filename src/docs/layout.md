@@ -2,8 +2,6 @@
     export default {
         data() {
             return {
-                rightSpan: 3,
-                gutter: 10
             };
         },
         methods: {
@@ -17,13 +15,31 @@
 .md-box:last-child {
     margin-bottom: 0px;
 }
-.md-content {
+.md-content-1 {
     height: 50px;
-    border: 1px solid;
+    border-radius: 10px;
+    background: #dbf4f0;
+    line-height: 50px;
+    text-align: center;
 }
-.md-s-content {
-    height: 20px;
-    border: 1px solid red;
+.md-content-2 {
+    height: 50px;
+    border-radius: 10px;
+    background: #f7f7f7;
+    line-height: 50px;
+    text-align: center;
+}
+.md-out {
+    height: 100px;
+    line-height: 100px;
+}
+.md-in-1 {
+    background: #496866;
+    color: #ffffff;
+}
+.md-in-2 {
+    background: #18b9ac;
+    color: #ffffff;
 }
 </style>
 ## Layout
@@ -33,59 +49,174 @@
 ::: demo
 ```html
 <template>
-    <y-button @click="rightSpan++">add</y-button>
-    <y-button @click="gutter++">add gutter</y-button>
-    <y-row :gutter="gutter">
-        <y-col :span="5" :left-span="5">
-            <div class="md-content"></div>
+    <y-row>
+        <y-col :span="5">
+            <div class="md-content-1">5</div>
         </y-col>
-        <y-col :span="7" :right-span="rightSpan">
-            <div class="md-content"></div>
+        <y-col :span="7">
+            <div class="md-content-2">7</div>
         </y-col>
-        <y-col :span="20" :left-span="2" :right-span="5">
-            <y-row :gutter="5">
-                <y-col :span="5" :left-span="5">
-                    <div class="md-s-content"></div>
-                </y-col>
-                <y-col :span="7" :right-span="rightSpan">
-                    <div class="md-s-content"></div>
-                </y-col>
-                <y-col :span="20" :left-span="2" :right-span="5">
-                    <div class="md-s-content"></div>
-                </y-col>
-            </y-row>
+        <y-col :span="4">
+            <div class="md-content-1">4</div>
+        </y-col>
+        <y-col :span="8">
+            <div class="md-content-2">8</div>
+        </y-col>
+        <y-col :span="2">
+            <div class="md-content-1">2</div>
+        </y-col>
+        <y-col :span="3">
+            <div class="md-content-2">3</div>
         </y-col>
     </y-row>
 </template>
-<script>
-    export default {
-        data() {
-            return {};
-        },
-        methods: {
-        }
-    }
-</script>
 ```
 :::
 
-### 属性
+### 定宽布局
+
+::: demo
+```html
+<template>
+    <y-row>
+        <y-col :fixed-width="200">
+            <div class="md-content-1">200px</div>
+        </y-col>
+        <y-col :span="7">
+            <div class="md-content-2">7</div>
+        </y-col>
+        <y-col :span="3">
+            <div class="md-content-1">3</div>
+        </y-col>
+    </y-row>
+</template>
+```
+:::
+
+### gutter
+
+::: demo
+```html
+<template>
+    <y-row :gutter="5">
+        <y-col :span="2">
+            <div class="md-content-1">2</div>
+        </y-col>
+        <y-col :span="4">
+            <div class="md-content-2">4</div>
+        </y-col>
+        <y-col :span="8">
+            <div class="md-content-1">8</div>
+        </y-col>
+        <y-col :span="5">
+            <div class="md-content-2">5</div>
+        </y-col>
+    </y-row>
+</template>
+```
+:::
+
+### 偏移量
+
+::: demo
+```html
+<template>
+    <y-row>
+        <y-col :span="5" :left-span="1">
+            <div class="md-content-1">5</div>
+        </y-col>
+        <y-col :span="2">
+            <div class="md-content-2">2</div>
+        </y-col>
+        <y-col :span="8" :left-span="2" :right-span="1">
+            <div class="md-content-1">8</div>
+        </y-col>
+        <y-col :span="3" :right-span="2">
+            <div class="md-content-2">3</div>
+        </y-col>
+    </y-row>
+</template>
+```
+:::
+
+### 嵌套布局
+
+::: demo
+```html
+<template>
+    <div class="md-box">
+        <y-row>
+            <y-col :span="4">
+                <div class="md-content-1 md-out">4</div>
+            </y-col>
+            <y-col :span="8">
+                <div class="md-content-2 md-out">
+                    <y-row>
+                        <y-col :span="5" :left-span="1">
+                            <div class="md-content-1 md-in-1">5</div>
+                        </y-col>
+                        <y-col :span="2">
+                            <div class="md-content-2 md-in-2">2</div>
+                        </y-col>
+                        <y-col :span="8" :left-span="2" :right-span="1">
+                            <div class="md-content-1 md-in-1">8</div>
+                        </y-col>
+                        <y-col :span="3" :right-span="2">
+                            <div class="md-content-2 md-in-2">3</div>
+                        </y-col>
+                    </y-row>
+                </div>
+            </y-col>
+            <y-col :span="3">
+                <div class="md-content-1 md-out">3</div>
+            </y-col>
+        </y-row>
+    </div>
+    <div class="md-box">
+        <y-row>
+            <y-col :span="1">
+                <div class="md-content-1 md-out">1</div>
+            </y-col>
+            <y-col :span="10">
+                <div class="md-content-2 md-out">
+                    <y-row :gutter="5" align-items="top">
+                        <y-col :span="20" :left-span="1">
+                            <div class="md-content-1 md-in-1">20</div>
+                        </y-col>
+                        <y-col :span="3" :right-span="2">
+                            <div class="md-content-2 md-in-2">3</div>
+                        </y-col>
+                    </y-row>
+                </div>
+            </y-col>
+            <y-col :span="2">
+                <div class="md-content-1 md-out">2</div>
+            </y-col>
+        </y-row>
+    </div>
+</template>
+```
+:::
+
+### row属性
 
 | 参数      | 说明                             | 类型      | 可选值       | 默认值 |
 | -------- | -------------------------------- | -------- | ----------- | ----- |
-| status   | 按钮的样式类型 | string    | default, primary, warning, error | default |
-| size     | 按钮的大小                        | string   | min, medium, max | medium |
-| loading  | 是否处于loading状态    | boolean   | -           | false |
-| disable | 是否处于disabled状态   | boolean   | -           | false |
+| gutter   | 列间隔（px） | number    | - | 0 |
+| alignItems     | 内容纵向布局   | string   | top, center, bottom | center |
+
+### col属性
+
+| 参数      | 说明                             | 类型      | 可选值       | 默认值 |
+| -------- | -------------------------------- | -------- | ----------- | ----- |
+| span   | 宽度占比 | number    | - | 0 |
+| leftSpan     | 左偏移比例  | number    | - | 0 |
+| rightSpan  | 右偏移比例  | number    | - | 0 |
+| fixedWidth   | 宽度(px) | number    | - | null |
 
 ### Slot
 
 | Slot名称  | 说明                             |
 | -------- | -------------------------------- |
-| default  | 默认的slot，作为按钮的内容 |
+| default  | 默认的slot，作为行组件 / 列组件的内容 |
 
-### 事件
-
-| 事件名称  | 说明                              | 事件参数  |
-| -------- | -------------------------------- | -------- |
-| click    | 点击事件 | Event |
