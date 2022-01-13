@@ -1,5 +1,7 @@
 <template>
-    <div class="y-color-o-slider"></div>
+    <div class="y-color-o-slider">
+        <div class="y-color-slider-box"></div>
+    </div>
 </template>
 
 <script>
@@ -18,6 +20,7 @@ export default {
 
 <style lang="less">
     .y-color-o-slider {
+        position: relative;
         cursor: pointer;
         height: 10px;
         width: 100%;
