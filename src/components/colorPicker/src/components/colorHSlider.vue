@@ -24,16 +24,7 @@ export default {
         return {
             range: 0,
             start: 0,
-            left: 0,
-            // colorMap: {
-            //     '255 0 0': [0, 17],
-            //     '255 255 0': [17, 33],
-            //     '0 255 0': [33, 50],
-            //     '0 255 255': [50, 67],
-            //     '0 0 255': [67, 83],
-            //     '255 0 255': [83, 100],
-            //     '255 0 0': [100]
-            // }
+            left: 0
         };
     },
     computed: {
@@ -92,6 +83,11 @@ export default {
             return [Math.abs(Math.round(this.r)), Math.abs(Math.round(this.g)), Math.abs(Math.round(this.b))];
         }
     },
+    watch: {
+        value() {
+            this.initLeft();
+        }
+    },
     mounted() {
         this.getRange();
         this.initLeft();
@@ -103,36 +99,6 @@ export default {
         },
         initLeft() {
             // value change
-            // let startPercent = 0;
-            // let value = this.value;
-            // if (value[0] === 255) {
-            //     if (value[2] === 0) {
-            //         // 0-17
-            //         startPercent = (value[1] / 255) * GAP;
-            //     } else {
-            //         // 83-100
-            //         startPercent = 5 * GAP + (1 - (value[2] / 255)) * GAP;
-            //     }
-            // } else if (value[0] === 0) {
-            //     // 33-67
-            //     if (value[1] === 255) {
-            //         // 33-50
-            //         startPercent = 2 * GAP + (value[2] / 255) * GAP;
-            //     } else {
-            //         // 50-67
-            //         startPercent = 3 * GAP + (1 - (value[1] / 255)) * GAP;
-            //     }
-            // } else {
-            //     // 17-33 67-83
-            //     if (value[1] === 255) {
-            //         // 17-33
-            //         startPercent = GAP + (1 - (value[0] / 255)) * GAP;
-            //     } else {
-            //         // 67-83
-            //         startPercent = 4 * GAP + (value[0] / 255) * GAP;
-            //     }
-            // }
-            // this.left = (startPercent / 100) * this.range;
             this.left = (this.value / 360) * this.range;
         },
         handleClick(e) {
