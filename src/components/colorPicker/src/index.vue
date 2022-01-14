@@ -57,6 +57,8 @@ export default {
 
 <style lang="less">
     .y-colorPicker {
-
+        .y-color-h-slider {
+            margin-top: 5px;
+        }
     }
 </style>
