@@ -479,7 +479,7 @@ export const FormateAlltoHEX = function (str) {
 };
 
 export const hsvToRgb = function (arr) {
-    let h = arr[0];
+    let h = arr[0] === 360 ? 0 : arr[0];
     let s = arr[1];
     let v = arr[2];
     s = s / 100;
@@ -494,6 +494,7 @@ export const hsvToRgb = function (arr) {
     var t = v * (1 - (1 - f) * s);
     switch (i) {
         case 0:
+            console.log(t);
             r = v; g = t; b = p;
             break;
         case 1:
