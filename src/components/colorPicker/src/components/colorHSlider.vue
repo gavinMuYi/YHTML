@@ -16,10 +16,8 @@ export default {
     name: 'YColorHSlider',
     props: {
         value: {
-            type: Array,
-            default: () => {
-                return [255, 0, 0];
-            }
+            type: Number,
+            default: 0 // 0 - 360
         }
     },
     data() {
@@ -39,6 +37,9 @@ export default {
         };
     },
     computed: {
+        h() {
+            return 360 * this.left / this.range;
+        },
         percent() {
             return 100 * this.left / this.range;
         },
@@ -102,47 +103,50 @@ export default {
         },
         initLeft() {
             // value change
-            let startPercent = 0;
-            let value = this.value;
-            if (value[0] === 255) {
-                if (value[2] === 0) {
-                    // 0-17
-                    startPercent = (value[1] / 255) * GAP;
-                } else {
-                    // 83-100
-                    startPercent = 5 * GAP + (1 - (value[2] / 255)) * GAP;
-                }
-            } else if (value[0] === 0) {
-                // 33-67
-                if (value[1] === 255) {
-                    // 33-50
-                    startPercent = 2 * GAP + (value[2] / 255) * GAP;
-                } else {
-                    // 50-67
-                    startPercent = 3 * GAP + (1 - (value[1] / 255)) * GAP;
-                }
-            } else {
-                // 17-33 67-83
-                if (value[1] === 255) {
-                    // 17-33
-                    startPercent = GAP + (1 - (value[0] / 255)) * GAP;
-                } else {
-                    // 67-83
-                    startPercent = 4 * GAP + (value[0] / 255) * GAP;
-                }
-            }
-            this.left = (startPercent / 100) * this.range;
+            // let startPercent = 0;
+            // let value = this.value;
+            // if (value[0] === 255) {
+            //     if (value[2] === 0) {
+            //         // 0-17
+            //         startPercent = (value[1] / 255) * GAP;
+            //     } else {
+            //         // 83-100
+            //         startPercent = 5 * GAP + (1 - (value[2] / 255)) * GAP;
+            //     }
+            // } else if (value[0] === 0) {
+            //     // 33-67
+            //     if (value[1] === 255) {
+            //         // 33-50
+            //         startPercent = 2 * GAP + (value[2] / 255) * GAP;
+            //     } else {
+            //         // 50-67
+            //         startPercent = 3 * GAP + (1 - (value[1] / 255)) * GAP;
+            //     }
+            // } else {
+            //     // 17-33 67-83
+            //     if (value[1] === 255) {
+            //         // 17-33
+            //         startPercent = GAP + (1 - (value[0] / 255)) * GAP;
+            //     } else {
+            //         // 67-83
+            //         startPercent = 4 * GAP + (value[0] / 255) * GAP;
+            //     }
+            // }
+            // this.left = (startPercent / 100) * this.range;
+            this.left = (this.value / 360) * this.range;
         },
         handleClick(e) {
             let res = e.clientX - this.$refs.slider.getBoundingClientRect().left;
             this.left = Math.max(0, Math.min(res, this.range));
-            console.log(this.color);
+            this.$emit('background', this.color);
+            this.$emit('input', this.h);
         },
         handleMouseMove(e) {
             return (e) => {
                 let res = e.clientX - this.start;
                 this.left = Math.max(0, Math.min(res, this.range));
-                console.log(this.color);
+                this.$emit('background', this.color);
+                this.$emit('input', this.h);
             };
         },
         handleMouseDown(e, tindex, th) {

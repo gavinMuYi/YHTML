@@ -1,5 +1,5 @@
 <template>
-    <div class="y-color-sv-picker">
+    <div class="y-color-sv-picker" :style="hRgb">
         <div class="y-color-s-picker_white"></div>
         <div class="y-color-s-picker_black"></div>
     </div>
@@ -9,6 +9,12 @@
 export default {
     name: 'YColorSVPicker',
     props: {
+        hRgb: {
+            type: Object,
+            default: () => {
+                return {};
+            }
+        }
     },
     data() {
         return {

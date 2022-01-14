@@ -1,7 +1,8 @@
 <template>
     <div class="y-colorPicker">
-        <y-color-s-v-picker />
-        <y-color-h-slider />
+        {{ h }}
+        <y-color-s-v-picker :h-rgb="hRGB"/>
+        <y-color-h-slider v-model="h" @background="val => {background = val}"/>
         <y-color-o-slider />
     </div>
 </template>
@@ -22,7 +23,16 @@ export default {
     },
     data() {
         return {
+            h: 0,
+            background: [255, 0, 0]
         };
+    },
+    computed: {
+        hRGB() {
+            return {
+                background: `rgb(${this.background.join(', ')})`
+            };
+        }
     },
     methods: {
     }
