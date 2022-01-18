@@ -1,5 +1,5 @@
 <template>
-    <div class="y-color-sv-picker" :style="hRgb" ref="panel">
+    <div class="y-color-sv-picker" :style="hRgb" ref="panel" @click="handleClick">
         <div class="y-color-s-picker_white"></div>
         <div class="y-color-s-picker_black"></div>
         <div class="y-color-sv-picker-box"
@@ -79,7 +79,6 @@ export default {
             this.left = Math.max(0, Math.min(resx, this.rangex));
             let resy = e.clientY - this.$refs.panel.getBoundingClientRect().top;
             this.top = Math.max(0, Math.min(resy, this.rangey));
-            console.log(this.s, this.v);
             this.$emit('change', [this.s, this.v]);
         },
         handleMouseMove(e) {
@@ -90,7 +89,6 @@ export default {
                 let resy = e.clientY - this.startTop;
                 this.left = Math.max(0, Math.min(resx, this.rangex));
                 this.top = Math.max(0, Math.min(resy, this.rangey));
-                console.log(this.s, this.v);
                 this.$emit('change', [this.s, this.v]);
             };
         },
@@ -115,7 +113,7 @@ export default {
 
 <style lang="less">
     .y-color-sv-picker {
-        width: 100%;
+        width: 300px;
         height: 200px;
         min-width: 200px;
         position: relative;

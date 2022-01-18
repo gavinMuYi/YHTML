@@ -1,4 +1,7 @@
-const ColorValue = [{
+/* eslint-disable */
+export const Opacity = ['00', '03', '05', '08', '0A', '0D', '0F', '12', '14', '17', '1A', '1C', '1F', '21', '24', '26', '29', '2B', '2E', '30', '33', '36', '38', '3B', '3D', '40', '42', '45', '47', '4A', '4D', '4F', '52', '54', '57', '59', '5C', '5E', '61', '63', '66', '69', '6B', '6E', '70', '73', '75', '78', '7A', '7D', '80', '82', '85', '87', '8A', '8C', '8F', '91', '94', '96', '99', '9C', '9E', 'A1', 'A3', 'A6', 'A8', 'AB', 'AD', 'B0', 'B3', 'B5', 'B8', 'BA', 'BD', 'BF', 'C2', 'C4', 'C7', 'C9', 'CC', 'CF', 'D1', 'D4', 'D6', 'D9', 'DB', 'DE', 'E0', 'E3', 'E6', 'E8', 'EB', 'ED', 'F0', 'F2', 'F5', 'F7', 'FA', 'FC', ''];
+
+export const ColorValue = [{
     'key': 'Black',
     'value': '#000000'
 }, {
@@ -444,23 +447,42 @@ const ColorValue = [{
     'value': '#FFFFFF'
 }];
 
-let ColorValueMap = {};
+export let ColorValueMap = {};
 ColorValue.forEach(item => {
-    ColorValueMap[item.key.toLowerCase()] = item.value.toLowerCase();
-    ColorValueMap[item.key] = item.value.toLowerCase();
+    ColorValueMap[item.key.toLowerCase()] = item.value;
+    ColorValueMap[item.key] = item.value;
 });
+export const hex2rgb = function (a) {
+    if (a === '') {
+        return '';
+    }
+    a = a.substring(1);
+    a = a.toLowerCase();
+    let b = [];
+    for (let x = 0; x < 3; x++) {
+        b[0] = a.substr(x * 2, 2);
+        b[3] = '0123456789abcdef';
+        b[1] = b[0].substr(0, 1);
+        b[2] = b[0].substr(1, 1);
+        b[20 + x] = b[3].indexOf(b[1]) * 16 + b[3].indexOf(b[2]);
+    }
+    return [b[20], b[21], b[22]];
+};
 
 function toHex(N) {
     if (N === null) return '00';
-    N = parseInt(N, 10); if (N === 0 || isNaN(N)) return '00';
-    N = Math.max(0, N); N = Math.min(N, 255); N = Math.round(N);
-    return '0123456789abcdef'.charAt((N - N % 16) / 16) + '0123456789abcdef'.charAt(N % 16);
+    N = parseInt(N, 10);
+    if (N === 0 || isNaN(N)) return '00';
+    N = Math.max(0, N);
+    N = Math.min(N, 255);
+    N = Math.round(N);
+    return '0123456789ABCDEF'.charAt((N - N % 16) / 16) + '0123456789ABCDEF'.charAt(N % 16);
 }
 
 export const FormateAlltoHEX = function (str) {
     if (str.substring(0, 3) === 'rgb') {
         let arr = str.split(',');
-        let r = arr[0].replace('rgb(', '').trim();
+        let r = arr[0].replace('rgb(', '').replace('rgba(', '').trim();
         let g = arr[1].trim();
         let b = arr[2].replace(')', '').trim();
         let hex = [
@@ -469,11 +491,9 @@ export const FormateAlltoHEX = function (str) {
             toHex(b)
         ];
         return '#' + hex.join('');
-    }
-    else if (str.substring(0, 1) === '#') {
+    } else if (str.substring(0, 1) === '#') {
         return str;
-    }
-    else {
+    } else {
         return ColorValueMap[str];
     }
 };
@@ -494,23 +514,34 @@ export const hsvToRgb = function (arr) {
     var t = v * (1 - (1 - f) * s);
     switch (i) {
         case 0:
-            console.log(t);
-            r = v; g = t; b = p;
+            r = v;
+            g = t;
+            b = p;
             break;
         case 1:
-            r = q; g = v; b = p;
+            r = q;
+            g = v;
+            b = p;
             break;
         case 2:
-            r = p; g = v; b = t;
+            r = p;
+            g = v;
+            b = t;
             break;
         case 3:
-            r = p; g = q; b = v;
+            r = p;
+            g = q;
+            b = v;
             break;
         case 4:
-            r = t; g = p; b = v;
+            r = t;
+            g = p;
+            b = v;
             break;
         case 5:
-            r = v; g = p; b = q;
+            r = v;
+            g = p;
+            b = q;
             break;
         default:
             break;
@@ -549,8 +580,7 @@ export const rgbToHsv = function (arr) {
     } else if (max === b) {
         h = 60 * ((r - g) / (max - min)) + 240;
     }
-    h = parseInt(h, 10);
-    s = parseInt(s * 100, 10);
-    v = parseInt(v * 100, 10);
+    s = s * 100;
+    v = v * 100;
     return [h, s, v];
 };

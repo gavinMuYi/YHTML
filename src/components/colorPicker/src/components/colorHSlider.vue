@@ -48,6 +48,7 @@ export default {
             } else if (this.percent > 5 * GAP && this.percent <= 6 * GAP) {
                 return 255;
             }
+            return 255;
         },
         g() {
             if (this.percent >= 0 && this.percent <= GAP) {
@@ -63,6 +64,7 @@ export default {
             } else if (this.percent > 5 * GAP && this.percent <= 6 * GAP) {
                 return 0;
             }
+            return 255;
         },
         b() {
             if (this.percent >= 0 && this.percent <= GAP) {
@@ -78,6 +80,7 @@ export default {
             } else if (this.percent > 5 * GAP && this.percent <= 6 * GAP) {
                 return (1 - ((this.percent - (5 * GAP)) / GAP)) * 255;
             }
+            return 255;
         },
         color() {
             return [Math.abs(Math.round(this.r)), Math.abs(Math.round(this.g)), Math.abs(Math.round(this.b))];
@@ -139,6 +142,7 @@ export default {
         cursor: pointer;
         height: 10px;
         min-width: 200px;
+        width: 300px;
         background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
         .y-color-slider-box {
             position: absolute;
@@ -146,9 +150,9 @@ export default {
             left: 0px;
             height: 14px;
             width: 4px;
-            background: @white;
+            background: #ffffff;
             border-radius: 3px;
-            border: 1px solid @fontGray;
+            border: 1px solid #dadee7;
         }
     }
 </style>
