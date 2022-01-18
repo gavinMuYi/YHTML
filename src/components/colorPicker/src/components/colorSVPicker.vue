@@ -124,7 +124,7 @@ export default {
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+            background: linear-gradient(to right, #ffffff, rgba(255,255,255,0));
         }
         .y-color-s-picker_black {
             cursor: pointer;
@@ -133,14 +133,14 @@ export default {
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to top, #000, rgba(0,0,0,0));
+            background: linear-gradient(to top, #000000, rgba(0,0,0,0));
         }
         .y-color-sv-picker-box {
             cursor: pointer;
             position: absolute;
             width: 4px;
             height: 4px;
-            box-shadow: 0 0 0 1.5px #fff;
+            box-shadow: 0 0 0 1.5px @white;
             border-radius: 50%;
         }
     }

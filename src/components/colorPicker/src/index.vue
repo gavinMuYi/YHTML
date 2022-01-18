@@ -202,7 +202,7 @@ export default {
             width: 80px;
             height: 30px;
             padding: 5px;
-            border: 1px solid #dadee7;
+            border: 1px solid @gray;
             border-radius: 2px;
             .y-color-picker-trigger-preview {
                 height: 100%;
@@ -211,9 +211,9 @@ export default {
     }
     .y-colorPicker-pop {
         margin-top: 2px;
-        background: #ffffff;
+        background: @white;
         padding: 20px;
-        border: 1px solid #dadee7;
+        border: 1px solid @gray;
         border-radius: 2px;
         box-shadow: 0 1px 15px rgba(30, 36, 49, 0.15);
         .y-colorPicker-pop-content {
@@ -245,10 +245,11 @@ export default {
                         width: 225px;
                     }
                     .input-label {
-                        color: #1e2330;
+                        color: @font;
                         margin-bottom: 10px;
                         display: inline-block;
                         width: 40px;
+                        font-weight: 700;
                     }
                 }
             }
@@ -262,7 +263,7 @@ export default {
                     width: 16px;
                     height: 16px;
                     border-radius: 3px;
-                    border: 1px solid #dadee7;
+                    border: 1px solid @gray;
                     margin: 0px 5px 5px 0;
                     cursor: pointer;
                 }

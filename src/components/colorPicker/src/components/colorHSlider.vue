@@ -150,9 +150,9 @@ export default {
             left: 0px;
             height: 14px;
             width: 4px;
-            background: #ffffff;
+            background: @white;
             border-radius: 3px;
-            border: 1px solid #dadee7;
+            border: 1px solid @gray;
         }
     }
 </style>
