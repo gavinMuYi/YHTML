@@ -12,13 +12,17 @@
                 <y-color-h-slider v-model="h" @background="val => { background = val }"/>
                 <y-color-o-slider v-model="o" />
                 <div class="quick-input">
-                    <div class="color-input">
+                    <div class="color-input" v-show="inputmodel">
                         <div class="input-label">rgba: </div>
                         <y-input :value="[...this.inputRGB, this.o / 100].join(', ')" @change="handleRGBA($event)" />
                     </div>
-                    <div class="color-input">
+                    <div class="color-input" v-show="!inputmodel">
                         <div class="input-label">HEX: </div>
                         <y-input :value="inputHEX + Opacity[o]" @change="handleHEX" />
+                    </div>
+                    <div class="change-input-icon" @click="inputmodel = !inputmodel">
+                        <y-icon name="arrow-up" />
+                        <y-icon name="arrow-down" />
                     </div>
                 </div>
                 <div class="quick-picker">
@@ -78,7 +82,8 @@ export default {
             inputRGB: [0, 0, 0],
             inputHEX: '#000000',
             tempValue: '',
-            byhand: false
+            byhand: false,
+            inputmodel: true
         };
     },
     computed: {
@@ -220,6 +225,21 @@ export default {
             }
             .quick-input {
                 margin-top: 10px;
+                position: relative;
+                .change-input-icon {
+                    position: absolute;
+                    right: 0;
+                    top: 5px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    .y-icon {
+                        display: block;
+                        &:hover {
+                            fill: @fontHighLight;
+                        }
+                    }
+                }
                 .color-input {
                     .y-input {
                         width: 225px;
@@ -228,7 +248,7 @@ export default {
                         color: #1e2330;
                         margin-bottom: 10px;
                         display: inline-block;
-                        width: 70px;
+                        width: 40px;
                     }
                 }
             }
