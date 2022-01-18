@@ -254,6 +254,9 @@ export default {
             }
             .quick-picker {
                 margin-top: 10px;
+                height: 100px;
+                overflow: auto;
+                width: 297px;
                 .color-item {
                     display: inline-block;
                     width: 16px;
