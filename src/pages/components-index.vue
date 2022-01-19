@@ -116,6 +116,7 @@ export default {
                 border-right: 1px solid @gray;
                 box-shadow: -1px -2px 8px @backgroundGreen;
                 position: relative;
+                font-size: 14px;
                 .block-title {
                     padding: 10px 20px;
                     font-size: 12px;
