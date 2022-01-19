@@ -22,7 +22,7 @@
 ```html
 <template>
     <div class="md-box">
-        <y-color-picker value="#07E7B0" />
+        <y-color-picker value="#39A9A1" />
     </div>
 </template>
 ```
