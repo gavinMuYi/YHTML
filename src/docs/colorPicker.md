@@ -22,17 +22,9 @@
 ```html
 <template>
     <div class="md-box">
-        <y-color-picker />
+        <y-color-picker value="#07E7B0" />
     </div>
 </template>
-<script>
-    export default {
-        data() {
-            return {
-            };
-        }
-    }
-</script>
 ```
 :::
 

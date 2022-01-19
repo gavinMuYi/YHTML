@@ -212,7 +212,7 @@ export default {
     .y-colorPicker-pop {
         margin-top: 2px;
         background: @white;
-        padding: 20px;
+        padding: 15px!important;
         border: 1px solid @gray;
         border-radius: 2px;
         box-shadow: 0 1px 15px rgba(30, 36, 49, 0.15);
