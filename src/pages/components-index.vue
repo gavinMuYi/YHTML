@@ -8,14 +8,14 @@
                         <div class="block-title">{{ block.title }}</div>
                         <router-link v-for="name in block.children" :key="name" :to="'/components/' + name + '.md'"
                                      :class="{'selected': name + '.md' === pageName}">
-                            {{ name }}
+                            {{ firstToUpper(name) }}
                         </router-link>
                     </div>
                 </div>
                 <div v-else>
                     <router-link v-for="name in routes" :key="name" :to="'/components/' + name"
                                  :class="{'selected': name === pageName}">
-                        {{ name.replace('.md', '') }}
+                        {{ firstToUpper(name.replace('.md', '')) }}
                     </router-link>
                 </div>
                 <div class="change-mode" @click="modeChange">
@@ -50,7 +50,7 @@ export default {
                 children: ['checkbox', 'input']
             }, {
                 title: 'Picker',
-                children: ['select', 'cascade', 'colorPicker']
+                children: ['select', 'cascade', 'colorPicker', 'datePicker']
             }, {
                 title: 'Navigation',
                 children: ['pagination']
@@ -75,6 +75,9 @@ export default {
         modeChange() {
             this.viewDoc = !this.viewDoc;
             this.$router.push({ name: this.viewDoc ? (this.docs[0].children[0] + '.md') : this.routes[0] });
+        },
+        firstToUpper(str) {
+            return str.replace(str[0], str[0].toUpperCase());
         }
     }
 };
