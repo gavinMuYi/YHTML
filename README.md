@@ -31,7 +31,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 ![Image text](https://raw.githubusercontent.com/gavinMuYi/YHTML/master/static/img/table1.png)
-![Image text](https://raw.githubusercontent.com/gavinMuYi/YHTML/master/static/img/table.2png)
+![Image text](https://raw.githubusercontent.com/gavinMuYi/YHTML/master/static/img/table2.png)
 
 ![Image text](https://raw.githubusercontent.com/gavinMuYi/YHTML/master/static/img/tree1.png)
 ![Image text](https://raw.githubusercontent.com/gavinMuYi/YHTML/master/static/img/tree2.png)
